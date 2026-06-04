@@ -8654,6 +8654,9 @@ document.addEventListener('keydown', function(e){
 @media(hover:none){.cursor-glow::after{display:none!important}}
 @media (prefers-reduced-motion:reduce){.cursor-glow::after{display:none}}
 
+/* Fix: ref-orphan sections (opinie/gallery/case-studies/final-ref) — hide when /referencje nie aktywne */
+body:not(.show-ref-orphans) [data-ref-orphan]{display:none!important}
+
 /* Scroll progress bar — sticky 2px gold */
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:9998;pointer-events:none}
 .scroll-progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--hot));transition:width 60ms linear;transform-origin:left;box-shadow:0 0 12px rgba(201,162,74,.6)}
@@ -8969,6 +8972,28 @@ function dopCookieClose(accepted){
  document.addEventListener('dop:page-change', function(e){
   if (e.detail && e.detail.slug) updatePageMeta(e.detail.slug);
  });
+
+ // ── 5z. FIX page-referencje: wszystkie sekcje opinie+gallery+video są ORPHANS (poza page-divem). Marker + show/hide ──
+ function tagRefOrphans(){
+  var refPage = document.getElementById('page-referencje');
+  if (!refPage || refPage.dataset.orphansTagged) return;
+  var sib = refPage.nextElementSibling;
+  while (sib && !(sib.classList && sib.classList.contains('page'))) {
+   if (sib.tagName === 'SECTION' || sib.tagName === 'STYLE') sib.setAttribute('data-ref-orphan', '1');
+   sib = sib.nextElementSibling;
+  }
+  refPage.dataset.orphansTagged = '1';
+ }
+ tagRefOrphans();
+ document.addEventListener('dop:page-change', function(e){
+  var isRef = e.detail && e.detail.slug === 'referencje';
+  document.body.classList.toggle('show-ref-orphans', isRef);
+ });
+ // Initial check
+ setTimeout(function(){
+  var ap = document.querySelector('.page.active');
+  if (ap && ap.id === 'page-referencje') document.body.classList.add('show-ref-orphans');
+ }, 200);
 
  // ── 5b. Active nav state ──
  function updateActiveNav(slug){
