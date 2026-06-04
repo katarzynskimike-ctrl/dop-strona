@@ -8427,6 +8427,15 @@ document.addEventListener('keydown', function(e){
  /* Auto-fit minmax(540px) → flexible */
  div[style*="minmax(540px"]{grid-template-columns:1fr!important}
  div[style*="minmax(560px"]{grid-template-columns:1fr!important}
+ /* Hero calendar cards 1fr+80+100+130 (na home /#terminy) → stack */
+ div[style*="grid-template-columns:1fr 80px 100px 130px"]{grid-template-columns:1fr!important;gap:14px!important;text-align:left}
+ div[style*="grid-template-columns:1fr 80px 100px 130px"] > div{align-items:flex-start!important}
+ /* Proof grid 3-col home → 1 col mobile */
+ .proof-resp{grid-template-columns:1fr!important}
+ /* Pricing grids */
+ .pricing-grid-resp{grid-template-columns:1fr!important}
+ /* Cal-grid */
+ .cal-list .cal-card{grid-template-columns:1fr!important;gap:14px!important;padding:18px!important}
 }
 </style>
 
