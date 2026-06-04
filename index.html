@@ -8419,6 +8419,15 @@ document.addEventListener('keydown', function(e){
  /* Body text smaller on tiny screens */
  .sec-h2{font-size:32px!important}
 }
+/* === MOBILE FIX: cards z minmax 540px (opinie, rada, referencje) === */
+@media(max-width:880px){
+ /* Stack testimonial/rada cards 200px+1fr → 1 column */
+ div[style*="grid-template-columns:200px 1fr"]{grid-template-columns:1fr!important}
+ div[style*="grid-template-columns:200px 1fr"] > div:first-child{min-height:240px!important;background-position:center top!important;background-size:cover!important}
+ /* Auto-fit minmax(540px) → flexible */
+ div[style*="minmax(540px"]{grid-template-columns:1fr!important}
+ div[style*="minmax(560px"]{grid-template-columns:1fr!important}
+}
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
