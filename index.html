@@ -628,9 +628,16 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 .dop-header.scrolled .dop-logo{height:32px}
 .dop-logo{height:38px;width:auto;display:block;object-fit:contain;flex-shrink:0}
 .dop-nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;flex-shrink:1;min-width:0;justify-content:center;flex:1}
-.dop-nav-link{font-family:'Figtree',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.78);padding:10px 12px;cursor:pointer;background:none;border:none;white-space:nowrap;transition:color .15s;border-radius:4px}
+.dop-nav-link{font-family:'Figtree',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.78);padding:10px 12px;cursor:pointer;background:none;border:none;white-space:nowrap;transition:color .15s;border-radius:4px;position:relative}
 .dop-nav-link:hover{color:var(--gold);background:rgba(201,162,74,.08)}
 .dop-nav-link.special{color:var(--gold);border:1px solid rgba(201,162,74,.35);margin-left:8px;padding:9px 14px}
+/* Active state z animated gold underline */
+.dop-nav-link.active{color:var(--hot)}
+.dop-nav-link.active::after{content:'';position:absolute;bottom:4px;left:12px;right:12px;height:1.5px;background:var(--hot);border-radius:2px;animation:navUnderline .3s cubic-bezier(.22,1,.36,1) forwards}
+.dop-nav-link.special.active{background:rgba(201,162,74,.15);border-color:var(--hot)}
+.dop-nav-link.special.active::after{display:none}
+@keyframes navUnderline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.dop-nav-link.active::after{animation:none}}
 .dop-cta-wrap{display:flex;align-items:center;gap:14px;flex-shrink:0;margin-left:auto}
 .dop-phone{font-family:'Figtree',sans-serif;font-size:15px;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.01em;white-space:nowrap}
 .dop-cta{font-family:'Figtree',sans-serif;padding:11px 20px;background:var(--gold);color:#000;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s,transform .15s;border-radius:4px}
@@ -1381,7 +1388,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(27,44,79,.08);max-width:1200px;margin:0 auto 36px" class="pricing-grid-resp">
 
  <!-- KARTA 0: AKADEMIA ONLINE -->
- <div onclick="showPage('akademia')" role="button" tabindex="0" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:border-color .2s;cursor:pointer" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)'" onmouseout="this.style.borderBottomColor='transparent'">
+ <div onclick="showPage('akademia')" role="button" tabindex="0" class="reveal pricing-card" data-delay="1" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:all .25s cubic-bezier(.22,1,.36,1);cursor:pointer;position:relative" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 48px -20px rgba(27,44,79,.18)'" onmouseout="this.style.borderBottomColor='transparent';this.style.transform='translateY(0)';this.style.boxShadow='none'">
  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
   <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7)">Akademia Online</div>
   <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 7px;background:rgba(63,185,80,.18);color:#2f8a4a;text-transform:uppercase;border-radius:3px">462 praktyki</span>
@@ -1396,7 +1403,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  </div>
 
  <!-- KARTA 1: KURSY OTWARTE -->
- <div style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:border-color .2s" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)'" onmouseout="this.style.borderBottomColor='transparent'">
+ <div class="reveal pricing-card" data-delay="2" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:all .25s cubic-bezier(.22,1,.36,1);position:relative" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 48px -20px rgba(27,44,79,.18)'" onmouseout="this.style.borderBottomColor='transparent';this.style.transform='translateY(0)';this.style.boxShadow='none'">
  <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:10px">Kursy otwarte</div>
  <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">1-2 dni warsztatów</h3>
  <p style="font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:18px;min-height:50px">Stacjonarnie w Warszawie. Sprawdzone standardy, system z dyskusją i warsztatami.</p>
@@ -1408,7 +1415,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  </div>
 
  <!-- KARTA 2 (FEATURED): IN-HOUSE — wycena indywidualna -->
- <div style="background:var(--cream2);padding:32px 26px;display:flex;flex-direction:column;text-align:left;border:1px solid var(--gold);border-bottom:3px solid var(--gold);position:relative">
+ <div class="reveal pricing-card pricing-featured" data-delay="3" style="background:var(--cream2);padding:32px 26px;display:flex;flex-direction:column;text-align:left;border:1px solid var(--gold);border-bottom:3px solid var(--gold);position:relative;transition:all .25s cubic-bezier(.22,1,.36,1);transform:scale(1.02)" onmouseover="this.style.transform='scale(1.04) translateY(-6px)';this.style.boxShadow='0 32px 64px -24px rgba(201,162,74,.4)'" onmouseout="this.style.transform='scale(1.02)';this.style.boxShadow='none'">
  <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:10px;font-weight:800;letter-spacing:.12em;padding:5px 14px;text-transform:uppercase;white-space:nowrap">★ Najlepiej oceniany</div>
  <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;margin-top:8px">Szkolenie zamknięte</div>
  <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">U Ciebie, dla Twojego zespołu</h3>
@@ -1421,7 +1428,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  </div>
 
  <!-- KARTA 3: DORADCZY — wycena indywidualna -->
- <div style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:border-color .2s" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)'" onmouseout="this.style.borderBottomColor='transparent'">
+ <div class="reveal pricing-card" data-delay="4" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:all .25s cubic-bezier(.22,1,.36,1);position:relative" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 48px -20px rgba(27,44,79,.18)'" onmouseout="this.style.borderBottomColor='transparent';this.style.transform='translateY(0)';this.style.boxShadow='none'">
  <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:10px">Audyt doradczy</div>
  <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">1-on-1 z właścicielem</h3>
  <p style="font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:18px;min-height:50px">Analiza Twojej praktyki, finansów i rozmów. Plan działań na 90 dni. Online lub stacjonarnie.</p>
@@ -2189,8 +2196,9 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 </div>
 
 <!-- HERO -->
-<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px">
- <div class="grain-inner" style="max-width:1140px;margin:0 auto">
+<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px;position:relative;overflow:hidden">
+ <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(15,27,48,.94) 0%,rgba(15,27,48,.86) 60%,rgba(10,19,34,.95) 100%),url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;z-index:0;filter:saturate(.85)"></div>
+ <div class="grain-inner" style="max-width:1140px;margin:0 auto;position:relative;z-index:1">
   <div style="max-width:720px">
    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(217,181,96,.85);margin-bottom:24px;display:flex;align-items:center;gap:14px;font-family:var(--body)">
     <span style="display:block;width:36px;height:1px;background:rgba(217,181,96,.5)"></span>
@@ -2486,8 +2494,9 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 </div>
 
 <!-- HERO -->
-<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px">
- <div class="grain-inner" style="max-width:1140px;margin:0 auto">
+<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px;position:relative;overflow:hidden">
+ <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(15,27,48,.94) 0%,rgba(15,27,48,.86) 60%,rgba(10,19,34,.95) 100%),url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;z-index:0;filter:saturate(.85)"></div>
+ <div class="grain-inner" style="max-width:1140px;margin:0 auto;position:relative;z-index:1">
   <div style="max-width:720px">
    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(217,181,96,.85);margin-bottom:24px;display:flex;align-items:center;gap:14px;font-family:var(--body)">
     <span style="display:block;width:36px;height:1px;background:rgba(217,181,96,.5)"></span>
@@ -2708,8 +2717,9 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 </div>
 
 <!-- HERO -->
-<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px">
- <div class="grain-inner" style="max-width:1140px;margin:0 auto">
+<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px;position:relative;overflow:hidden">
+ <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(15,27,48,.94) 0%,rgba(15,27,48,.86) 60%,rgba(10,19,34,.95) 100%),url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;z-index:0;filter:saturate(.85)"></div>
+ <div class="grain-inner" style="max-width:1140px;margin:0 auto;position:relative;z-index:1">
   <div style="max-width:720px">
    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(217,181,96,.85);margin-bottom:24px;display:flex;align-items:center;gap:14px;font-family:var(--body)">
     <span style="display:block;width:36px;height:1px;background:rgba(217,181,96,.5)"></span>
@@ -5905,8 +5915,9 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 </div>
 
 <!-- HERO -->
-<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px">
- <div class="grain-inner" style="max-width:1140px;margin:0 auto">
+<section class="grain-bg" style="background:var(--black);padding:88px 28px 64px;position:relative;overflow:hidden">
+ <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(15,27,48,.94) 0%,rgba(15,27,48,.86) 60%,rgba(10,19,34,.95) 100%),url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;z-index:0;filter:saturate(.85)"></div>
+ <div class="grain-inner" style="max-width:1140px;margin:0 auto;position:relative;z-index:1">
   <div style="max-width:720px">
    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(217,181,96,.85);margin-bottom:24px;display:flex;align-items:center;gap:14px;font-family:var(--body)">
     <span style="display:block;width:36px;height:1px;background:rgba(217,181,96,.5)"></span>
@@ -8559,8 +8570,25 @@ document.addEventListener('keydown', function(e){
    });
   }, {rootMargin:'0px 0px -80px 0px', threshold:0.1});
 
+  // Auto-add .reveal to common grid children (gets-grid, akademia-grid-resp, cal-list)
+  window.__dopAutoReveal = function(){
+   var selectors = ['.gets-grid > div','.akademia-grid-resp > div','.cal-list > .cal-card','.akademia-features-resp > div','.audyt-features-resp > div'];
+   selectors.forEach(function(sel){
+    var nodes = document.querySelectorAll(sel);
+    nodes.forEach(function(el,i){
+     if (!el.classList.contains('reveal')) {
+      el.classList.add('reveal');
+      // Stagger: pierwszy bez delay, kolejne ×80ms grupowane mod 5
+      el.setAttribute('data-delay', String((i % 5) + 1));
+     }
+    });
+   });
+  };
+  window.__dopAutoReveal();
+
   // Observe all .reveal elements (current + future)
   window.__dopMotionInit = function(){
+   window.__dopAutoReveal();
    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ revealObs.observe(el); });
   };
   window.__dopMotionInit();
@@ -8616,6 +8644,24 @@ document.addEventListener('keydown', function(e){
    return r;
   };
  }
+
+ // ── 5b. Active nav state ──
+ function updateActiveNav(slug){
+  var navBtns = document.querySelectorAll('.dop-nav-link');
+  navBtns.forEach(function(btn){
+   var onclick = btn.getAttribute('onclick') || '';
+   var match = onclick.match(/showPage\(['"]([^'"]+)['"]\)/);
+   if (match && match[1] === slug) btn.classList.add('active');
+   else btn.classList.remove('active');
+  });
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug) updateActiveNav(e.detail.slug);
+ });
+ setTimeout(function(){
+  var current = document.querySelector('.page.active');
+  if (current) updateActiveNav(current.id.replace('page-',''));
+ }, 200);
 
  // ── 5. Subtle parallax na hero portret Michała ──
  var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
