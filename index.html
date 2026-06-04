@@ -8573,6 +8573,10 @@ document.addEventListener('keydown', function(e){
  .reveal{opacity:1!important;transform:none!important}
 }
 
+/* Hero scale-down na scroll (Apple-style) — TYLKO background foto overlay się zmniejsza, content hero stoi */
+.hero > [aria-hidden],header.hero > [aria-hidden],section.grain-bg.cursor-glow > [aria-hidden]{transform:scale(var(--hero-scale,1));transform-origin:center;opacity:var(--hero-opacity,1);transition:transform .15s linear,opacity .15s linear;will-change:transform}
+@media (prefers-reduced-motion:reduce){.hero > [aria-hidden],header.hero > [aria-hidden],section.grain-bg.cursor-glow > [aria-hidden]{transform:none!important;opacity:1!important}}
+
 /* Cursor-follow gold glow na hero (premium feel) */
 .cursor-glow{position:relative;overflow:hidden}
 .cursor-glow::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(217,181,96,.08) 0%,rgba(217,181,96,.04) 30%,transparent 70%);pointer-events:none;left:var(--cx,50%);top:var(--cy,50%);transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;z-index:0;mix-blend-mode:screen}
@@ -8914,6 +8918,96 @@ function dopCookieClose(accepted){
   if (current) updateActiveNav(current.id.replace('page-',''));
  }, 200);
 
+ // ── 5i. Wishlist — save course w localStorage z heart toggle ──
+ window.dopWishlist = {
+  KEY: 'dop_wishlist_v1',
+  get: function(){
+   try { return JSON.parse(localStorage.getItem(this.KEY) || '[]'); } catch(e){ return []; }
+  },
+  has: function(slug){ return this.get().indexOf(slug) >= 0; },
+  toggle: function(slug, title){
+   var list = this.get();
+   var idx = list.indexOf(slug);
+   if (idx >= 0) {
+    list.splice(idx, 1);
+    dopToast('Usunięto z zapisanych: ' + title);
+   } else {
+    list.push(slug);
+    dopToast('Zapisano na później: ' + title);
+   }
+   try { localStorage.setItem(this.KEY, JSON.stringify(list)); } catch(e){}
+   this.updateBadge();
+   this.refreshButtons();
+  },
+  updateBadge: function(){
+   var count = this.get().length;
+   var badge = document.getElementById('wishlist-badge');
+   if (!badge && count > 0) {
+    var nav = document.querySelector('.dop-cta-wrap');
+    if (nav) {
+     badge = document.createElement('span');
+     badge.id = 'wishlist-badge';
+     badge.style.cssText = 'display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--hot);background:rgba(201,162,74,.15);border:1px solid rgba(201,162,74,.3);padding:5px 9px;border-radius:14px;cursor:pointer;font-family:var(--body);transition:background .15s;white-space:nowrap';
+     badge.onclick = function(){ dopWishlist.openModal(); };
+     badge.onmouseover = function(){ this.style.background = 'rgba(201,162,74,.25)'; };
+     badge.onmouseout = function(){ this.style.background = 'rgba(201,162,74,.15)'; };
+     nav.insertBefore(badge, nav.firstChild);
+    }
+   }
+   if (badge) {
+    if (count > 0) {
+     badge.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>' + count + ' zapisanych';
+     badge.style.display = 'inline-flex';
+    } else {
+     badge.style.display = 'none';
+    }
+   }
+  },
+  refreshButtons: function(){
+   document.querySelectorAll('[data-wishlist-btn]').forEach(function(btn){
+    var slug = btn.dataset.wishlistBtn;
+    var has = dopWishlist.has(slug);
+    btn.innerHTML = has
+     ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>Zapisano'
+     : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>Zapisz na potem';
+    btn.style.color = has ? 'var(--hot)' : 'rgba(27,44,79,.6)';
+    btn.style.borderColor = has ? 'rgba(217,181,96,.5)' : 'rgba(27,44,79,.12)';
+   });
+  },
+  openModal: function(){
+   var list = this.get();
+   if (list.length === 0) { dopToast('Brak zapisanych kursów'); return; }
+   var names = list.map(function(s){ return COURSES_ICS[s] ? COURSES_ICS[s].title : s; }).join(', ');
+   showPage('kalendarz');
+   setTimeout(function(){ dopToast('Zapisane: ' + names); }, 600);
+  }
+ };
+
+ // Wishlist auto-add: hookuję się przez page-change event, nie wrap'uję funkcji
+ function dopAddWishlistButtons(){
+  document.querySelectorAll('.cal-card').forEach(function(card){
+   if (card.dataset.wishlistAdded) return;
+   var onclick = card.getAttribute('onclick')||'';
+   var match = onclick.match(/showPage\(['"]([^'"]+)['"]\)/);
+   if (!match) return;
+   var slug = match[1];
+   if (typeof COURSES_ICS === 'undefined' || !COURSES_ICS[slug]) return;
+   var actionDiv = card.querySelector('.cal-action');
+   if (!actionDiv) return;
+   var btn = document.createElement('button');
+   btn.dataset.wishlistBtn = slug;
+   btn.style.cssText = 'display:inline-flex;align-items:center;gap:6px;padding:7px 12px;background:transparent;color:rgba(27,44,79,.6);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(27,44,79,.12);cursor:pointer;border-radius:4px;margin-top:8px;margin-left:6px;transition:all .15s;white-space:nowrap';
+   btn.onclick = function(e){ e.stopPropagation(); dopWishlist.toggle(slug, COURSES_ICS[slug].title); };
+   actionDiv.appendChild(btn);
+   card.dataset.wishlistAdded = '1';
+  });
+  dopWishlist.refreshButtons();
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug === 'kalendarz') setTimeout(dopAddWishlistButtons, 150);
+ });
+ setTimeout(function(){ dopAddWishlistButtons(); dopWishlist.updateBadge(); }, 500);
+
  // ── 5f. Auto-add "+ Kalendarz" buttons na cal-card (7 kursów) ──
  var COURSES_ICS = {
   'kurs-zarzadzania': {title:'Kurs Skutecznego Zarządzania Praktyką cz.I',start:'20260618T093000',end:'20260619T180000',location:'Golden Floor, Al. Jerozolimskie 123a, Warszawa',description:'2-dniowe szkolenie stacjonarne. Delegowanie, motywowanie, komunikacja, przywództwo. Materiały, catering, lunch, kolacja w cenie.',url:'https://doskonalaobslugapacjenta.pl/#kurs-zarzadzania'},
@@ -9030,6 +9124,30 @@ function dopCookieClose(accepted){
   });
   sec.addEventListener('mouseleave', function(){ sec.classList.remove('glow-active'); });
  });
+
+ // ── 5h. Hero scale-down on scroll (Apple-style) ──
+ if (!prefersReduced && 'IntersectionObserver' in window) {
+  var heroScaleTargets = document.querySelectorAll('.hero, header.hero, section.grain-bg.cursor-glow');
+  var heroTicking = false;
+  function updateHeroScale(){
+   if (heroTicking) return;
+   heroTicking = true;
+   requestAnimationFrame(function(){
+    heroScaleTargets.forEach(function(hero){
+     var rect = hero.getBoundingClientRect();
+     if (rect.bottom < 0 || rect.top > window.innerHeight) { heroTicking = false; return; }
+     // Scroll progress 0 → 1 as hero passes
+     var progress = Math.max(0, Math.min(1, -rect.top / Math.max(rect.height, 100)));
+     var scale = 1 - progress * 0.04;
+     var opacity = 1 - progress * 0.3;
+     hero.style.setProperty('--hero-scale', scale.toFixed(3));
+     hero.style.setProperty('--hero-opacity', opacity.toFixed(3));
+    });
+    heroTicking = false;
+   });
+  }
+  window.addEventListener('scroll', updateHeroScale, {passive:true});
+ }
 
  // ── 5. Subtle parallax na hero portret Michała ──
  var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
