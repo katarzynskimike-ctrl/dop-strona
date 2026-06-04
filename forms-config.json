@@ -1,0 +1,502 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "Single source of truth dla wszystkich formularzy DOP. Edytuj tu — strona + serverless function używają tego samego config.",
+    "updated": "2026-06-04"
+  },
+  "_brevo": {
+    "api_endpoint": "https://api.brevo.com/v3/contacts",
+    "doi_endpoint": "https://api.brevo.com/v3/contacts/doubleOptinConfirmation"
+  },
+  "courses": {
+    "doskonala-konsultacja": {
+      "name": "Doskonała Konsultacja",
+      "price": 2690,
+      "entity": "jdg",
+      "seller": "Michał Katarzyński (JDG)"
+    },
+    "doskonala-wizyta-hig": {
+      "name": "Doskonała Wizyta Higienistki",
+      "price": 1790,
+      "entity": "jdg",
+      "seller": "Michał Katarzyński (JDG)"
+    },
+    "plan-leczenia": {
+      "name": "Przedstawianie Planów Leczenia",
+      "price": 2490,
+      "entity": "jdg",
+      "seller": "Michał Katarzyński (JDG)"
+    },
+    "rejestracja-cz1": {
+      "name": "Rejestracja cz. 1",
+      "price": 1690,
+      "entity": "jdg",
+      "seller": "Michał Katarzyński (JDG)"
+    },
+    "rejestracja-ninja": {
+      "name": "Rejestracja Ninja",
+      "price": 1690,
+      "entity": "jdg",
+      "seller": "Michał Katarzyński (JDG)"
+    },
+    "zwiekszanie-rentownosci": {
+      "name": "Zwiększanie Rentowności",
+      "price": null,
+      "entity": "spolka",
+      "seller": "Excellent Patient Service sp. z o.o."
+    },
+    "kurs-zarzadzania": {
+      "name": "Kurs Zarządzania Praktyką",
+      "price": 3997,
+      "entity": "spolka",
+      "seller": "Excellent Patient Service sp. z o.o."
+    },
+    "akademia-online": {
+      "name": "Akademia Online (12 kursów)",
+      "price": 8990,
+      "entity": "spolka",
+      "seller": "Excellent Patient Service sp. z o.o."
+    }
+  },
+  "lists": {
+    "newsletter": {
+      "id": 5,
+      "name": "DOP Newsletter"
+    },
+    "kurs_zamkniety": {
+      "id": 6,
+      "name": "Leady B2B — Kursy zamknięte"
+    },
+    "audyty": {
+      "id": 7,
+      "name": "Leady B2B — Audyty"
+    },
+    "audyt_doradczy": {
+      "id": 8,
+      "name": "Leady B2B — Audyt Doradczy"
+    },
+    "uczestnicy_kursow": {
+      "id": 9,
+      "name": "Uczestnicy Kursów Otwartych"
+    },
+    "inquiries": {
+      "id": 10,
+      "name": "Inquiries"
+    }
+  },
+  "forms": {
+    "newsletter": {
+      "form_id": "newsletter",
+      "list": "newsletter",
+      "double_opt_in": true,
+      "doi_template_id": null,
+      "redirect_url": "https://doskonalaobslugapacjenta.pl/?subscribed=1",
+      "notification_email": null,
+      "fields": [
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Twój email",
+          "placeholder": "np. ja@moja-praktyka.pl"
+        }
+      ],
+      "hidden": {
+        "SOURCE": "newsletter-home"
+      },
+      "submit_label": "Zapisz mnie →",
+      "success_message": "Sprawdź skrzynkę — wyślemy link potwierdzający w 5 minut."
+    },
+    "lead-magnet": {
+      "form_id": "lead-magnet",
+      "list": "newsletter",
+      "double_opt_in": true,
+      "doi_template_id": null,
+      "redirect_url": "https://doskonalaobslugapacjenta.pl/ebook-thank-you",
+      "notification_email": null,
+      "fields": [
+        {
+          "name": "FIRSTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Imię",
+          "placeholder": "Anna",
+          "max": 50
+        },
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Email",
+          "placeholder": "anna@praktyka.pl",
+          "helper": "E-book wpadnie na ten adres"
+        }
+      ],
+      "hidden": {
+        "SOURCE": "ebook-5sposobow",
+        "LEAD_MAGNET": "ebook"
+      },
+      "submit_label": "Pobierz bezpłatnie →",
+      "success_message": "Sprawdź skrzynkę — wysłałem link do e-booka."
+    },
+    "kurs-zamkniety": {
+      "form_id": "kurs-zamkniety",
+      "list": "kurs_zamkniety",
+      "double_opt_in": false,
+      "notification_email": "biuro@doskonalaobslugapacjenta.pl",
+      "fields": [
+        {
+          "name": "FIRSTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Imię",
+          "placeholder": "Anna",
+          "max": 50,
+          "col": "half"
+        },
+        {
+          "name": "LASTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Nazwisko",
+          "placeholder": "Kowalska",
+          "max": 50,
+          "col": "half"
+        },
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Email",
+          "placeholder": "anna@klinika.pl",
+          "helper": "Tu prześlemy wycenę"
+        },
+        {
+          "name": "PHONE",
+          "type": "tel",
+          "required": true,
+          "label": "Telefon",
+          "placeholder": "+48 600 000 000",
+          "helper": "Najszybciej kontakt",
+          "max": 20
+        },
+        {
+          "name": "KLINIKA_NAZWA",
+          "type": "text",
+          "required": true,
+          "label": "Nazwa kliniki",
+          "placeholder": "Praktyka Stomatologiczna XYZ",
+          "max": 100
+        },
+        {
+          "name": "KLINIKA_LOKALIZACJA",
+          "type": "text",
+          "required": true,
+          "label": "Miasto / województwo",
+          "placeholder": "Warszawa, mazowieckie",
+          "max": 100
+        },
+        {
+          "name": "LICZBA_OSOB",
+          "type": "number",
+          "required": true,
+          "label": "Liczba osób w zespole",
+          "placeholder": "6",
+          "helper": "Lekarze + asystentki łącznie",
+          "min": 1,
+          "max": 100,
+          "col": "half"
+        },
+        {
+          "name": "PREF_TERMIN",
+          "type": "text",
+          "required": false,
+          "label": "Preferowany termin",
+          "placeholder": "II kw. 2026, najlepiej weekend",
+          "max": 100,
+          "col": "half"
+        },
+        {
+          "name": "WIADOMOSC",
+          "type": "textarea",
+          "required": false,
+          "label": "Co chcecie poprawić?",
+          "placeholder": "Akceptacja planów leczenia spada, lekarze pracują w różnych standardach...",
+          "helper": "Im więcej szczegółów, tym lepsza oferta",
+          "max": 1000
+        }
+      ],
+      "hidden": {
+        "SOURCE": "kurs-zamkniety",
+        "LEAD_TYPE": "B2B",
+        "HOT_LEAD": "true"
+      },
+      "submit_label": "Wyślij zapytanie →",
+      "success_message": "Dziękujemy. Odezwiemy się w ciągu 24 h. W międzyczasie możesz zadzwonić: 579 774 089"
+    },
+    "audyt-praktyki": {
+      "form_id": "audyt-praktyki",
+      "list": "audyty",
+      "double_opt_in": false,
+      "notification_email": "biuro@doskonalaobslugapacjenta.pl",
+      "fields": [
+        {
+          "name": "FIRSTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Imię",
+          "placeholder": "Anna",
+          "max": 50,
+          "col": "half"
+        },
+        {
+          "name": "LASTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Nazwisko",
+          "placeholder": "Kowalska",
+          "max": 50,
+          "col": "half"
+        },
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Email",
+          "placeholder": "anna@klinika.pl"
+        },
+        {
+          "name": "PHONE",
+          "type": "tel",
+          "required": true,
+          "label": "Telefon",
+          "placeholder": "+48 600 000 000",
+          "max": 20
+        },
+        {
+          "name": "KLINIKA_NAZWA",
+          "type": "text",
+          "required": true,
+          "label": "Nazwa kliniki",
+          "placeholder": "Praktyka Stomatologiczna XYZ",
+          "max": 100
+        },
+        {
+          "name": "KLINIKA_LOKALIZACJA",
+          "type": "text",
+          "required": true,
+          "label": "Miasto / województwo",
+          "placeholder": "Wrocław, dolnośląskie",
+          "max": 100
+        },
+        {
+          "name": "NIP",
+          "type": "text",
+          "required": false,
+          "label": "NIP firmy",
+          "placeholder": "1234567890",
+          "helper": "Opcjonalnie — do faktury VAT",
+          "pattern": "^[0-9]{10}$",
+          "max": 10
+        },
+        {
+          "name": "WIADOMOSC",
+          "type": "textarea",
+          "required": true,
+          "label": "Co chcesz audytować?",
+          "placeholder": "Grafik jest pełny, ale nie czuję wzrostu. Nie wiem gdzie tracimy pieniądze...",
+          "helper": "Im konkretniej, tym lepiej",
+          "max": 1000
+        }
+      ],
+      "hidden": {
+        "SOURCE": "audyt-praktyki",
+        "LEAD_TYPE": "B2B",
+        "HOT_LEAD": "true"
+      },
+      "submit_label": "Zapytaj o audyt →",
+      "success_message": "Dziękujemy. Odezwiemy się w ciągu 24 h aby omówić zakres audytu."
+    },
+    "enroll": {
+      "form_id": "enroll",
+      "list": "uczestnicy_kursow",
+      "double_opt_in": false,
+      "notification_email": "biuro@doskonalaobslugapacjenta.pl",
+      "fields": [
+        {
+          "name": "FIRSTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Imię",
+          "placeholder": "Anna",
+          "max": 50,
+          "col": "half"
+        },
+        {
+          "name": "LASTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Nazwisko",
+          "placeholder": "Kowalska",
+          "max": 50,
+          "col": "half"
+        },
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Email",
+          "placeholder": "anna@klinika.pl",
+          "helper": "Wyślemy fakturę proforma"
+        },
+        {
+          "name": "PHONE",
+          "type": "tel",
+          "required": true,
+          "label": "Telefon",
+          "placeholder": "+48 600 000 000",
+          "max": 20
+        },
+        {
+          "name": "PREF_TERMIN",
+          "type": "text",
+          "required": false,
+          "label": "Preferowany termin",
+          "placeholder": "14-15 czerwca 2026",
+          "helper": "Sprawdzimy dostępność",
+          "max": 100,
+          "col": "two-thirds"
+        },
+        {
+          "name": "NIP",
+          "type": "text",
+          "required": false,
+          "label": "NIP (jeśli faktura)",
+          "placeholder": "1234567890",
+          "helper": "Opcjonalnie",
+          "pattern": "^[0-9]{10}$",
+          "max": 10,
+          "col": "one-third"
+        }
+      ],
+      "hidden": {
+        "LEAD_TYPE": "B2C",
+        "INTENT": "ENROLLED_NO_PAY"
+      },
+      "submit_label": "Wyślij zgłoszenie →",
+      "success_message": "Dziękujemy. Wysłaliśmy potwierdzenie na email. Faktura proforma w 24 h."
+    },
+    "audyt-doradczy": {
+      "form_id": "audyt-doradczy",
+      "list": "audyt_doradczy",
+      "double_opt_in": false,
+      "notification_email": "biuro@doskonalaobslugapacjenta.pl",
+      "fields": [
+        {
+          "name": "FIRSTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Imię",
+          "placeholder": "Anna",
+          "max": 50
+        },
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Email",
+          "placeholder": "anna@klinika.pl"
+        },
+        {
+          "name": "PHONE",
+          "type": "tel",
+          "required": false,
+          "label": "Telefon",
+          "placeholder": "+48 600 000 000",
+          "helper": "Opcjonalnie — jeśli wolisz rozmowę",
+          "max": 20
+        },
+        {
+          "name": "WIADOMOSC",
+          "type": "textarea",
+          "required": true,
+          "label": "Twoja sytuacja",
+          "placeholder": "Mam kilka pytań przed audytem...",
+          "helper": "Min. 2 zdania",
+          "max": 1000
+        }
+      ],
+      "hidden": {
+        "SOURCE": "audyt-doradczy-email",
+        "LEAD_TYPE": "B2B"
+      },
+      "submit_label": "Wyślij wiadomość →",
+      "success_message": "Dziękuję — odezwę się w 24 h. — Michał"
+    },
+    "kontakt": {
+      "form_id": "kontakt",
+      "list": "inquiries",
+      "double_opt_in": false,
+      "notification_email": "biuro@doskonalaobslugapacjenta.pl",
+      "fields": [
+        {
+          "name": "FIRSTNAME",
+          "type": "text",
+          "required": true,
+          "label": "Imię",
+          "placeholder": "Anna",
+          "max": 50
+        },
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": true,
+          "label": "Email",
+          "placeholder": "anna@firma.pl"
+        },
+        {
+          "name": "TEMAT",
+          "type": "select",
+          "required": true,
+          "label": "Czego dotyczy?",
+          "options": [
+            {
+              "value": "wspolpraca",
+              "label": "Współpraca / partnerstwo"
+            },
+            {
+              "value": "prasa",
+              "label": "Prasa / media"
+            },
+            {
+              "value": "pytanie_ogolne",
+              "label": "Pytanie ogólne"
+            },
+            {
+              "value": "bug",
+              "label": "Coś nie działa na stronie"
+            },
+            {
+              "value": "inne",
+              "label": "Inne"
+            }
+          ]
+        },
+        {
+          "name": "WIADOMOSC",
+          "type": "textarea",
+          "required": true,
+          "label": "Wiadomość",
+          "placeholder": "Cześć, chciałabym zapytać...",
+          "max": 1000
+        }
+      ],
+      "hidden": {
+        "SOURCE": "kontakt-modal",
+        "LEAD_TYPE": "OTHER"
+      },
+      "submit_label": "Wyślij →",
+      "success_message": "Dziękujemy. Odpowiemy w ciągu 2 dni roboczych."
+    }
+  }
+}
