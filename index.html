@@ -8692,6 +8692,46 @@ document.addEventListener('keydown', function(e){
   };
  }
 
+ // ── 5a. Dynamic page title + meta description per route ──
+ var PAGE_META = {
+  'home':['Doskonała Obsługa Pacjenta — Szkolenia dla praktyk stomatologicznych','System DOP: szkolenia, audyty i Akademia Online dla praktyk stomatologicznych. 14+ lat, 6000+ przeszkolonych, 462 praktyk.'],
+  'wlasciciele':['Programy dla właścicieli praktyk · DOP','Kursy zarządzania, audyty doradcze, kurs zamknięty in-house — system, który zostaje w Twojej praktyce.'],
+  'lekarze':['Programy dla lekarzy dentystów · DOP','Doskonała konsultacja, plan leczenia, komunikacja z pacjentem — wyższa akceptacja planów bez zmiany cen.'],
+  'higienistki':['Programy dla higienistek · DOP','Standard wizyty higienicznej, recall pacjentów, autorytet wobec lekarza — pacjent wraca sam co 6 miesięcy.'],
+  'rejestracja':['Programy dla rejestracji i recepcji · DOP','Doskonała Rejestracja cz.1, Ninja Advanced — recepcja, która prowadzi pacjenta, nie tylko go zapisuje.'],
+  'kalendarz':['Kalendarz szkoleń stacjonarnych · DOP','Najbliższe terminy kursów otwartych w Warszawie i online. 7 kursów w aktualnej edycji.'],
+  'akademia':['Akademia Rentownej Praktyki Stomatologicznej · 12 kursów online','12 kursów video, 30+ h, 12 m-cy dostępu, cotygodniowe konsultacje live. 462 praktyki w Polsce.'],
+  'kurs-zarzadzania':['Kurs Skutecznego Zarządzania Praktyką Stomatologiczną · 2 dni Warszawa','Delegowanie, motywowanie, komunikacja, przywództwo. Małe grupy max 12 osób, 70% ćwiczeń.'],
+  'doskonala-konsultacja':['Doskonała Konsultacja i Wizyta Stomatologiczna · 2 dni','Standard konsultacji 60-min z planem leczenia w 2 etapach. +18-25% akceptacji.'],
+  'plan-leczenia':['Przedstawianie kompleksowych planów leczenia · 1 dzień','Jak rozłożyć duży plan na akceptowalną sekwencję. Sztuka prezentacji bez nacisku.'],
+  'rejestracja-cz1':['Doskonała Rejestracja Stomatologiczna cz.1 · 1 dzień','Telefon, mail, follow-up — pierwsze 30 sekund decyduje. Pełny skrypt dialogowy.'],
+  'rejestracja-ninja':['Rejestracja Ninja — Advanced · 1 dzień','Zaawansowane techniki recepcji: trudne pytania, ceny, obiekcje, no-show.'],
+  'doskonala-wizyta-hig':['Doskonała Wizyta Higienizacyjna cz.1 · 1 dzień','Standard wizyty, który buduje regularność. +30% retencji pacjentów higienicznych.'],
+  'audyty':['Audyty doradcze 1-on-1 z Michałem Katarzyńskim · DOP','Audyt praktyki, audyt doradczy, strategie rentowności. 190+ audytów od 2012.'],
+  'audyt-praktyki':['Audyt operacyjno-finansowy praktyki · 4-8h + raport','17-stronicowy raport pisemny w 7 dni. Ranking obszarów do zmiany + plan 90 dni.'],
+  'audyt-doradczy':['Audyt doradczy 1-on-1 z Michałem · 4-8h','Twoje liczby, Twoje case-y. Decyzje na miejscu + plan działania 90 dni.'],
+  'kurs-zamkniety-wl':['Kurs zamknięty in-house dla właścicieli i menedżerów · DOP','Szkolenie tylko dla Twojego zespołu, w Twojej praktyce. Program dostosowany.'],
+  'kurs-zamkniety-lek':['Kurs zamknięty in-house dla zespołu lekarzy · DOP','Komunikacja, konsultacja, plan leczenia — dla całego zespołu lekarzy.'],
+  'kurs-zamkniety-rec':['Kurs zamknięty in-house dla recepcji i koordynatorów · DOP','Standard rozmów telefonicznych i mailowych dostosowany do Twojej praktyki.'],
+  'zwiekszanie-rentownosci':['Zwiększanie rentowności praktyki stomatologicznej · DOP','Akademia + bezpłatny e-book. Konkretne narzędzia, KPI, system prowizji.'],
+  'wiedza':['Wiedza, blog i e-book · DOP','Artykuły, narzędzia i analizy z 14 lat pracy z praktykami. Bezpłatny e-book PDF.'],
+  'rada':['Rada Programowa DOP · eksperci stomatologii','Bartosz Cerkaski, Dorota Stankowska, Przemysław Stankowski, Marta Bakun.'],
+  'referencje':['Referencje uczestników kursów DOP','6+ tys. przeszkolonych. Opinie właścicieli, lekarzy, higienistek i recepcji.'],
+  'polityka':['Polityka prywatności · DOP','RODO, cele przetwarzania, prawa użytkownika. Aktualizacja 4 czerwca 2026.'],
+  'regulamin':['Regulamin świadczenia usług · DOP','Rejestracja, płatności, 14-dniowe odstąpienie, 30-dniowa gwarancja Akademii.']
+ };
+ var metaDesc = document.querySelector('meta[name="description"]');
+ function updatePageMeta(slug){
+  var meta = PAGE_META[slug];
+  if (meta) {
+   document.title = meta[0];
+   if (metaDesc) metaDesc.content = meta[1];
+  }
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug) updatePageMeta(e.detail.slug);
+ });
+
  // ── 5b. Active nav state ──
  function updateActiveNav(slug){
   var navBtns = document.querySelectorAll('.dop-nav-link');
