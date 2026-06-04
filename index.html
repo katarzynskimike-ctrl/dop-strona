@@ -8680,17 +8680,37 @@ document.addEventListener('keydown', function(e){
   document.addEventListener('dop:page-change', window.__dopCountInit);
  }
 
- // ── 4. Hook page transitions to fire dop:page-change ──
+ // ── 4. Hook page transitions to fire dop:page-change + hash routing ──
  var origShowPage = window.showPage;
  if (typeof origShowPage === 'function') {
   window.showPage = function(slug){
    var r = origShowPage.apply(this, arguments);
+   // Update URL hash (bez scroll - replaceState)
+   if (slug && slug !== 'home' && '#' + slug !== window.location.hash) {
+    history.replaceState(null, '', '#' + slug);
+   } else if (slug === 'home' && window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+   }
    setTimeout(function(){
     document.dispatchEvent(new CustomEvent('dop:page-change', {detail:{slug:slug}}));
    }, 60);
    return r;
   };
  }
+ // On initial load, route z hash
+ var initialHash = window.location.hash.replace('#','');
+ if (initialHash && document.getElementById('page-' + initialHash)) {
+  setTimeout(function(){ window.showPage(initialHash); }, 50);
+ }
+ // Browser back/forward
+ window.addEventListener('hashchange', function(){
+  var slug = window.location.hash.replace('#','') || 'home';
+  if (document.getElementById('page-' + slug)) {
+   var orig = origShowPage;
+   orig(slug);
+   document.dispatchEvent(new CustomEvent('dop:page-change', {detail:{slug:slug}}));
+  }
+ });
 
  // ── 5a. Dynamic page title + meta description per route ──
  var PAGE_META = {
