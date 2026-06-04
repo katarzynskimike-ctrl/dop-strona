@@ -1101,7 +1101,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 </header>
 <div class="page" id="page-home"><a id="main-content" tabindex="-1" style="position:absolute;left:-9999px"></a><div class="urgency-bar" id="urgency-bar">
   <strong>Najbliższy kurs: 18-19 czerwca 2026 · Warszawa</strong>
-  <span id="urgency-countdown" style="opacity:.8">Zostało 3 z 12 miejsc · <span id="countdown-text">obliczam terminy…</span></span>
+  <span id="urgency-countdown" style="opacity:.8">Zostało <span class="dop-pulse" style="color:var(--hot);font-weight:800">3</span> z 12 miejsc · <span id="countdown-text">obliczam terminy…</span></span>
 </div>
 
 <!-- HERO — Option A (uniwersalny, lekarz-właściciel w priorytecie) -->
@@ -8480,6 +8480,13 @@ document.addEventListener('keydown', function(e){
 <!-- Scroll progress · Reveal on scroll · Count-up stats          -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <style>
+/* Cursor-follow gold glow na hero (premium feel) */
+.cursor-glow{position:relative;overflow:hidden}
+.cursor-glow::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(217,181,96,.08) 0%,rgba(217,181,96,.04) 30%,transparent 70%);pointer-events:none;left:var(--cx,50%);top:var(--cy,50%);transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;z-index:0;mix-blend-mode:screen}
+.cursor-glow.glow-active::after{opacity:1}
+@media(hover:none){.cursor-glow::after{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-glow::after{display:none}}
+
 /* Scroll progress bar — sticky 2px gold */
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:9998;pointer-events:none}
 .scroll-progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--hot));transition:width 60ms linear;transform-origin:left;box-shadow:0 0 12px rgba(201,162,74,.6)}
@@ -8769,6 +8776,24 @@ document.addEventListener('keydown', function(e){
   var current = document.querySelector('.page.active');
   if (current) updateActiveNav(current.id.replace('page-',''));
  }, 200);
+
+ // ── 5d. Cursor-follow gold glow on hero sections ──
+ var heroSections = document.querySelectorAll('header.hero, section.grain-bg[style*="background:var(--black)"]');
+ heroSections.forEach(function(sec){
+  sec.classList.add('cursor-glow');
+  var rafId = null;
+  sec.addEventListener('mousemove', function(e){
+   if (rafId) return;
+   rafId = requestAnimationFrame(function(){
+    var rect = sec.getBoundingClientRect();
+    sec.style.setProperty('--cx', (e.clientX - rect.left) + 'px');
+    sec.style.setProperty('--cy', (e.clientY - rect.top) + 'px');
+    sec.classList.add('glow-active');
+    rafId = null;
+   });
+  });
+  sec.addEventListener('mouseleave', function(){ sec.classList.remove('glow-active'); });
+ });
 
  // ── 5. Subtle parallax na hero portret Michała ──
  var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
