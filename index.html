@@ -8373,6 +8373,49 @@ document.addEventListener('keydown', function(e){
 @media(max-width:880px){
  .blog-preview-resp{grid-template-columns:1fr!important}
 }
+/* === XXIII wiek MOBILE — universal grid collapse === */
+@media(max-width:880px){
+ /* Hero grids 1fr+380px → 1fr stacked */
+ .hero-inner-resp,
+ .grain-inner[style*="grid-template-columns:1fr 380px"],
+ #hero-grid,
+ .placeholder-grid-resp{grid-template-columns:1fr!important;gap:40px!important}
+ /* Cross-link grids 2-col → 1 */
+ .cross-grid-resp{grid-template-columns:1fr!important}
+ /* Persona grid 1+1.4 */
+ .menedzer-grid-resp{grid-template-columns:1fr!important;gap:32px!important}
+ /* Pomoc grids */
+ .help-grid-resp{grid-template-columns:1fr!important;gap:32px!important}
+ /* Newsletter strip */
+ .newsletter-grid-resp{grid-template-columns:1fr!important;gap:32px!important}
+}
+@media(max-width:780px){
+ /* Hide floating TOC */
+ #kurs-floating-toc{display:none!important}
+}
+@media(max-width:560px){
+ /* Hero stats 1.5fr+1fr+1fr+1fr → 1+1 grid 2x2 */
+ .fade-u.d4{display:grid!important;grid-template-columns:1fr 1fr!important;gap:18px 0!important}
+ .fade-u.d4 > div{border-right:none!important;padding:0 14px!important;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:14px!important}
+ /* Hero typography */
+ .hero h1{font-size:38px!important}
+ /* Quick-decision-bar (kurs-zarzadzania) */
+ .quick-decision-resp{padding:0!important}
+ /* Inhouse form padding */
+ .inhouse-inner{padding:24px!important}
+ /* Calendar cards */
+ .cal-card{grid-template-columns:1fr!important;gap:14px!important}
+ .cal-date-d{font-size:36px!important}
+}
+@media(max-width:400px){
+ /* Tighten section paddings */
+ section{padding-left:18px;padding-right:18px}
+ .wrap{padding:48px 18px!important}
+ /* Hero portrait card spacing */
+ .fade-u.d2{margin-top:0!important}
+ /* Body text smaller on tiny screens */
+ .sec-h2{font-size:32px!important}
+}
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
