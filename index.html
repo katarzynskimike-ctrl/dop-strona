@@ -621,8 +621,11 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 }
 
 .urgency-bar{background:var(--black);padding:13px 28px;text-align:center;font-size:15px;font-weight:700;color:var(--gold);letter-spacing:.04em;border-top:1px solid rgba(201,162,74,.25);border-bottom:1px solid rgba(201,162,74,.25)}
-.dop-header{position:sticky;top:0;z-index:1000;background:rgba(27,44,79,.97);border-bottom:1px solid rgba(201,162,74,.2);backdrop-filter:blur(10px)}
-.dop-header-inner{max-width:1280px;margin:0 auto;padding:0 28px;height:76px;display:flex;align-items:center;gap:24px}
+.dop-header{position:sticky;top:0;z-index:1000;background:rgba(27,44,79,.78);border-bottom:1px solid rgba(201,162,74,.12);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);transition:background .3s,border-color .3s,box-shadow .3s,height .3s}
+.dop-header.scrolled{background:rgba(15,27,48,.92);border-bottom-color:rgba(201,162,74,.28);box-shadow:0 8px 32px -16px rgba(0,0,0,.4)}
+.dop-header-inner{max-width:1280px;margin:0 auto;padding:0 28px;height:76px;display:flex;align-items:center;gap:24px;transition:height .25s cubic-bezier(.22,1,.36,1)}
+.dop-header.scrolled .dop-header-inner{height:62px}
+.dop-header.scrolled .dop-logo{height:32px}
 .dop-logo{height:38px;width:auto;display:block;object-fit:contain;flex-shrink:0}
 .dop-nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;flex-shrink:1;min-width:0;justify-content:center;flex:1}
 .dop-nav-link{font-family:'Figtree',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.78);padding:10px 12px;cursor:pointer;background:none;border:none;white-space:nowrap;transition:color .15s;border-radius:4px}
@@ -1154,7 +1157,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <!-- HERO PORTRET — autor systemu DOP -->
  <div class="fade-u d2" style="position:relative;align-self:start;margin-top:60px">
   <!-- Portret Michała -->
-  <div style="aspect-ratio:4/5;background:url('https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp') center 18%/cover no-repeat,var(--dark2);border:1px solid rgba(201,162,74,.25);position:relative;overflow:hidden;box-shadow:0 32px 80px -24px rgba(0,0,0,.5)">
+  <div id="hero-portret-michal" style="aspect-ratio:4/5;background:url('https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp') center 18%/cover no-repeat,var(--dark2);border:1px solid rgba(201,162,74,.25);position:relative;overflow:hidden;box-shadow:0 32px 80px -24px rgba(0,0,0,.5);will-change:transform">
    <!-- Złoty top accent -->
    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--hot),transparent);z-index:2"></div>
    <!-- Bottom gradient overlay dla czytelności tekstu -->
@@ -8510,22 +8513,22 @@ document.addEventListener('keydown', function(e){
 
 <script>
 (function(){
- // ── 1. Scroll progress bar ──
+ // ── 1. Scroll progress bar + nav shrink ──
  var bar = document.getElementById('scroll-progress-bar');
- if (bar) {
-  var ticking = false;
-  window.addEventListener('scroll', function(){
-   if (!ticking) {
-    requestAnimationFrame(function(){
-     var h = document.documentElement;
-     var pct = h.scrollTop / (h.scrollHeight - h.clientHeight);
-     bar.style.width = (Math.min(Math.max(pct,0),1)*100).toFixed(2) + '%';
-     ticking = false;
-    });
-    ticking = true;
-   }
-  }, {passive:true});
- }
+ var header = document.querySelector('.dop-header');
+ var ticking = false;
+ window.addEventListener('scroll', function(){
+  if (!ticking) {
+   requestAnimationFrame(function(){
+    var h = document.documentElement;
+    var pct = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    if (bar) bar.style.width = (Math.min(Math.max(pct,0),1)*100).toFixed(2) + '%';
+    if (header) header.classList.toggle('scrolled', h.scrollTop > 24);
+    ticking = false;
+   });
+   ticking = true;
+  }
+ }, {passive:true});
 
  // ── 2. Reveal on scroll (Intersection Observer) ──
  if ('IntersectionObserver' in window) {
@@ -8594,6 +8597,30 @@ document.addEventListener('keydown', function(e){
    }, 60);
    return r;
   };
+ }
+
+ // ── 5. Subtle parallax na hero portret Michała ──
+ var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if (!prefersReduced) {
+  var pTicking = false;
+  window.addEventListener('scroll', function(){
+   var portret = document.getElementById('hero-portret-michal');
+   if (!portret || pTicking) return;
+   pTicking = true;
+   requestAnimationFrame(function(){
+    var rect = portret.getBoundingClientRect();
+    var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+    if (inView) {
+     // Scroll progress in viewport: -1 (entering bottom) → 0 (centered) → 1 (exiting top)
+     var center = rect.top + rect.height / 2;
+     var progress = (center - window.innerHeight / 2) / window.innerHeight;
+     var translateY = -progress * 28; // moves up to 28px
+     var scale = 1 + Math.abs(progress) * 0.02; // slight zoom at edges
+     portret.style.transform = 'translateY(' + translateY.toFixed(2) + 'px) scale(' + scale.toFixed(3) + ')';
+    }
+    pTicking = false;
+   });
+  }, {passive:true});
  }
 })();
 </script>
