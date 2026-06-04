@@ -3,9 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doskonała Obsługa Pacjenta — Podgląd strony</title>
+<title>Doskonała Obsługa Pacjenta — Szkolenia dla praktyk stomatologicznych</title>
+<meta name="description" content="System DOP: szkolenia, audyty doradcze i Akademia Online dla praktyk stomatologicznych. 14+ lat, 6000+ przeszkolonych, 462 praktyk w Akademii.">
+<meta name="theme-color" content="#1B2C4F">
+<meta name="author" content="Michał Katarzyński · Excellent Patient Service sp. z o.o.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Doskonała Obsługa Pacjenta — System szkoleń dla praktyk stomatologicznych">
+<meta property="og:description" content="System DOP: szkolenia, audyty i Akademia Online dla praktyk stomatologicznych. Cały zespół, jeden standard pracy.">
+<meta property="og:image" content="https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://doskonalaobslugapacjenta.pl/">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Doskonała Obsługa Pacjenta">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Doskonała Obsługa Pacjenta — Szkolenia dla praktyk stomatologicznych">
+<meta name="twitter:description" content="System DOP: szkolenia, audyty i Akademia Online. 14+ lat w stomatologii, 6000+ przeszkolonych.">
+<meta name="twitter:image" content="https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp">
+<!-- Favicon (SVG inline — zero HTTP request) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2C4F'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23C9A24A' text-anchor='middle' font-weight='400'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://content.app-sources.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -938,10 +960,20 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 
 .dop-form-helper{font-size:12px;color:rgba(27,44,79,.55);line-height:1.5;text-align:center;margin-top:2px}
 
-.dop-form-success{display:none;padding:24px;background:rgba(58,140,92,.08);border:1px solid rgba(58,140,92,.3);border-radius:10px;text-align:center}
-.dop-form-success.show{display:flex;flex-direction:column;align-items:center;gap:12px}
-.dop-form-success-icon{color:#3a8c5c}
-.dop-form-success-text{font-size:15px;color:var(--black);line-height:1.55;max-width:360px}
+.dop-form-success{display:none;padding:32px 24px;background:linear-gradient(180deg,rgba(58,140,92,.06) 0%,rgba(58,140,92,.12) 100%);border:1px solid rgba(58,140,92,.3);border-radius:10px;text-align:center;animation:successSlideUp .6s cubic-bezier(.22,1,.36,1)}
+.dop-form-success.show{display:flex;flex-direction:column;align-items:center;gap:16px}
+.dop-form-success-icon{color:#3a8c5c;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:rgba(58,140,92,.14);border-radius:50%;border:2px solid rgba(58,140,92,.4)}
+.dop-form-success-icon svg{width:32px;height:32px;stroke-dasharray:60;stroke-dashoffset:60;animation:checkmarkDraw .8s .15s cubic-bezier(.22,1,.36,1) forwards}
+.dop-form-success-text{font-size:16px;color:var(--black);line-height:1.55;max-width:360px;font-weight:500}
+.dop-form-success-text::before{content:'Dziękujemy';display:block;font-family:var(--display);font-size:24px;color:#3a8c5c;font-style:italic;margin-bottom:6px;font-weight:400}
+@keyframes checkmarkDraw{to{stroke-dashoffset:0}}
+@keyframes successSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.dop-form-success{animation:none}.dop-form-success-icon svg{animation:none;stroke-dashoffset:0}}
+
+/* Loading spinner on submit button */
+.dop-form-submit[data-loading="1"]{position:relative;color:transparent!important}
+.dop-form-submit[data-loading="1"]::after{content:'';position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border:2.5px solid rgba(27,44,79,.3);border-top-color:var(--black);border-radius:50%;animation:cta-spin-form .7s linear infinite}
+@keyframes cta-spin-form{to{transform:rotate(360deg)}}
 
 /* Dark variant (newsletter granat tło) */
 .dop-form--dark .dop-field-label{color:rgba(217,181,96,.85)}
@@ -1286,7 +1318,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 
   </div>
 
-  <p style="margin-top:36px;text-align:center;font-size:15px;color:rgba(27,44,79,.6);font-style:italic">Nie pasujesz do żadnej z tych ról? <a onclick="showPage('audyt-doradczy')" style="color:var(--gold);cursor:pointer;font-weight:600;text-decoration:none">Zarezerwuj 15-min rozmowę →</a></p>
+  <p style="margin-top:36px;text-align:center;font-size:15px;color:rgba(27,44,79,.6);font-style:italic">Nie pasujesz do żadnej z tych ról? <a onclick="showPage('audyt-doradczy')" style="color:var(--gold);cursor:pointer;font-weight:600;text-decoration:none">Porozmawiajmy 15 minut →</a></p>
  </div>
 </section>
 
@@ -1360,7 +1392,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="font-family:var(--serif);font-size:20px;color:var(--black);line-height:1.3;margin-bottom:4px">Najpierw bezpłatna rozmowa — 15 minut</div>
  <div style="font-size:15px;color:var(--muted);line-height:1.5">Sprawdzimy razem czy szkolenie pasuje do Twojej praktyki. Jeśli nie — wskażemy co lepsze.</div>
  </div>
- <button class="btn-gold" onclick="showPage('audyt-doradczy')" style="flex-shrink:0">Zarezerwuj 15-min rozmowę →</button>
+ <button class="btn-gold" onclick="showPage('audyt-doradczy')" style="flex-shrink:0">Porozmawiajmy 15 minut →</button>
  </div>
  </div>
 </section>
@@ -2132,15 +2164,15 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(27,44,79,.08)" class="stats-grid-resp">
 
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">30-80 tys.</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">30-80 <span style="font-size:24px">tys.</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">zł miesięcznego potencjału w praktyce 2-5 foteli</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+20-60%</div>
-    <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">wzrost zysku po wdrożeniu systemu zarządzania</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+<span class="count-up" data-count="60" data-suffix="%">60%</span></div>
+    <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">wzrost zysku po wdrożeniu systemu (top 20% praktyk)</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+2,1 mln</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+<span class="count-up" data-count="2.1" data-decimals="1" data-suffix=" mln">2,1 mln</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">rekordowy roczny wzrost zysku po audycie</div>
    </div>
  </div>
@@ -2276,7 +2308,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      Programy są te same co dla właścicieli (kurs zarządzania, kurs zamknięty, Akademia Online), ale w innym formacie udziału — często in-house dla menedżera + jej zespołu razem.
     </p>
     <button onclick="showPage('audyt-doradczy')" style="display:inline-flex;align-items:center;gap:10px;padding:14px 22px;min-height:44px;background:var(--gold);color:var(--black);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);border-radius:6px;transition:background .15s,transform .15s" onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)'">
-     Zarezerwuj 15-min rozmowę <span style="font-size:16px;line-height:1">→</span>
+     Porozmawiajmy 15 minut <span style="font-size:16px;line-height:1">→</span>
     </button>
    </div>
    <div style="background:var(--cream);padding:32px 32px;border:1px solid rgba(27,44,79,.08);border-top:3px solid var(--gold);border-radius:0 0 6px 6px">
@@ -2343,7 +2375,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
     Cztery wskazania — każde prowadzi do innego kursu. Pierwsze (zielone) to nasza rekomendacja jeśli nie wiesz co wybrać. Albo zarezerwuj 15-min rozmowę — dobierzemy razem.
    </p>
    <button onclick="showPage('audyt-doradczy')" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 22px;background:none;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-family:var(--body);font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;border-radius:6px;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.borderColor='rgba(201,162,74,.4)';this.style.background='none'">
-    Zarezerwuj 15-min rozmowę →
+    Porozmawiajmy 15 minut →
    </button>
   </div>
   <div style="display:grid;gap:10px">
@@ -2429,15 +2461,15 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(27,44,79,.08)" class="stats-grid-resp">
 
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">60%</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="60" data-suffix="%">60%</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">pacjentów decyduje w pierwszych 9 minutach konsultacji</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">2×</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="2" data-suffix="×">2×</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">wyższa akceptacja kompleksowych planów po szkoleniu</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">30%</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="30" data-suffix="%">30%</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">mniej obiekcji „muszę się zastanowić"</div>
    </div>
  </div>
@@ -2565,7 +2597,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
     Cztery wskazania — każde prowadzi do innego kursu. Pierwsze (zielone) to nasza rekomendacja jeśli nie wiesz co wybrać. Albo zarezerwuj 15-min rozmowę — dobierzemy razem.
    </p>
    <button onclick="showPage('audyt-doradczy')" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 22px;background:none;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-family:var(--body);font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;border-radius:6px;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.borderColor='rgba(201,162,74,.4)';this.style.background='none'">
-    Zarezerwuj 15-min rozmowę →
+    Porozmawiajmy 15 minut →
    </button>
   </div>
   <div style="display:grid;gap:10px">
@@ -2651,15 +2683,15 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(27,44,79,.08)" class="stats-grid-resp">
 
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">10-30%</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">10-<span class="count-up" data-count="30" data-suffix="%">30%</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">przychodów praktyki przechodzi przez rejestrację</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">< 5%</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">&lt; <span class="count-up" data-count="5" data-suffix="%">5%</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">no-show w praktykach ze standardem potwierdzania wizyt</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">30 sek.</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="30" data-suffix=" sek.">30 sek.</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">decyduje czy pacjent zapisze się czy odłoży słuchawkę</div>
    </div>
  </div>
@@ -2787,7 +2819,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
     Cztery wskazania — każde prowadzi do innego kursu. Pierwsze (zielone) to nasza rekomendacja jeśli nie wiesz co wybrać. Albo zarezerwuj 15-min rozmowę — dobierzemy razem.
    </p>
    <button onclick="showPage('audyt-doradczy')" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 22px;background:none;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-family:var(--body);font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;border-radius:6px;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.borderColor='rgba(201,162,74,.4)';this.style.background='none'">
-    Zarezerwuj 15-min rozmowę →
+    Porozmawiajmy 15 minut →
    </button>
   </div>
   <div style="display:grid;gap:10px">
@@ -3128,7 +3160,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:14px">Rozwijamy radę</div>
  <h3 style="font-family:var(--display);font-size:26px;color:var(--black);line-height:1.15;margin:0 0 12px">Dołącz do Rady<br>Programowej</h3>
  <p style="font-size:15px;line-height:1.6;color:rgba(27,44,79,.65);margin:0 0 20px;max-width:340px">Szukamy ekspertów którzy chcą współtworzyć standardy dla polskich gabinetów stomatologicznych.</p>
- <button class="btn-gold" onclick="showPage('kalendarz')" style="font-size:13px">Zarezerwuj 15-min rozmowę →</button>
+ <button class="btn-gold" onclick="showPage('kalendarz')" style="font-size:13px">Porozmawiajmy 15 minut →</button>
 </div>
  </div>
  </div>
@@ -3139,7 +3171,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <h2 class="final-h2">Chcesz dołączyć<br><em>do Rady Programowej?</em></h2>
  <p class="final-sub">Szukamy ekspertów, którzy chcą współtworzyć standardy dla polskich gabinetów stomatologicznych.</p>
  <div class="final-btns">
- <button class="btn-final" onclick="showPage('kalendarz')">Zarezerwuj 15-min rozmowę z nami →</button>
+ <button class="btn-final" onclick="showPage('kalendarz')">Porozmawiajmy 15 minut z nami →</button>
  <button class="btn-final-ghost" onclick="showPage('referencje')">Zobacz referencje uczestników</button>
  </div>
  </section></div>
@@ -3532,9 +3564,11 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 }
 </style>
 
-<!-- 2. HERO — redesign XXII wiek (clean granat, controlled type, side-by-side CTA) -->
-<section class="grain-bg" style="background:var(--black);min-height:88vh;display:flex;flex-direction:column;justify-content:center;border-top:none">
- <div class="grain-inner" style="max-width:1140px;margin:0 auto;width:100%;padding:88px 28px 96px;display:grid;grid-template-columns:1fr 380px;gap:72px;align-items:center" id="hero-grid">
+<!-- 2. HERO — XXIII wiek z foto sali warsztatowej w tle -->
+<section class="grain-bg" style="background:var(--black);min-height:88vh;display:flex;flex-direction:column;justify-content:center;border-top:none;position:relative;overflow:hidden">
+ <!-- Foto sali warsztatowej — tło z dark overlay -->
+ <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(15,27,48,.92) 0%,rgba(15,27,48,.82) 60%,rgba(10,19,34,.95) 100%),url('https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;z-index:0;filter:saturate(.85)"></div>
+ <div class="grain-inner" style="max-width:1140px;margin:0 auto;width:100%;padding:88px 28px 96px;display:grid;grid-template-columns:1fr 380px;gap:72px;align-items:center;position:relative;z-index:1" id="hero-grid">
 
  <div>
  <!-- Eyebrow: konkret + data -->
@@ -3632,19 +3666,19 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 <section style="background:var(--cream);padding:48px 28px;border-top:1px solid rgba(27,44,79,.07)">
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(27,44,79,.06)" class="stats-grid-resp">
  <div style="background:var(--cream);padding:26px 22px;text-align:center">
- <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1">14+</div>
+ <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1"><span class="count-up" data-count="14" data-suffix="+">14+</span></div>
  <div style="font-size:10px;color:rgba(27,44,79,.65);text-transform:uppercase;letter-spacing:.08em;margin-top:6px">lat w stomatologii</div>
  </div>
  <div style="background:var(--cream);padding:26px 22px;text-align:center">
- <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1">6000+</div>
+ <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1"><span class="count-up" data-count="6000" data-suffix="+">6000+</span></div>
  <div style="font-size:10px;color:rgba(27,44,79,.65);text-transform:uppercase;letter-spacing:.08em;margin-top:6px">przeszkolonych uczestników</div>
  </div>
- <div style="background:var(--cream);padding:26px 22px;text-align:center">
- <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1">2×</div>
- <div style="font-size:10px;color:rgba(27,44,79,.65);text-transform:uppercase;letter-spacing:.08em;margin-top:6px">więcej pacjentów w praktyce Michała w 3 lata</div>
+ <div style="background:var(--cream2);padding:26px 22px;text-align:center;border-top:2px solid var(--gold)">
+ <div style="font-family:var(--display);font-size:56px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="2" data-suffix="×">2×</span></div>
+ <div style="font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-top:6px;font-weight:700">więcej pacjentów w praktyce Michała w 3 lata</div>
  </div>
  <div style="background:var(--cream);padding:26px 22px;text-align:center">
- <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1">20-60%</div>
+ <div style="font-family:var(--display);font-size:48px;color:var(--hot);line-height:1">20-<span class="count-up" data-count="60" data-suffix="%">60%</span></div>
  <div style="font-size:10px;color:rgba(27,44,79,.65);text-transform:uppercase;letter-spacing:.08em;margin-top:6px">wzrost przychodu po kursie</div>
  </div>
  </div>
@@ -4271,7 +4305,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      style="display:inline-flex;align-items:center;gap:10px;padding:0 28px;min-height:52px;background:var(--gold);color:var(--black);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);border-radius:8px;transition:background .18s,transform .18s,box-shadow .18s"
      onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px -10px rgba(201,162,74,.7)'"
      onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-     Zarezerwuj 15-min rozmowę <span style="font-size:18px;line-height:1">→</span>
+     Porozmawiajmy 15 minut <span style="font-size:18px;line-height:1">→</span>
     </button>
     <button onclick="showPage('kurs-zarzadzania')"
      style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.78);background:none;border:none;cursor:pointer;font-family:var(--body);padding:14px 4px;min-height:44px;transition:color .15s"
@@ -4456,7 +4490,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      style="display:inline-flex;align-items:center;gap:10px;padding:0 28px;min-height:52px;background:var(--gold);color:var(--black);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);border-radius:8px;transition:background .18s,transform .18s,box-shadow .18s"
      onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px -10px rgba(201,162,74,.7)'"
      onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-     Zarezerwuj 15-min rozmowę <span style="font-size:18px;line-height:1">→</span>
+     Porozmawiajmy 15 minut <span style="font-size:18px;line-height:1">→</span>
     </button>
     <button onclick="showPage('audyt-doradczy')"
      style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.78);background:none;border:none;cursor:pointer;font-family:var(--body);padding:14px 4px;min-height:44px;transition:color .15s"
@@ -4990,7 +5024,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      style="display:inline-flex;align-items:center;gap:10px;padding:0 28px;min-height:52px;background:var(--gold);color:var(--black);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);border-radius:8px;transition:background .18s,transform .18s,box-shadow .18s"
      onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px -10px rgba(201,162,74,.7)'"
      onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-     Zarezerwuj 15-min rozmowę <span style="font-size:18px;line-height:1">→</span>
+     Porozmawiajmy 15 minut <span style="font-size:18px;line-height:1">→</span>
     </button>
     <button onclick="showPage('doskonala-konsultacja')"
      style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.78);background:none;border:none;cursor:pointer;font-family:var(--body);padding:14px 4px;min-height:44px;transition:color .15s"
@@ -5519,7 +5553,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      style="display:inline-flex;align-items:center;gap:10px;padding:0 28px;min-height:52px;background:var(--gold);color:var(--black);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);border-radius:8px;transition:background .18s,transform .18s,box-shadow .18s"
      onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px -10px rgba(201,162,74,.7)'"
      onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-     Zarezerwuj 15-min rozmowę <span style="font-size:18px;line-height:1">→</span>
+     Porozmawiajmy 15 minut <span style="font-size:18px;line-height:1">→</span>
     </button>
     <button onclick="showPage('rejestracja-cz1')"
      style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.78);background:none;border:none;cursor:pointer;font-family:var(--body);padding:14px 4px;min-height:44px;transition:color .15s"
@@ -5699,15 +5733,15 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(27,44,79,.08)" class="stats-grid-resp">
 
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">50%</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="50" data-suffix="%">50%</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">pacjentów NIE wraca na regularną higienę bez systemu recall</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">30%+</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="30" data-suffix="%+">30%+</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">wzrost retencji po wdrożeniu standardu wizyty higienicznej</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">6 m-cy</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="6" data-suffix=" m-cy">6 m-cy</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">średni odstęp między wizytami w praktykach z systemem</div>
    </div>
  </div>
@@ -5835,7 +5869,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
     Cztery wskazania — każde prowadzi do innego kursu. Pierwsze (zielone) to nasza rekomendacja jeśli nie wiesz co wybrać. Albo zarezerwuj 15-min rozmowę — dobierzemy razem.
    </p>
    <button onclick="showPage('audyt-doradczy')" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 22px;background:none;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-family:var(--body);font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;border-radius:6px;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.borderColor='rgba(201,162,74,.4)';this.style.background='none'">
-    Zarezerwuj 15-min rozmowę →
+    Porozmawiajmy 15 minut →
    </button>
   </div>
   <div style="display:grid;gap:10px">
@@ -5921,15 +5955,15 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(27,44,79,.08)" class="stats-grid-resp">
 
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">190+</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic"><span class="count-up" data-count="190" data-suffix="+">190+</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">audytów zrealizowanych od 2012 roku</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+50-400k zł</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+50-<span class="count-up" data-count="400" data-suffix="k zł">400k zł</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">średni wzrost zysku rocznego po audycie</div>
    </div>
    <div style="background:var(--cream);padding:24px 22px;text-align:center">
-    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+2,1 mln</div>
+    <div style="font-family:var(--display);font-size:44px;color:var(--hot);line-height:1;font-style:italic">+<span class="count-up" data-count="2.1" data-decimals="1" data-suffix=" mln">2,1 mln</span></div>
     <div style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">rekordowy wzrost zysku po wdrożeniu zaleceń audytu</div>
    </div>
  </div>
@@ -6043,7 +6077,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
     Cztery wskazania — każde prowadzi do innego kursu. Pierwsze (zielone) to nasza rekomendacja jeśli nie wiesz co wybrać. Albo zarezerwuj 15-min rozmowę — dobierzemy razem.
    </p>
    <button onclick="showPage('audyt-doradczy')" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 22px;background:none;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-family:var(--body);font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;border-radius:6px;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.borderColor='rgba(201,162,74,.4)';this.style.background='none'">
-    Zarezerwuj 15-min rozmowę →
+    Porozmawiajmy 15 minut →
    </button>
   </div>
   <div style="display:grid;gap:10px">
@@ -6296,7 +6330,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      style="display:inline-flex;align-items:center;gap:10px;padding:0 28px;min-height:52px;background:var(--gold);color:var(--black);font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);border-radius:8px;transition:background .18s,transform .18s,box-shadow .18s"
      onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px -10px rgba(201,162,74,.7)'"
      onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-     Zarezerwuj 15-min rozmowę <span style="font-size:18px;line-height:1">→</span>
+     Porozmawiajmy 15 minut <span style="font-size:18px;line-height:1">→</span>
     </button>
     <button onclick="showPage('audyt-praktyki')"
      style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.78);background:none;border:none;cursor:pointer;font-family:var(--body);padding:14px 4px;min-height:44px;transition:color .15s"
@@ -6576,7 +6610,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
      onmouseover="this.style.color='var(--hot)'"
      onmouseout="this.style.color='rgba(255,255,255,.78)'">
      <span style="display:block;width:22px;height:1px;background:currentColor"></span>
-     Zarezerwuj 15-min rozmowę
+     Porozmawiajmy 15 minut
     </button>
    </div>
   </div>
@@ -6695,7 +6729,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
   </p>
   <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
    <button onclick="bookNow()" class="btn-final">Zarezerwuj rozmowę →</button>
-   <button onclick="showPage('audyt-doradczy')" class="btn-final-ghost">Zarezerwuj 15-min rozmowę</button>
+   <button onclick="showPage('audyt-doradczy')" class="btn-final-ghost">Porozmawiajmy 15 minut</button>
   </div>
  </div>
 </section>
@@ -7661,8 +7695,7 @@ async function submitDopForm(form){
  delete body._gotcha;
  delete body._consent;
 
- var originalLabel = btn ? btn.textContent : '';
- if(btn){ btn.disabled = true; btn.textContent = 'Wysyłam…'; btn.style.opacity = '.7'; }
+ if(btn){ btn.disabled = true; btn.setAttribute('data-loading','1'); }
 
  try {
   var resp = await fetch(window.DOP_API_ENDPOINT, {
@@ -7673,25 +7706,25 @@ async function submitDopForm(form){
   var json = await resp.json().catch(function(){ return {}; });
 
   if(resp.ok && json.ok){
-   // Success — hide form, show success state
+   // Success — hide form, show animated success state
    form.style.display = 'none';
    if(successBox) successBox.classList.add('show');
-   // Reset (na wypadek gdy form jest w modalu i otworzy się ponownie)
+   // Reset po 12 sek (gdy form w modalu i otworzy się ponownie)
    setTimeout(function(){
     form.reset();
     form.style.display = '';
     if(successBox) successBox.classList.remove('show');
-    if(btn){ btn.disabled = false; btn.textContent = originalLabel; btn.style.opacity = ''; }
+    if(btn){ btn.disabled = false; btn.removeAttribute('data-loading'); }
    }, 12000);
   } else {
    var msg = json.error || 'Coś poszło nie tak. Spróbuj ponownie.';
    if(json.errors && json.errors.length){ msg = json.errors[0].message; }
    if(errBox){ errBox.textContent = msg; errBox.classList.add('show'); }
-   if(btn){ btn.disabled = false; btn.textContent = originalLabel; btn.style.opacity = ''; }
+   if(btn){ btn.disabled = false; btn.removeAttribute('data-loading'); }
   }
  } catch(e){
   if(errBox){ errBox.textContent = 'Brak połączenia. Sprawdź internet i spróbuj ponownie.'; errBox.classList.add('show'); }
-  if(btn){ btn.disabled = false; btn.textContent = originalLabel; btn.style.opacity = ''; }
+  if(btn){ btn.disabled = false; btn.removeAttribute('data-loading'); }
  }
 }
 
@@ -7802,10 +7835,22 @@ document.addEventListener('keydown', function(e){
 function filterCal(btn, cat){
  document.querySelectorAll('.cal-filter').forEach(function(b){b.classList.remove('active')});
  btn.classList.add('active');
+ var visibleCount = 0;
  document.querySelectorAll('.cal-card').forEach(function(card){
- if(cat==='all'){ card.style.display='grid'; }
- else { card.style.display = (card.dataset.cat||'').indexOf(cat) !== -1 ? 'grid' : 'none'; }
+ if(cat==='all'){ card.style.display='grid'; visibleCount++; }
+ else { var show = (card.dataset.cat||'').indexOf(cat) !== -1; card.style.display = show ? 'grid' : 'none'; if(show) visibleCount++; }
  });
+ // Empty state — pokaż gdy 0 wyników
+ var empty = document.getElementById('cal-empty-state');
+ if(!empty){
+  empty = document.createElement('div');
+  empty.id = 'cal-empty-state';
+  empty.style.cssText = 'display:none;padding:56px 40px;text-align:center;background:rgba(27,44,79,.03);border:1px dashed rgba(201,162,74,.3);margin:24px 0';
+  empty.innerHTML = '<div style="font-family:var(--display);font-size:28px;color:var(--black);margin-bottom:10px;line-height:1.2">Brak kursów dla tej kategorii</div><p style="color:var(--muted);font-size:16px;line-height:1.55;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto">Nie znaleźliśmy aktualnych terminów. Sprawdź wszystkie kursy, zapisz się na powiadomienia o nowych edycjach lub umów 15-min rozmowę — pomożemy wybrać format.</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn-gold" onclick="document.querySelector(\'.cal-filter\').click();window.scrollTo({top:document.querySelector(\'.cal-hero\').offsetTop,behavior:\'smooth\'})">Pokaż wszystkie kursy</button><button class="btn-ghost-l" onclick="showPage(\'audyt-doradczy\')">Porozmawiajmy 15 min →</button></div>';
+  var list = document.querySelector('.cal-list');
+  if(list) list.appendChild(empty);
+ }
+ empty.style.display = visibleCount === 0 ? 'block' : 'none';
 }
 function filterBlog(btn, cat){
  document.querySelectorAll('.blog-cat').forEach(function(b){b.classList.remove('active')});
@@ -8041,6 +8086,66 @@ document.addEventListener('keydown', function(e){
 
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
 
+<!-- FLOATING TOC dla długich stron sprzedażówek (kurs-zarzadzania) -->
+<aside id="kurs-floating-toc" style="display:none;position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;width:200px" aria-hidden="true">
+ <div style="background:rgba(15,27,48,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(201,162,74,.25);padding:18px 16px;border-radius:8px;box-shadow:0 16px 40px -12px rgba(0,0,0,.4)">
+  <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--hot);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(201,162,74,.2)">Spis treści</div>
+  <nav style="display:flex;flex-direction:column;gap:2px;font-size:12px">
+   <a href="#program-kursu" class="floating-toc-link" data-target="program-kursu">Program</a>
+   <a href="#autor" class="floating-toc-link" data-target="autor">Autor</a>
+   <a href="#inwestycja" class="floating-toc-link" data-target="inwestycja">Inwestycja</a>
+   <a href="#formularz-zapisu" class="floating-toc-link" data-target="formularz-zapisu">Zapisz się</a>
+  </nav>
+ </div>
+</aside>
+<style>
+.floating-toc-link{color:rgba(255,255,255,.65);padding:7px 10px;border-radius:4px;border-left:2px solid transparent;text-decoration:none;transition:all .15s;line-height:1.3}
+.floating-toc-link:hover{background:rgba(201,162,74,.1);color:var(--hot);border-left-color:var(--hot)}
+.floating-toc-link.active{background:rgba(201,162,74,.14);color:var(--hot);border-left-color:var(--hot);font-weight:600}
+@media(max-width:1280px){#kurs-floating-toc{display:none!important}}
+</style>
+
+<script>
+(function(){
+ var toc = document.getElementById('kurs-floating-toc');
+ if(!toc) return;
+ // Show only on /kurs-zarzadzania page
+ function maybeShow(){
+  var active = document.querySelector('.page.active');
+  var isKurs = active && active.id === 'page-kurs-zarzadzania';
+  toc.style.display = isKurs && window.innerWidth >= 1280 ? 'block' : 'none';
+  toc.setAttribute('aria-hidden', isKurs ? 'false' : 'true');
+ }
+ document.addEventListener('dop:page-change', maybeShow);
+ window.addEventListener('resize', maybeShow);
+ setTimeout(maybeShow, 200);
+
+ // Scroll-spy
+ var links = toc.querySelectorAll('.floating-toc-link');
+ function updateActive(){
+  if(toc.style.display === 'none') return;
+  var scrollY = window.scrollY + 200;
+  var current = '';
+  links.forEach(function(link){
+   var target = document.getElementById(link.dataset.target);
+   if(target && target.offsetTop <= scrollY) current = link.dataset.target;
+  });
+  links.forEach(function(link){
+   link.classList.toggle('active', link.dataset.target === current);
+  });
+ }
+ window.addEventListener('scroll', updateActive, {passive:true});
+ // Smooth scroll
+ links.forEach(function(link){
+  link.addEventListener('click', function(e){
+   e.preventDefault();
+   var target = document.getElementById(link.dataset.target);
+   if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+ });
+})();
+</script>
+
 <script>
 (function(){
  // ── 1. Scroll progress bar ──
@@ -8094,7 +8199,7 @@ document.addEventListener('keydown', function(e){
    // Ease out cubic
    var eased = 1 - Math.pow(1-t, 3);
    var val = target * eased;
-   if (decimals > 0) el.textContent = prefix + val.toFixed(decimals) + suffix;
+   if (decimals > 0) el.textContent = prefix + val.toLocaleString('pl-PL',{minimumFractionDigits:decimals,maximumFractionDigits:decimals}) + suffix;
    else el.textContent = prefix + Math.round(val).toLocaleString('pl-PL') + suffix;
    if (t < 1) requestAnimationFrame(frame);
   }
