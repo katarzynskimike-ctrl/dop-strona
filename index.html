@@ -24,6 +24,11 @@
 <meta name="twitter:image" content="https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp">
 <!-- Favicon (SVG inline — zero HTTP request) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2C4F'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23C9A24A' text-anchor='middle' font-weight='400'%3ED%3C/text%3E%3C/svg%3E">
+<!-- PWA manifest — install jako app -->
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DOP">
 
 <!-- JSON-LD structured data dla SEO rich snippets -->
 <script type="application/ld+json">
@@ -8938,6 +8943,42 @@ function dopCookieClose(accepted){
  setTimeout(addICSButtonsToCalCards, 300);
 
  // ── 5e. iCal generator — "Dodaj do kalendarza" dla kursów ──
+ // ── 5g. Web Share API + copy link fallback ──
+ window.dopShare = function(opts){
+  opts = opts || {};
+  var data = {
+   title: opts.title || document.title,
+   text: opts.text || (document.querySelector('meta[name="description"]')||{}).content || '',
+   url: opts.url || window.location.href
+  };
+  if (navigator.share) {
+   navigator.share(data).catch(function(){});
+  } else {
+   // Fallback: copy URL do schowka + toast
+   var url = data.url;
+   if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function(){ dopToast('Link skopiowany do schowka'); });
+   } else {
+    var ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); dopToast('Link skopiowany'); } catch(e){}
+    ta.remove();
+   }
+  }
+ };
+ window.dopToast = function(msg){
+  var t = document.getElementById('dop-toast');
+  if (!t) {
+   t = document.createElement('div');
+   t.id = 'dop-toast';
+   t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark2);color:#fff;padding:12px 22px;border-radius:6px;font-size:14px;font-weight:600;box-shadow:0 12px 32px -8px rgba(0,0,0,.4);z-index:9100;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;border:1px solid rgba(201,162,74,.3)';
+   document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  requestAnimationFrame(function(){ t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)'; });
+  clearTimeout(window.__dopToastT);
+  window.__dopToastT = setTimeout(function(){ t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 2500);
+ };
+
  window.dopGenerateICS = function(opts){
   // opts: {title, start: 'YYYYMMDDTHHMMSS', end, location, description, url}
   var uid = 'dop-' + Date.now() + '@doskonalaobslugapacjenta.pl';
