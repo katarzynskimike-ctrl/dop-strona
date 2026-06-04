@@ -26,6 +26,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2C4F'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23C9A24A' text-anchor='middle' font-weight='400'%3ED%3C/text%3E%3C/svg%3E">
 <!-- PWA manifest — install jako app -->
 <link rel="manifest" href="/manifest.json">
+<script>
+if('serviceWorker' in navigator){
+ window.addEventListener('load',function(){
+  navigator.serviceWorker.register('/sw.js').catch(function(e){console.warn('SW reg failed:',e);});
+ });
+}
+</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="DOP">
@@ -3754,6 +3761,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <div>
  <div style="font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(27,44,79,.65);margin-bottom:2px">Miejsce</div>
  <div style="font-size:15px;color:var(--black);line-height:1.4">Golden Floor · Aleje Jerozolimskie 123a, Warszawa</div>
+ <a href="https://www.google.com/maps/dir/?api=1&destination=Golden+Floor+Aleje+Jerozolimskie+123a+Warszawa" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;text-decoration:none;margin-top:6px;padding:4px 8px;background:rgba(201,162,74,.08);border-radius:3px;transition:background .15s" onmouseover="this.style.background='rgba(201,162,74,.16)'" onmouseout="this.style.background='rgba(201,162,74,.08)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>Trasa dojazdu →</a>
  </div>
  </div>
  <div style="display:flex;gap:10px;align-items:flex-start">
