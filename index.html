@@ -888,6 +888,182 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   transition:background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
+/* === MOBILE STICKY BOTTOM NAV (only <980px) === */
+.mob-bottom-nav{
+  display:none;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:90;
+  background:rgba(27,44,79,.96);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-top:1px solid rgba(201,162,74,.18);
+  box-shadow:0 -8px 24px -8px rgba(0,0,0,.2);
+  padding:8px 0 max(8px, env(safe-area-inset-bottom));
+}
+@media(max-width:980px){
+  .mob-bottom-nav{display:grid;grid-template-columns:repeat(4,1fr)}
+  body{padding-bottom:72px}
+}
+.mob-bottom-nav button{
+  background:none;
+  border:none;
+  color:rgba(255,255,255,.6);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  padding:6px 4px;
+  cursor:pointer;
+  font-family:var(--body);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.04em;
+  transition:color .2s;
+  position:relative;
+}
+.mob-bottom-nav button:hover, .mob-bottom-nav button.active{color:var(--gold)}
+.mob-bottom-nav button.active::before{
+  content:'';
+  position:absolute;
+  top:-1px;
+  left:30%;
+  right:30%;
+  height:2px;
+  background:var(--gold);
+  border-radius:2px;
+}
+.mob-bottom-nav svg{width:22px;height:22px;margin-bottom:1px}
+.dark .mob-bottom-nav{background:rgba(10,19,34,.96)}
+
+/* === NEWSLETTER TIMED POPUP === */
+.nl-popup-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(15,27,48,.7);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  animation:nlFade .3s ease;
+}
+.nl-popup-backdrop.show{display:flex}
+@keyframes nlFade{from{opacity:0}to{opacity:1}}
+.nl-popup{
+  background:#fff;
+  border-radius:18px;
+  max-width:480px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 24px 60px -16px rgba(0,0,0,.4);
+  position:relative;
+  animation:nlSlideIn .4s cubic-bezier(.22,1,.36,1);
+}
+@keyframes nlSlideIn{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.nl-popup-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:rgba(0,0,0,.05);
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  transition:background .2s, color .2s;
+  z-index:2;
+}
+.nl-popup-close:hover{background:rgba(0,0,0,.1);color:var(--black)}
+.nl-popup-hero{
+  background:linear-gradient(135deg,#1B2C4F 0%,#0F1B30 100%);
+  color:#fff;
+  padding:32px 28px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.nl-popup-hero::before{
+  content:'';
+  position:absolute;
+  top:-40px;
+  right:-40px;
+  width:160px;
+  height:160px;
+  background:radial-gradient(circle,rgba(201,162,74,.3),transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.nl-popup-eyebrow{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--hot);
+  margin-bottom:8px;
+}
+.nl-popup-title{
+  font-family:var(--display);
+  font-size:28px;
+  line-height:1.1;
+  margin-bottom:8px;
+}
+.nl-popup-body{padding:24px 28px 28px}
+.nl-popup-sub{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:18px;text-align:center}
+.nl-popup input{
+  width:100%;
+  padding:14px 16px;
+  border:1.5px solid rgba(27,44,79,.15);
+  border-radius:10px;
+  font-size:15px;
+  font-family:var(--body);
+  margin-bottom:12px;
+  transition:border-color .2s;
+}
+.nl-popup input:focus{outline:none;border-color:var(--gold)}
+.nl-popup-btn{
+  width:100%;
+  padding:14px;
+  background:var(--gold);
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .2s, transform .15s;
+}
+.nl-popup-btn:hover{background:var(--hot);transform:translateY(-1px)}
+.nl-popup-foot{
+  margin-top:14px;
+  text-align:center;
+  font-size:11px;
+  color:var(--muted);
+}
+.nl-popup-success{
+  text-align:center;
+  padding:24px 28px;
+  font-size:15px;
+  color:var(--black);
+}
+.nl-popup-success svg{color:#3a8c5c;margin-bottom:8px}
+.dark .nl-popup{background:#15243F;color:#F5F3EE}
+.dark .nl-popup input{background:rgba(245,243,238,.06);color:#F5F3EE;border-color:rgba(245,243,238,.15)}
+.dark .nl-popup-sub{color:rgba(245,243,238,.65)}
+.dark .nl-popup-close{background:rgba(245,243,238,.08);color:#F5F3EE}
+.dark .nl-popup-success{color:#F5F3EE}
+
 /* === COMPARE TABLE — 4 ścieżki side-by-side === */
 .compare-table th, .compare-table td{vertical-align:top}
 .compare-table tbody tr:last-child td{border-bottom:none !important}
@@ -11170,6 +11346,150 @@ window.dopPipClose = function(){
    });
   }, {passive:true});
  }
+})();
+</script>
+
+<!-- MOBILE STICKY BOTTOM NAV -->
+<nav class="mob-bottom-nav" aria-label="Mobile navigation">
+ <button onclick="showPage('home')" data-nav="home" aria-label="Strona główna">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+  <span>Home</span>
+ </button>
+ <button onclick="showPage('kalendarz')" data-nav="kalendarz" aria-label="Kalendarz kursów">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+  <span>Kursy</span>
+ </button>
+ <button onclick="showPage('audyty')" data-nav="audyty" aria-label="Audyty">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <span>Audyty</span>
+ </button>
+ <button onclick="openContactModal()" aria-label="Kontakt">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span>Kontakt</span>
+ </button>
+</nav>
+
+<!-- NEWSLETTER TIMED POPUP -->
+<div class="nl-popup-backdrop" id="nl-popup-backdrop" role="dialog" aria-modal="true" aria-labelledby="nl-popup-title">
+ <div class="nl-popup">
+  <button class="nl-popup-close" onclick="closeNlPopup()" aria-label="Zamknij">
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="nl-popup-hero">
+   <div class="nl-popup-eyebrow">Newsletter DOP · 1×/miesiąc</div>
+   <div class="nl-popup-title" id="nl-popup-title">Insighty z 462 praktyk<br>prosto do Twojej skrzynki</div>
+  </div>
+  <div class="nl-popup-body" id="nl-popup-body">
+   <p class="nl-popup-sub">Konkretne taktyki które zwiększają akceptację planów, recall i rentowność. Bez spamu, bez nachalnej sprzedaży. Wypisujesz się jednym kliknięciem.</p>
+   <form id="nl-popup-form" onsubmit="return submitNlPopup(event)">
+    <input type="email" name="email" placeholder="np. ja@moja-praktyka.pl" required autocomplete="email">
+    <button type="submit" class="nl-popup-btn">Zapisz mnie →</button>
+    <div class="nl-popup-foot">Wysyłamy 1 raz w miesiącu. RODO + prawo do wycofania zgody zawsze.</div>
+   </form>
+  </div>
+ </div>
+</div>
+
+<script>
+/* ─── Mobile bottom nav — active state sync ─── */
+(function(){
+ function updateMobNav(slug){
+  document.querySelectorAll('.mob-bottom-nav button[data-nav]').forEach(function(b){
+   b.classList.toggle('active', b.dataset.nav === slug);
+  });
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug) updateMobNav(e.detail.slug);
+ });
+ // Initial
+ setTimeout(function(){
+  var ap = document.querySelector('.page.active');
+  if (ap) updateMobNav(ap.id.replace('page-',''));
+ }, 800);
+})();
+
+/* ─── Newsletter timed popup ─── */
+(function(){
+ var POPUP_KEY = 'dop-nl-popup-v1';
+ var POPUP_DELAY_MS = 40000; // 40s
+ var SCROLL_TRIGGER = 0.6;   // 60% scroll
+ var triggered = false;
+
+ function shouldShow(){
+  try {
+   var stored = localStorage.getItem(POPUP_KEY);
+   if (stored) {
+    var data = JSON.parse(stored);
+    if (data.dismissed || data.subscribed) return false;
+    // Re-prompt po 30 dniach jeśli closed (nie dismiss)
+    if (data.shown && (Date.now() - data.shown) < 30*24*60*60*1000) return false;
+   }
+  } catch(e) {}
+  return true;
+ }
+ function showPopup(){
+  if (triggered) return;
+  if (!shouldShow()) return;
+  triggered = true;
+  var bd = document.getElementById('nl-popup-backdrop');
+  if (!bd) return;
+  bd.classList.add('show');
+  try { localStorage.setItem(POPUP_KEY, JSON.stringify({shown: Date.now()})); } catch(e) {}
+  // Focus na email
+  setTimeout(function(){
+   var em = bd.querySelector('input[type=email]');
+   if (em) em.focus();
+  }, 400);
+ }
+ window.closeNlPopup = function(){
+  var bd = document.getElementById('nl-popup-backdrop');
+  if (bd) bd.classList.remove('show');
+  try { localStorage.setItem(POPUP_KEY, JSON.stringify({dismissed: true, shown: Date.now()})); } catch(e) {}
+ };
+ window.submitNlPopup = function(e){
+  e.preventDefault();
+  var form = e.target;
+  var email = form.querySelector('input[name=email]').value.trim();
+  if (!email) return false;
+  var btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  btn.textContent = 'Wysyłam...';
+
+  fetch('/api/lead', {
+   method: 'POST',
+   headers: {'Content-Type':'application/json'},
+   body: JSON.stringify({form_id: 'newsletter', EMAIL: email, source: 'popup-timed'})
+  }).then(function(r){ return r.json(); }).then(function(data){
+   try { localStorage.setItem(POPUP_KEY, JSON.stringify({subscribed: true, shown: Date.now()})); } catch(e) {}
+   var body = document.getElementById('nl-popup-body');
+   if (body) body.innerHTML = '<div class="nl-popup-success"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:6px">Witamy w DOP!</h3><p style="color:var(--muted);font-size:14px">Pierwszy insight przyjdzie w ciągu 7 dni. Sprawdź skrzynkę (i spam, na wszelki wypadek).</p></div>';
+   setTimeout(window.closeNlPopup, 3500);
+  }).catch(function(){
+   btn.disabled = false;
+   btn.textContent = 'Spróbuj jeszcze raz';
+  });
+  return false;
+ };
+
+ // Trigger: 40s OR 60% scroll
+ if (!shouldShow()) return;
+ setTimeout(showPopup, POPUP_DELAY_MS);
+ window.addEventListener('scroll', function(){
+  var sc = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+  if (sc >= SCROLL_TRIGGER) showPopup();
+ }, {passive:true});
+ // ESC zamyka
+ document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') {
+   var bd = document.getElementById('nl-popup-backdrop');
+   if (bd && bd.classList.contains('show')) window.closeNlPopup();
+  }
+ });
+ // Click backdrop zamyka
+ document.addEventListener('click', function(e){
+  var bd = document.getElementById('nl-popup-backdrop');
+  if (bd && e.target === bd) window.closeNlPopup();
+ });
 })();
 </script>
 
