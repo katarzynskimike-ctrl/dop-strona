@@ -789,6 +789,105 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:720px){.dop-mob-nav{grid-template-columns:1fr}}
 @media(max-width:980px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problemy-grid-resp{grid-template-columns:1fr 1fr!important}#hero-grid,.help-grid-resp,.author-grid-resp,.invest-grid-resp,.placeholder-grid-resp{grid-template-columns:1fr!important}#decision-card{position:relative!important;top:auto!important}.form-grid-resp{grid-template-columns:1fr!important}}
 
+/* === DARK MODE TOGGLE — sun/moon button w nav === */
+.dop-theme-toggle{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.78);
+  cursor:pointer;
+  transition:all .25s cubic-bezier(.22,1,.36,1);
+  margin-right:10px;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.dop-theme-toggle:hover{background:rgba(201,162,74,.18);color:var(--gold);transform:rotate(15deg)}
+.dop-theme-toggle .theme-icon-sun{display:none}
+.dop-theme-toggle .theme-icon-moon{display:block}
+.dark .dop-theme-toggle .theme-icon-sun{display:block}
+.dark .dop-theme-toggle .theme-icon-moon{display:none}
+@media(max-width:980px){.dop-theme-toggle{width:34px;height:34px;margin-right:6px}}
+
+/* === DARK MODE — global overrides === */
+.dark body, body.dark{
+  background:#0F1B30;
+  color:#F5F3EE;
+}
+.dark{
+  --cream:#0F1B30;
+  --cream2:#15243F;
+  --black:#F5F3EE;
+  --muted:rgba(245,243,238,.6);
+}
+/* Card surfaces — flip white → dark2 */
+.dark .pricing2-card,
+.dark .cal2-card,
+.dark .paths-grid-resp > div,
+.dark .problem2-card,
+.dark .opinie-card,
+.dark .stat-mini,
+.dark .blog-card,
+.dark .gets-card,
+.dark .testi-card,
+.dark .roi-card,
+.dark .activity-feed-card{
+  background:#15243F !important;
+  border-color:rgba(255,255,255,.08) !important;
+  color:#F5F3EE !important;
+}
+.dark .pricing2-card .pricing2-title,
+.dark .cal2-card .cal2-title,
+.dark .paths-grid-resp h3,
+.dark .problem2-card h3,
+.dark .pricing2-eyebrow{
+  color:#F5F3EE !important;
+}
+.dark .pricing2-sub, .dark .cal2-sub, .dark .cal2-meta{color:rgba(245,243,238,.65) !important}
+.dark .pricing2-chip{background:rgba(245,243,238,.08);color:#F5F3EE;border-color:rgba(245,243,238,.12)}
+.dark .pricing2-featured .pricing2-chip{background:rgba(201,162,74,.18);color:var(--hot);border-color:rgba(201,162,74,.35)}
+/* Sections that use --cream as bg */
+.dark section[style*="background:var(--cream)"],
+.dark section[style*="background:#fff"],
+.dark section[style*="background:#FFF"]{background:#0F1B30 !important;color:#F5F3EE}
+.dark section[style*="background:var(--cream2)"],
+.dark section[style*="background:#F5F3EE"]{background:#15243F !important;color:#F5F3EE}
+/* Breadcrumb na dark */
+.dark .dop-breadcrumb{background:rgba(15,27,48,.85);border-bottom-color:rgba(245,243,238,.08)}
+.dark .dop-breadcrumb a{color:rgba(245,243,238,.55)}
+.dark .dop-breadcrumb [aria-current="page"]{color:#F5F3EE}
+.dark .dop-breadcrumb .sep{color:rgba(245,243,238,.2)}
+/* Sig badge na dark */
+.dark .kurs-sig-badge{background:rgba(15,27,48,.92)}
+/* AI chat na dark */
+.dark .chat-window{background:#15243F !important;color:#F5F3EE}
+.dark .chat-msg-bot{background:rgba(245,243,238,.06) !important;color:#F5F3EE}
+/* Forms & inputs */
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="tel"],
+.dark textarea,
+.dark select{
+  background:rgba(245,243,238,.06) !important;
+  color:#F5F3EE !important;
+  border-color:rgba(245,243,238,.15) !important;
+}
+.dark input::placeholder, .dark textarea::placeholder{color:rgba(245,243,238,.4) !important}
+/* Cookie banner */
+.dark .cookie-banner{background:#15243F !important;color:#F5F3EE !important}
+/* H2/H3 text on cream backgrounds */
+.dark h1, .dark h2, .dark h3, .dark h4{color:#F5F3EE}
+.dark h2[style*="color:var(--black)"], .dark h3[style*="color:var(--black)"]{color:#F5F3EE !important}
+/* Smooth transition */
+body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
+  transition:background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+
 /* === KURS SIGNATURE — unique ribbon + floating badge per kurs landing === */
 .kurs-sig-ribbon{
   width:100%;
@@ -1331,6 +1430,10 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 <button class="dop-nav-link" onclick="openContactModal()">Kontakt</button>
 <button class="dop-nav-link special" onclick="showPage('kalendarz')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>Kalendarz</button>
 </nav>
+<button id="dop-theme-toggle" class="dop-theme-toggle" aria-label="Tryb ciemny / jasny" title="Tryb ciemny / jasny" onclick="toggleTheme()">
+ <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+ <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
 <div class="dop-cta-wrap">
 <a href="tel:579774089" class="dop-phone">+48 579 774 089</a>
 <button class="dop-cta" onclick="showPage('kalendarz')">Zarezerwuj kurs</button>
@@ -8851,6 +8954,20 @@ function bookNow(){
   var el = document.getElementById('booking');
   if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
  }, 120);
+}
+
+/* ─── Theme toggle (dark / light) ─── */
+(function initTheme(){
+ try {
+  var saved = localStorage.getItem('dop-theme');
+  var prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = saved || (prefers ? 'dark' : 'light');
+  if (theme === 'dark') document.documentElement.classList.add('dark');
+ } catch(e) {}
+})();
+function toggleTheme(){
+ var isDark = document.documentElement.classList.toggle('dark');
+ try { localStorage.setItem('dop-theme', isDark ? 'dark' : 'light'); } catch(e) {}
 }
 
 function showPage(slug){
