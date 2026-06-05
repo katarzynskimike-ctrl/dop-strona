@@ -489,6 +489,60 @@ opacity:.04;pointer-events:none;z-index:0}
 .cal-filter{padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;border:1px solid rgba(27,44,79,.18);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(27,44,79,.65);transition:all .15s;background:none;cursor:pointer;border-radius:6px}
 .cal-filter:hover,.cal-filter.active{border-color:var(--gold);color:var(--gold);background:rgba(201,162,74,.08)}
 .cal-list{max-width:var(--max);margin:2px auto 0;padding:0 28px;display:grid;gap:2px}
+
+/* === CAL CARDS v2 — Masterclass/Lovable style === */
+.cal2-card{background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid rgba(27,44,79,.08);box-shadow:0 4px 12px -4px rgba(27,44,79,.06);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1);color:var(--black)}
+.cal2-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px -20px rgba(27,44,79,.25)}
+.cal2-card:focus{outline:2px solid var(--gold);outline-offset:3px}
+.cal2-cover{position:relative;width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;background-color:var(--dark2);overflow:hidden}
+.cal2-featured .cal2-cover{aspect-ratio:21/9}
+.cal2-online .cal2-cover{aspect-ratio:21/9}
+.cal2-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.15) 0%,rgba(15,27,48,.05) 30%,rgba(15,27,48,.7) 100%);pointer-events:none}
+.cal2-cover-content{position:absolute;inset:0;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;z-index:1}
+.cal2-tag{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:14px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(255,255,255,.92);color:var(--black);box-shadow:0 4px 12px -4px rgba(0,0,0,.2);align-self:flex-start}
+.cal2-tag.ct-own{background:rgba(201,162,74,.95);color:var(--black)}
+.cal2-tag.ct-doc{background:rgba(58,140,92,.95);color:#fff}
+.cal2-tag.ct-rec{background:rgba(80,120,200,.95);color:#fff}
+.cal2-tag-featured{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:14px;background:rgba(217,181,96,.95);color:var(--black);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 4px 12px -4px rgba(201,162,74,.5);align-self:flex-start}
+.cal2-date{background:rgba(255,255,255,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 14px;border-radius:10px;text-align:center;box-shadow:0 6px 16px -6px rgba(0,0,0,.3);min-width:74px}
+.cal2-date-d{font-family:var(--display);font-size:24px;color:var(--black);line-height:1;font-style:italic;font-weight:400}
+.cal2-date-m{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-top:3px;white-space:nowrap}
+.cal2-body{padding:24px 26px 14px}
+.cal2-featured .cal2-body{padding:28px 32px 16px}
+.cal2-title{font-family:var(--display);font-size:22px;line-height:1.2;color:var(--black);margin:0 0 10px;font-weight:400;letter-spacing:-.005em}
+.cal2-featured .cal2-title,.cal2-online .cal2-title{font-size:clamp(26px,3vw,32px)}
+.cal2-sub{font-size:15px;color:var(--muted);line-height:1.55;margin:0 0 16px}
+.cal2-meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.cal2-meta-item{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(27,44,79,.7);line-height:1.3}
+.cal2-meta-item svg{flex-shrink:0;color:var(--gold)}
+.cal2-spot-dot{width:7px;height:7px;border-radius:50%;background:#3fb950;flex-shrink:0}
+.cal2-spots-warn{color:var(--red);font-weight:700}
+.cal2-spots-warn .cal2-spot-dot{background:var(--red);animation:dop-pulse-soft 1.5s infinite}
+.cal2-spots-ok{color:#3a8c5c;font-weight:600}
+.cal2-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 26px 22px;border-top:1px solid rgba(27,44,79,.06);gap:14px;flex-wrap:wrap}
+.cal2-featured .cal2-footer{padding:20px 32px 26px}
+.cal2-price-amt{font-family:var(--display);font-size:32px;color:var(--hot);line-height:1;font-style:italic;letter-spacing:-.01em}
+.cal2-featured .cal2-price-amt,.cal2-online .cal2-price-amt{font-size:38px}
+.cal2-price-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.cal2-cta{padding:11px 20px;background:transparent;color:var(--black);font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;border:1.5px solid rgba(27,44,79,.18);cursor:pointer;border-radius:8px;font-family:var(--body);transition:all .2s;white-space:nowrap}
+.cal2-cta:hover{border-color:var(--gold);background:rgba(201,162,74,.08);color:var(--gold);transform:translateY(-1px)}
+.cal2-cta-primary{background:var(--gold);color:var(--black);border-color:var(--gold);padding:13px 24px;font-size:14px}
+.cal2-cta-primary:hover{background:var(--hot);border-color:var(--hot);color:var(--black);box-shadow:0 12px 28px -8px rgba(201,162,74,.5)}
+@media(max-width:880px){
+ .cal-list-v2{grid-template-columns:1fr!important}
+ .cal2-card{border-radius:12px}
+ .cal2-featured .cal2-cover,.cal2-online .cal2-cover{aspect-ratio:16/9}
+}
+@media(max-width:480px){
+ .cal2-body,.cal2-footer,.cal2-featured .cal2-body,.cal2-featured .cal2-footer{padding-left:18px;padding-right:18px}
+ .cal2-title{font-size:19px}
+ .cal2-featured .cal2-title,.cal2-online .cal2-title{font-size:22px}
+ .cal2-meta{gap:6px 14px}
+ .cal2-meta-item{font-size:12px}
+ .cal2-cover-content{padding:14px 16px}
+ .cal2-price-amt{font-size:26px}
+ .cal2-featured .cal2-price-amt,.cal2-online .cal2-price-amt{font-size:30px}
+}
 .cal-card{background:rgba(27,44,79,.035);border:1px solid rgba(27,44,79,.07);padding:24px 28px;display:grid;grid-template-columns:1fr 90px 110px 140px;gap:20px;align-items:center;transition:background .18s,transform .25s,box-shadow .25s,border-left-color .2s;border-left:3px solid transparent}
 .cal-card:hover{background:rgba(27,44,79,.06);transform:translateY(-2px);box-shadow:0 12px 32px -16px rgba(27,44,79,.18);border-left-color:rgba(201,162,74,.5)}
 .cal-card.hi{background:rgba(201,162,74,.06);border-color:rgba(201,162,74,.25);border-left:3px solid var(--gold)}
@@ -3308,56 +3362,220 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  </div>
  </div>
 
- <div class="cal-list">
- <!-- 1. Skuteczne zarządzanie praktyką stomatologiczną cz. I (18-19 czerwca 2026) -->
- <div class="cal-card hi" data-cat="own" onclick="showPage('kurs-zarzadzania')" style="cursor:pointer">
- <div><span class="cal-star-lbl">★ Najczęściej wybierany przez właścicieli</span><span class="cal-type ct-own">Właściciele · Managerowie</span><h3>Skuteczne zarządzanie praktyką stomatologiczną cz. I</h3><div class="cal-meta">Szkolenie stacjonarne · 2 dni · Warszawa, Golden Floor, Al. Jerozolimskie 123a · 09:00-18:00</div></div>
- <div><div class="cal-date-d">18–19</div><div class="cal-date-m">Cze 2026</div></div>
- <div class="cal-price"><strong>3 997 zł</strong><span>/ osoba</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Otwarta rejestracja</div><button class="btn-cal" onclick="event.stopPropagation();showPage('kurs-zarzadzania')">Zobacz kurs →</button></div>
+ <!-- KALENDARZ KURSÓW v2 — Master-level visual cards (Masterclass/Lovable style) -->
+ <div class="cal-list-v2" style="max-width:1200px;margin:32px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+
+  <!-- FEATURED: Kurs Zarządzania (full width) -->
+  <a href="#kurs-zarzadzania" onclick="event.preventDefault();showPage('kurs-zarzadzania')" data-cat="own" class="cal2-card cal2-featured" style="grid-column:1/-1;text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:url('https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w1400')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div class="cal2-tag-featured"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>Najczęściej wybierany przez właścicieli</div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-own">Właściciele · Managerowie</span>
+      <div class="cal2-date">
+       <div class="cal2-date-d">18–19</div>
+       <div class="cal2-date-m">Czerwiec 2026</div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Skuteczne zarządzanie praktyką stomatologiczną — cz. I</h3>
+    <p class="cal2-sub">2 dni intensywnych warsztatów. Delegowanie, motywowanie, komunikacja, przywództwo. Max 12 osób, 70% ćwiczeń, autorski system zadań domowych.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 dni · 9:00-18:00</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Golden Floor, Warszawa</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 12 osób</div>
+     <div class="cal2-meta-item cal2-spots-warn"><span class="cal2-spot-dot"></span>Zostało 3 z 12 miejsc</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div>
+     <div class="cal2-price-amt">3 997 zł</div>
+     <div class="cal2-price-sub">/ osoba · faktura VAT · raty 2-3×</div>
+    </div>
+    <button class="cal2-cta cal2-cta-primary" onclick="event.stopPropagation();showPage('kurs-zarzadzania')">Zobacz program →</button>
+   </div>
+  </a>
+
+  <!-- 2. Plan Leczenia -->
+  <a href="#plan-leczenia" onclick="event.preventDefault();showPage('plan-leczenia')" data-cat="doc" class="cal2-card" style="text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-doc">Lekarze · Higienistki</span>
+      <div class="cal2-date"><div class="cal2-date-d">20</div><div class="cal2-date-m">Cze</div></div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Przedstawianie kompleksowych planów leczenia</h3>
+    <p class="cal2-sub">1 dzień. Jak rozłożyć duży plan na akceptowalną sekwencję — bez nacisku, bez tricków sprzedażowych.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-18:00</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
+     <div class="cal2-meta-item cal2-spots-ok"><span class="cal2-spot-dot"></span>Otwarta rejestracja</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div><div class="cal2-price-amt">2 490 zł</div><div class="cal2-price-sub">/ osoba</div></div>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('plan-leczenia')">Zobacz program →</button>
+   </div>
+  </a>
+
+  <!-- 3. Doskonała Konsultacja -->
+  <a href="#doskonala-konsultacja" onclick="event.preventDefault();showPage('doskonala-konsultacja')" data-cat="doc" class="cal2-card" style="text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:url('https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=800&q=80')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-doc">Lekarze · Higienistki · Zespół</span>
+      <div class="cal2-date"><div class="cal2-date-d">25–26</div><div class="cal2-date-m">Cze</div></div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Doskonała Konsultacja i Wizyta Stomatologiczna</h3>
+    <p class="cal2-sub">2 dni. Pełna struktura 60-min konsultacji + plan leczenia w 2 etapach. Średnio +18-25% akceptacji po wdrożeniu.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 dni · 9:00-18:00</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
+     <div class="cal2-meta-item cal2-spots-ok"><span class="cal2-spot-dot"></span>Otwarta rejestracja</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div><div class="cal2-price-amt">2 690 zł</div><div class="cal2-price-sub">/ osoba</div></div>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('doskonala-konsultacja')">Zobacz program →</button>
+   </div>
+  </a>
+
+  <!-- 4. Rejestracja cz.1 -->
+  <a href="#rejestracja-cz1" onclick="event.preventDefault();showPage('rejestracja-cz1')" data-cat="rec" class="cal2-card" style="text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-rec">Recepcja · Koordynatorzy</span>
+      <div class="cal2-date"><div class="cal2-date-d">21</div><div class="cal2-date-m">Cze</div></div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Doskonała Rejestracja Stomatologiczna — cz. 1</h3>
+    <p class="cal2-sub">1 dzień. Telefon, mail, follow-up, no-show. Pierwsze 30 sekund decyduje czy pacjent się zapisze.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-17:30</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
+     <div class="cal2-meta-item cal2-spots-ok"><span class="cal2-spot-dot"></span>Otwarta rejestracja</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div><div class="cal2-price-amt">1 690 zł</div><div class="cal2-price-sub">/ osoba</div></div>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('rejestracja-cz1')">Zobacz program →</button>
+   </div>
+  </a>
+
+  <!-- 5. Doskonała Wizyta Hig -->
+  <a href="#doskonala-wizyta-hig" onclick="event.preventDefault();showPage('doskonala-wizyta-hig')" data-cat="doc" class="cal2-card" style="text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-doc">Higienistki · Asystentki</span>
+      <div class="cal2-date"><div class="cal2-date-d">27</div><div class="cal2-date-m">Cze</div></div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Doskonała Wizyta Higienizacyjna — cz. 1</h3>
+    <p class="cal2-sub">1 dzień. Standard wizyty który buduje regularność. Pacjenci sami rezerwują wizyty co 6 m-cy.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-18:00</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
+     <div class="cal2-meta-item cal2-spots-ok"><span class="cal2-spot-dot"></span>Otwarta rejestracja</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div><div class="cal2-price-amt">1 790 zł</div><div class="cal2-price-sub">/ osoba</div></div>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('doskonala-wizyta-hig')">Zobacz program →</button>
+   </div>
+  </a>
+
+  <!-- 6. Rejestracja Ninja -->
+  <a href="#rejestracja-ninja" onclick="event.preventDefault();showPage('rejestracja-ninja')" data-cat="rec" class="cal2-card" style="text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-rec">Recepcja · Advanced</span>
+      <div class="cal2-date"><div class="cal2-date-d">28</div><div class="cal2-date-m">Cze</div></div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Doskonała Rejestracja — Poziom Ninja</h3>
+    <p class="cal2-sub">1 dzień, advanced. Trudne pytania, ceny, obiekcje, no-show. Dla recepcji która już zna podstawy.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-17:30</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
+     <div class="cal2-meta-item cal2-spots-ok"><span class="cal2-spot-dot"></span>Otwarta rejestracja</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div><div class="cal2-price-amt">1 690 zł</div><div class="cal2-price-sub">/ osoba</div></div>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('rejestracja-ninja')">Zobacz program →</button>
+   </div>
+  </a>
+
+  <!-- 7. Akademia (full width, online) -->
+  <a href="#akademia" onclick="event.preventDefault();showPage('akademia')" data-cat="onl" class="cal2-card cal2-online" style="grid-column:1/-1;text-decoration:none;display:block">
+   <div class="cal2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.4),rgba(10,19,34,.2)),url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80')">
+    <div class="cal2-cover-overlay"></div>
+    <div class="cal2-cover-content">
+     <div class="cal2-tag-featured" style="background:rgba(127,212,165,.95);color:#0a3818"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>Dostęp natychmiast · 24/7</div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <span class="cal2-tag ct-own">Online · 12 m-cy dostępu</span>
+      <div class="cal2-date"><div class="cal2-date-d" style="font-size:36px">∞</div><div class="cal2-date-m">Online</div></div>
+     </div>
+    </div>
+   </div>
+   <div class="cal2-body">
+    <h3 class="cal2-title">Akademia Rentownej Praktyki Stomatologicznej</h3>
+    <p class="cal2-sub">12 kursów video (30+ h) + cotygodniowe konsultacje live z Michałem + zamknięta grupa FB. Pełen system w 12 miesięcy. 462 praktyk w Polsce.</p>
+    <div class="cal2-meta">
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>12 kursów video</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>30+ godzin treści</div>
+     <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Live Q&A co tydzień</div>
+     <div class="cal2-meta-item cal2-spots-ok"><span class="cal2-spot-dot"></span>30-dniowa gwarancja zwrotu</div>
+    </div>
+   </div>
+   <div class="cal2-footer">
+    <div>
+     <div class="cal2-price-amt">8 990 zł</div>
+     <div class="cal2-price-sub">/ rok dostępu · <span style="color:#3fb950;font-weight:700">oszczędzasz 20 160 zł</span></div>
+    </div>
+    <button class="cal2-cta cal2-cta-primary" onclick="event.stopPropagation();showPage('akademia')">Zobacz Akademię →</button>
+   </div>
+  </a>
+
  </div>
- <!-- 2. Przedstawianie kompleksowych planów leczenia (20 czerwca 2026) -->
- <div class="cal-card" data-cat="doc" onclick="showPage('plan-leczenia')" style="cursor:pointer">
- <div><span class="cal-type ct-doc">Lekarze · Higienistki</span><h3>Przedstawianie kompleksowych planów leczenia</h3><div class="cal-meta">Szkolenie stacjonarne · 1 dzień · Warszawa, Golden Floor, Al. Jerozolimskie 123a · 09:00-18:00</div></div>
- <div><div class="cal-date-d">20</div><div class="cal-date-m">Cze 2026</div></div>
- <div class="cal-price"><strong>2 490 zł</strong><span>/ osoba</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Otwarta rejestracja</div><button class="btn-cal-g" onclick="event.stopPropagation();showPage('plan-leczenia')">Zobacz kurs →</button></div>
- </div>
- <!-- 3. Doskonała rejestracja stomatologiczna cz. 1 (21 czerwca 2026) -->
- <div class="cal-card" data-cat="rec" onclick="showPage('rejestracja-cz1')" style="cursor:pointer">
- <div><span class="cal-type ct-rec">Recepcja · Koordynatorzy</span><h3>Doskonała Rejestracja Stomatologiczna cz. 1</h3><div class="cal-meta">Szkolenie stacjonarne · 1 dzień · Warszawa, Golden Floor, Al. Jerozolimskie 123a · 09:00-17:30</div></div>
- <div><div class="cal-date-d">21</div><div class="cal-date-m">Cze 2026</div></div>
- <div class="cal-price"><strong>1 690 zł</strong><span>/ osoba</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Otwarta rejestracja</div><button class="btn-cal-g" onclick="event.stopPropagation();showPage('rejestracja-cz1')">Zobacz kurs →</button></div>
- </div>
- <!-- 4. Doskonała konsultacja i wizyta stomatologiczna (25-26 czerwca 2026) -->
- <div class="cal-card" data-cat="doc" onclick="showPage('doskonala-konsultacja')" style="cursor:pointer">
- <div><span class="cal-type ct-doc">Lekarze · Higienistki · Zespół</span><h3>Doskonała Konsultacja i Wizyta Stomatologiczna</h3><div class="cal-meta">Szkolenie stacjonarne · 2 dni · Warszawa, Golden Floor, Al. Jerozolimskie 123a · 09:00-18:00</div></div>
- <div><div class="cal-date-d">25–26</div><div class="cal-date-m">Cze 2026</div></div>
- <div class="cal-price"><strong>2 690 zł</strong><span>/ osoba</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Otwarta rejestracja</div><button class="btn-cal-g" onclick="event.stopPropagation();showPage('doskonala-konsultacja')">Zobacz kurs →</button></div>
- </div>
- <!-- 5. Doskonała wizyta higienizacyjna cz.1 (27 czerwca 2026) -->
- <div class="cal-card" data-cat="doc" onclick="showPage('doskonala-wizyta-hig')" style="cursor:pointer">
- <div><span class="cal-type ct-doc">Higienistki · Asystentki</span><h3>Doskonała Wizyta Higienizacyjna cz. 1</h3><div class="cal-meta">Szkolenie stacjonarne · 1 dzień · Warszawa, Golden Floor, Al. Jerozolimskie 123a · 09:00-18:00</div></div>
- <div><div class="cal-date-d">27</div><div class="cal-date-m">Cze 2026</div></div>
- <div class="cal-price"><strong>1 790 zł</strong><span>/ osoba</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Otwarta rejestracja</div><button class="btn-cal-g" onclick="event.stopPropagation();showPage('doskonala-wizyta-hig')">Zobacz kurs →</button></div>
- </div>
- <!-- 6. Doskonała rejestracja Ninja (28 czerwca 2026) -->
- <div class="cal-card" data-cat="rec" onclick="showPage('rejestracja-ninja')" style="cursor:pointer">
- <div><span class="cal-type ct-rec">Recepcja · Advanced</span><h3>Doskonała Rejestracja — Poziom Ninja</h3><div class="cal-meta">Szkolenie stacjonarne · 1 dzień · Warszawa, Golden Floor, Al. Jerozolimskie 123a · 09:00-17:30</div></div>
- <div><div class="cal-date-d">28</div><div class="cal-date-m">Cze 2026</div></div>
- <div class="cal-price"><strong>1 690 zł</strong><span>/ osoba</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Otwarta rejestracja</div><button class="btn-cal-g" onclick="event.stopPropagation();showPage('rejestracja-ninja')">Zobacz kurs →</button></div>
- </div>
- <!-- 7. Akademia Rentownej Praktyki — 12 kursów online -->
- <div class="cal-card" data-cat="onl" onclick="showPage('akademia')" style="cursor:pointer">
- <div><span class="cal-type ct-own">Online · 365 dni dostępu</span><h3>Akademia Rentownej Praktyki Stomatologicznej</h3><div class="cal-meta">Pakiet 12 kursów online + cotygodniowe konsultacje live · Dostęp natychmiast</div></div>
- <div><div class="cal-date-d">∞</div><div class="cal-date-m">Online</div></div>
- <div class="cal-price"><strong>8 990 zł</strong><span>/ rok dostępu</span></div>
- <div class="cal-action"><div class="spots-row"><div class="sdot-g"></div>Dostęp natychmiast</div><button class="btn-cal-g" onclick="event.stopPropagation();showPage('akademia')">Zobacz Akademię →</button></div>
- </div>
+
+ <!-- Stary cal-list — zachowany dla JS filtra ale ukryty -->
+ <div class="cal-list" style="display:none" aria-hidden="true">
+ <div class="cal-card hi" data-cat="own" onclick="showPage('kurs-zarzadzania')"><div></div></div>
+ <div class="cal-card" data-cat="doc" onclick="showPage('plan-leczenia')"><div></div></div>
+ <div class="cal-card" data-cat="rec" onclick="showPage('rejestracja-cz1')"><div></div></div>
+ <div class="cal-card" data-cat="doc" onclick="showPage('doskonala-konsultacja')"><div></div></div>
+ <div class="cal-card" data-cat="doc" onclick="showPage('doskonala-wizyta-hig')"><div></div></div>
+ <div class="cal-card" data-cat="rec" onclick="showPage('rejestracja-ninja')"><div></div></div>
+ <div class="cal-card" data-cat="onl" onclick="showPage('akademia')"><div></div></div>
  </div>
 
  <div class="inhouse">
@@ -8810,9 +9028,9 @@ function filterCal(btn, cat){
  document.querySelectorAll('.cal-filter').forEach(function(b){b.classList.remove('active')});
  btn.classList.add('active');
  var visibleCount = 0;
- document.querySelectorAll('.cal-card').forEach(function(card){
- if(cat==='all'){ card.style.display='grid'; visibleCount++; }
- else { var show = (card.dataset.cat||'').indexOf(cat) !== -1; card.style.display = show ? 'grid' : 'none'; if(show) visibleCount++; }
+ document.querySelectorAll('.cal2-card').forEach(function(card){
+ if(cat==='all'){ card.style.display=''; visibleCount++; }
+ else { var show = (card.dataset.cat||'').indexOf(cat) !== -1; card.style.display = show ? '' : 'none'; if(show) visibleCount++; }
  });
  // Empty state — pokaż gdy 0 wyników
  var empty = document.getElementById('cal-empty-state');
