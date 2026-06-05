@@ -4067,6 +4067,28 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  </div>
 </section>
 
+<!-- MINI GALERIA WARSZTAT — pod hero /kurs-zarzadzania -->
+<section style="background:var(--cream2);padding:48px 28px;border-top:1px solid rgba(27,44,79,.08)">
+ <div style="max-width:1140px;margin:0 auto">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px;flex-wrap:wrap">
+   <div>
+    <div class="sec-label" style="margin-bottom:6px">Sala warsztatowa · Warszawa</div>
+    <h3 style="font-family:var(--display);font-size:clamp(20px,2.4vw,28px);color:var(--black);line-height:1.2;font-style:italic;font-weight:400">Tak wygląda nasza praca — fragment ostatnich edycji</h3>
+   </div>
+   <button onclick="showPage('referencje')" style="padding:10px 18px;background:transparent;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;font-family:var(--body);transition:all .15s" onmouseover="this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.background='transparent'">Cała galeria z kursów →</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" class="kz-mini-gallery-resp">
+   <div style="aspect-ratio:4/3;background:url('https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w600') center/cover;border-radius:6px;background-color:var(--dark2);transition:transform .25s,box-shadow .25s;cursor:pointer" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.3)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'"></div>
+   <div style="aspect-ratio:4/3;background:url('https://lh3.googleusercontent.com/d/1BrlVwMqQuRRk-F1hbFbobcLzVlx7xPfi=w600') center/cover;border-radius:6px;background-color:var(--dark2);transition:transform .25s,box-shadow .25s;cursor:pointer" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.3)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'"></div>
+   <div style="aspect-ratio:4/3;background:url('https://lh3.googleusercontent.com/d/13v6U0ob6yxrelEPaxDLt3ByZ6gou7yrO=w600') center/cover;border-radius:6px;background-color:var(--dark2);transition:transform .25s,box-shadow .25s;cursor:pointer" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.3)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'"></div>
+   <div style="aspect-ratio:4/3;background:url('https://lh3.googleusercontent.com/d/1AVbbIwOow9atFr1rMVvNpUkSajx3HFTu=w600') center/cover;border-radius:6px;background-color:var(--dark2);transition:transform .25s,box-shadow .25s;cursor:pointer" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.3)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'"></div>
+  </div>
+ </div>
+</section>
+<style>
+@media(max-width:780px){.kz-mini-gallery-resp{grid-template-columns:repeat(2,1fr)!important}}
+</style>
+
 <!-- 3. LICZBY SOCIAL PROOF -->
 <section style="background:var(--cream);padding:48px 28px;border-top:1px solid rgba(27,44,79,.07)">
  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(27,44,79,.06)" class="stats-grid-resp">
@@ -7501,6 +7523,35 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:860px){.stats-grid-resp{grid-template-columns:1fr!important}}
 </style>
 
+<!-- AKADEMIA COMMUNITY GRID — 8 portretów uczestników Akademii -->
+<section style="background:var(--dark);padding:80px 28px;border-top:1px solid rgba(201,162,74,.18);overflow:hidden">
+ <div style="max-width:1140px;margin:0 auto">
+  <div style="text-align:center;margin-bottom:40px">
+   <div class="sec-label on-dark" style="justify-content:center">462 praktyk w Polsce</div>
+   <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);color:#fff;line-height:1.1;font-weight:400;letter-spacing:-.015em">Społeczność Akademii — uczą się razem.</h2>
+   <p style="font-family:var(--serif);font-style:italic;font-size:16px;color:rgba(255,255,255,.65);max-width:580px;margin:14px auto 0;line-height:1.55">Zamknięta grupa, comiesięczne live Q&A, peer learning. Każda nowa edycja to ~50 praktyk wchodzących razem.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:8px" class="akad-community-resp">
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1qGc0mJITovvEZxfobS_whwM5S87oMoeC=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s,box-shadow .25s" onmouseover="this.style.transform='scale(1.08)';this.style.boxShadow='0 12px 28px -8px rgba(201,162,74,.5)';this.style.zIndex='2'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';this.style.zIndex='1'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1m2JVtYqyPlnOd2TSqqGe8MGWKG8T0tS-=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s,box-shadow .25s" onmouseover="this.style.transform='scale(1.08)';this.style.boxShadow='0 12px 28px -8px rgba(201,162,74,.5)';this.style.zIndex='2'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';this.style.zIndex='1'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1stARESc0dq2Mt9ax-M-S00eXRBrJPK_t=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1GHM6rPeYCIE6J_3ltggRLxsckLgBO8lt=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1uTZVK8QvNxT9y5fOwvB1yaCoM9cGowvT=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/171DJJyBSKfiSQLE79xaSwUKpwDkVnnpW=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1qeCe7KlDifRZJX0MzFCt4EtEW3mwrI5t=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+   <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w400') center/cover;border-radius:8px;background-color:#000;transition:transform .25s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"></div>
+  </div>
+  <div style="text-align:center;margin-top:32px">
+   <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.65);font-style:italic">+ <strong style="color:var(--hot);font-style:normal">454 więcej</strong> · dołącz do następnej edycji (start 1 lipca 2026)</div>
+  </div>
+ </div>
+</section>
+
+<style>
+@media(max-width:880px){.akad-community-resp{grid-template-columns:repeat(4,1fr)!important}}
+@media(max-width:480px){.akad-community-resp{grid-template-columns:repeat(3,1fr)!important}}
+</style>
+
 <!-- 12 KURSÓW GRID -->
 <section id="akademia-kursy" style="background:var(--cream);padding:96px 28px;border-top:1px solid rgba(27,44,79,.08)">
  <div style="max-width:var(--max);margin:0 auto">
@@ -8940,6 +8991,67 @@ function dopCookieClose(accepted){
    }, 1500);
   }
  }catch(e){}
+})();
+</script>
+
+<!-- STICKY VIDEO PIP — Webinar konsultacja autoplay muted, dismissible -->
+<div id="dop-video-pip" aria-hidden="true" style="position:fixed;bottom:24px;left:24px;width:300px;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);z-index:94;opacity:0;visibility:hidden;transform:translateY(20px) scale(.95);transition:opacity .3s,visibility .3s,transform .3s cubic-bezier(.22,1,.36,1);border:1px solid rgba(201,162,74,.3)">
+ <div style="position:relative;aspect-ratio:16/9;background:#000">
+  <iframe id="dop-pip-iframe" src="" title="Webinar: Doskonała konsultacja" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <button onclick="dopPipClose()" aria-label="Zamknij" style="position:absolute;top:6px;right:6px;width:24px;height:24px;background:rgba(0,0,0,.7);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;z-index:2;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(201,162,74,.9)'" onmouseout="this.style.background='rgba(0,0,0,.7)'">×</button>
+ </div>
+ <div style="padding:10px 14px;background:linear-gradient(180deg,rgba(15,27,48,.95),rgba(10,19,34,1));border-top:1px solid rgba(201,162,74,.2)">
+  <div style="font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:3px">Webinar 15 min · bezpłatnie</div>
+  <div style="font-size:13px;color:#fff;line-height:1.2;font-family:var(--serif);font-style:italic">Doskonała konsultacja — rola lekarza</div>
+ </div>
+</div>
+<style>
+#dop-video-pip.visible{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+@media(max-width:640px){#dop-video-pip{width:220px;bottom:18px;left:18px}}
+@media(max-width:380px){#dop-video-pip{display:none!important}}
+</style>
+<script>
+window.dopPipClose = function(){
+ var pip = document.getElementById('dop-video-pip');
+ var ifr = document.getElementById('dop-pip-iframe');
+ if(pip) pip.classList.remove('visible');
+ if(ifr) ifr.src = ''; // stop video
+ try{ sessionStorage.setItem('dop_pip_dismissed','1'); }catch(e){}
+};
+(function(){
+ var pip = document.getElementById('dop-video-pip');
+ var ifr = document.getElementById('dop-pip-iframe');
+ if(!pip || !ifr) return;
+ var dismissed = false;
+ try{ dismissed = sessionStorage.getItem('dop_pip_dismissed') === '1'; }catch(e){}
+ if(dismissed) return;
+ var loaded = false;
+ var ticking = false;
+ window.addEventListener('scroll', function(){
+  if(ticking || loaded) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+   var h = document.documentElement;
+   var triggered = h.scrollTop > window.innerHeight * 1.2;
+   var activePage = document.querySelector('.page.active');
+   // Show only on /home + when scrolled past hero
+   if(triggered && activePage && activePage.id === 'page-home' && !loaded){
+    ifr.src = 'https://www.youtube.com/embed/eNCy3ZleBgE?autoplay=1&mute=1&loop=1&playlist=eNCy3ZleBgE&modestbranding=1&rel=0';
+    pip.classList.add('visible');
+    pip.setAttribute('aria-hidden','false');
+    loaded = true;
+   }
+   ticking = false;
+  });
+ }, {passive:true});
+ // Hide gdy zmiana strony z home
+ document.addEventListener('dop:page-change', function(e){
+  if(e.detail && e.detail.slug !== 'home' && loaded){
+   pip.classList.remove('visible');
+   ifr.src = '';
+   loaded = false;
+  }
+ });
 })();
 </script>
 
