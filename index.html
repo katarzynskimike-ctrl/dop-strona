@@ -2203,6 +2203,159 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:400px){.face-wall{grid-template-columns:repeat(4,1fr)!important}}
 </style>
 
+<!-- ROI CALCULATOR — interaktywny kalkulator potencjału praktyki -->
+<section style="background:linear-gradient(180deg,var(--cream2) 0%,var(--cream) 100%);padding:96px 28px;border-top:1px solid rgba(27,44,79,.08)" id="roi-calc">
+ <div style="max-width:1140px;margin:0 auto">
+  <div style="text-align:center;margin-bottom:48px">
+   <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:6px 14px;background:rgba(201,162,74,.1);border:1px solid rgba(201,162,74,.25);border-radius:20px;margin-bottom:18px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kalkulator ROI · 30 sekund</div>
+   <h2 class="sec-h2" style="font-size:clamp(36px,4.5vw,56px);letter-spacing:-.015em;margin-bottom:14px">Ile możesz odzyskać<br><em style="color:var(--gold);font-style:italic">— policz w 30 sekund.</em></h2>
+   <p class="sec-lead" style="margin:0 auto;max-width:680px">Wprowadź swoje dane. Wyliczymy ile pieniędzy obecnie ucieka z Twojej praktyki i jaki potencjał ma system DOP. Dane na podstawie 200+ audytów.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto;background:var(--cream2);border:1px solid rgba(201,162,74,.2);border-radius:12px;padding:32px;box-shadow:0 24px 60px -20px rgba(27,44,79,.15)" class="roi-grid-resp">
+   <!-- INPUTS -->
+   <div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Twoja praktyka</div>
+    <div style="display:grid;gap:18px">
+     <label style="display:block">
+      <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">Liczba foteli</div>
+      <input type="range" id="roi-fotele" min="1" max="10" value="3" step="1" oninput="dopROICalc()" style="width:100%;accent-color:var(--gold)">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px"><span>1</span><strong id="roi-fotele-val" style="color:var(--gold);font-size:14px">3 fotele</strong><span>10+</span></div>
+     </label>
+     <label style="display:block">
+      <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">Średni miesięczny przychód (brutto)</div>
+      <input type="range" id="roi-przychod" min="50" max="500" value="120" step="10" oninput="dopROICalc()" style="width:100%;accent-color:var(--gold)">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px"><span>50k zł</span><strong id="roi-przychod-val" style="color:var(--gold);font-size:14px">120 000 zł</strong><span>500k+</span></div>
+     </label>
+     <label style="display:block">
+      <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">Akceptacja planów leczenia (%)</div>
+      <input type="range" id="roi-akceptacja" min="20" max="90" value="42" step="1" oninput="dopROICalc()" style="width:100%;accent-color:var(--gold)">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px"><span>20%</span><strong id="roi-akceptacja-val" style="color:var(--gold);font-size:14px">42%</strong><span>90%</span></div>
+     </label>
+     <label style="display:block">
+      <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">Liczba aktywnych pacjentów (rocznie)</div>
+      <input type="range" id="roi-pacjenci" min="200" max="3000" value="800" step="50" oninput="dopROICalc()" style="width:100%;accent-color:var(--gold)">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px"><span>200</span><strong id="roi-pacjenci-val" style="color:var(--gold);font-size:14px">800 osób</strong><span>3000+</span></div>
+     </label>
+    </div>
+   </div>
+   <!-- RESULTS -->
+   <div style="background:linear-gradient(135deg,var(--dark) 0%,var(--black) 100%);color:#fff;border-radius:10px;padding:32px;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;top:0;left:24px;right:24px;height:2px;background:linear-gradient(90deg,transparent,var(--hot),transparent)"></div>
+    <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--hot);margin-bottom:14px">Twój potencjał miesięczny</div>
+    <div style="font-family:var(--display);font-size:54px;line-height:1;color:#fff;font-style:italic;margin-bottom:6px">+<span id="roi-potencjal">28 800</span> zł</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px">obecnie ucieka · po wdrożeniu systemu DOP</div>
+
+    <div style="display:grid;gap:8px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)">
+     <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.78)"><span>Roczny potencjał</span><strong style="color:var(--hot)">+<span id="roi-roczny">345 600</span> zł</strong></div>
+     <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.78)"><span>Wpływ +20pp akceptacji</span><strong style="color:#7fd4a5">+<span id="roi-akc-impact">62</span>%</strong></div>
+     <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.78)"><span>Inwestycja w kurs</span><strong id="roi-inwestycja" style="color:#fff">3 997 zł</strong></div>
+     <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.78)"><span>ROI w 3 m-ce</span><strong style="color:#7fd4a5"><span id="roi-okres">21</span>×</strong></div>
+    </div>
+
+    <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:10px">Rekomendacja</div>
+    <div id="roi-recommend-name" style="font-family:var(--serif);font-style:italic;font-size:18px;color:#fff;line-height:1.3;margin-bottom:6px">Kurs Skutecznego Zarządzania</div>
+    <div id="roi-recommend-reason" style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:18px">Bazowy program dla właścicieli 2-5 foteli — dwa dni, system na zawsze.</div>
+
+    <button id="roi-recommend-cta" onclick="dopROIOpenRec()" style="display:flex;align-items:center;justify-content:center;width:100%;padding:14px;background:var(--gold);color:var(--black);font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;border:none;cursor:pointer;border-radius:8px;font-family:var(--body);transition:background .15s,transform .15s;gap:10px" onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)'">Zobacz rekomendowany program →</button>
+    <button onclick="dopROISaveReport()" style="display:flex;align-items:center;justify-content:center;width:100%;padding:11px;margin-top:8px;background:transparent;color:var(--hot);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;border:1px solid rgba(217,181,96,.4);cursor:pointer;border-radius:6px;font-family:var(--body);transition:all .15s;gap:8px" onmouseover="this.style.background='rgba(201,162,74,.1)'" onmouseout="this.style.background='transparent'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Wyślij pełny raport PDF na email</button>
+   </div>
+  </div>
+
+  <div style="text-align:center;margin-top:24px;font-size:12px;color:var(--muted);font-style:italic;max-width:680px;margin-left:auto;margin-right:auto">Wyniki bazują na średnich z 200+ audytów. Realny potencjał może się różnić zależnie od lokalizacji, specjalizacji, struktury zespołu. Bezpłatna 15-min rozmowa da konkretną kalkulację dla Twojej praktyki.</div>
+ </div>
+</section>
+
+<style>
+@media(max-width:880px){.roi-grid-resp{grid-template-columns:1fr!important;padding:24px!important}}
+#roi-calc input[type=range]{height:6px;border-radius:3px;background:rgba(27,44,79,.1)}
+</style>
+<script>
+(function(){
+ var COURSE_REC = {
+  '3997':{slug:'kurs-zarzadzania',name:'Kurs Skutecznego Zarządzania',reason:'2-dniowy stacjonarny dla właścicieli — system zarządzania zespołem, delegowanie, KPI.'},
+  '8990':{slug:'akademia',name:'Akademia Rentownej Praktyki',reason:'12 kursów online + cotygodniowe konsultacje live — pełny system w 12 miesięcy.'},
+  'audyt':{slug:'audyt-doradczy',name:'Audyt doradczy 1-on-1',reason:'4-8h z Michałem na Twoich danych — plan działania na 90 dni, dla zaawansowanych praktyk.'},
+  'in-house':{slug:'kurs-zamkniety-wl',name:'Kurs zamknięty in-house',reason:'Cały Twój zespół naraz, program dopasowany. Dla większych praktyk — najwyższy ROI.'}
+ };
+ window.dopROICalc = function(){
+  var fotele = parseInt(document.getElementById('roi-fotele').value);
+  var przychod = parseInt(document.getElementById('roi-przychod').value) * 1000;
+  var akceptacja = parseInt(document.getElementById('roi-akceptacja').value);
+  var pacjenci = parseInt(document.getElementById('roi-pacjenci').value);
+  // Update labels
+  document.getElementById('roi-fotele-val').textContent = fotele + (fotele === 1 ? ' fotel' : fotele >= 5 ? ' foteli' : ' fotele');
+  document.getElementById('roi-przychod-val').textContent = (przychod/1000).toLocaleString('pl-PL') + ' 000 zł';
+  document.getElementById('roi-akceptacja-val').textContent = akceptacja + '%';
+  document.getElementById('roi-pacjenci-val').textContent = pacjenci.toLocaleString('pl-PL') + ' osób';
+  // Calc: gap from average benchmark (62% acceptance)
+  var benchmark = 62;
+  var gap = Math.max(0, benchmark - akceptacja);
+  var avgPlanValue = przychod / Math.max(pacjenci/12, 1); // avg miesięczny przychód na pacjenta
+  var potencjalMies = Math.round((gap / 100) * przychod * 0.5); // 50% gap to recoverable
+  // Min sensible: 4% przychodu
+  potencjalMies = Math.max(potencjalMies, Math.round(przychod * 0.04));
+  // Max sensible: 80% przychodu (zaniżenie obecnego stanu)
+  potencjalMies = Math.min(potencjalMies, Math.round(przychod * 0.8));
+  var potencjalRoczny = potencjalMies * 12;
+  // Rekomendacja
+  var recKey;
+  if (fotele >= 5 && przychod >= 200000) recKey = 'in-house';
+  else if (przychod >= 150000 && akceptacja >= 50) recKey = 'audyt';
+  else if (fotele >= 3 || przychod >= 100000) recKey = '3997';
+  else recKey = '8990';
+  var rec = COURSE_REC[recKey];
+  var inwest = recKey === '3997' ? 3997 : recKey === '8990' ? 8990 : 'wycena ind.';
+  var roi = typeof inwest === 'number' ? Math.round(potencjalMies * 3 / inwest) : '~5-20';
+  // Update display
+  document.getElementById('roi-potencjal').textContent = potencjalMies.toLocaleString('pl-PL');
+  document.getElementById('roi-roczny').textContent = potencjalRoczny.toLocaleString('pl-PL');
+  document.getElementById('roi-akc-impact').textContent = Math.round((20/akceptacja)*100);
+  document.getElementById('roi-inwestycja').textContent = typeof inwest === 'number' ? inwest.toLocaleString('pl-PL') + ' zł' : inwest;
+  document.getElementById('roi-okres').textContent = roi;
+  document.getElementById('roi-recommend-name').textContent = rec.name;
+  document.getElementById('roi-recommend-reason').textContent = rec.reason;
+  document.getElementById('roi-recommend-cta').dataset.slug = rec.slug;
+ };
+ window.dopROIOpenRec = function(){
+  var slug = document.getElementById('roi-recommend-cta').dataset.slug || 'kurs-zarzadzania';
+  showPage(slug);
+ };
+ window.dopROISaveReport = function(){
+  var email = prompt('Podaj email — wyślemy pełny raport PDF z analizą Twojej praktyki:');
+  if (!email || !email.includes('@')) return;
+  var fotele = document.getElementById('roi-fotele').value;
+  var przychod = document.getElementById('roi-przychod').value;
+  var akceptacja = document.getElementById('roi-akceptacja').value;
+  var pacjenci = document.getElementById('roi-pacjenci').value;
+  var rec = document.getElementById('roi-recommend-name').textContent;
+  var potencjal = document.getElementById('roi-potencjal').textContent;
+  fetch(window.DOP_API_ENDPOINT || '/api/lead', {
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({
+    form_id:'newsletter',
+    EMAIL: email,
+    FOTELE: fotele,
+    PRZYCHOD: przychod + '000',
+    AKCEPTACJA: akceptacja + '%',
+    PACJENCI: pacjenci,
+    REKOMENDACJA: rec,
+    POTENCJAL: potencjal,
+    SOURCE: 'roi-calculator'
+   })
+  }).then(function(){
+   if (typeof dopToast === 'function') dopToast('Wysłaliśmy raport — sprawdź skrzynkę za 2-5 min.');
+   else alert('Wysłaliśmy raport — sprawdź skrzynkę.');
+  }).catch(function(){
+   alert('Wystąpił błąd. Spróbuj jeszcze raz lub zadzwoń: 579 774 089');
+  });
+ };
+ // Init
+ setTimeout(dopROICalc, 100);
+})();
+</script>
+
 <!-- FAQ — najczęstsze pytania zanim się zdecydujesz -->
 <section style="background:var(--cream);padding:96px 28px;border-top:1px solid rgba(27,44,79,.08)" id="faq-home">
  <div style="max-width:880px;margin:0 auto">
