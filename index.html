@@ -894,6 +894,13 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   transition:background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
+/* === LEAD MAGNET section === */
+@media(max-width:880px){.lm-grid-resp{grid-template-columns:1fr !important;gap:40px !important}}
+.lm-cover:hover{transform:rotateY(0deg) rotateX(0deg) translateY(-6px) !important}
+#lead-magnet form input:focus{outline:none;border-color:var(--gold) !important}
+#lead-magnet form button[type=submit]:hover{background:var(--hot) !important;transform:translateY(-1px)}
+#lead-magnet form input::placeholder{color:rgba(255,255,255,.4)}
+
 /* === FLOATING CTA — desktop only, 15 min konsultacja === */
 .float-cta-15{
   position:fixed;
@@ -9163,6 +9170,67 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  </div>
 </section>
 
+<!-- LEAD MAGNET — Darmowy PDF -->
+<section id="lead-magnet" style="background:linear-gradient(135deg,var(--dark2) 0%,var(--black) 60%,var(--dark2) 100%);padding:90px 28px;color:#fff;position:relative;overflow:hidden">
+ <!-- Decorative gold radial -->
+ <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,162,74,.2),transparent 70%);border-radius:50%;pointer-events:none"></div>
+ <div style="position:absolute;bottom:-150px;left:-100px;width:380px;height:380px;background:radial-gradient(circle,rgba(201,162,74,.12),transparent 70%);border-radius:50%;pointer-events:none"></div>
+
+ <div style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative" class="lm-grid-resp">
+
+  <!-- LEFT: PDF mockup -->
+  <div style="display:flex;justify-content:center;perspective:1200px">
+   <div class="lm-cover" style="width:100%;max-width:340px;aspect-ratio:3/4;background:linear-gradient(135deg,#15243F 0%,#0F1B30 100%);border:1px solid rgba(201,162,74,.35);border-radius:8px;padding:36px 30px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 40px 80px -20px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05) inset;transform:rotateY(-8deg) rotateX(2deg);transition:transform .4s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden">
+    <!-- Gold ribbon -->
+    <div style="position:absolute;top:18px;right:-32px;background:var(--gold);color:#fff;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 36px;transform:rotate(35deg);box-shadow:0 4px 12px -4px rgba(0,0,0,.3)">Darmowy</div>
+    <!-- Top -->
+    <div>
+     <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px">E-book DOP · 24 strony</div>
+     <div style="width:34px;height:2px;background:var(--gold);margin-bottom:18px"></div>
+     <h3 style="font-family:var(--display);font-size:30px;line-height:1.05;color:#fff;margin-bottom:14px">10 błędów,<br>które zabijają<br>akceptację planów<br>leczenia</h3>
+     <p style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Analiza 462 praktyk · konkretne taktyki naprawcze · case studies z gabinetów</p>
+    </div>
+    <!-- Bottom -->
+    <div style="display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)">
+     <div style="width:42px;height:42px;border-radius:50%;background:url('https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp') center 20%/cover;flex-shrink:0;border:1.5px solid var(--gold)"></div>
+     <div>
+      <div style="font-size:11px;color:#fff;font-weight:700">Michał Katarzyński</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.5)">Autor systemu DOP · 14+ lat</div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div>
+   <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:14px;padding:5px 12px;background:rgba(201,162,74,.1);border:1px solid rgba(201,162,74,.25);border-radius:20px">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    Pobierz natychmiast · bez logowania
+   </div>
+   <h2 style="font-family:var(--display);font-size:clamp(34px,4vw,52px);line-height:1.02;color:#fff;margin-bottom:14px">10 błędów, przez które<br>pacjenci <em style="color:var(--hot)">nie kupują</em><br>Twoich planów</h2>
+   <p style="font-size:17px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:28px;max-width:520px">24-stronicowy PDF, w którym Michał pokazuje konkretne błędy w konsultacjach i pierwszych rozmowach z pacjentem. Każdy błąd ma diagnozę, przykład z gabinetu i konkretną poprawkę.</p>
+
+   <ul style="list-style:none;padding:0;margin:0 0 28px;display:grid;gap:10px">
+    <li style="display:flex;align-items:start;gap:10px;font-size:14px;color:rgba(255,255,255,.85)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hot)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>10 błędów + 10 konkretnych poprawek</li>
+    <li style="display:flex;align-items:start;gap:10px;font-size:14px;color:rgba(255,255,255,.85)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hot)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>3 case studies z polskich gabinetów</li>
+    <li style="display:flex;align-items:start;gap:10px;font-size:14px;color:rgba(255,255,255,.85)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hot)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Checklist do wydruku — do gabinetu</li>
+    <li style="display:flex;align-items:start;gap:10px;font-size:14px;color:rgba(255,255,255,.85)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--hot)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Bonus: 5-min nagranie audio dla zespołu</li>
+   </ul>
+
+   <form id="lead-magnet-form" onsubmit="return submitLeadMagnet(event)" style="display:flex;flex-direction:column;gap:10px;max-width:480px">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+     <input type="email" name="email" placeholder="ja@moja-praktyka.pl" required autocomplete="email" style="flex:1;min-width:220px;padding:16px 18px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;color:#fff;font-size:15px;font-family:var(--body);transition:border-color .2s">
+     <button type="submit" style="background:var(--gold);color:#fff;border:none;padding:16px 28px;border-radius:12px;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body);transition:background .2s,transform .15s;white-space:nowrap;display:inline-flex;align-items:center;gap:8px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Pobierz PDF
+     </button>
+    </div>
+    <div style="font-size:11px;color:rgba(255,255,255,.45);line-height:1.5;margin-top:4px">PDF wyślemy na podany email w ciągu 60 sekund. Zgoda RODO, bez spamu. Wypisujesz się jednym klikiem.</div>
+   </form>
+  </div>
+ </div>
+</section>
+
 <!-- COMPARE TABLE — 4 ścieżki side-by-side -->
 <section id="porownaj" style="background:var(--cream);padding:80px 28px;border-top:1px solid rgba(27,44,79,.06)">
  <div style="max-width:var(--max);margin:0 auto">
@@ -11616,6 +11684,30 @@ window.dopPipClose = function(){
 </div>
 
 <script>
+/* ─── Lead magnet form submit ─── */
+window.submitLeadMagnet = function(e){
+ e.preventDefault();
+ var form = e.target;
+ var email = form.querySelector('input[name=email]').value.trim();
+ if (!email) return false;
+ var btn = form.querySelector('button[type=submit]');
+ var originalHtml = btn.innerHTML;
+ btn.disabled = true;
+ btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Wysyłam...';
+ fetch('/api/lead', {
+  method: 'POST',
+  headers: {'Content-Type':'application/json'},
+  body: JSON.stringify({form_id: 'lead-magnet', EMAIL: email, FIRSTNAME: '', SOURCE: 'home-lead-magnet'})
+ }).then(function(r){ return r.json(); }).then(function(){
+  form.innerHTML = '<div style="background:rgba(58,140,92,.15);border:1.5px solid #3a8c5c;border-radius:12px;padding:20px;color:#fff;display:flex;align-items:start;gap:14px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#7fd4a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><div style="font-family:var(--display);font-size:22px;color:#fff;margin-bottom:4px">PDF jest w drodze!</div><div style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.5">Sprawdź skrzynkę <strong>' + email + '</strong> w ciągu 60 sekund. Jeśli nie widzisz — zajrzyj do folderu &quot;Promocje&quot; lub &quot;Spam&quot;.</div></div></div>';
+ }).catch(function(){
+  btn.disabled = false;
+  btn.innerHTML = originalHtml;
+  alert('Coś poszło nie tak. Spróbuj jeszcze raz lub napisz na biuro@doskonalaobslugapacjenta.pl');
+ });
+ return false;
+};
+
 /* ─── Floating CTA "15 min" (desktop) ─── */
 (function(){
  var KEY = 'dop-float-cta-dismissed-v1';
