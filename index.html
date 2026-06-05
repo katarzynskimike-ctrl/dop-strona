@@ -1520,60 +1520,89 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <h2 style="font-family:var(--display);font-size:clamp(38px,4.5vw,60px);color:var(--black);line-height:.95;margin-bottom:14px">Cztery sposoby pracy z nami</h2>
  <p style="font-size:18px;color:var(--muted);max-width:720px;margin:0 auto 44px">Każdy format prowadzi do tego samego: wspólnego standardu pracy zespołu. Wybierz tempo wdrożenia — od kursu online we własnym tempie po pełną transformację praktyki w jednym ruchu.</p>
 
- <!-- 4 KARTY CENOWE -->
- <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(27,44,79,.08);max-width:1200px;margin:0 auto 36px" class="pricing-grid-resp">
+ <!-- 4 KARTY CENOWE v2 — Visual cover + masterclass treatment -->
+ <div class="pricing2-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1200px;margin:0 auto 36px">
 
- <!-- KARTA 0: AKADEMIA ONLINE -->
- <div onclick="showPage('akademia')" role="button" tabindex="0" class="reveal pricing-card" data-delay="1" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:all .25s cubic-bezier(.22,1,.36,1);cursor:pointer;position:relative" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 48px -20px rgba(27,44,79,.18)'" onmouseout="this.style.borderBottomColor='transparent';this.style.transform='translateY(0)';this.style.boxShadow='none'">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-  <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7)">Akademia Online</div>
-  <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 7px;background:rgba(63,185,80,.18);color:#2f8a4a;text-transform:uppercase;border-radius:3px">462 praktyki</span>
- </div>
- <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">12 kursów video</h3>
- <p style="font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:18px;min-height:50px">Online, własne tempo. 12 m-cy dostępu, cotygodniowe konsultacje. Satysfakcja gwarantowana.</p>
- <div style="margin-bottom:14px">
-  <div style="font-family:var(--display);font-size:30px;color:var(--hot);line-height:1.1">8 990 zł</div>
-  <div style="font-size:13px;color:var(--muted);margin-top:6px">cały komplet · oszczędność 20 160 zł</div>
- </div>
- <button class="btn-ghost-l" onclick="event.stopPropagation();showPage('akademia')" style="margin-top:auto">Zobacz program →</button>
- </div>
+  <!-- KARTA 1: AKADEMIA ONLINE -->
+  <a href="#akademia" onclick="event.preventDefault();showPage('akademia')" role="button" class="pricing2-card" style="text-decoration:none;display:block">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80')">
+    <div class="pricing2-cover-overlay"></div>
+    <span class="pricing2-badge ct-online"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>Online · 462 praktyk</span>
+   </div>
+   <div class="pricing2-body">
+    <div class="pricing2-eyebrow">Akademia Online</div>
+    <h3 class="pricing2-title">12 kursów video<br>+ konsultacje live</h3>
+    <p class="pricing2-sub">Własne tempo, 12 m-cy dostępu, cotygodniowe Q&A z Michałem. Pełna gwarancja zwrotu 30 dni.</p>
+   </div>
+   <div class="pricing2-footer">
+    <div>
+     <div class="pricing2-price">8 990 zł</div>
+     <div class="pricing2-price-sub" style="color:#3a8c5c;font-weight:700">Oszczędzasz 20 160 zł</div>
+    </div>
+    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('akademia')">Zobacz →</button>
+   </div>
+  </a>
 
- <!-- KARTA 1: KURSY OTWARTE -->
- <div class="reveal pricing-card" data-delay="2" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:all .25s cubic-bezier(.22,1,.36,1);position:relative" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 48px -20px rgba(27,44,79,.18)'" onmouseout="this.style.borderBottomColor='transparent';this.style.transform='translateY(0)';this.style.boxShadow='none'">
- <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:10px">Kursy otwarte</div>
- <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">1-2 dni warsztatów</h3>
- <p style="font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:18px;min-height:50px">Stacjonarnie w Warszawie. Sprawdzone standardy, system z dyskusją i warsztatami.</p>
- <div style="margin-bottom:14px">
- <div style="font-family:var(--display);font-size:30px;color:var(--hot);line-height:1.1">od 1490 zł <span style="font-size:14px;color:var(--muted);font-family:var(--body);font-style:normal">we wczesnej rejestracji</span></div>
- <div style="font-size:13px;color:var(--muted);margin-top:6px">cena zależy od wybranego szkolenia</div>
- </div>
- <button class="btn-ghost-l" onclick="showPage('kalendarz')" style="margin-top:auto">Wybierz szkolenie dla siebie →</button>
- </div>
+  <!-- KARTA 2: KURSY OTWARTE -->
+  <a href="#kalendarz" onclick="event.preventDefault();showPage('kalendarz')" role="button" class="pricing2-card" style="text-decoration:none;display:block">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w800')">
+    <div class="pricing2-cover-overlay"></div>
+    <span class="pricing2-badge ct-stacj"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>Stacjonarne · Warszawa</span>
+   </div>
+   <div class="pricing2-body">
+    <div class="pricing2-eyebrow">Kursy otwarte</div>
+    <h3 class="pricing2-title">1-2 dni intensywne<br>warsztaty</h3>
+    <p class="pricing2-sub">Mała grupa, 70% ćwiczeń, system z dyskusją i case studies. 7 kursów w aktualnej edycji.</p>
+   </div>
+   <div class="pricing2-footer">
+    <div>
+     <div class="pricing2-price">od 1 690 zł</div>
+     <div class="pricing2-price-sub">/ osoba · faktura VAT</div>
+    </div>
+    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('kalendarz')">Kalendarz →</button>
+   </div>
+  </a>
 
- <!-- KARTA 2 (FEATURED): IN-HOUSE — wycena indywidualna -->
- <div class="reveal pricing-card pricing-featured" data-delay="3" style="background:var(--cream2);padding:32px 26px;display:flex;flex-direction:column;text-align:left;border:1px solid var(--gold);border-bottom:3px solid var(--gold);position:relative;transition:all .25s cubic-bezier(.22,1,.36,1);transform:scale(1.02)" onmouseover="this.style.transform='scale(1.04) translateY(-6px)';this.style.boxShadow='0 32px 64px -24px rgba(201,162,74,.4)'" onmouseout="this.style.transform='scale(1.02)';this.style.boxShadow='none'">
- <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:10px;font-weight:800;letter-spacing:.12em;padding:5px 14px;text-transform:uppercase;white-space:nowrap">★ Najlepiej oceniany</div>
- <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;margin-top:8px">Szkolenie zamknięte</div>
- <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">U Ciebie, dla Twojego zespołu</h3>
- <p style="font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:18px;min-height:50px">In-house w Twojej praktyce. Cały zespół naraz: lekarze, higienistki, recepcja. Adaptacja do specyfiki.</p>
- <div style="margin-bottom:14px">
- <div style="font-family:var(--display);font-size:30px;color:var(--hot);line-height:1.1">Wycena indywidualna</div>
- <div style="font-size:13px;color:var(--muted);margin-top:6px">Po kontakcie i ustaleniu zakresu współpracy</div>
- </div>
- <button class="btn-gold" onclick="showPage('kurs-zamkniety-wl')" style="margin-top:auto">Zobacz program →</button>
- </div>
+  <!-- KARTA 3 (FEATURED): IN-HOUSE -->
+  <a href="#kurs-zamkniety-wl" onclick="event.preventDefault();showPage('kurs-zamkniety-wl')" role="button" class="pricing2-card pricing2-featured" style="text-decoration:none;display:block">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.5),rgba(10,19,34,.15)),url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80')">
+    <div class="pricing2-cover-overlay"></div>
+    <span class="pricing2-badge-featured"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>Najlepiej oceniany</span>
+   </div>
+   <div class="pricing2-body">
+    <div class="pricing2-eyebrow" style="color:var(--gold)">Szkolenie zamknięte</div>
+    <h3 class="pricing2-title">U Ciebie · dla<br>całego zespołu</h3>
+    <p class="pricing2-sub">In-house w Twojej praktyce. Cały zespół naraz: lekarze, higienistki, recepcja. Program dopasowany.</p>
+   </div>
+   <div class="pricing2-footer">
+    <div>
+     <div class="pricing2-price">Wycena ind.</div>
+     <div class="pricing2-price-sub">po 15-min rozmowie</div>
+    </div>
+    <button class="pricing2-cta pricing2-cta-gold" onclick="event.stopPropagation();showPage('kurs-zamkniety-wl')">Zobacz →</button>
+   </div>
+  </a>
 
- <!-- KARTA 3: DORADCZY — wycena indywidualna -->
- <div class="reveal pricing-card" data-delay="4" style="background:#FFFFFF;padding:32px 26px;display:flex;flex-direction:column;text-align:left;border-bottom:3px solid transparent;transition:all .25s cubic-bezier(.22,1,.36,1);position:relative" onmouseover="this.style.borderBottomColor='rgba(201,162,74,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 48px -20px rgba(27,44,79,.18)'" onmouseout="this.style.borderBottomColor='transparent';this.style.transform='translateY(0)';this.style.boxShadow='none'">
- <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:10px">Audyt doradczy</div>
- <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:8px">1-on-1 z właścicielem</h3>
- <p style="font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:18px;min-height:50px">Analiza Twojej praktyki, finansów i rozmów. Plan działań na 90 dni. Online lub stacjonarnie.</p>
- <div style="margin-bottom:14px">
- <div style="font-family:var(--display);font-size:30px;color:var(--hot);line-height:1.1">Wycena indywidualna</div>
- <div style="font-size:13px;color:var(--muted);margin-top:6px">Po kontakcie i ustaleniu zakresu współpracy</div>
- </div>
- <button class="btn-ghost-l" onclick="showPage('audyt-doradczy')" style="margin-top:auto">Zobacz szczegóły →</button>
- </div>
+  <!-- KARTA 4: DORADCZY -->
+  <a href="#audyt-doradczy" onclick="event.preventDefault();showPage('audyt-doradczy')" role="button" class="pricing2-card" style="text-decoration:none;display:block">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80')">
+    <div class="pricing2-cover-overlay"></div>
+    <span class="pricing2-badge ct-doc"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>1-on-1 z Michałem</span>
+   </div>
+   <div class="pricing2-body">
+    <div class="pricing2-eyebrow">Audyt doradczy</div>
+    <h3 class="pricing2-title">Analiza praktyki<br>+ plan 90 dni</h3>
+    <p class="pricing2-sub">4-8h spotkanie z Michałem. Twoje liczby, decyzje na miejscu. Online lub stacjonarnie.</p>
+   </div>
+   <div class="pricing2-footer">
+    <div>
+     <div class="pricing2-price">Wycena ind.</div>
+     <div class="pricing2-price-sub">+2,1 mln rekord wzrostu</div>
+    </div>
+    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('audyt-doradczy')">Zobacz →</button>
+   </div>
+  </a>
+
  </div>
  
  <!-- REVERSE RISK - FREE AUDIT -->
@@ -1596,6 +1625,32 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  .pricing-grid-resp{grid-template-columns:1fr!important}
  .reverse-risk-resp{flex-direction:column!important;align-items:stretch!important}
 }
+
+/* === PRICING CARDS v2 — Visual masterclass style === */
+.pricing2-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(27,44,79,.08);box-shadow:0 4px 12px -4px rgba(27,44,79,.06);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1);color:var(--black);display:flex;flex-direction:column;cursor:pointer}
+.pricing2-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px -20px rgba(27,44,79,.25)}
+.pricing2-featured{border:1.5px solid var(--gold);box-shadow:0 8px 24px -8px rgba(201,162,74,.3);transform:scale(1.03)}
+.pricing2-featured:hover{transform:scale(1.05) translateY(-8px);box-shadow:0 32px 64px -20px rgba(201,162,74,.45)}
+.pricing2-cover{position:relative;width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;background-color:var(--dark2);overflow:hidden}
+.pricing2-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.1) 0%,rgba(15,27,48,.5) 100%);pointer-events:none}
+.pricing2-badge{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:14px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(255,255,255,.92);color:var(--black);box-shadow:0 4px 12px -4px rgba(0,0,0,.2);z-index:1}
+.pricing2-badge.ct-online{background:rgba(63,185,80,.95);color:#fff}
+.pricing2-badge.ct-stacj{background:rgba(201,162,74,.95);color:var(--black)}
+.pricing2-badge.ct-doc{background:rgba(80,120,200,.95);color:#fff}
+.pricing2-badge-featured{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:14px;background:rgba(217,181,96,.95);color:var(--black);box-shadow:0 6px 16px -4px rgba(201,162,74,.6);z-index:1}
+.pricing2-body{padding:22px 22px 14px;flex:1;text-align:left}
+.pricing2-eyebrow{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,74,.85);margin-bottom:8px}
+.pricing2-title{font-family:var(--display);font-size:22px;line-height:1.15;color:var(--black);margin:0 0 12px;font-weight:400;letter-spacing:-.005em;min-height:50px}
+.pricing2-sub{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0;min-height:60px}
+.pricing2-footer{display:flex;align-items:flex-end;justify-content:space-between;padding:14px 22px 20px;border-top:1px solid rgba(27,44,79,.06);gap:10px}
+.pricing2-price{font-family:var(--display);font-size:26px;color:var(--hot);line-height:1;font-style:italic;letter-spacing:-.01em}
+.pricing2-price-sub{font-size:11px;color:var(--muted);margin-top:4px}
+.pricing2-cta{padding:9px 14px;background:transparent;color:var(--black);font-weight:800;font-size:12px;letter-spacing:.05em;text-transform:uppercase;border:1.5px solid rgba(27,44,79,.18);cursor:pointer;border-radius:6px;font-family:var(--body);transition:all .2s;white-space:nowrap;flex-shrink:0}
+.pricing2-cta:hover{border-color:var(--gold);background:var(--gold);color:var(--black)}
+.pricing2-cta-gold{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.pricing2-cta-gold:hover{background:var(--hot);border-color:var(--hot);box-shadow:0 8px 20px -4px rgba(201,162,74,.5)}
+@media(max-width:1100px){.pricing2-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:560px){.pricing2-grid{grid-template-columns:1fr!important}.pricing2-title{min-height:auto}.pricing2-sub{min-height:auto}}
 @media(max-width:860px){
  .dop-contrast-grid{grid-template-columns:1fr!important}
  .problem-cards-resp{grid-template-columns:1fr!important}
