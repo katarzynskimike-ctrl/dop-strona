@@ -14,3 +14,8 @@ status = 200
 
 [functions]
 node_bundler = "esbuild"
+
+# Scheduled Function — DOP Chat tygodniowy raport
+# Pon 06:00 UTC = pon 08:00 CET / 07:00 CEST (lato)
+[functions."chat-report"]
+schedule = "0 6 * * 1"

@@ -9074,6 +9074,256 @@ function dopCookieClose(accepted){
 })();
 </script>
 
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DOP ASYSTENT — chat widget z prawej strony                  -->
+<!-- Zamknięty agent: odpowiada TYLKO na pytania o szkolenia DOP -->
+<!-- Każde pytanie → zapis do Brevo (list "chat_questions")      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<button id="dop-chat-toggle" aria-label="Otwórz asystent DOP" onclick="dopChatToggle()" style="position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:var(--gold);color:var(--black);border:none;cursor:pointer;z-index:97;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 32px -6px rgba(201,162,74,.5);transition:transform .25s,background .15s;font-family:var(--body)" onmouseover="this.style.background='var(--hot)';this.style.transform='scale(1.08)'" onmouseout="this.style.background='var(--gold)';this.style.transform='scale(1)'">
+ <svg id="dop-chat-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+ <svg id="dop-chat-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+ <span id="dop-chat-badge" style="position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid var(--cream);animation:dop-pulse-soft 1.8s ease-in-out infinite">1</span>
+</button>
+
+<div id="dop-chat-panel" aria-hidden="true" style="position:fixed;bottom:96px;right:24px;width:380px;max-width:calc(100vw - 36px);height:560px;max-height:calc(100vh - 140px);background:#fff;border-radius:14px;box-shadow:0 32px 80px -16px rgba(0,0,0,.35);z-index:96;display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(201,162,74,.2);opacity:0;transform:translateY(20px) scale(.96);transition:opacity .3s,transform .3s cubic-bezier(.22,1,.36,1)">
+ <!-- Header -->
+ <div style="background:linear-gradient(135deg,var(--black),var(--dark2));padding:18px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(201,162,74,.18)">
+  <div style="width:42px;height:42px;border-radius:50%;background:url('https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp') center top/cover;border:2px solid rgba(201,162,74,.4);flex-shrink:0"></div>
+  <div style="flex:1;min-width:0">
+   <div style="font-family:var(--display);font-style:italic;font-size:17px;color:#fff;line-height:1">Asystent DOP</div>
+   <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.6);margin-top:3px"><span style="width:6px;height:6px;border-radius:50%;background:#3fb950;display:inline-block;animation:dop-pulse-soft 1.5s infinite"></span>Pomogę wybrać kurs lub audyt</div>
+  </div>
+  <button onclick="dopChatToggle()" aria-label="Zamknij" style="background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;padding:6px;border-radius:4px;transition:background .15s,color .15s" onmouseover="this.style.background='rgba(255,255,255,.1)';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='rgba(255,255,255,.6)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg></button>
+ </div>
+
+ <!-- Messages area -->
+ <div id="dop-chat-messages" style="flex:1;padding:18px;overflow-y:auto;background:linear-gradient(180deg,var(--cream2),var(--cream));display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth"></div>
+
+ <!-- Quick suggestions -->
+ <div id="dop-chat-suggestions" style="padding:0 18px 12px;display:flex;flex-wrap:wrap;gap:6px;background:linear-gradient(180deg,transparent,var(--cream));border-top:1px solid rgba(27,44,79,.06)"></div>
+
+ <!-- Input area -->
+ <div style="padding:14px 16px;background:#fff;border-top:1px solid rgba(27,44,79,.08)">
+  <form onsubmit="event.preventDefault();dopChatSubmit()" style="display:flex;gap:8px;align-items:flex-end">
+   <textarea id="dop-chat-input" placeholder="Zadaj pytanie o kursy DOP…" rows="1" maxlength="500" style="flex:1;border:1px solid rgba(27,44,79,.15);background:var(--cream2);padding:10px 12px;border-radius:8px;font-family:var(--body);font-size:14px;color:var(--black);resize:none;outline:none;line-height:1.4;max-height:80px;transition:border-color .15s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='rgba(27,44,79,.15)'" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();dopChatSubmit();}"></textarea>
+   <button type="submit" aria-label="Wyślij" style="width:40px;height:40px;background:var(--gold);color:var(--black);border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s;flex-shrink:0" onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </form>
+  <div style="font-size:10px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:6px"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Pytania zapisujemy, by tworzyć lepsze materiały (anonimowo, jeśli nie podasz email).</div>
+ </div>
+</div>
+
+<style>
+#dop-chat-panel.open{display:flex;opacity:1;transform:translateY(0) scale(1)}
+.dop-chat-msg{display:flex;gap:8px;max-width:90%}
+.dop-chat-msg.user{align-self:flex-end;flex-direction:row-reverse}
+.dop-chat-msg-bubble{padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5}
+.dop-chat-msg.bot .dop-chat-msg-bubble{background:#fff;border:1px solid rgba(27,44,79,.08);color:var(--black);border-bottom-left-radius:4px;box-shadow:0 4px 12px -4px rgba(27,44,79,.06)}
+.dop-chat-msg.user .dop-chat-msg-bubble{background:var(--gold);color:var(--black);border-bottom-right-radius:4px;font-weight:500}
+.dop-chat-msg-bubble a,.dop-chat-msg-bubble button{display:inline-block;margin-top:6px;padding:6px 12px;background:var(--black);color:var(--hot)!important;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border-radius:4px;border:none;cursor:pointer;transition:background .15s}
+.dop-chat-msg-bubble a:hover,.dop-chat-msg-bubble button:hover{background:var(--dark2)}
+.dop-chat-msg-bubble strong{color:var(--gold);font-weight:700}
+.dop-chat-typing{display:flex;gap:4px;padding:14px}
+.dop-chat-typing span{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:dop-typing 1.2s infinite}
+.dop-chat-typing span:nth-child(2){animation-delay:.2s}
+.dop-chat-typing span:nth-child(3){animation-delay:.4s}
+@keyframes dop-typing{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.dop-chat-suggestion{padding:6px 11px;background:rgba(201,162,74,.1);border:1px solid rgba(201,162,74,.25);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.03em;border-radius:14px;cursor:pointer;font-family:var(--body);transition:background .15s,transform .15s}
+.dop-chat-suggestion:hover{background:rgba(201,162,74,.2);transform:translateY(-1px)}
+@media(max-width:480px){
+ #dop-chat-toggle{bottom:18px;right:18px;width:54px;height:54px}
+ #dop-chat-panel{bottom:84px;right:12px;left:12px;width:auto;max-width:none;height:calc(100vh - 110px)}
+}
+</style>
+
+<script>
+(function(){
+ // KNOWLEDGE BASE — co Asystent DOP wie o aplikacji
+ var KB = [
+  // Kurs zarządzania
+  {patterns:[/kurs zarz[aą]dzania|kursie zarz[aą]dzania|zarz[aą]dza[ćc]|zarz[aą]dzanie|kierowa[ćc]|delegowa[ćc]|przyw[oó]dztwo|menedżer|menedzer|kierownik|szef|kurs dla w[lł]a[śs]cicieli/i], reply:'<strong>Kurs Skutecznego Zarządzania Praktyką Stomatologiczną</strong> — 2-dniowy stacjonarny w Warszawie (Golden Floor). Najbliższa edycja: <strong>18-19 czerwca 2026</strong>. Max 12 osób, 70% ćwiczeń. Cena: <strong>3 997 zł / osoba</strong>. Delegowanie, motywowanie, komunikacja, przywództwo.', cta:{label:'Zobacz program',slug:'kurs-zarzadzania'}},
+  // Akademia
+  {patterns:[/akademia|online|12 kurs[óo]w|video|nagrania|sam tempo|w[lł]asnym tempie|dost[eę]p|miesi[eę]cy|streaming|netflix|kurs online/i], reply:'<strong>Akademia Rentownej Praktyki</strong> — 12 kursów video (30+ h), 12 miesięcy dostępu, cotygodniowe konsultacje live z Michałem, zamknięta grupa FB. Cena: <strong>8 990 zł</strong> (oszczędność 20 160 zł vs kursy osobno). 462 praktyk w Polsce już dołączyło.', cta:{label:'Zobacz Akademię',slug:'akademia'}},
+  // Audyt doradczy 1-on-1
+  {patterns:[/audyt doradcz|1-on-1|1 on 1|rozmowa indywidualna|konsultacj[ai] indywidualna|wycena|indywidualnie|tylko ja/i], reply:'<strong>Audyt doradczy 1-on-1 z Michałem</strong> — 4-8h sesja, Twoje liczby, Twoje case-y, decyzje na miejscu + plan działania na 90 dni. Wycena indywidualna po bezpłatnej 15-min rozmowie. <strong>Rekord: +2,1 mln zł wzrostu rocznego</strong> po wdrożeniu zaleceń.', cta:{label:'Porozmawiajmy 15 min',slug:'audyt-doradczy'}},
+  // Audyt praktyki
+  {patterns:[/audyt praktyki|audyt finansowy|audyt operacyjny|raport|przyjazd do kliniki|stacjonarny audyt|analiza ksi[eę]gi|p&l|kpi/i], reply:'<strong>Audyt operacyjno-finansowy praktyki</strong> — 4-8h spotkanie u Ciebie + raport pisemny w 7 dni (17 stron). Analiza finansów, grafików, rozmów lekarzy i recepcji. Ranking obszarów do zmiany + KPI + plan 90 dni. 190+ audytów od 2012.', cta:{label:'Sample raportu',slug:'audyt-praktyki'}},
+  // Rejestracja
+  {patterns:[/rejestracj|recepcj|telefon|rozm[oó]w[ay] telefoniczn|koordynator|no.?show|ninja|umawiania wizyt|odbiera/i], reply:'2 kursy dla recepcji: <strong>Doskonała Rejestracja cz.1</strong> (1 dzień, 1 690 zł, podstawy) i <strong>Rejestracja Ninja</strong> (1 dzień, 1 690 zł, advanced). Telefon, mail, follow-up, no-show, trudne pytania pacjentów. Pierwsze 30 sek decyduje czy pacjent się zapisze.', cta:{label:'Zobacz dla recepcji',slug:'rejestracja'}},
+  // Higienistki
+  {patterns:[/higien|asystent|recall|wizyta higieni|cz[yż]szczenie|skaling|profilaktyka/i], reply:'<strong>Doskonała Wizyta Higienizacyjna cz.1</strong> — 1 dzień stacjonarnie, 1 790 zł. Standard wizyty który buduje regularność. Pacjenci sami rezerwują wizyty co 6 miesięcy, nie znikają na 18. Magdalena Madalińska: <em>"retencja 41% → 73% po wdrożeniu"</em>.', cta:{label:'Zobacz dla higienistek',slug:'higienistki'}},
+  // Plan leczenia / konsultacja
+  {patterns:[/plan leczeni|konsultacj|akceptacj|prezentacja|kompleksow|pacjent nie decyduje|odk[lł]adaj[ąa]|pomy[śs]l[ęe]|zastanowi[eę]/i], reply:'<strong>Doskonała Konsultacja</strong> (2 dni, 2 690 zł) — pełna struktura 60-min konsultacji + plan leczenia w 2 etapach. <strong>Plan leczenia</strong> (1 dzień, 2 490 zł) — jak prezentować duży plan żeby pacjent zaakceptował. Średnio +18-25% akceptacji po wdrożeniu.', cta:{label:'Programy dla lekarzy',slug:'lekarze'}},
+  // Kurs zamknięty / in-house
+  {patterns:[/zamkni[eę]ty|in.?house|moja klinika|m[oó]j zesp[oó][lł]|w mojej praktyce|na miejscu|dla naszego zespołu|cały zespół|dedykowane|tylko dla nas/i], reply:'<strong>Kurs zamknięty in-house</strong> — szkolenie tylko dla Twojego zespołu, w Twojej praktyce. Program dopasowany do specyfiki, termin do ustalenia. Min. 6 uczestników. Wycena indywidualna. Mamy 3 warianty: dla właścicieli, lekarzy lub recepcji.', cta:{label:'Zobacz kurs zamknięty',slug:'kurs-zamkniety-wl'}},
+  // Kalendarz / kiedy
+  {patterns:[/kalendarz|terminy|kiedy|data|nast[eę]pn[ya]|najbli[zż]sz|harmonogram/i], reply:'7 kursów otwartych w czerwcu 2026: <strong>18-19 czerwca</strong> Kurs Zarządzania, <strong>20</strong> Plan Leczenia, <strong>21</strong> Rejestracja cz.1, <strong>25-26</strong> Doskonała Konsultacja, <strong>27</strong> Doskonała Wizyta Hig, <strong>28</strong> Rejestracja Ninja. Plus Akademia Online — dostęp natychmiast.', cta:{label:'Pełny kalendarz',slug:'kalendarz'}},
+  // Cena / koszty
+  {patterns:[/cen|cennik|koszt|ile|p[lł]ac[ie]|p[lł]atnos[cć]|wycena|tani|drog|drogie|wart[oó][śs]ć/i], reply:'Ceny brutto / osoba: <strong>Kurs Zarządzania 3 997 zł</strong> · Doskonała Konsultacja 2 690 zł · Plan Leczenia 2 490 zł · Wizyta Higieniczna 1 790 zł · Rejestracja cz.1/Ninja 1 690 zł · <strong>Akademia Online 8 990 zł</strong> (12 kursów). Audyty + kurs zamknięty — wycena indywidualna.', cta:{label:'Sprawdź kalendarz',slug:'kalendarz'}},
+  // Faktura / płatność / rata
+  {patterns:[/faktur|VAT|rat[ay]|raln|przelew|p[lł]atno[śs][ćc] dzielona|zap[lł]ata|przedp[lł]ata|proforma/i], reply:'Tak, wystawiamy <strong>faktury VAT</strong> na firmę. Możliwa płatność w <strong>2-3 ratach</strong> (szczegóły indywidualnie). Dla kursów otwartych: faktura proforma w 24h od rejestracji, dostęp po wpłacie. Akademia Online — 30-dniowa gwarancja zwrotu.', cta:{label:'Regulamin szczegółowo',slug:'regulamin'}},
+  // Kto / Michał
+  {patterns:[/kto|micha[lł]|trener|prowadz[ią]c|autor|do[śs]wiadczenie|kwalifik/i], reply:'<strong>Michał Katarzyński</strong> — autor systemu DOP. 14+ lat wyłącznie ze stomatologią. 6000+ przeszkolonych, 220+ szkoleń in-house, 190+ audytów. Współzarządzał praktyką która podwoiła pacjentów w 3 lata. Rada Programowa: Cerkaski, Stankowska, Stankowski, Bakun.', cta:{label:'Rada programowa',slug:'rada'}},
+  // Referencje / opinie
+  {patterns:[/referencj|opini|rekomendacj|co m[oó]wi[aą]|kto poleca|case stud|polec|recenzj/i], reply:'10 pisemnych opinii (Kulik, Lassmann, Drosd, Madalińska, Cegielski, Skrzyszewski, Furyk, Bernatek, Buziewicz, Michał N.C.) + 3 video case studies (NOIR Dental, Royaldental Chorzów, Warsaw Dental Medica keynote) + galeria 30 zdjęć z kursów.', cta:{label:'Wszystkie referencje',slug:'referencje'}},
+  // Bezpłatna rozmowa
+  {patterns:[/bezp[lł]atn|gratis|free|darmow|nic nie p[lł]ac|spr[óo]bow|sprawdzi[ćc]|sprawdz|porozm/i], reply:'Tak — <strong>15-min bezpłatna rozmowa z Michałem</strong>. Sprawdzimy razem czy dany kurs jest dla Ciebie. Jeśli nie pasuje — wskażemy co lepsze, bez ciśnienia. Plus bezpłatny e-book "5 sposobów na rentowność".', cta:{label:'Porozmawiajmy 15 minut',slug:'audyt-doradczy'}},
+  // Wlasciciel/manager
+  {patterns:[/w[lł]a[śs]cic|owner|menedżer|menedzer|zarz[aą]dca|prowadz[eę] klinik/i], reply:'Dla właścicieli i menedżerów mamy 4 ścieżki: <strong>Kurs Zarządzania (3 997 zł)</strong> · <strong>Akademia Online (8 990 zł)</strong> · <strong>Audyt doradczy 1-on-1</strong> · <strong>Kurs zamknięty in-house</strong>. Jeśli nie wiesz od czego zacząć — bezpłatna 15-min rozmowa.', cta:{label:'Programy dla właścicieli',slug:'wlasciciele'}},
+  // Lekarz
+  {patterns:[/lekarz|dentyst|stomatolog|leczy[ćc]|leczę|leczy/i], reply:'Dla lekarzy: <strong>Doskonała Konsultacja (2 690 zł)</strong> · <strong>Plan Leczenia (2 490 zł)</strong> · Akademia Online · Kurs zamknięty. Akceptacja kompleksowych planów leczenia wzrasta średnio 2× po szkoleniu. Brak nacisku, brak tricków sprzedażowych.', cta:{label:'Programy dla lekarzy',slug:'lekarze'}},
+  // Wiedza / blog / ebook
+  {patterns:[/wiedza|blog|artyku[lł]|ebook|e.?book|materia[lł]|do pobrania|pdf|fotelogodzin/i], reply:'Bezpłatny e-book <strong>"5 sposobów na wyższą rentowność praktyki"</strong> (28 stron, PDF) — od razu do pobrania. Blog w nowej odsłonie startuje Q3 2026 (top artykuł: <em>"Fotelogodzina"</em>). W Akademii Online — pełna biblioteka materiałów + arkuszy Excel.', cta:{label:'Blog / e-book',slug:'wiedza'}}
+ ];
+
+ var FALLBACK = 'Nie mam jeszcze dobrej odpowiedzi na to pytanie. <strong>Zostaw email</strong> — Michał odpisze osobiście w ciągu 2 dni roboczych. Albo: ';
+ var FALLBACK_CTA = {label:'Porozmawiajmy 15 minut',slug:'audyt-doradczy'};
+
+ var SUGGESTIONS = ['Ile kosztuje kurs zarządzania?','Co dostaję w Akademii?','Kiedy następny kurs?','Czy są raty?','Dla kogo audyt doradczy?'];
+
+ var openState = false;
+ var greeted = false;
+ var sessionId = 'chat-' + Date.now() + '-' + Math.random().toString(36).slice(2,8);
+ var msgArea = null;
+ var suggArea = null;
+ var input = null;
+ var badge = null;
+
+ function ensure(){
+  msgArea = document.getElementById('dop-chat-messages');
+  suggArea = document.getElementById('dop-chat-suggestions');
+  input = document.getElementById('dop-chat-input');
+  badge = document.getElementById('dop-chat-badge');
+ }
+
+ function addMsg(text, sender, ctaSlug, ctaLabel){
+  ensure();
+  var wrap = document.createElement('div');
+  wrap.className = 'dop-chat-msg ' + sender;
+  var bub = document.createElement('div');
+  bub.className = 'dop-chat-msg-bubble';
+  bub.innerHTML = text;
+  if(ctaSlug && ctaLabel){
+   var btn = document.createElement('button');
+   btn.textContent = ctaLabel + ' →';
+   btn.onclick = function(){ showPage(ctaSlug); dopChatToggle(); };
+   bub.appendChild(document.createElement('br'));
+   bub.appendChild(btn);
+  }
+  wrap.appendChild(bub);
+  msgArea.appendChild(wrap);
+  msgArea.scrollTop = msgArea.scrollHeight;
+ }
+
+ function addTyping(){
+  var t = document.createElement('div');
+  t.className = 'dop-chat-msg bot';
+  t.id = 'dop-chat-typing';
+  var bub = document.createElement('div');
+  bub.className = 'dop-chat-msg-bubble dop-chat-typing';
+  bub.innerHTML = '<span></span><span></span><span></span>';
+  t.appendChild(bub);
+  msgArea.appendChild(t);
+  msgArea.scrollTop = msgArea.scrollHeight;
+ }
+ function removeTyping(){ var t = document.getElementById('dop-chat-typing'); if(t) t.remove(); }
+
+ function answer(q){
+  for(var i=0;i<KB.length;i++){
+   var item = KB[i];
+   for(var p=0;p<item.patterns.length;p++){
+    if(item.patterns[p].test(q)) return {text:item.reply, cta:item.cta};
+   }
+  }
+  return {text:FALLBACK, cta:FALLBACK_CTA};
+ }
+
+ function renderSuggestions(){
+  ensure();
+  suggArea.innerHTML = '';
+  SUGGESTIONS.forEach(function(s){
+   var btn = document.createElement('button');
+   btn.className = 'dop-chat-suggestion';
+   btn.textContent = s;
+   btn.onclick = function(){ input.value = s; dopChatSubmit(); };
+   suggArea.appendChild(btn);
+  });
+ }
+
+ function greet(){
+  if(greeted) return;
+  greeted = true;
+  ensure();
+  addMsg('Cześć! Jestem asystentem DOP. Pomogę Ci wybrać kurs, audyt lub odpowiem na pytania o szkolenia. <strong>O co chcesz zapytać?</strong>', 'bot');
+  renderSuggestions();
+ }
+
+ function saveToBrevo(question, email){
+  // Background save, no UI blocking
+  try{
+   fetch(window.DOP_API_ENDPOINT || '/api/lead', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+     form_id:'chat-question',
+     EMAIL: email || (sessionId + '@chat.dop'),
+     QUESTION: question.substring(0,800),
+     SOURCE: 'chat-widget',
+     SESSION: sessionId,
+     PAGE: window.location.hash || '#home'
+    })
+   }).catch(function(){});
+  }catch(e){}
+ }
+
+ window.dopChatToggle = function(){
+  ensure();
+  var panel = document.getElementById('dop-chat-panel');
+  var iconOpen = document.getElementById('dop-chat-icon-open');
+  var iconClose = document.getElementById('dop-chat-icon-close');
+  openState = !openState;
+  if(openState){
+   panel.classList.add('open');
+   panel.setAttribute('aria-hidden','false');
+   iconOpen.style.display = 'none';
+   iconClose.style.display = 'block';
+   if(badge) badge.style.display = 'none';
+   if(!greeted) greet();
+   setTimeout(function(){ if(input) input.focus(); }, 200);
+  }else{
+   panel.classList.remove('open');
+   panel.setAttribute('aria-hidden','true');
+   iconOpen.style.display = 'block';
+   iconClose.style.display = 'none';
+  }
+ };
+
+ window.dopChatSubmit = function(){
+  ensure();
+  var q = (input.value || '').trim();
+  if(!q) return;
+  addMsg(q.replace(/</g,'&lt;'), 'user');
+  input.value = '';
+  suggArea.innerHTML = '';
+  addTyping();
+  // Heurystyczny response z delay (autentyczność)
+  setTimeout(function(){
+   removeTyping();
+   var ans = answer(q);
+   addMsg(ans.text, 'bot', ans.cta && ans.cta.slug, ans.cta && ans.cta.label);
+   // Save question to Brevo background
+   saveToBrevo(q);
+   // Po pierwszej odpowiedzi pokaż new suggestions
+   setTimeout(renderSuggestions, 300);
+  }, 600 + Math.random()*500);
+ };
+
+ // Hide badge na page-change po greet
+ document.addEventListener('dop:page-change', function(){
+  if(greeted && badge) badge.style.display = 'none';
+ });
+})();
+</script>
+
 <!-- DOP VIDEO MODAL — fullscreen lightbox -->
 <div class="dop-video-modal" id="dop-video-modal" role="dialog" aria-modal="true" aria-labelledby="dop-video-modal-title" onclick="if(event.target===this)dopCloseVideoModal()">
  <div class="dop-video-modal-shell">

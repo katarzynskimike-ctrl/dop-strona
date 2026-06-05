@@ -82,6 +82,11 @@
     "inquiries": {
       "id": 10,
       "name": "Inquiries"
+    },
+    "chat_questions": {
+      "id": 11,
+      "name": "Chat AI — pytania uczestników",
+      "_setup_note": "Utwórz nową listę w Brevo dashboard z ID 11 lub zaktualizuj tutaj po utworzeniu"
     }
   },
   "forms": {
@@ -497,6 +502,35 @@
       },
       "submit_label": "Wyślij →",
       "success_message": "Dziękujemy. Odpowiemy w ciągu 2 dni roboczych."
+    },
+    "chat-question": {
+      "form_id": "chat-question",
+      "list": "chat_questions",
+      "double_opt_in": false,
+      "notification_email": null,
+      "fields": [
+        {
+          "name": "EMAIL",
+          "type": "email",
+          "required": false,
+          "label": "Email (opcjonalnie)",
+          "placeholder": "anna@klinika.pl"
+        },
+        {
+          "name": "QUESTION",
+          "type": "textarea",
+          "required": true,
+          "label": "Twoje pytanie",
+          "placeholder": "Np. dla kogo jest kurs zarządzania?",
+          "max": 1000
+        }
+      ],
+      "hidden": {
+        "SOURCE": "chat-widget",
+        "LEAD_TYPE": "CHAT_INQUIRY"
+      },
+      "submit_label": "Wyślij →",
+      "success_message": "Dziękujemy. Jeśli zostawiłeś/aś email — Michał odpisze osobiście."
     }
   }
 }
