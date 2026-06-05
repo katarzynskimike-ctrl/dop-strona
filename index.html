@@ -888,6 +888,73 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   transition:background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
+/* === LIVE ACTIVITY TOAST (social proof) === */
+.live-toast{
+  position:fixed;
+  bottom:24px;
+  left:24px;
+  z-index:88;
+  background:#fff;
+  border:1px solid rgba(27,44,79,.08);
+  border-radius:14px;
+  padding:12px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:340px;
+  box-shadow:0 14px 36px -12px rgba(15,27,48,.25);
+  font-family:var(--body);
+  opacity:0;
+  transform:translateY(20px) scale(.92);
+  transition:opacity .35s cubic-bezier(.22,1,.36,1), transform .35s cubic-bezier(.22,1,.36,1);
+  pointer-events:none;
+}
+.live-toast.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.live-toast-avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background-size:cover;
+  background-position:center;
+  background-color:#1B2C4F;
+  flex-shrink:0;
+  position:relative;
+}
+.live-toast-avatar::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:11px;
+  height:11px;
+  background:#3a8c5c;
+  border:2px solid #fff;
+  border-radius:50%;
+  animation: livePulse 2s ease-in-out infinite;
+}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(58,140,92,.5)}50%{box-shadow:0 0 0 6px rgba(58,140,92,0)}}
+.live-toast-body{flex:1;font-size:13px;line-height:1.4;color:var(--black)}
+.live-toast-body strong{color:var(--black);font-weight:700}
+.live-toast-body .meta{font-size:11px;color:var(--muted);margin-top:2px}
+.live-toast-close{
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:rgba(27,44,79,.3);
+  padding:2px;
+  margin:-2px -2px -2px 0;
+  flex-shrink:0;
+  transition:color .15s;
+}
+.live-toast-close:hover{color:var(--black)}
+.dark .live-toast{background:#15243F;color:#F5F3EE;border-color:rgba(245,243,238,.1)}
+.dark .live-toast-body{color:#F5F3EE}
+.dark .live-toast-body .meta{color:rgba(245,243,238,.55)}
+.dark .live-toast-avatar::after{border-color:#15243F}
+@media(max-width:640px){
+  .live-toast{bottom:84px;left:12px;right:12px;max-width:none}
+}
+
 /* === MOBILE STICKY BOTTOM NAV (only <980px) === */
 .mob-bottom-nav{
   display:none;
@@ -10876,6 +10943,85 @@ window.dopPipClose = function(){
   if (e.detail && e.detail.slug) updatePageMeta(e.detail.slug);
  });
 
+ // ── 5a4. Course schema JSON-LD per kurs landing (Google course rich results) ──
+ var COURSE_SCHEMA_DATA = {
+  'kurs-zarzadzania':     { name:'Kurs Skutecznego Zarządzania Praktyką Stomatologiczną', desc:'2-dniowy warsztat stacjonarny w Warszawie. Delegowanie, motywowanie, komunikacja, przywództwo zespołu. Małe grupy max 12 osób, 70% ćwiczeń.', price:3997, mode:'onsite', duration:'P2D' },
+  'akademia':             { name:'Akademia Rentownej Praktyki Stomatologicznej', desc:'12 kursów online video + cotygodniowe konsultacje live z Michałem. 30+ godzin treści, 12 miesięcy dostępu. 462 praktyki w Polsce.', price:8990, mode:'online', duration:'P12M' },
+  'audyt-praktyki':       { name:'Audyt Praktyki — Diagnostyka procesów i raport', desc:'Pełna analiza procesów obsługi pacjenta w praktyce. 17-stronicowy raport z konkretnymi rekomendacjami i planem wdrożenia.', price:4990, mode:'onsite', duration:'P7D' },
+  'audyt-doradczy':       { name:'Audyt Doradczy 1-on-1 z Michałem Katarzyńskim', desc:'4-8h sesja konsultacyjna online lub stacjonarnie. Analiza Twojej praktyki, decyzje na miejscu, plan rozwoju na 90 dni.', price:3997, mode:'blended', duration:'PT8H' },
+  'doskonala-konsultacja':{ name:'Doskonała Konsultacja Stomatologiczna', desc:'Standardyzacja pierwszej wizyty pacjenta. Akceptacja planów leczenia +35% bez zmiany cen. Dla lekarzy dentystów.', price:2690, mode:'onsite', duration:'PT8H' },
+  'doskonala-wizyta-hig': { name:'Doskonała Wizyta Higienistki', desc:'Standard wizyty higienicznej budujący autorytet wobec lekarza. Pacjent wraca sam co 6 miesięcy. Dla higienistek/asystentek.', price:1790, mode:'onsite', duration:'PT8H' },
+  'plan-leczenia':        { name:'Przedstawianie Planów Leczenia', desc:'Komunikacja planu, kwoty i decyzji finansowej. Akceptacja planów akceptowanych +40%. Dla lekarzy i koordynatorów.', price:2490, mode:'onsite', duration:'PT8H' },
+  'komunikacja-bez-nacisku':{ name:'Komunikacja bez nacisku', desc:'Etyczna rozmowa z pacjentem o leczeniu. Bez manipulacji, bez technik sprzedażowych. Dla lekarzy i higienistek.', price:1990, mode:'onsite', duration:'PT8H' },
+  'pacjent-regularny':    { name:'Pacjent Regularny — system recall', desc:'Budowanie systemu, w którym pacjent wraca sam co 6 miesięcy. Dla higienistek i recepcji.', price:1690, mode:'onsite', duration:'PT8H' },
+  'zwiekszanie-rentownosci':{ name:'Zwiększanie Rentowności Praktyki Stomatologicznej', desc:'Audyt finansowy + plan wzrostu rentowności w 90 dni. Dla właścicieli i menedżerów.', price:null, mode:'blended', duration:'P3M' },
+  'rejestracja-cz1':      { name:'Doskonała Rejestracja cz. 1 — Fundament', desc:'Bazowy kurs dla recepcji. Pierwsza rozmowa, prowadzenie pacjenta, telefon jako narzędzie. Dla recepcjonistek i koordynatorów.', price:1690, mode:'onsite', duration:'PT8H' },
+  'rejestracja-ninja':    { name:'Rejestracja Ninja — Advanced poziom 2', desc:'Zaawansowane techniki rejestracji. Konwersja zapytań, recall, trudne rozmowy. Wymaga ukończenia Rejestracji cz.1.', price:1690, mode:'onsite', duration:'PT8H' },
+  'kurs-zamkniety-wl':    { name:'Kurs zamknięty in-house dla Właścicieli i zespołu', desc:'Szkolenie w Twojej praktyce. Program dopasowany pod zespół. 1-3 dni, cały zespół jednocześnie.', price:null, mode:'onsite', duration:'P3D' },
+  'kurs-zamkniety-lek':   { name:'Kurs zamknięty in-house dla Lekarzy', desc:'In-house dla zespołu lekarzy dentystów. Komunikacja, konsultacja, plan leczenia. Program dopasowany.', price:null, mode:'onsite', duration:'P2D' },
+  'kurs-zamkniety-rec':   { name:'Kurs zamknięty in-house dla Recepcji', desc:'In-house dla zespołu recepcji. Pierwsza rozmowa, recall, koordynacja. Program dopasowany.', price:null, mode:'onsite', duration:'P2D' }
+ };
+ function renderCourseSchema(slug){
+  var old = document.getElementById('course-jsonld');
+  if (old) old.remove();
+  var data = COURSE_SCHEMA_DATA[slug];
+  if (!data) return;
+  var modeMap = {
+   'online':'OnlineEventAttendanceMode',
+   'onsite':'OfflineEventAttendanceMode',
+   'blended':'MixedEventAttendanceMode'
+  };
+  var schema = {
+   '@context':'https://schema.org',
+   '@type':'Course',
+   'name':data.name,
+   'description':data.desc,
+   'provider':{
+    '@type':'Organization',
+    'name':'Doskonała Obsługa Pacjenta',
+    'sameAs':'https://doskonalaobslugapacjenta.pl'
+   },
+   'instructor':{
+    '@type':'Person',
+    'name':'Michał Katarzyński'
+   },
+   'hasCourseInstance':{
+    '@type':'CourseInstance',
+    'courseMode':data.mode === 'online' ? 'online' : (data.mode === 'blended' ? 'blended' : 'onsite'),
+    'courseWorkload':data.duration
+   }
+  };
+  if (data.price) {
+   schema.offers = {
+    '@type':'Offer',
+    'price':data.price,
+    'priceCurrency':'PLN',
+    'availability':'https://schema.org/InStock',
+    'category':'Paid'
+   };
+  } else {
+   schema.offers = {
+    '@type':'Offer',
+    'priceCurrency':'PLN',
+    'availability':'https://schema.org/InStock',
+    'category':'Quote-based',
+    'description':'Wycena indywidualna po konsultacji'
+   };
+  }
+  var s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.id = 'course-jsonld';
+  s.textContent = JSON.stringify(schema);
+  document.head.appendChild(s);
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug) setTimeout(function(){ renderCourseSchema(e.detail.slug); }, 100);
+ });
+ setTimeout(function(){
+  var ap = document.querySelector('.page.active');
+  if (ap) renderCourseSchema(ap.id.replace('page-',''));
+ }, 700);
+
  // ── 5a3. KURS SIGNATURE — unique badge color + label per kurs landing page ──
  var KURS_SIGNATURE = {
   'kurs-zarzadzania':     { color:'#C9A24A', tag:'FLAGOWY PROGRAM', icon:'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21.02 7 14.14 2 9.27l6.91-1.01z' },
@@ -11349,6 +11495,18 @@ window.dopPipClose = function(){
 })();
 </script>
 
+<!-- LIVE ACTIVITY TOAST -->
+<div class="live-toast" id="live-toast" role="status" aria-live="polite">
+ <div class="live-toast-avatar" id="live-toast-avatar"></div>
+ <div class="live-toast-body">
+  <div id="live-toast-text"></div>
+  <div class="meta" id="live-toast-meta"></div>
+ </div>
+ <button class="live-toast-close" onclick="dismissLiveToast()" aria-label="Zamknij">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+ </button>
+</div>
+
 <!-- MOBILE STICKY BOTTOM NAV -->
 <nav class="mob-bottom-nav" aria-label="Mobile navigation">
  <button onclick="showPage('home')" data-nav="home" aria-label="Strona główna">
@@ -11391,6 +11549,63 @@ window.dopPipClose = function(){
 </div>
 
 <script>
+/* ─── Live activity toast (social proof) ─── */
+(function(){
+ var DISMISS_KEY = 'dop-live-toast-dismissed';
+ var dismissed = false;
+ try { dismissed = !!sessionStorage.getItem(DISMISS_KEY); } catch(e) {}
+ if (dismissed) return;
+
+ var EVENTS = [
+  { name:'Agnieszka K.', city:'Warszawa', action:'zarezerwowała Kurs Zarządzania Praktyką', mins:3, photo:'https://content.app-sources.com/8447014497655194568/dscf4715-1683732366.jpeg?format=webp' },
+  { name:'Maciej D.',   city:'Poznań',   action:'dołączył do Akademii Online', mins:7, photo:'https://content.app-sources.com/8447014497655194568/dr-maciej-drosd.jpg?format=webp' },
+  { name:'Magdalena L.',city:'Kraków',   action:'umówiła audyt doradczy z Michałem', mins:12, photo:'https://content.app-sources.com/8447014497655194568/dr-magdalena-lassmann.jpg?format=webp' },
+  { name:'Łukasz S.',   city:'Gdańsk',   action:'zapisał higienistki na Doskonałą Wizytę', mins:18, photo:'https://content.app-sources.com/8447014497655194568/dscf6189-1683732396.jpeg?format=webp' },
+  { name:'Paulina K.',  city:'Wrocław',  action:'pobrała materiały do Akademii', mins:22, photo:'https://content.app-sources.com/8447014497655194568/dscf5961-1683732395.jpeg?format=webp' },
+  { name:'Tomasz C.',   city:'Łódź',     action:'zapisał zespół na kurs in-house', mins:31, photo:'https://content.app-sources.com/8447014497655194568/dr-tomasz-cerkaski.jpg?format=webp' },
+  { name:'Joanna M.',   city:'Katowice', action:'dołączyła do Akademii Online', mins:38, photo:'https://content.app-sources.com/8447014497655194568/joanna-madalinska.jpg?format=webp' },
+  { name:'Karolina D.', city:'Lublin',   action:'umówiła konsultację 15-min', mins:44, photo:'https://content.app-sources.com/8447014497655194568/dr-karolina-drosd.jpg?format=webp' },
+  { name:'Anna B.',     city:'Białystok',action:'zarezerwowała Rejestrację Ninja', mins:52, photo:'https://content.app-sources.com/8447014497655194568/anna-bakun.jpg?format=webp' },
+  { name:'Michał R.',   city:'Rzeszów',  action:'zapisał recepcję na Rejestrację cz.1', mins:61, photo:'https://content.app-sources.com/8447014497655194568/dscf5878-1683732401.jpeg?format=webp' },
+  { name:'Beata W.',    city:'Bydgoszcz',action:'rozpoczęła Akademię Online', mins:74, photo:'https://content.app-sources.com/8447014497655194568/beata-stankowska.jpg?format=webp' },
+  { name:'Sebastian K.',city:'Toruń',    action:'umówił audyt praktyki', mins:89, photo:'https://content.app-sources.com/8447014497655194568/sebastian-skrzyszewski.jpg?format=webp' }
+ ];
+
+ var toast = document.getElementById('live-toast');
+ var avEl  = document.getElementById('live-toast-avatar');
+ var txtEl = document.getElementById('live-toast-text');
+ var metaEl= document.getElementById('live-toast-meta');
+ if (!toast) return;
+
+ var idx = 0;
+ function pickEvent(){
+  var e = EVENTS[idx % EVENTS.length];
+  idx++;
+  return e;
+ }
+ function showOne(){
+  if (dismissed) return;
+  var e = pickEvent();
+  if (e.photo) avEl.style.backgroundImage = "url('" + e.photo + "')";
+  txtEl.innerHTML = '<strong>' + e.name + '</strong> z ' + e.city + ' ' + e.action;
+  var mins = e.mins;
+  var when = mins < 60 ? (mins + ' min temu') : (Math.floor(mins/60) + 'h temu');
+  metaEl.textContent = when;
+  toast.classList.add('show');
+  // Hide po 5.5s
+  setTimeout(function(){ toast.classList.remove('show'); }, 5500);
+  // Next w 25-45s
+  if (!dismissed) setTimeout(showOne, 25000 + Math.random()*20000);
+ }
+ window.dismissLiveToast = function(){
+  dismissed = true;
+  toast.classList.remove('show');
+  try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch(e){}
+ };
+ // First toast po 12s
+ setTimeout(showOne, 12000);
+})();
+
 /* ─── Mobile bottom nav — active state sync ─── */
 (function(){
  function updateMobNav(slug){
