@@ -9074,6 +9074,107 @@ function dopCookieClose(accepted){
 })();
 </script>
 
+<!-- RECENT ACTIVITY FEED — floating bottom-left social proof -->
+<div id="dop-activity-feed" aria-live="polite" aria-atomic="true" style="position:fixed;bottom:24px;left:24px;max-width:320px;background:#fff;border:1px solid rgba(201,162,74,.25);border-radius:10px;padding:14px 16px;box-shadow:0 16px 40px -12px rgba(27,44,79,.2);z-index:93;opacity:0;transform:translateY(20px);transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1);visibility:hidden;display:flex;align-items:center;gap:12px;font-family:var(--body)">
+ <div id="dop-activity-avatar" style="width:36px;height:36px;border-radius:50%;background:rgba(201,162,74,.15);background-size:cover;background-position:center;flex-shrink:0;border:2px solid rgba(201,162,74,.3)"></div>
+ <div style="flex:1;min-width:0">
+  <div id="dop-activity-text" style="font-size:13px;color:var(--black);line-height:1.4"></div>
+  <div style="font-size:10px;color:var(--muted);margin-top:3px;display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:#3fb950;display:inline-block;animation:dop-pulse-soft 1.5s infinite"></span><span id="dop-activity-time"></span></div>
+ </div>
+ <button onclick="dopActivityClose()" aria-label="Zamknij" style="background:none;border:none;color:rgba(27,44,79,.4);cursor:pointer;padding:2px;font-size:14px;line-height:1" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(27,44,79,.4)'">×</button>
+</div>
+<style>
+#dop-activity-feed.visible{opacity:1;transform:translateY(0);visibility:visible}
+@media(max-width:480px){#dop-activity-feed{left:12px;right:12px;max-width:none;bottom:80px}}
+</style>
+<script>
+(function(){
+ var ACTIVITY = [
+  {name:'Anna', city:'Warszawa', action:'zapisała się na Kurs Zarządzania', avatar:'1XrqH4cTtgWzrB_jKE1nYgeulKrgAHXbb'},
+  {name:'Piotr', city:'Kraków', action:'pobrał e-book "5 sposobów rentowności"', avatar:'1f6wv1aQxlpGY-2SVy2JD2HJB0xZtR_O0'},
+  {name:'Marta', city:'Poznań', action:'zarezerwowała 15-min rozmowę', avatar:'1c9svBAuR1y05rCGszemhS4pUjEdlYoVK'},
+  {name:'Tomasz', city:'Gdańsk', action:'kupił dostęp do Akademii Online', avatar:'1GCmFCwnKVB9H-zfAbIVSN8gAvb2_i5YC'},
+  {name:'Katarzyna', city:'Wrocław', action:'zapisała zespół na kurs zamknięty', avatar:'150FbWg9dnNTy74zTF9T8qbghSX6COQum'},
+  {name:'Łukasz', city:'Łódź', action:'zarezerwował Doskonałą Konsultację', avatar:'1vWWkm_veIV51UwBX5wWG-65tUMWqvyt1'},
+  {name:'Agnieszka', city:'Szczecin', action:'zapisała się na Rejestrację cz.1', avatar:'1qGc0mJITovvEZxfobS_whwM5S87oMoeC'},
+  {name:'Michał', city:'Lublin', action:'zarezerwował audyt doradczy', avatar:'1m2JVtYqyPlnOd2TSqqGe8MGWKG8T0tS-'},
+  {name:'Joanna', city:'Białystok', action:'kupiła Plan Leczenia (1 dzień)', avatar:'1stARESc0dq2Mt9ax-M-S00eXRBrJPK_t'},
+  {name:'Krzysztof', city:'Rzeszów', action:'zapisał się na Wizytę Higienizacyjną', avatar:'1GHM6rPeYCIE6J_3ltggRLxsckLgBO8lt'},
+  {name:'Magdalena', city:'Bydgoszcz', action:'pobrała e-book + zapisała się na newsletter', avatar:'1uTZVK8QvNxT9y5fOwvB1yaCoM9cGowvT'},
+  {name:'Adam', city:'Toruń', action:'wykupił Akademię na 12 miesięcy', avatar:'171DJJyBSKfiSQLE79xaSwUKpwDkVnnpW'}
+ ];
+ var feed = document.getElementById('dop-activity-feed');
+ if(!feed) return;
+ var idx = 0;
+ var dismissed = false;
+ var timeoutId = null;
+ try{ dismissed = sessionStorage.getItem('dop_activity_dismissed') === '1'; }catch(e){}
+ window.dopActivityClose = function(){
+  feed.classList.remove('visible');
+  feed.setAttribute('aria-hidden','true');
+  dismissed = true;
+  try{ sessionStorage.setItem('dop_activity_dismissed','1'); }catch(e){}
+  clearTimeout(timeoutId);
+ };
+ function showNext(){
+  if(dismissed) return;
+  var act = ACTIVITY[idx % ACTIVITY.length];
+  idx++;
+  var avatar = document.getElementById('dop-activity-avatar');
+  var text = document.getElementById('dop-activity-text');
+  var time = document.getElementById('dop-activity-time');
+  if(avatar) avatar.style.backgroundImage = "url('https://lh3.googleusercontent.com/d/" + act.avatar + "=w200')";
+  if(text) text.innerHTML = '<strong style="color:var(--gold)">' + act.name + '</strong> z <strong>' + act.city + '</strong> ' + act.action;
+  var minAgo = Math.floor(Math.random() * 15) + 1;
+  if(time) time.textContent = minAgo + ' min temu · z systemu DOP';
+  feed.classList.add('visible');
+  feed.setAttribute('aria-hidden','false');
+  // Hide po 6 sekundach
+  timeoutId = setTimeout(function(){
+   feed.classList.remove('visible');
+   // Następny po 18-30 sekundach
+   timeoutId = setTimeout(showNext, 18000 + Math.random()*12000);
+  }, 6500);
+ }
+ // Initial start: 8 sekund po load
+ if(!dismissed) setTimeout(showNext, 8000);
+})();
+</script>
+
+<!-- 3D TILT PARALLAX — mouse-track na cards (.tilt-card) -->
+<script>
+(function(){
+ var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if(prefersReduced || !('PointerEvent' in window)) return;
+ // Auto-tag cards: pricing-card, ref-card, cal-card, quote-cards
+ function tagTiltCards(){
+  var selectors = ['.pricing-card','.ref-card','.cal-card.hi','.quote-cards-resp > div'];
+  selectors.forEach(function(s){
+   document.querySelectorAll(s).forEach(function(c){
+    if(!c.dataset.tiltAttached){
+     c.dataset.tiltAttached = '1';
+     c.style.transformStyle = 'preserve-3d';
+     c.style.transition = c.style.transition || 'transform .15s ease-out';
+     c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      var tiltX = -y * 5;
+      var tiltY = x * 5;
+      c.style.transform = 'perspective(800px) rotateX(' + tiltX.toFixed(2) + 'deg) rotateY(' + tiltY.toFixed(2) + 'deg) translateZ(0)';
+     });
+     c.addEventListener('pointerleave', function(){
+      c.style.transform = '';
+     });
+    }
+   });
+  });
+ }
+ setTimeout(tagTiltCards, 600);
+ document.addEventListener('dop:page-change', function(){ setTimeout(tagTiltCards, 300); });
+})();
+</script>
+
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- DOP ASYSTENT — chat widget z prawej strony                  -->
 <!-- Zamknięty agent: odpowiada TYLKO na pytania o szkolenia DOP -->
