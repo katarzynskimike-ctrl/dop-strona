@@ -789,6 +789,56 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:720px){.dop-mob-nav{grid-template-columns:1fr}}
 @media(max-width:980px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problemy-grid-resp{grid-template-columns:1fr 1fr!important}#hero-grid,.help-grid-resp,.author-grid-resp,.invest-grid-resp,.placeholder-grid-resp{grid-template-columns:1fr!important}#decision-card{position:relative!important;top:auto!important}.form-grid-resp{grid-template-columns:1fr!important}}
 
+/* === BREADCRUMB — subtle nav under hero === */
+.dop-breadcrumb{
+  background:rgba(245,243,238,.6);
+  border-bottom:1px solid rgba(27,44,79,.06);
+  padding:10px 28px;
+  font-family:var(--body,'Figtree',sans-serif);
+  position:relative;
+  z-index:5;
+}
+.dop-breadcrumb ol{
+  list-style:none;
+  margin:0 auto;
+  padding:0;
+  max-width:var(--max,1200px);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:0;
+  font-size:12px;
+  letter-spacing:.04em;
+}
+.dop-breadcrumb li{display:inline-flex;align-items:center}
+.dop-breadcrumb a{
+  color:rgba(27,44,79,.6);
+  text-decoration:none;
+  cursor:pointer;
+  font-weight:500;
+  transition:color .15s;
+}
+.dop-breadcrumb a:hover{color:var(--gold,#C9A24A)}
+.dop-breadcrumb .sep{
+  margin:0 8px;
+  color:rgba(27,44,79,.25);
+  font-weight:300;
+}
+.dop-breadcrumb [aria-current="page"]{
+  color:var(--black,#1A1A1A);
+  font-weight:600;
+}
+/* Hero pages bez breadcrumb (home) — selector :first-child catch */
+#page-home > .dop-breadcrumb{display:none}
+/* Granat hero pages — breadcrumb na ciemnym tle też czytelny */
+.dop-breadcrumb + section[style*="background:var(--dark)"],
+.dop-breadcrumb + section[style*="background:#1B2C4F"]{margin-top:0}
+@media(max-width:680px){
+  .dop-breadcrumb{padding:8px 16px}
+  .dop-breadcrumb ol{font-size:11px}
+  .dop-breadcrumb .sep{margin:0 6px}
+}
+
 /* === PHOTO COVER POLISH — pure CSS reveal + ken-burns hover === */
 @keyframes coverFadeIn {
   from { opacity: 0; transform: scale(1.04); }
@@ -10276,6 +10326,92 @@ window.dopPipClose = function(){
  document.addEventListener('dop:page-change', function(e){
   if (e.detail && e.detail.slug) updatePageMeta(e.detail.slug);
  });
+
+ // ── 5a2. Breadcrumb navigation per page (dynamic) ──
+ var BREADCRUMB_MAP = {
+  'home': null,
+  'wlasciciele': [['Strona główna','home']],
+  'lekarze': [['Strona główna','home']],
+  'higienistki': [['Strona główna','home']],
+  'rejestracja': [['Strona główna','home']],
+  'audyty': [['Strona główna','home']],
+  'kalendarz': [['Strona główna','home']],
+  'akademia': [['Strona główna','home']],
+  'wiedza': [['Strona główna','home']],
+  'rada': [['Strona główna','home']],
+  'referencje': [['Strona główna','home']],
+  'kurs-zarzadzania': [['Strona główna','home'],['Kalendarz kursów','kalendarz']],
+  'kurs-zamkniety-wl': [['Strona główna','home'],['Programy dla właścicieli','wlasciciele']],
+  'kurs-zamkniety-lek': [['Strona główna','home'],['Programy dla lekarzy','lekarze']],
+  'kurs-zamkniety-rec': [['Strona główna','home'],['Programy dla rejestracji','rejestracja']],
+  'audyt-praktyki': [['Strona główna','home'],['Audyty','audyty']],
+  'audyt-doradczy': [['Strona główna','home'],['Audyty','audyty']],
+  'doskonala-konsultacja': [['Strona główna','home'],['Programy dla lekarzy','lekarze']],
+  'doskonala-wizyta-hig': [['Strona główna','home'],['Programy dla higienistek','higienistki']],
+  'plan-leczenia': [['Strona główna','home'],['Programy dla lekarzy','lekarze']],
+  'komunikacja-bez-nacisku': [['Strona główna','home'],['Programy dla lekarzy','lekarze']],
+  'pacjent-regularny': [['Strona główna','home'],['Programy dla higienistek','higienistki']],
+  'zwiekszanie-rentownosci': [['Strona główna','home'],['Programy dla właścicieli','wlasciciele']],
+  'rejestracja-cz1': [['Strona główna','home'],['Programy dla rejestracji','rejestracja']],
+  'rejestracja-ninja': [['Strona główna','home'],['Programy dla rejestracji','rejestracja']],
+  'polityka': [['Strona główna','home']],
+  'regulamin': [['Strona główna','home']]
+ };
+ var BREADCRUMB_CURRENT = {
+  'wlasciciele':'Właściciele','lekarze':'Lekarze','higienistki':'Higienistki','rejestracja':'Rejestracja',
+  'audyty':'Audyty','kalendarz':'Kalendarz','akademia':'Akademia Online','wiedza':'Wiedza',
+  'rada':'Rada Programowa','referencje':'Referencje',
+  'kurs-zarzadzania':'Kurs Zarządzania','kurs-zamkniety-wl':'Kurs zamknięty — Właściciele',
+  'kurs-zamkniety-lek':'Kurs zamknięty — Lekarze','kurs-zamkniety-rec':'Kurs zamknięty — Recepcja',
+  'audyt-praktyki':'Audyt Praktyki','audyt-doradczy':'Audyt Doradczy',
+  'doskonala-konsultacja':'Doskonała Konsultacja','doskonala-wizyta-hig':'Doskonała Wizyta Higienistki',
+  'plan-leczenia':'Plan Leczenia','komunikacja-bez-nacisku':'Komunikacja bez nacisku',
+  'pacjent-regularny':'Pacjent Regularny','zwiekszanie-rentownosci':'Zwiększanie Rentowności',
+  'rejestracja-cz1':'Rejestracja cz.1','rejestracja-ninja':'Rejestracja Ninja',
+  'polityka':'Polityka prywatności','regulamin':'Regulamin'
+ };
+ function renderBreadcrumb(slug){
+  // Remove old
+  document.querySelectorAll('.dop-breadcrumb').forEach(function(b){ b.remove(); });
+  var pageEl = document.getElementById('page-' + slug);
+  var crumbs = BREADCRUMB_MAP[slug];
+  if (!pageEl || !crumbs || crumbs.length === 0) return;
+  var current = BREADCRUMB_CURRENT[slug] || '';
+  var html = '<nav class="dop-breadcrumb" aria-label="breadcrumb"><ol>';
+  for (var i=0; i<crumbs.length; i++){
+   html += '<li><a onclick="event.preventDefault();showPage(\'' + crumbs[i][1] + '\')" href="#' + crumbs[i][1] + '">' + crumbs[i][0] + '</a><span class="sep" aria-hidden="true">/</span></li>';
+  }
+  if (current) html += '<li><span aria-current="page">' + current + '</span></li>';
+  html += '</ol></nav>';
+  var wrap = document.createElement('div');
+  wrap.innerHTML = html;
+  pageEl.insertBefore(wrap.firstChild, pageEl.firstChild);
+
+  // JSON-LD BreadcrumbList dla SEO
+  var oldLd = document.getElementById('breadcrumb-jsonld');
+  if (oldLd) oldLd.remove();
+  var items = [];
+  var pos = 1;
+  for (var j=0; j<crumbs.length; j++){
+   items.push({'@type':'ListItem','position':pos++,'name':crumbs[j][0],'item':window.location.origin + '/#' + crumbs[j][1]});
+  }
+  if (current) items.push({'@type':'ListItem','position':pos,'name':current,'item':window.location.origin + '/#' + slug});
+  var ld = document.createElement('script');
+  ld.type = 'application/ld+json';
+  ld.id = 'breadcrumb-jsonld';
+  ld.textContent = JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':items});
+  document.head.appendChild(ld);
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug) setTimeout(function(){ renderBreadcrumb(e.detail.slug); }, 80);
+ });
+ setTimeout(function(){
+  var ap = document.querySelector('.page.active');
+  if (ap) {
+   var slug = ap.id.replace('page-','');
+   renderBreadcrumb(slug);
+  }
+ }, 600);
 
  // ── 5z. FIX page-referencje: wszystkie sekcje opinie+gallery+video są ORPHANS (poza page-divem). Marker + show/hide ──
  function tagRefOrphans(){
