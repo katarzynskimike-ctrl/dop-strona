@@ -789,21 +789,36 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:720px){.dop-mob-nav{grid-template-columns:1fr}}
 @media(max-width:980px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problemy-grid-resp{grid-template-columns:1fr 1fr!important}#hero-grid,.help-grid-resp,.author-grid-resp,.invest-grid-resp,.placeholder-grid-resp{grid-template-columns:1fr!important}#decision-card{position:relative!important;top:auto!important}.form-grid-resp{grid-template-columns:1fr!important}}
 
-/* === PHOTO COVER POLISH — reveal-in + ken-burns zoom hover === */
+/* === PHOTO COVER POLISH — pure CSS reveal + ken-burns hover === */
+@keyframes coverFadeIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
 .paths-photo-cover, .pricing2-cover, .cal2-cover{
   position:relative;
   overflow:hidden;
-  opacity:0;
-  transform:scale(1.04);
-  transition:opacity .9s ease, transform 1.4s cubic-bezier(.22,1,.36,1);
+  animation: coverFadeIn 1.1s cubic-bezier(.22,1,.36,1) both;
+  will-change: transform;
 }
-.paths-photo-cover.cover-revealed, .pricing2-cover.cover-revealed, .cal2-cover.cover-revealed{
-  opacity:1;
-  transform:scale(1);
+/* Stagger w grid */
+.pricing2-grid > *:nth-child(1) .pricing2-cover{animation-delay:0ms}
+.pricing2-grid > *:nth-child(2) .pricing2-cover{animation-delay:120ms}
+.pricing2-grid > *:nth-child(3) .pricing2-cover{animation-delay:240ms}
+.pricing2-grid > *:nth-child(4) .pricing2-cover{animation-delay:360ms}
+.paths-grid-resp > *:nth-child(1) .paths-photo-cover{animation-delay:0ms}
+.paths-grid-resp > *:nth-child(2) .paths-photo-cover{animation-delay:100ms}
+.paths-grid-resp > *:nth-child(3) .paths-photo-cover{animation-delay:200ms}
+.paths-grid-resp > *:nth-child(4) .paths-photo-cover{animation-delay:300ms}
+/* Hover ken-burns */
+.paths-grid-resp > div:hover .paths-photo-cover{transition:transform 8s ease-out; transform:scale(1.05)}
+.pricing2-card:hover .pricing2-cover{transition:transform 8s ease-out; transform:scale(1.04)}
+.cal2-card:hover .cal2-cover{transition:transform 9s ease-out; transform:scale(1.05)}
+@media (prefers-reduced-motion: reduce){
+  .paths-photo-cover, .pricing2-cover, .cal2-cover{animation:none; opacity:1; transform:none}
+  .paths-grid-resp > div:hover .paths-photo-cover,
+  .pricing2-card:hover .pricing2-cover,
+  .cal2-card:hover .cal2-cover{transform:none}
 }
-.paths-grid-resp > div:hover .paths-photo-cover.cover-revealed{transition:transform 8s ease-out, opacity .9s ease; transform:scale(1.05)}
-.pricing2-card:hover .pricing2-cover.cover-revealed{transition:transform 8s ease-out, opacity .9s ease; transform:scale(1.04)}
-.cal2-card:hover .cal2-cover.cover-revealed{transition:transform 9s ease-out, opacity .9s ease; transform:scale(1.05)}
 
 /* === PATHS GRID v2 — visual treatment dla 4 kafelków kursów na person pages === */
 .paths-grid-resp{gap:16px!important;background:transparent!important;padding:0}
@@ -10336,30 +10351,6 @@ window.dopPipClose = function(){
  }
  setTimeout(injectPathsPhotos, 400);
  document.addEventListener('dop:page-change', function(){ setTimeout(injectPathsPhotos, 300); });
-
- // ── 5k. Photo cover reveal-in animation (IntersectionObserver) ──
- var coverIO = null;
- function initCoverReveal(){
-  if (!('IntersectionObserver' in window)) {
-   document.querySelectorAll('.paths-photo-cover, .pricing2-cover, .cal2-cover').forEach(function(el){ el.classList.add('cover-revealed'); });
-   return;
-  }
-  if (!coverIO) {
-   coverIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-     if (en.isIntersecting) {
-      en.target.classList.add('cover-revealed');
-      coverIO.unobserve(en.target);
-     }
-    });
-   }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
-  }
-  document.querySelectorAll('.paths-photo-cover:not(.cover-revealed), .pricing2-cover:not(.cover-revealed), .cal2-cover:not(.cover-revealed)').forEach(function(el){
-   coverIO.observe(el);
-  });
- }
- setTimeout(initCoverReveal, 500);
- document.addEventListener('dop:page-change', function(){ setTimeout(initCoverReveal, 400); });
 
  // ── 5i. Wishlist — save course w localStorage z heart toggle ──
  window.dopWishlist = {
