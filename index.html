@@ -1396,12 +1396,17 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
   <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px" class="problem-cards-resp">
 
    <!-- KARTA 1: WŁAŚCICIELE -->
-   <div onclick="showPage('wlasciciele')" role="button" tabindex="0" class="reveal" data-delay="1" style="background:var(--cream);padding:36px 32px;cursor:pointer;border-top:3px solid var(--gold);border-radius:0 0 6px 6px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,opacity .6s,transform .6s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-     <div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:var(--body)">Właściciele / Menedżerowie</div>
-     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(201,162,74,.14);color:var(--gold);text-transform:uppercase;border-radius:3px">4 zdania</span>
+   <div onclick="showPage('wlasciciele')" role="button" tabindex="0" class="reveal problem2-card" data-delay="1" style="background:#fff;padding:0;cursor:pointer;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(27,44,79,.08);box-shadow:0 4px 12px -4px rgba(27,44,79,.06);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 56px -20px rgba(27,44,79,.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px -4px rgba(27,44,79,.06)'">
+    <div style="display:flex;align-items:center;gap:14px;padding:22px 24px 18px;background:linear-gradient(135deg,rgba(201,162,74,.08),rgba(201,162,74,.02));border-bottom:1px solid rgba(201,162,74,.15)">
+     <div style="width:56px;height:56px;border-radius:50%;background:url('https://content.app-sources.com/s/52327897819285952/uploads/Images/Agnieszka_Kulik2-3818396.jpg?format=webp') center top/cover;flex-shrink:0;border:2px solid rgba(201,162,74,.4);box-shadow:0 6px 16px -4px rgba(27,44,79,.2)"></div>
+     <div style="flex:1;min-width:0">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-family:var(--body);margin-bottom:2px">Właściciele · Menedżerowie</div>
+      <div style="font-size:13px;color:var(--muted);font-style:italic">np. Agnieszka Kulik, Maciej Drosd</div>
+     </div>
+     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(201,162,74,.15);color:var(--gold);text-transform:uppercase;border-radius:3px;flex-shrink:0">4 zdania</span>
     </div>
-    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px">Praktyka rośnie tylko wtedy, gdy jesteś w gabinecie.</h3>
+    <div style="padding:20px 28px 28px;display:flex;flex-direction:column;flex:1">
+    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px;font-style:italic">„Praktyka rośnie tylko wtedy, gdy jesteś w gabinecie."</h3>
     <ul style="list-style:none;display:grid;gap:12px;margin:0 0 24px;padding:0;flex:1">
      <li style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(27,44,79,.7)">
       <span style="color:rgba(201,64,64,.7);font-weight:900;flex-shrink:0;margin-top:2px;font-size:13px">✕</span>
@@ -1420,16 +1425,22 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
       <span>Stworzyłeś sobie miejsce pracy — beze mnie praktyka nie zarabia</span>
      </li>
     </ul>
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08)">Zobacz programy dla właścicieli <span style="font-size:16px;line-height:1">→</span></div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08);margin-top:auto">Zobacz programy dla właścicieli <span style="font-size:16px;line-height:1">→</span></div>
+    </div>
    </div>
 
    <!-- KARTA 2: LEKARZE -->
-   <div onclick="showPage('lekarze')" role="button" tabindex="0" class="reveal" data-delay="2" style="background:var(--cream);padding:36px 32px;cursor:pointer;border-top:3px solid var(--gold);border-radius:0 0 6px 6px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,opacity .6s,transform .6s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-     <div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:var(--body)">Lekarze dentyści</div>
-     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(201,162,74,.14);color:var(--gold);text-transform:uppercase;border-radius:3px">4 zdania</span>
+   <div onclick="showPage('lekarze')" role="button" tabindex="0" class="reveal problem2-card" data-delay="2" style="background:#fff;padding:0;cursor:pointer;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(27,44,79,.08);box-shadow:0 4px 12px -4px rgba(27,44,79,.06);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 56px -20px rgba(27,44,79,.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px -4px rgba(27,44,79,.06)'">
+    <div style="display:flex;align-items:center;gap:14px;padding:22px 24px 18px;background:linear-gradient(135deg,rgba(58,140,92,.08),rgba(58,140,92,.02));border-bottom:1px solid rgba(58,140,92,.18)">
+     <div style="width:56px;height:56px;border-radius:50%;background:url('https://content.app-sources.com/s/52327897819285952/thumbnails/640x480/Images/Maciej_drosd-3817939.jpg?format=webp') center top/cover;flex-shrink:0;border:2px solid rgba(58,140,92,.4);box-shadow:0 6px 16px -4px rgba(27,44,79,.2)"></div>
+     <div style="flex:1;min-width:0">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#3a8c5c;font-family:var(--body);margin-bottom:2px">Lekarze · Dentyści</div>
+      <div style="font-size:13px;color:var(--muted);font-style:italic">np. Łukasz Lassmann, Maciej Drosd</div>
+     </div>
+     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(58,140,92,.15);color:#3a8c5c;text-transform:uppercase;border-radius:3px;flex-shrink:0">4 zdania</span>
     </div>
-    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px">Leczę dobrze. Ale pacjent się nie decyduje.</h3>
+    <div style="padding:20px 28px 28px;display:flex;flex-direction:column;flex:1">
+    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px;font-style:italic">„Leczę dobrze. Ale pacjent się nie decyduje."</h3>
     <ul style="list-style:none;display:grid;gap:12px;margin:0 0 24px;padding:0;flex:1">
      <li style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(27,44,79,.7)">
       <span style="color:rgba(201,64,64,.7);font-weight:900;flex-shrink:0;margin-top:2px;font-size:13px">✕</span>
@@ -1448,16 +1459,22 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
       <span>Pacjent obiecał wrócić i zniknął — bez follow-up</span>
      </li>
     </ul>
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08)">Zobacz programy dla lekarzy <span style="font-size:16px;line-height:1">→</span></div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#3a8c5c;text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08);margin-top:auto">Zobacz programy dla lekarzy <span style="font-size:16px;line-height:1">→</span></div>
+    </div>
    </div>
 
    <!-- KARTA 3: HIGIENISTKI -->
-   <div onclick="showPage('higienistki')" role="button" tabindex="0" class="reveal" data-delay="3" style="background:var(--cream);padding:36px 32px;cursor:pointer;border-top:3px solid var(--gold);border-radius:0 0 6px 6px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,opacity .6s,transform .6s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-     <div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:var(--body)">Higienistki / Asystentki</div>
-     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(201,162,74,.14);color:var(--gold);text-transform:uppercase;border-radius:3px">4 zdania</span>
+   <div onclick="showPage('higienistki')" role="button" tabindex="0" class="reveal problem2-card" data-delay="3" style="background:#fff;padding:0;cursor:pointer;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(27,44,79,.08);box-shadow:0 4px 12px -4px rgba(27,44,79,.06);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 56px -20px rgba(27,44,79,.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px -4px rgba(27,44,79,.06)'">
+    <div style="display:flex;align-items:center;gap:14px;padding:22px 24px 18px;background:linear-gradient(135deg,rgba(168,92,125,.08),rgba(168,92,125,.02));border-bottom:1px solid rgba(168,92,125,.18)">
+     <div style="width:56px;height:56px;border-radius:50%;background:url('https://content.app-sources.com/s/52327897819285952/uploads/Images/Magdalena_Pawelczyk_Madali%C5%84ska-3814699.jpg?format=webp') center top/cover;flex-shrink:0;border:2px solid rgba(168,92,125,.4);box-shadow:0 6px 16px -4px rgba(27,44,79,.2)"></div>
+     <div style="flex:1;min-width:0">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#a85c7d;font-family:var(--body);margin-bottom:2px">Higienistki · Asystentki</div>
+      <div style="font-size:13px;color:var(--muted);font-style:italic">np. Magdalena Madalińska</div>
+     </div>
+     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(168,92,125,.15);color:#a85c7d;text-transform:uppercase;border-radius:3px;flex-shrink:0">4 zdania</span>
     </div>
-    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px">Pacjent dziękuje po higienie. I znika na 18 miesięcy.</h3>
+    <div style="padding:20px 28px 28px;display:flex;flex-direction:column;flex:1">
+    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px;font-style:italic">„Pacjent dziękuje po higienie. I znika na 18 miesięcy."</h3>
     <ul style="list-style:none;display:grid;gap:12px;margin:0 0 24px;padding:0;flex:1">
      <li style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(27,44,79,.7)">
       <span style="color:rgba(201,64,64,.7);font-weight:900;flex-shrink:0;margin-top:2px;font-size:13px">✕</span>
@@ -1476,16 +1493,22 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
       <span>Wstyd mówić o cenie — pacjent widzi „czyszczenie zębów i kieszeni"</span>
      </li>
     </ul>
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08)">Zobacz programy dla higienistek <span style="font-size:16px;line-height:1">→</span></div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#a85c7d;text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08);margin-top:auto">Zobacz programy dla higienistek <span style="font-size:16px;line-height:1">→</span></div>
+    </div>
    </div>
 
    <!-- KARTA 4: REJESTRACJA -->
-   <div onclick="showPage('rejestracja')" role="button" tabindex="0" class="reveal" data-delay="4" style="background:var(--cream);padding:36px 32px;cursor:pointer;border-top:3px solid var(--gold);border-radius:0 0 6px 6px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,opacity .6s,transform .6s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-     <div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:var(--body)">Recepcja / Koordynatorzy</div>
-     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(201,162,74,.14);color:var(--gold);text-transform:uppercase;border-radius:3px">4 zdania</span>
+   <div onclick="showPage('rejestracja')" role="button" tabindex="0" class="reveal problem2-card" data-delay="4" style="background:#fff;padding:0;cursor:pointer;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(27,44,79,.08);box-shadow:0 4px 12px -4px rgba(27,44,79,.06);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 56px -20px rgba(27,44,79,.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px -4px rgba(27,44,79,.06)'">
+    <div style="display:flex;align-items:center;gap:14px;padding:22px 24px 18px;background:linear-gradient(135deg,rgba(80,120,200,.08),rgba(80,120,200,.02));border-bottom:1px solid rgba(80,120,200,.18)">
+     <div style="width:56px;height:56px;border-radius:50%;background:url('https://content.app-sources.com/s/52327897819285952/uploads/Images/Edyta_Bernatek-3819267.jpg?format=webp') center top/cover;flex-shrink:0;border:2px solid rgba(80,120,200,.4);box-shadow:0 6px 16px -4px rgba(27,44,79,.2)"></div>
+     <div style="flex:1;min-width:0">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5078c8;font-family:var(--body);margin-bottom:2px">Recepcja · Koordynatorzy</div>
+      <div style="font-size:13px;color:var(--muted);font-style:italic">np. Edyta Bernatek (Top Dental)</div>
+     </div>
+     <span style="font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 8px;background:rgba(80,120,200,.15);color:#5078c8;text-transform:uppercase;border-radius:3px;flex-shrink:0">4 zdania</span>
     </div>
-    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px">Pacjent dzwoni. Po 30 sekundach szuka innej praktyki.</h3>
+    <div style="padding:20px 28px 28px;display:flex;flex-direction:column;flex:1">
+    <h3 style="font-family:var(--serif);font-size:22px;color:var(--black);line-height:1.25;margin-bottom:20px;font-style:italic">„Pacjent dzwoni. Po 30 sekundach szuka innej praktyki."</h3>
     <ul style="list-style:none;display:grid;gap:12px;margin:0 0 24px;padding:0;flex:1">
      <li style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(27,44,79,.7)">
       <span style="color:rgba(201,64,64,.7);font-weight:900;flex-shrink:0;margin-top:2px;font-size:13px">✕</span>
@@ -1504,7 +1527,8 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
       <span>Zapisuję, ale nie prowadzę — pacjent znika między wizytami</span>
      </li>
     </ul>
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08)">Zobacz programy dla recepcji <span style="font-size:16px;line-height:1">→</span></div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#5078c8;text-transform:uppercase;letter-spacing:.06em;padding-top:18px;border-top:1px solid rgba(27,44,79,.08);margin-top:auto">Zobacz programy dla recepcji <span style="font-size:16px;line-height:1">→</span></div>
+    </div>
    </div>
 
   </div>
