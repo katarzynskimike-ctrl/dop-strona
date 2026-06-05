@@ -789,6 +789,22 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:720px){.dop-mob-nav{grid-template-columns:1fr}}
 @media(max-width:980px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problemy-grid-resp{grid-template-columns:1fr 1fr!important}#hero-grid,.help-grid-resp,.author-grid-resp,.invest-grid-resp,.placeholder-grid-resp{grid-template-columns:1fr!important}#decision-card{position:relative!important;top:auto!important}.form-grid-resp{grid-template-columns:1fr!important}}
 
+/* === PHOTO COVER POLISH — reveal-in + ken-burns zoom hover === */
+.paths-photo-cover, .pricing2-cover, .cal2-cover{
+  position:relative;
+  overflow:hidden;
+  opacity:0;
+  transform:scale(1.04);
+  transition:opacity .9s ease, transform 1.4s cubic-bezier(.22,1,.36,1);
+}
+.paths-photo-cover.cover-revealed, .pricing2-cover.cover-revealed, .cal2-cover.cover-revealed{
+  opacity:1;
+  transform:scale(1);
+}
+.paths-grid-resp > div:hover .paths-photo-cover.cover-revealed{transition:transform 8s ease-out, opacity .9s ease; transform:scale(1.05)}
+.pricing2-card:hover .pricing2-cover.cover-revealed{transition:transform 8s ease-out, opacity .9s ease; transform:scale(1.04)}
+.cal2-card:hover .cal2-cover.cover-revealed{transition:transform 9s ease-out, opacity .9s ease; transform:scale(1.05)}
+
 /* === PATHS GRID v2 — visual treatment dla 4 kafelków kursów na person pages === */
 .paths-grid-resp{gap:16px!important;background:transparent!important;padding:0}
 .paths-grid-resp > div{background:#fff!important;border-radius:14px!important;border:1px solid rgba(27,44,79,.08)!important;box-shadow:0 4px 12px -4px rgba(27,44,79,.06)!important;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1),border-color .2s!important;overflow:hidden;position:relative;padding:0!important}
@@ -1575,7 +1591,8 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
    <div class="pricing2-body">
     <div class="pricing2-eyebrow">Akademia Online</div>
     <h3 class="pricing2-title">12 kursów video<br>+ konsultacje live</h3>
-    <p class="pricing2-sub">Własne tempo, 12 m-cy dostępu, cotygodniowe Q&A z Michałem. Pełna gwarancja zwrotu 30 dni.</p>
+    <div class="pricing2-spec"><span class="pricing2-chip">12 m-cy dostępu</span><span class="pricing2-chip">~16h video</span></div>
+    <p class="pricing2-sub">Własne tempo, cotygodniowe Q&A z Michałem. Pełna gwarancja zwrotu 30 dni.</p>
    </div>
    <div class="pricing2-footer">
     <div>
@@ -1595,6 +1612,7 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
    <div class="pricing2-body">
     <div class="pricing2-eyebrow">Kursy otwarte</div>
     <h3 class="pricing2-title">1-2 dni intensywne<br>warsztaty</h3>
+    <div class="pricing2-spec"><span class="pricing2-chip">Pn–Wt 9–17</span><span class="pricing2-chip">max 16 osób</span></div>
     <p class="pricing2-sub">Mała grupa, 70% ćwiczeń, system z dyskusją i case studies. 7 kursów w aktualnej edycji.</p>
    </div>
    <div class="pricing2-footer">
@@ -1615,7 +1633,8 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
    <div class="pricing2-body">
     <div class="pricing2-eyebrow" style="color:var(--gold)">Szkolenie zamknięte</div>
     <h3 class="pricing2-title">U Ciebie · dla<br>całego zespołu</h3>
-    <p class="pricing2-sub">In-house w Twojej praktyce. Cały zespół naraz: lekarze, higienistki, recepcja. Program dopasowany.</p>
+    <div class="pricing2-spec"><span class="pricing2-chip">In-house · 1-3 dni</span><span class="pricing2-chip">cały zespół</span></div>
+    <p class="pricing2-sub">W Twojej praktyce. Lekarze, higienistki, recepcja naraz. Program dopasowany.</p>
    </div>
    <div class="pricing2-footer">
     <div>
@@ -1635,7 +1654,8 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
    <div class="pricing2-body">
     <div class="pricing2-eyebrow">Audyt doradczy</div>
     <h3 class="pricing2-title">Analiza praktyki<br>+ plan 90 dni</h3>
-    <p class="pricing2-sub">4-8h spotkanie z Michałem. Twoje liczby, decyzje na miejscu. Online lub stacjonarnie.</p>
+    <div class="pricing2-spec"><span class="pricing2-chip">4–8h sesja</span><span class="pricing2-chip">plan 90 dni</span></div>
+    <p class="pricing2-sub">Sesja z Michałem. Twoje liczby, decyzje na miejscu. Online lub stacjonarnie.</p>
    </div>
    <div class="pricing2-footer">
     <div>
@@ -1674,6 +1694,9 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 .pricing2-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px -20px rgba(27,44,79,.25)}
 .pricing2-featured{border:1.5px solid var(--gold);box-shadow:0 8px 24px -8px rgba(201,162,74,.3);transform:scale(1.03)}
 .pricing2-featured:hover{transform:scale(1.05) translateY(-8px);box-shadow:0 32px 64px -20px rgba(201,162,74,.45)}
+.pricing2-spec{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 10px}
+.pricing2-chip{display:inline-flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:.04em;color:#1B2C4F;background:rgba(27,44,79,.07);padding:4px 10px;border-radius:999px;border:1px solid rgba(27,44,79,.08)}
+.pricing2-featured .pricing2-chip{background:rgba(201,162,74,.12);color:#7d6a30;border-color:rgba(201,162,74,.25)}
 .pricing2-cover{position:relative;width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;background-color:var(--dark2);overflow:hidden}
 .pricing2-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.1) 0%,rgba(15,27,48,.5) 100%);pointer-events:none}
 .pricing2-badge{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:14px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(255,255,255,.92);color:var(--black);box-shadow:0 4px 12px -4px rgba(0,0,0,.2);z-index:1}
@@ -10313,6 +10336,30 @@ window.dopPipClose = function(){
  }
  setTimeout(injectPathsPhotos, 400);
  document.addEventListener('dop:page-change', function(){ setTimeout(injectPathsPhotos, 300); });
+
+ // ── 5k. Photo cover reveal-in animation (IntersectionObserver) ──
+ var coverIO = null;
+ function initCoverReveal(){
+  if (!('IntersectionObserver' in window)) {
+   document.querySelectorAll('.paths-photo-cover, .pricing2-cover, .cal2-cover').forEach(function(el){ el.classList.add('cover-revealed'); });
+   return;
+  }
+  if (!coverIO) {
+   coverIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+     if (en.isIntersecting) {
+      en.target.classList.add('cover-revealed');
+      coverIO.unobserve(en.target);
+     }
+    });
+   }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+  }
+  document.querySelectorAll('.paths-photo-cover:not(.cover-revealed), .pricing2-cover:not(.cover-revealed), .cal2-cover:not(.cover-revealed)').forEach(function(el){
+   coverIO.observe(el);
+  });
+ }
+ setTimeout(initCoverReveal, 500);
+ document.addEventListener('dop:page-change', function(){ setTimeout(initCoverReveal, 400); });
 
  // ── 5i. Wishlist — save course w localStorage z heart toggle ──
  window.dopWishlist = {
