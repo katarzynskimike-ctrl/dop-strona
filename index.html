@@ -789,6 +789,59 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:720px){.dop-mob-nav{grid-template-columns:1fr}}
 @media(max-width:980px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problemy-grid-resp{grid-template-columns:1fr 1fr!important}#hero-grid,.help-grid-resp,.author-grid-resp,.invest-grid-resp,.placeholder-grid-resp{grid-template-columns:1fr!important}#decision-card{position:relative!important;top:auto!important}.form-grid-resp{grid-template-columns:1fr!important}}
 
+/* === KURS SIGNATURE — unique ribbon + floating badge per kurs landing === */
+.kurs-sig-ribbon{
+  width:100%;
+  height:4px;
+  position:relative;
+  z-index:6;
+  box-shadow:0 1px 0 rgba(0,0,0,.04);
+}
+.kurs-sig-badge{
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1.5px solid;
+  border-radius:999px;
+  padding:6px 14px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-family:var(--body,'Figtree',sans-serif);
+  box-shadow:0 6px 20px -8px rgba(0,0,0,.15);
+  z-index:10;
+  animation: sigBadgePulse 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes sigBadgePulse {
+  0%, 100% { transform: scale(1); box-shadow:0 6px 20px -8px rgba(0,0,0,.15); }
+  50% { transform: scale(1.03); box-shadow:0 10px 28px -8px rgba(0,0,0,.22); }
+}
+.kurs-sig-badge svg{flex-shrink:0}
+@media(max-width:680px){
+  .kurs-sig-badge{
+    top:12px;
+    right:12px;
+    font-size:9px;
+    padding:5px 10px;
+    letter-spacing:.08em;
+  }
+}
+@media(max-width:420px){
+  .kurs-sig-badge span{display:none}
+  .kurs-sig-badge{padding:8px;border-radius:50%}
+}
+@media (prefers-reduced-motion: reduce){
+  .kurs-sig-badge{animation:none}
+}
+
 /* === BREADCRUMB — subtle nav under hero === */
 .dop-breadcrumb{
   background:rgba(245,243,238,.6);
@@ -10326,6 +10379,61 @@ window.dopPipClose = function(){
  document.addEventListener('dop:page-change', function(e){
   if (e.detail && e.detail.slug) updatePageMeta(e.detail.slug);
  });
+
+ // ── 5a3. KURS SIGNATURE — unique badge color + label per kurs landing page ──
+ var KURS_SIGNATURE = {
+  'kurs-zarzadzania':     { color:'#C9A24A', tag:'FLAGOWY PROGRAM', icon:'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21.02 7 14.14 2 9.27l6.91-1.01z' },
+  'akademia':             { color:'#0EA5A4', tag:'NAJBARDZIEJ KOMPLEKSOWY', icon:'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z' },
+  'audyt-praktyki':       { color:'#8B5CF6', tag:'DIAGNOSTYKA + RAPORT', icon:'M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 4h6a1 1 0 0 1 1 1v2H8V5a1 1 0 0 1 1-1z' },
+  'audyt-doradczy':       { color:'#C9A24A', tag:'1-ON-1 Z MICHAŁEM', icon:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M9 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM16 3.13a4 4 0 0 1 0 7.75' },
+  'doskonala-konsultacja':{ color:'#10B981', tag:'WYŻSZA AKCEPTACJA', icon:'M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3' },
+  'doskonala-wizyta-hig': { color:'#14B8A6', tag:'STANDARD WIZYTY HIG.', icon:'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z' },
+  'plan-leczenia':        { color:'#F43F5E', tag:'PLAN AKCEPTOWANY', icon:'M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11' },
+  'komunikacja-bez-nacisku':{ color:'#6366F1', tag:'BEZ MANIPULACJI', icon:'M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z' },
+  'pacjent-regularny':    { color:'#06B6D4', tag:'RECALL CO 6 MIESIĘCY', icon:'M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15' },
+  'zwiekszanie-rentownosci':{ color:'#D97706', tag:'ROI W 90 DNIACH', icon:'M3 3v18h18M7 14l4-4 4 4 5-5' },
+  'rejestracja-cz1':      { color:'#3B82F6', tag:'FUNDAMENT RECEPCJI', icon:'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10' },
+  'rejestracja-ninja':    { color:'#EF4444', tag:'ADVANCED · POZIOM 2', icon:'M13 2L3 14h9l-1 8 10-12h-9z' },
+  'kurs-zamkniety-wl':    { color:'#1B2C4F', tag:'IN-HOUSE · ZESPÓŁ', icon:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75' },
+  'kurs-zamkniety-lek':   { color:'#1B2C4F', tag:'IN-HOUSE · LEKARZE', icon:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75' },
+  'kurs-zamkniety-rec':   { color:'#1B2C4F', tag:'IN-HOUSE · RECEPCJA', icon:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75' }
+ };
+ function renderKursSignature(slug){
+  // Cleanup
+  document.querySelectorAll('.kurs-sig-ribbon, .kurs-sig-badge').forEach(function(b){ b.remove(); });
+  document.body.removeAttribute('data-kurs-sig');
+  var sig = KURS_SIGNATURE[slug];
+  if (!sig) return;
+  var pageEl = document.getElementById('page-' + slug);
+  if (!pageEl) return;
+  // Ribbon (4px top of page, color)
+  var ribbon = document.createElement('div');
+  ribbon.className = 'kurs-sig-ribbon';
+  ribbon.style.background = 'linear-gradient(90deg,' + sig.color + ',' + sig.color + 'CC)';
+  // Insert PO breadcrumb (jeśli istnieje) lub na pierwszej pozycji
+  var bc = pageEl.querySelector('.dop-breadcrumb');
+  if (bc) bc.parentNode.insertBefore(ribbon, bc.nextSibling);
+  else pageEl.insertBefore(ribbon, pageEl.firstChild);
+  // Floating badge w prawym górnym hero
+  var hero = pageEl.querySelector('section');
+  if (hero) {
+   var badge = document.createElement('div');
+   badge.className = 'kurs-sig-badge';
+   badge.style.borderColor = sig.color;
+   badge.style.color = sig.color;
+   badge.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + sig.icon + '"/></svg><span>' + sig.tag + '</span>';
+   hero.style.position = hero.style.position || 'relative';
+   hero.appendChild(badge);
+  }
+  document.body.setAttribute('data-kurs-sig', slug);
+ }
+ document.addEventListener('dop:page-change', function(e){
+  if (e.detail && e.detail.slug) setTimeout(function(){ renderKursSignature(e.detail.slug); }, 100);
+ });
+ setTimeout(function(){
+  var ap = document.querySelector('.page.active');
+  if (ap) renderKursSignature(ap.id.replace('page-',''));
+ }, 700);
 
  // ── 5a2. Breadcrumb navigation per page (dynamic) ──
  var BREADCRUMB_MAP = {
