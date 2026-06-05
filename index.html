@@ -102,6 +102,12 @@ if('serviceWorker' in navigator){
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://content.app-sources.com">
+<link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
+<link rel="dns-prefetch" href="https://www.youtube.com">
+<link rel="dns-prefetch" href="https://i.ytimg.com">
+<link rel="dns-prefetch" href="https://api.brevo.com">
+<!-- Critical LCP: portret Michała w hero — preload for faster paint -->
+<link rel="preload" as="image" href="https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -887,6 +893,69 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   transition:background-color .3s ease, color .3s ease, border-color .3s ease;
 }
+
+/* === FLOATING CTA — desktop only, 15 min konsultacja === */
+.float-cta-15{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:85;
+  display:none;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg,#C9A24A 0%,#D9B560 100%);
+  color:#fff;
+  padding:14px 22px 14px 18px;
+  border-radius:60px;
+  border:none;
+  cursor:pointer;
+  font-family:var(--body);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.02em;
+  box-shadow:0 14px 36px -12px rgba(201,162,74,.5),0 4px 12px -4px rgba(0,0,0,.2);
+  transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s;
+  text-decoration:none;
+  animation: floatCtaIn .5s cubic-bezier(.22,1,.36,1);
+}
+@keyframes floatCtaIn{from{opacity:0;transform:translateY(20px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}
+.float-cta-15:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 44px -12px rgba(201,162,74,.6),0 6px 16px -4px rgba(0,0,0,.25)}
+.float-cta-15 .dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#fff;
+  position:relative;
+}
+.float-cta-15 .dot::after{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:50%;
+  background:rgba(255,255,255,.5);
+  animation: floatCtaPulse 2s ease-out infinite;
+}
+@keyframes floatCtaPulse{0%{transform:scale(.5);opacity:.7}100%{transform:scale(2);opacity:0}}
+.float-cta-15 .close-x{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  margin-left:6px;
+  margin-right:-8px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  cursor:pointer;
+  transition:background .15s;
+}
+.float-cta-15 .close-x:hover{background:rgba(255,255,255,.3)}
+@media(min-width:981px){
+  .float-cta-15.show{display:inline-flex}
+}
+.dark .float-cta-15{box-shadow:0 14px 36px -12px rgba(201,162,74,.55),0 4px 12px -4px rgba(0,0,0,.5)}
 
 /* === LIVE ACTIVITY TOAST (social proof) === */
 .live-toast{
@@ -11484,6 +11553,15 @@ window.dopPipClose = function(){
 })();
 </script>
 
+<!-- FLOATING CTA — 15 min konsultacja (desktop) -->
+<button class="float-cta-15" id="float-cta-15" onclick="openFloatCta(event)" aria-label="Bezpłatna 15-minutowa konsultacja z Michałem">
+ <span class="dot"></span>
+ <span>Porozmawiajmy <strong>15 min</strong></span>
+ <span class="close-x" onclick="event.stopPropagation();dismissFloatCta()" role="button" aria-label="Schowaj">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+ </span>
+</button>
+
 <!-- LIVE ACTIVITY TOAST -->
 <div class="live-toast" id="live-toast" role="status" aria-live="polite">
  <div class="live-toast-avatar" id="live-toast-avatar"></div>
@@ -11538,6 +11616,26 @@ window.dopPipClose = function(){
 </div>
 
 <script>
+/* ─── Floating CTA "15 min" (desktop) ─── */
+(function(){
+ var KEY = 'dop-float-cta-dismissed-v1';
+ var btn = document.getElementById('float-cta-15');
+ if (!btn) return;
+ try { if (sessionStorage.getItem(KEY)) return; } catch(e) {}
+ // Show po 18s
+ setTimeout(function(){
+  if (window.innerWidth >= 981) btn.classList.add('show');
+ }, 18000);
+ window.openFloatCta = function(e){
+  if (typeof showPage === 'function') showPage('audyt-doradczy');
+  btn.classList.remove('show');
+ };
+ window.dismissFloatCta = function(){
+  btn.classList.remove('show');
+  try { sessionStorage.setItem(KEY, '1'); } catch(e) {}
+ };
+})();
+
 /* ─── Activity stats toast (truthful aggregated social proof) ─── */
 (function(){
  var DISMISS_KEY = 'dop-live-toast-dismissed';
