@@ -1241,7 +1241,11 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
  <!-- HERO PORTRET — autor systemu DOP -->
  <div class="fade-u d2" style="position:relative;align-self:start;margin-top:60px">
   <!-- Portret Michała -->
-  <div id="hero-portret-michal" style="aspect-ratio:4/5;background:url('https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp') center 18%/cover no-repeat,var(--dark2);border:1px solid rgba(201,162,74,.25);position:relative;overflow:hidden;box-shadow:0 32px 80px -24px rgba(0,0,0,.5);will-change:transform">
+  <div id="hero-portret-michal" onclick="dopOpenVideoModal('Yy74xzHvxlU','Michał Katarzyński · Warsaw Dental Medica Show — 15-min wykład')" role="button" tabindex="0" aria-label="Odtwórz wideo: Michał Katarzyński na Warsaw Dental Medica Show" style="aspect-ratio:4/5;background:url('https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp') center 18%/cover no-repeat,var(--dark2);border:1px solid rgba(201,162,74,.25);position:relative;overflow:hidden;box-shadow:0 32px 80px -24px rgba(0,0,0,.5);will-change:transform;cursor:pointer">
+   <!-- Play button overlay z hover -->
+   <div class="portret-play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(0,0,0,.25),transparent 60%);transition:background .3s;z-index:2">
+    <div class="portret-play-btn" style="width:72px;height:72px;border-radius:50%;background:rgba(217,181,96,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px -8px rgba(0,0,0,.5);transition:transform .25s,background .2s;transform:scale(.92)"><svg width="28" height="28" viewBox="0 0 24 24" fill="var(--black)" stroke="none" style="margin-left:4px"><polygon points="6 3 20 12 6 21 6 3"/></svg></div>
+   </div>
    <!-- Złoty top accent -->
    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--hot),transparent);z-index:2"></div>
    <!-- Bottom gradient overlay dla czytelności tekstu -->
@@ -8088,6 +8092,53 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 </style>
 
 <!-- FOOTER -->
+<!-- BRAND PHOTO WALL — pre-footer, 30 zdjęć z kursów + uczestników w mozaice -->
+<section style="background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);padding:0;border-top:1px solid rgba(201,162,74,.15);overflow:hidden">
+ <div class="dop-photo-mosaic" style="display:grid;grid-template-columns:repeat(10,1fr);gap:2px;width:100%">
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1XrqH4cTtgWzrB_jKE1nYgeulKrgAHXbb=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1c9svBAuR1y05rCGszemhS4pUjEdlYoVK=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1GCmFCwnKVB9H-zfAbIVSN8gAvb2_i5YC=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1f6wv1aQxlpGY-2SVy2JD2HJB0xZtR_O0=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/14frUn8s6cFafHUcmLircL2S3kg4hcKFZ=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/150FbWg9dnNTy74zTF9T8qbghSX6COQum=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1vWWkm_veIV51UwBX5wWG-65tUMWqvyt1=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1BrlVwMqQuRRk-F1hbFbobcLzVlx7xPfi=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/13v6U0ob6yxrelEPaxDLt3ByZ6gou7yrO=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1zlk1ai8QbKRYmkFo4Wd4fIgpHTm1pkuj=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1AVbbIwOow9atFr1rMVvNpUkSajx3HFTu=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1FP83rcuHExCDATQUIwcYt2Bvqkgb1-Ed=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1Ur7xTp03E6eoASopCLJt6d8Y7cYKTKUr=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1QuHzzo-8ghaVOcYn3ucx1vhHbjZkrlWU=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1fbGYRiyMJ34Z8ZBPqv6UPjlzf4wOgH-W=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/12JASd2T_D75kVEYd7LBvk3q__W7eBaMx=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1gTGp4Azm9GB74HfJnhSE9ZrgIWQv43O-=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/18om0pezrl1PaqNnWnoHmze8SpDALL3tx=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1QtJZ8UUky9_B8d1f5MWYBNldlqwRX16I=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1qGc0mJITovvEZxfobS_whwM5S87oMoeC=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1m2JVtYqyPlnOd2TSqqGe8MGWKG8T0tS-=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1stARESc0dq2Mt9ax-M-S00eXRBrJPK_t=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1GHM6rPeYCIE6J_3ltggRLxsckLgBO8lt=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1uTZVK8QvNxT9y5fOwvB1yaCoM9cGowvT=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/171DJJyBSKfiSQLE79xaSwUKpwDkVnnpW=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1qeCe7KlDifRZJX0MzFCt4EtEW3mwrI5t=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/16A_n2O0qzGL-TduV7m9jQrU6dxsTnJq3=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1mTsbFX18ojHQRIv0LMIyGT0uqu_lHEFA=w300') center/cover;background-color:#000"></div>
+  <div style="aspect-ratio:1;background:url('https://lh3.googleusercontent.com/d/1tqomQQrW6A5JQJV0Wi4-ZsRfUgP50ydt=w300') center/cover;background-color:#000"></div>
+ </div>
+ <!-- Overlay z gradient + counter -->
+ <div style="position:relative;background:linear-gradient(180deg,transparent 0%,rgba(15,27,48,.95) 80%);padding:48px 28px 32px;margin-top:-120px">
+  <div style="max-width:1140px;margin:0 auto;text-align:center;position:relative;z-index:1">
+   <div style="font-family:var(--display);font-size:clamp(28px,4vw,44px);color:#fff;line-height:1.1;font-style:italic;font-weight:400;margin-bottom:10px"><span class="count-up" data-count="6000" data-suffix="+">6000+</span> uczestników · <span class="count-up" data-count="200" data-suffix="+">200+</span> klinik · <span class="count-up" data-count="14" data-suffix="">14</span> lat</div>
+   <div style="font-size:14px;color:rgba(255,255,255,.65);font-style:italic">Wybrane kadry z ostatnich edycji szkoleń stacjonarnych</div>
+  </div>
+ </div>
+</section>
+<style>
+@media(max-width:880px){.dop-photo-mosaic{grid-template-columns:repeat(6,1fr)!important}}
+@media(max-width:480px){.dop-photo-mosaic{grid-template-columns:repeat(4,1fr)!important}}
+</style>
+
 <footer>
  <div class="footer-inner">
   <div class="footer-top">
@@ -8915,6 +8966,22 @@ document.addEventListener('keydown', function(e){
 .hero > [aria-hidden],header.hero > [aria-hidden],section.grain-bg.cursor-glow > [aria-hidden]{transform:scale(var(--hero-scale,1));transform-origin:center;opacity:var(--hero-opacity,1);transition:transform .15s linear,opacity .15s linear;will-change:transform}
 @media (prefers-reduced-motion:reduce){.hero > [aria-hidden],header.hero > [aria-hidden],section.grain-bg.cursor-glow > [aria-hidden]{transform:none!important;opacity:1!important}}
 
+/* Portret play-overlay hover effect */
+#hero-portret-michal:hover .portret-play-overlay,#hero-portret-michal:focus .portret-play-overlay{background:radial-gradient(ellipse at center,rgba(0,0,0,.5),rgba(0,0,0,.15) 60%)}
+#hero-portret-michal:hover .portret-play-btn,#hero-portret-michal:focus .portret-play-btn{transform:scale(1.08);background:var(--hot)}
+
+/* DOP VIDEO MODAL — fullscreen lightbox dla video */
+.dop-video-modal{position:fixed;inset:0;background:rgba(10,19,34,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9500;display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .25s}
+.dop-video-modal.open{display:flex;opacity:1}
+.dop-video-modal-shell{position:relative;width:100%;max-width:1000px;animation:videoModalIn .35s cubic-bezier(.22,1,.36,1)}
+@keyframes videoModalIn{from{transform:translateY(20px) scale(.97);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.dop-video-modal-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 32px 80px -24px rgba(0,0,0,.6);border:1px solid rgba(201,162,74,.25)}
+.dop-video-modal-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.dop-video-modal-title{font-family:var(--serif);font-style:italic;font-size:16px;color:rgba(255,255,255,.85);text-align:center;margin-top:16px;line-height:1.5}
+.dop-video-modal-close{position:absolute;top:-44px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .15s,transform .2s}
+.dop-video-modal-close:hover{background:rgba(201,162,74,.9);color:var(--black);transform:rotate(90deg)}
+@media (prefers-reduced-motion:reduce){.dop-video-modal,.dop-video-modal-shell{animation:none!important;transition:none!important}}
+
 /* Cursor-follow gold glow na hero (premium feel) */
 .cursor-glow{position:relative;overflow:hidden}
 .cursor-glow::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(217,181,96,.08) 0%,rgba(217,181,96,.04) 30%,transparent 70%);pointer-events:none;left:var(--cx,50%);top:var(--cy,50%);transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;z-index:0;mix-blend-mode:screen}
@@ -8992,6 +9059,43 @@ function dopCookieClose(accepted){
   }
  }catch(e){}
 })();
+</script>
+
+<!-- DOP VIDEO MODAL — fullscreen lightbox -->
+<div class="dop-video-modal" id="dop-video-modal" role="dialog" aria-modal="true" aria-labelledby="dop-video-modal-title" onclick="if(event.target===this)dopCloseVideoModal()">
+ <div class="dop-video-modal-shell">
+  <button class="dop-video-modal-close" onclick="dopCloseVideoModal()" aria-label="Zamknij wideo">×</button>
+  <div class="dop-video-modal-frame">
+   <iframe id="dop-video-modal-iframe" src="" title="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="dop-video-modal-title" id="dop-video-modal-title"></div>
+ </div>
+</div>
+<script>
+window.dopOpenVideoModal = function(videoId, title){
+ var m = document.getElementById('dop-video-modal');
+ var ifr = document.getElementById('dop-video-modal-iframe');
+ var t = document.getElementById('dop-video-modal-title');
+ if(!m || !ifr) return;
+ ifr.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+ ifr.title = title || '';
+ if(t) t.textContent = title || '';
+ m.classList.add('open');
+ document.body.style.overflow = 'hidden';
+};
+window.dopCloseVideoModal = function(){
+ var m = document.getElementById('dop-video-modal');
+ var ifr = document.getElementById('dop-video-modal-iframe');
+ if(m) m.classList.remove('open');
+ if(ifr) ifr.src = '';
+ document.body.style.overflow = '';
+};
+document.addEventListener('keydown', function(e){
+ if(e.key === 'Escape'){
+  var m = document.getElementById('dop-video-modal');
+  if(m && m.classList.contains('open')) dopCloseVideoModal();
+ }
+});
 </script>
 
 <!-- STICKY VIDEO PIP — Webinar konsultacja autoplay muted, dismissible -->
