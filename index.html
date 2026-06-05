@@ -788,6 +788,25 @@ footer{background:#0A0A0A;padding:64px 28px 28px;color:var(--ink-on-dark)}
 @media(max-width:860px){.dop-nav{display:none}.dop-phone{display:none}.dop-hbg{display:flex}}
 @media(max-width:720px){.dop-mob-nav{grid-template-columns:1fr}}
 @media(max-width:980px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problemy-grid-resp{grid-template-columns:1fr 1fr!important}#hero-grid,.help-grid-resp,.author-grid-resp,.invest-grid-resp,.placeholder-grid-resp{grid-template-columns:1fr!important}#decision-card{position:relative!important;top:auto!important}.form-grid-resp{grid-template-columns:1fr!important}}
+
+/* === PATHS GRID v2 — visual treatment dla 4 kafelków kursów na person pages === */
+.paths-grid-resp{gap:16px!important;background:transparent!important;padding:0}
+.paths-grid-resp > div{background:#fff!important;border-radius:14px!important;border:1px solid rgba(27,44,79,.08)!important;box-shadow:0 4px 12px -4px rgba(27,44,79,.06)!important;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1),border-color .2s!important;overflow:hidden;position:relative;padding:0!important}
+.paths-grid-resp > div:hover{transform:translateY(-6px)!important;box-shadow:0 24px 56px -20px rgba(27,44,79,.25)!important;border-color:rgba(201,162,74,.4)!important}
+/* Foto cover wstrzykiwany przez JS - .paths-photo-cover */
+.paths-grid-resp > div .paths-photo-cover{width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;background-color:var(--dark2);position:relative;border-radius:14px 14px 0 0;overflow:hidden;margin-bottom:24px}
+.paths-grid-resp > div .paths-photo-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.1) 0%,rgba(15,27,48,.5) 100%);pointer-events:none}
+.paths-grid-resp > div > *:not(.paths-photo-cover){padding-left:26px;padding-right:26px}
+.paths-grid-resp > div > *:not(.paths-photo-cover):last-child{padding-bottom:24px}
+.paths-grid-resp > div > div:first-of-type:not(.paths-photo-cover){margin-top:18px}
+/* Icon Lucide highlight gold */
+.paths-grid-resp > div > div[style*="font-size:32px"]{display:inline-flex!important;align-items:center;justify-content:center;width:44px;height:44px;background:rgba(201,162,74,.12);border-radius:10px;color:var(--gold);font-size:22px!important;margin-bottom:14px!important;flex-shrink:0}
+.paths-grid-resp > div > div[style*="font-size:32px"] svg{color:var(--gold);width:22px;height:22px}
+.paths-grid-resp > div[style*="border-bottom:3px solid var(--gold)"]{border-color:rgba(201,162,74,.4)!important}
+/* Featured (★) z gold border + scale subtle */
+.paths-grid-resp > div[style*="position:absolute"]:has(div[style*="★"]),
+.paths-grid-resp > div:has(div[style*="POLECANY"]),
+.paths-grid-resp > div:has(div[style*="NAJCZĘŚCIEJ"]){border:1.5px solid var(--gold)!important;box-shadow:0 8px 24px -8px rgba(201,162,74,.3)!important}
 @media(max-width:720px){.paths-grid-resp,.gets-grid-resp,.testi-grid-resp,.stats-grid-resp,.problem-grid-resp,.problemy-grid-resp,.qual-grid-resp,.vs-grid-resp,.prog-grid-resp,.cross-grid-resp{grid-template-columns:1fr!important}}
 /* === BRAND LIGHT OVERRIDES === */
 /* Dark anchors - sekcje na granacie zachowujÄ jasny tekst */
@@ -10259,6 +10278,41 @@ window.dopPipClose = function(){
   var current = document.querySelector('.page.active');
   if (current) updateActiveNav(current.id.replace('page-',''));
  }, 200);
+
+ // ── 5j. Auto-inject foto cover dla paths-grid-resp cards (4 kafelki na person pages) ──
+ var PATHS_PHOTOS = {
+  'kurs-zarzadzania': 'https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w600',
+  'akademia': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+  'audyt-doradczy': 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
+  'audyt-praktyki': 'https://images.unsplash.com/photo-1554224155-cfa08c2a758f?auto=format&fit=crop&w=600&q=80',
+  'kurs-zamkniety-wl': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
+  'kurs-zamkniety-lek': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80',
+  'kurs-zamkniety-rec': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80',
+  'doskonala-konsultacja': 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=600&q=80',
+  'doskonala-wizyta-hig': 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80',
+  'plan-leczenia': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80',
+  'rejestracja-cz1': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80',
+  'rejestracja-ninja': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80',
+  'zwiekszanie-rentownosci': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80'
+ };
+ function injectPathsPhotos(){
+  document.querySelectorAll('.paths-grid-resp > div').forEach(function(card){
+   if (card.dataset.photoInjected) return;
+   var onclick = card.getAttribute('onclick')||'';
+   var match = onclick.match(/showPage\(['"]([^'"]+)['"]\)/);
+   if (!match) return;
+   var slug = match[1];
+   var photoUrl = PATHS_PHOTOS[slug];
+   if (!photoUrl) return;
+   var cover = document.createElement('div');
+   cover.className = 'paths-photo-cover';
+   cover.style.backgroundImage = "url('" + photoUrl + "')";
+   card.insertBefore(cover, card.firstChild);
+   card.dataset.photoInjected = '1';
+  });
+ }
+ setTimeout(injectPathsPhotos, 400);
+ document.addEventListener('dop:page-change', function(){ setTimeout(injectPathsPhotos, 300); });
 
  // ── 5i. Wishlist — save course w localStorage z heart toggle ──
  window.dopWishlist = {
