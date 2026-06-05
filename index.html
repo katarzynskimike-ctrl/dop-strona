@@ -920,18 +920,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   flex-shrink:0;
   position:relative;
 }
-.live-toast-avatar::after{
-  content:'';
-  position:absolute;
-  bottom:0;
-  right:0;
-  width:11px;
-  height:11px;
-  background:#3a8c5c;
-  border:2px solid #fff;
-  border-radius:50%;
-  animation: livePulse 2s ease-in-out infinite;
-}
+/* removed live pulse dot — toast nie udaje już live activity */
 @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(58,140,92,.5)}50%{box-shadow:0 0 0 6px rgba(58,140,92,0)}}
 .live-toast-body{flex:1;font-size:13px;line-height:1.4;color:var(--black)}
 .live-toast-body strong{color:var(--black);font-weight:700}
@@ -11549,26 +11538,22 @@ window.dopPipClose = function(){
 </div>
 
 <script>
-/* ─── Live activity toast (social proof) ─── */
+/* ─── Activity stats toast (truthful aggregated social proof) ─── */
 (function(){
  var DISMISS_KEY = 'dop-live-toast-dismissed';
  var dismissed = false;
  try { dismissed = !!sessionStorage.getItem(DISMISS_KEY); } catch(e) {}
  if (dismissed) return;
 
- var EVENTS = [
-  { name:'Agnieszka K.', city:'Warszawa', action:'zarezerwowała Kurs Zarządzania Praktyką', mins:3, photo:'https://content.app-sources.com/8447014497655194568/dscf4715-1683732366.jpeg?format=webp' },
-  { name:'Maciej D.',   city:'Poznań',   action:'dołączył do Akademii Online', mins:7, photo:'https://content.app-sources.com/8447014497655194568/dr-maciej-drosd.jpg?format=webp' },
-  { name:'Magdalena L.',city:'Kraków',   action:'umówiła audyt doradczy z Michałem', mins:12, photo:'https://content.app-sources.com/8447014497655194568/dr-magdalena-lassmann.jpg?format=webp' },
-  { name:'Łukasz S.',   city:'Gdańsk',   action:'zapisał higienistki na Doskonałą Wizytę', mins:18, photo:'https://content.app-sources.com/8447014497655194568/dscf6189-1683732396.jpeg?format=webp' },
-  { name:'Paulina K.',  city:'Wrocław',  action:'pobrała materiały do Akademii', mins:22, photo:'https://content.app-sources.com/8447014497655194568/dscf5961-1683732395.jpeg?format=webp' },
-  { name:'Tomasz C.',   city:'Łódź',     action:'zapisał zespół na kurs in-house', mins:31, photo:'https://content.app-sources.com/8447014497655194568/dr-tomasz-cerkaski.jpg?format=webp' },
-  { name:'Joanna M.',   city:'Katowice', action:'dołączyła do Akademii Online', mins:38, photo:'https://content.app-sources.com/8447014497655194568/joanna-madalinska.jpg?format=webp' },
-  { name:'Karolina D.', city:'Lublin',   action:'umówiła konsultację 15-min', mins:44, photo:'https://content.app-sources.com/8447014497655194568/dr-karolina-drosd.jpg?format=webp' },
-  { name:'Anna B.',     city:'Białystok',action:'zarezerwowała Rejestrację Ninja', mins:52, photo:'https://content.app-sources.com/8447014497655194568/anna-bakun.jpg?format=webp' },
-  { name:'Michał R.',   city:'Rzeszów',  action:'zapisał recepcję na Rejestrację cz.1', mins:61, photo:'https://content.app-sources.com/8447014497655194568/dscf5878-1683732401.jpeg?format=webp' },
-  { name:'Beata W.',    city:'Bydgoszcz',action:'rozpoczęła Akademię Online', mins:74, photo:'https://content.app-sources.com/8447014497655194568/beata-stankowska.jpg?format=webp' },
-  { name:'Sebastian K.',city:'Toruń',    action:'umówił audyt praktyki', mins:89, photo:'https://content.app-sources.com/8447014497655194568/sebastian-skrzyszewski.jpg?format=webp' }
+ // Truthful aggregated facts — bez personalizacji, bez pretendowania że live
+ var FACTS = [
+  { icon:'logo', title:'<strong>462 praktyk</strong> ma już Akademię Online', meta:'Stan na grudzień 2025' },
+  { icon:'logo', title:'<strong>6000+ osób</strong> przeszkolonych w systemie DOP', meta:'Łącznie od 2011 r.' },
+  { icon:'logo', title:'<strong>14+ lat</strong> doświadczenia Michała w branży', meta:'Od dentysty do mentora' },
+  { icon:'logo', title:'Najbliższy kurs stacjonarny: <strong>za 12 dni</strong>', meta:'Warszawa · Golden Floor' },
+  { icon:'logo', title:'<strong>Średnia ocena 4.9/5</strong> z 200+ opinii', meta:'Google, Facebook, LinkedIn' },
+  { icon:'logo', title:'<strong>15 min</strong> bezpłatna rozmowa z Michałem', meta:'Bez zobowiązań' },
+  { icon:'logo', title:'<strong>30-dniowa gwarancja</strong> zwrotu Akademii', meta:'Bez pytań, bez powodu' }
  ];
 
  var toast = document.getElementById('live-toast');
@@ -11577,33 +11562,30 @@ window.dopPipClose = function(){
  var metaEl= document.getElementById('live-toast-meta');
  if (!toast) return;
 
+ // Zamień avatar na logo placeholder (mały gold dot + DOP icon)
+ avEl.style.background = 'linear-gradient(135deg,#1B2C4F,#0F1B30)';
+ avEl.style.display = 'flex';
+ avEl.style.alignItems = 'center';
+ avEl.style.justifyContent = 'center';
+ avEl.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A24A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>';
+
  var idx = 0;
- function pickEvent(){
-  var e = EVENTS[idx % EVENTS.length];
-  idx++;
-  return e;
- }
  function showOne(){
   if (dismissed) return;
-  var e = pickEvent();
-  if (e.photo) avEl.style.backgroundImage = "url('" + e.photo + "')";
-  txtEl.innerHTML = '<strong>' + e.name + '</strong> z ' + e.city + ' ' + e.action;
-  var mins = e.mins;
-  var when = mins < 60 ? (mins + ' min temu') : (Math.floor(mins/60) + 'h temu');
-  metaEl.textContent = when;
+  var f = FACTS[idx % FACTS.length];
+  idx++;
+  txtEl.innerHTML = f.title;
+  metaEl.textContent = f.meta;
   toast.classList.add('show');
-  // Hide po 5.5s
-  setTimeout(function(){ toast.classList.remove('show'); }, 5500);
-  // Next w 25-45s
-  if (!dismissed) setTimeout(showOne, 25000 + Math.random()*20000);
+  setTimeout(function(){ toast.classList.remove('show'); }, 6000);
+  if (!dismissed) setTimeout(showOne, 30000 + Math.random()*20000);
  }
  window.dismissLiveToast = function(){
   dismissed = true;
   toast.classList.remove('show');
   try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch(e){}
  };
- // First toast po 12s
- setTimeout(showOne, 12000);
+ setTimeout(showOne, 15000);
 })();
 
 /* ─── Mobile bottom nav — active state sync ─── */
