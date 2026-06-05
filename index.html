@@ -888,6 +888,82 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   transition:background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
+/* === COMPARE TABLE — 4 ścieżki side-by-side === */
+.compare-table th, .compare-table td{vertical-align:top}
+.compare-table tbody tr:last-child td{border-bottom:none !important}
+.compare-table tbody tr:hover td{background-color:rgba(201,162,74,.03)}
+.compare-table tbody tr:hover td:nth-child(4){background-color:rgba(201,162,74,.07) !important}
+@media(max-width:760px){
+  .compare-wrap{margin-left:-28px;margin-right:-28px;padding:0 28px}
+  .compare-table{font-size:13px}
+}
+.dark .compare-table th{background:transparent !important;color:#F5F3EE !important}
+.dark .compare-table th div[style*="color:var(--black)"]{color:#F5F3EE !important}
+.dark .compare-table td{color:rgba(245,243,238,.7) !important;border-color:rgba(245,243,238,.08) !important}
+.dark .compare-table td[style*="color:var(--black)"]{color:#F5F3EE !important}
+.dark .compare-table td[style*="background:rgba(27,44,79,.02)"]{background:rgba(245,243,238,.03) !important}
+
+/* === FAQ ACCORDION === */
+.faq-item{
+  background:#fff;
+  border:1px solid rgba(27,44,79,.08);
+  border-radius:12px;
+  margin-bottom:10px;
+  overflow:hidden;
+  transition:border-color .2s, box-shadow .2s;
+}
+.faq-item[open]{border-color:rgba(201,162,74,.35);box-shadow:0 8px 24px -12px rgba(27,44,79,.12)}
+.faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  padding:20px 56px 20px 24px;
+  font-family:var(--display);
+  font-size:19px;
+  color:var(--black);
+  font-weight:400;
+  position:relative;
+  transition:color .2s;
+  line-height:1.3;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';
+  position:absolute;
+  right:24px;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:rgba(201,162,74,.12);
+  color:var(--gold);
+  font-size:20px;
+  font-weight:300;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  transition:transform .25s, background .2s;
+}
+.faq-item[open] summary::after{
+  content:'−';
+  transform:translateY(-50%) rotate(180deg);
+  background:var(--gold);
+  color:#fff;
+}
+.faq-item summary:hover{color:var(--gold)}
+.faq-body{
+  padding:0 24px 22px;
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.7;
+  animation:faqFadeIn .3s ease-out;
+}
+@keyframes faqFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.dark .faq-item{background:#15243F;border-color:rgba(245,243,238,.1)}
+.dark .faq-item summary{color:#F5F3EE}
+.dark .faq-body{color:rgba(245,243,238,.65)}
+
 /* === KURS SIGNATURE — unique ribbon + floating badge per kurs landing === */
 .kurs-sig-ribbon{
   width:100%;
@@ -8785,6 +8861,133 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
   </div>
  </div>
 </section>
+
+<!-- COMPARE TABLE — 4 ścieżki side-by-side -->
+<section id="porownaj" style="background:var(--cream);padding:80px 28px;border-top:1px solid rgba(27,44,79,.06)">
+ <div style="max-width:var(--max);margin:0 auto">
+  <div style="text-align:center;margin-bottom:48px">
+   <div class="sec-label" style="justify-content:center;margin-bottom:16px">Decyzja w 30 sekund</div>
+   <h2 style="font-family:var(--display);font-size:clamp(34px,4vw,52px);color:var(--black);line-height:1;margin-bottom:14px">Porównaj 4 ścieżki obok siebie</h2>
+   <p style="font-size:17px;color:var(--muted);max-width:680px;margin:0 auto">Nie szukasz kursu — szukasz wyniku. Wybierz tempo: od własnego rytmu po pełną transformację praktyki w jednym tygodniu.</p>
+  </div>
+  <div class="compare-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+   <table class="compare-table" style="width:100%;border-collapse:separate;border-spacing:0;min-width:780px">
+    <thead>
+     <tr>
+      <th style="text-align:left;padding:18px 16px;border-bottom:2px solid rgba(27,44,79,.1);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);width:160px">Cecha</th>
+      <th style="text-align:left;padding:18px 16px;border-bottom:2px solid rgba(27,44,79,.1);background:rgba(27,44,79,.02)">
+       <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0EA5A4;margin-bottom:4px">Online</div>
+       <div style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.1">Akademia</div>
+      </th>
+      <th style="text-align:left;padding:18px 16px;border-bottom:2px solid rgba(27,44,79,.1)">
+       <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3B82F6;margin-bottom:4px">Stacjonarne</div>
+       <div style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.1">Kursy otwarte</div>
+      </th>
+      <th style="text-align:left;padding:18px 16px;border-bottom:2px solid var(--gold);background:linear-gradient(180deg,rgba(201,162,74,.08),rgba(201,162,74,.02));position:relative">
+       <div style="position:absolute;top:-10px;left:16px;background:var(--gold);color:#fff;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:10px">Najczęstszy wybór</div>
+       <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;margin-top:6px">Premium</div>
+       <div style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.1">In-house</div>
+      </th>
+      <th style="text-align:left;padding:18px 16px;border-bottom:2px solid rgba(27,44,79,.1)">
+       <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8B5CF6;margin-bottom:4px">1-on-1</div>
+       <div style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.1">Audyt doradczy</div>
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td style="padding:14px 16px;font-weight:700;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-size:13px">Dla kogo</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(27,44,79,.02);font-size:14px">Każdy w zespole, własne tempo</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">1-3 osoby z jednej roli</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(201,162,74,.04);font-weight:600;font-size:14px">Cały zespół (5-30 os.)</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">Właściciel/menedżer</td>
+     </tr>
+     <tr>
+      <td style="padding:14px 16px;font-weight:700;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-size:13px">Format</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(27,44,79,.02);font-size:14px">Video + Q&A tygodniowe</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">Warsztat w Warszawie</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(201,162,74,.04);font-weight:600;font-size:14px">U Ciebie, dopasowany program</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">Sesja 4-8h online/stacj.</td>
+     </tr>
+     <tr>
+      <td style="padding:14px 16px;font-weight:700;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-size:13px">Czas</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(27,44,79,.02);font-size:14px">~16h video, 12 m-cy dostępu</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">1-2 dni intensywne</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(201,162,74,.04);font-weight:600;font-size:14px">1-3 dni in-house</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">Sesja + plan 90 dni</td>
+     </tr>
+     <tr>
+      <td style="padding:14px 16px;font-weight:700;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-size:13px">Cena</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(27,44,79,.02);font-weight:700;font-size:15px">8 990 zł</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-weight:700;font-size:15px">od 1 690 zł / os.</td>
+      <td style="padding:14px 16px;color:var(--gold);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(201,162,74,.04);font-weight:700;font-size:15px">Wycena indywidualna</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-weight:700;font-size:15px">Pakiet 3 997 zł</td>
+     </tr>
+     <tr>
+      <td style="padding:14px 16px;font-weight:700;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);font-size:13px">Efekt</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(27,44,79,.02);font-size:14px">Wspólny słownik, stopniowo</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">Konkretna umiejętność w 2 dni</td>
+      <td style="padding:14px 16px;color:var(--black);border-bottom:1px solid rgba(27,44,79,.08);background:rgba(201,162,74,.04);font-weight:600;font-size:14px">Cały zespół na jednym standardzie</td>
+      <td style="padding:14px 16px;color:var(--muted);border-bottom:1px solid rgba(27,44,79,.08);font-size:14px">Mapa decyzji + priorytety</td>
+     </tr>
+     <tr>
+      <td style="padding:14px 16px;font-weight:700;color:var(--black);font-size:13px">Kiedy wybrać</td>
+      <td style="padding:14px 16px;color:var(--muted);background:rgba(27,44,79,.02);font-size:13px;font-style:italic">"Chcę zacząć dziś, własnym tempem"</td>
+      <td style="padding:14px 16px;color:var(--muted);font-size:13px;font-style:italic">"Wysyłam 1-2 osoby na konkret"</td>
+      <td style="padding:14px 16px;color:var(--black);background:rgba(201,162,74,.04);font-weight:600;font-size:13px;font-style:italic">"Cały zespół naraz, koniec rozdrobnienia"</td>
+      <td style="padding:14px 16px;color:var(--muted);font-size:13px;font-style:italic">"Nie wiem od czego zacząć"</td>
+     </tr>
+     <tr>
+      <td style="padding:18px 16px"></td>
+      <td style="padding:18px 16px;background:rgba(27,44,79,.02);text-align:center"><button onclick="showPage('akademia')" style="background:#0EA5A4;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;width:100%">Zobacz Akademię →</button></td>
+      <td style="padding:18px 16px;text-align:center"><button onclick="showPage('kalendarz')" style="background:#3B82F6;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;width:100%">Kalendarz →</button></td>
+      <td style="padding:18px 16px;background:rgba(201,162,74,.04);text-align:center"><button onclick="showPage('kurs-zamkniety-wl')" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;width:100%;box-shadow:0 4px 12px -4px rgba(201,162,74,.5)">Wycena in-house →</button></td>
+      <td style="padding:18px 16px;text-align:center"><button onclick="showPage('audyt-doradczy')" style="background:#8B5CF6;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;width:100%">Umów audyt →</button></td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p style="margin-top:20px;text-align:center;font-size:13px;color:var(--muted);font-style:italic">Wszystkie 4 ścieżki uczą tego samego systemu DOP. Różni się tempo, intensywność i koszt — wybierz pod swoją sytuację.</p>
+ </div>
+</section>
+
+<!-- FAQ SECTION — 8 najważniejszych pytań + JSON-LD FAQPage -->
+<section id="faq" style="background:var(--cream2);padding:80px 28px;border-top:1px solid rgba(27,44,79,.06)">
+ <div style="max-width:920px;margin:0 auto">
+  <div style="text-align:center;margin-bottom:44px">
+   <div class="sec-label" style="justify-content:center;margin-bottom:16px">FAQ — najczęstsze pytania</div>
+   <h2 style="font-family:var(--display);font-size:clamp(34px,4vw,52px);color:var(--black);line-height:1;margin-bottom:14px">Pytania, które zadają inni właściciele</h2>
+   <p style="font-size:17px;color:var(--muted);max-width:620px;margin:0 auto">Jeśli Twojego pytania tu nie ma — <a onclick="showPage('audyt-doradczy')" style="color:var(--gold);cursor:pointer;font-weight:600">15 min z Michałem</a> zwykle wystarczy.</p>
+  </div>
+  <div class="faq-list" id="faq-list">
+   <details class="faq-item"><summary>Ile kosztuje wdrożenie systemu DOP w mojej praktyce?</summary><div class="faq-body">Od 1 690 zł (1 osoba na kursie otwartym) do indywidualnej wyceny (in-house dla zespołu 5-30 osób). Akademia Online to 8 990 zł za rok dostępu dla całej praktyki. Audyt doradczy 1-on-1 z Michałem od 3 997 zł. <a onclick="document.getElementById('porownaj').scrollIntoView({behavior:'smooth'})" style="color:var(--gold);cursor:pointer;font-weight:600">Porównaj 4 ścieżki obok siebie ↑</a></div></details>
+   <details class="faq-item"><summary>W jakim formacie odbywają się szkolenia?</summary><div class="faq-body">Trzy formaty: <strong>Online</strong> (Akademia — 12 kursów video + cotygodniowe Q&A live z Michałem), <strong>Stacjonarne</strong> (Warszawa, Golden Floor — małe grupy max 16 osób, 70% ćwiczeń), <strong>In-house</strong> (u Ciebie w praktyce, program dopasowany pod Twój zespół).</div></details>
+   <details class="faq-item"><summary>Czy mogę zwrócić pieniądze, jeśli kurs mi nie pasuje?</summary><div class="faq-body">Tak. Akademia Online ma <strong>30-dniową gwarancję zwrotu bez pytań</strong>. Kursy stacjonarne — możesz odstąpić do 14 dni przed terminem (zwrot 100%) lub przepisać miejsce na inną osobę z zespołu. Audyty 1-on-1 — pierwsze 15 minut konsultacji bezpłatne, decydujesz dopiero po rozmowie.</div></details>
+   <details class="faq-item"><summary>Czy Michał Katarzyński prowadzi wszystkie szkolenia osobiście?</summary><div class="faq-body">Tak. Kursy otwarte, in-house oraz audyty doradcze prowadzi osobiście Michał. W Akademii Online — wszystkie kursy nagrane przez Michała, plus cotygodniowe Q&A live z nim. Mała część warsztatów w Akademii (specjalistyczne tematy: prawo, podatki, marketing) prowadzą zaproszeni eksperci z <a onclick="showPage('rada')" style="color:var(--gold);cursor:pointer;font-weight:600">Rady Programowej DOP</a>.</div></details>
+   <details class="faq-item"><summary>Po jakim czasie zobaczę pierwsze efekty?</summary><div class="faq-body">Pierwsze zmiany w zachowaniu zespołu (komunikacja, sposób rozmów z pacjentem) — <strong>2-4 tygodnie</strong>. Mierzalne efekty w liczbach (akceptacja planów, recall, rentowność) — <strong>60-90 dni</strong> jeśli zespół stosuje system konsekwentnie. Najszybsze efekty daje in-house: cały zespół wdraża jednocześnie, brak rozdrobnienia.</div></details>
+   <details class="faq-item"><summary>Czy szkolenia są dla solo praktyk, czy dużych klinik?</summary><div class="faq-body">Obie kategorie. <strong>Solo / 1-2 fotele</strong> — najlepsza Akademia Online (własne tempo, niski próg wejścia) lub kursy otwarte (wysyłasz siebie + asystentkę). <strong>3-10 foteli</strong> — kursy otwarte + audyt doradczy (mapa wdrożenia). <strong>10+ foteli</strong> — in-house jest najefektywniejsze (cały zespół = jeden standard, brak silosów między rolami).</div></details>
+   <details class="faq-item"><summary>Czy faktura VAT? Czy można rozłożyć płatność?</summary><div class="faq-body">Tak, faktura VAT dla każdego szkolenia. Akademia Online — możliwa płatność w 3 lub 6 ratach (Stripe / przelew bankowy). Kursy stacjonarne — pełna płatność przed kursem lub po uzgodnieniu z biurem. In-house — harmonogram płatności do ustalenia indywidualnie.</div></details>
+   <details class="faq-item"><summary>Nie wiem, którą ścieżkę wybrać. Co dalej?</summary><div class="faq-body">Najszybszy sposób: <strong><a onclick="showPage('audyt-doradczy')" style="color:var(--gold);cursor:pointer">umów 15-minutową rozmowę z Michałem</a></strong>. Opowiesz o praktyce (ile foteli, jaki zespół, co próbowałeś dotychczas), Michał wskaże najlepszą ścieżkę — bezpłatnie i bez zobowiązań. Alternatywnie: użyj <a onclick="document.getElementById('roi-section')?.scrollIntoView({behavior:'smooth'})" style="color:var(--gold);cursor:pointer">kalkulatora ROI</a> żeby zobaczyć potencjał Twojej praktyki w liczbach.</div></details>
+  </div>
+ </div>
+</section>
+
+<script type="application/ld+json" id="faq-jsonld">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {"@type":"Question","name":"Ile kosztuje wdrożenie systemu DOP w mojej praktyce?","acceptedAnswer":{"@type":"Answer","text":"Od 1 690 zł (1 osoba na kursie otwartym) do indywidualnej wyceny (in-house dla zespołu 5-30 osób). Akademia Online to 8 990 zł za rok dostępu dla całej praktyki. Audyt doradczy 1-on-1 z Michałem od 3 997 zł."}},
+  {"@type":"Question","name":"W jakim formacie odbywają się szkolenia?","acceptedAnswer":{"@type":"Answer","text":"Trzy formaty: Online (Akademia — 12 kursów video + cotygodniowe Q&A live z Michałem), Stacjonarne (Warszawa, Golden Floor — małe grupy max 16 osób, 70% ćwiczeń), In-house (u Ciebie w praktyce, program dopasowany pod Twój zespół)."}},
+  {"@type":"Question","name":"Czy mogę zwrócić pieniądze, jeśli kurs mi nie pasuje?","acceptedAnswer":{"@type":"Answer","text":"Tak. Akademia Online ma 30-dniową gwarancję zwrotu bez pytań. Kursy stacjonarne — możesz odstąpić do 14 dni przed terminem (zwrot 100%) lub przepisać miejsce na inną osobę z zespołu. Audyty 1-on-1 — pierwsze 15 minut konsultacji bezpłatne."}},
+  {"@type":"Question","name":"Czy Michał Katarzyński prowadzi wszystkie szkolenia osobiście?","acceptedAnswer":{"@type":"Answer","text":"Tak. Kursy otwarte, in-house oraz audyty doradcze prowadzi osobiście Michał. W Akademii Online — wszystkie kursy nagrane przez Michała, plus cotygodniowe Q&A live. Mała część warsztatów (prawo, podatki, marketing) prowadzą zaproszeni eksperci z Rady Programowej DOP."}},
+  {"@type":"Question","name":"Po jakim czasie zobaczę pierwsze efekty?","acceptedAnswer":{"@type":"Answer","text":"Pierwsze zmiany w zachowaniu zespołu — 2-4 tygodnie. Mierzalne efekty w liczbach (akceptacja planów, recall, rentowność) — 60-90 dni jeśli zespół stosuje system konsekwentnie. Najszybsze efekty daje in-house: cały zespół wdraża jednocześnie."}},
+  {"@type":"Question","name":"Czy szkolenia są dla solo praktyk, czy dużych klinik?","acceptedAnswer":{"@type":"Answer","text":"Obie kategorie. Solo / 1-2 fotele — najlepsza Akademia Online lub kursy otwarte. 3-10 foteli — kursy otwarte + audyt doradczy. 10+ foteli — in-house jest najefektywniejsze (cały zespół = jeden standard)."}},
+  {"@type":"Question","name":"Czy faktura VAT? Czy można rozłożyć płatność?","acceptedAnswer":{"@type":"Answer","text":"Tak, faktura VAT dla każdego szkolenia. Akademia Online — płatność w 3 lub 6 ratach. Kursy stacjonarne — pełna płatność przed kursem lub po uzgodnieniu. In-house — harmonogram płatności do ustalenia indywidualnie."}},
+  {"@type":"Question","name":"Nie wiem, którą ścieżkę wybrać. Co dalej?","acceptedAnswer":{"@type":"Answer","text":"Najszybszy sposób: umów 15-minutową rozmowę z Michałem. Opowiesz o praktyce (ile foteli, jaki zespół, co próbowałeś), Michał wskaże najlepszą ścieżkę — bezpłatnie i bez zobowiązań."}}
+ ]
+}
+</script>
 </div>
 
 <!-- NEWSLETTER STRIP — pierwszy własny formularz, pre-footer -->
