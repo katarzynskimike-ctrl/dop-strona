@@ -109,7 +109,8 @@ exports.handler = async (event) => {
  * Backup URL (Netlify): https://starlit-fudge-becf5f.netlify.app/ebook-10bledow.pdf
  */
 async function deliverLeadMagnet({ apiKey, leadEmail, firstName }) {
- const SITE_URL = process.env.SITE_URL || 'https://doskonalaobslugapacjenta.pl';
+ // Tymczasowo Netlify URL — migracja domeny doskonalaobslugapacjenta.pl w toku
+ const SITE_URL = process.env.SITE_URL || 'https://starlit-fudge-becf5f.netlify.app';
  const PDF_URL = SITE_URL + '/ebook-10bledow.pdf';
  const greeting = firstName ? ('Witaj ' + firstName + '!') : 'Witaj!';
  const subject = '[DOP] Twój e-book: 10 błędów przez które pacjent mówi „muszę się zastanowić"';
@@ -152,7 +153,7 @@ async function deliverLeadMagnet({ apiKey, leadEmail, firstName }) {
   method: 'POST',
   headers: { 'accept': 'application/json', 'content-type': 'application/json', 'api-key': apiKey },
   body: JSON.stringify({
-   sender: { name: 'Michał Katarzyński · DOP', email: 'biuro@doskonalaobslugapacjenta.pl' },
+   sender: { name: 'Michał Katarzyński · DOP', email: 'forms@doskonalaobslugapacjenta.pl' },
    to: [{ email: leadEmail, name: firstName || '' }],
    replyTo: { email: 'biuro@doskonalaobslugapacjenta.pl', name: 'Michał Katarzyński' },
    subject, htmlContent: html
