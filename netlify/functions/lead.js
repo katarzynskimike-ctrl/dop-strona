@@ -94,8 +94,74 @@ exports.handler = async (event) => {
   catch (e) { console.error('Notif error (non-fatal):', e); }
  }
 
+ // ── LEAD MAGNET: auto-deliver e-book PDF ──
+ if (formId === 'lead-magnet') {
+  try { await deliverLeadMagnet({ apiKey, leadEmail: email, firstName: data.FIRSTNAME || '' }); }
+  catch (e) { console.error('Lead magnet delivery error (non-fatal):', e); }
+ }
+
  return jsonResp({ ok: true, message: form.success_message || 'Zapisano' }, 200, headers);
 };
+
+/**
+ * Wysyła e-book PDF (link) na email pacjenta zaraz po zapisie.
+ * Hosting PDF: https://doskonalaobslugapacjenta.pl/ebook-10bledow.pdf
+ * Backup URL (Netlify): https://starlit-fudge-becf5f.netlify.app/ebook-10bledow.pdf
+ */
+async function deliverLeadMagnet({ apiKey, leadEmail, firstName }) {
+ const SITE_URL = process.env.SITE_URL || 'https://doskonalaobslugapacjenta.pl';
+ const PDF_URL = SITE_URL + '/ebook-10bledow.pdf';
+ const greeting = firstName ? ('Witaj ' + firstName + '!') : 'Witaj!';
+ const subject = '[DOP] Twój e-book: 10 błędów przez które pacjent mówi „muszę się zastanowić"';
+ const html = `<table width="100%" style="background:#F5F3EE;padding:24px;font-family:'Figtree',Arial,sans-serif"><tr><td align="center"><table width="600" style="background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(15,27,48,.08)">
+<tr><td style="background:linear-gradient(135deg,#1B2C4F 0%,#0F1B30 100%);color:#FFFFFF;padding:36px 32px;text-align:center">
+ <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C9A24A;margin-bottom:10px;font-weight:700">E-book DOP · 27 stron</div>
+ <div style="font-family:Georgia,serif;font-size:32px;color:#FFFFFF;line-height:1.1;margin-bottom:8px">10 błędów,</div>
+ <div style="font-family:Georgia,serif;font-size:22px;font-style:italic;color:#D9B560;line-height:1.2">przez które pacjent mówi „muszę się zastanowić"</div>
+</td></tr>
+<tr><td style="padding:32px">
+ <p style="font-size:18px;color:#1A1A1A;margin:0 0 16px;line-height:1.5"><strong>${escapeHtml(greeting)}</strong></p>
+ <p style="font-size:15px;color:#1A1A1A;line-height:1.65;margin:0 0 18px">Dzięki, że pobierasz mój e-book. To 27-stronicowy wyciąg z mojej książki <em>„Dlaczego pacjenci mówią TAK"</em> — analiza 10 najczęstszych błędów, które obserwuję w polskich praktykach stomatologicznych od 14 lat.</p>
+ <p style="font-size:15px;color:#1A1A1A;line-height:1.65;margin:0 0 28px">Każdy z 10 błędów ma diagnozę, autentyczny cytat z mojej książki, 5 konkretnych narzędzi do wdrożenia od jutra oraz „czerwoną flagę" dla Twojego zespołu.</p>
+
+ <div style="text-align:center;margin:28px 0">
+  <a href="${PDF_URL}" style="display:inline-block;background:#C9A24A;color:#FFFFFF;text-decoration:none;padding:16px 32px;border-radius:10px;font-size:15px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 16px -4px rgba(201,162,74,.4)">📖 Pobierz e-book (PDF)</a>
+ </div>
+ <p style="font-size:12px;color:#5F5E5A;text-align:center;margin:0 0 28px">Link bezpośredni: <a href="${PDF_URL}" style="color:#C9A24A;word-break:break-all">${PDF_URL}</a></p>
+
+ <div style="border-top:1px solid #eee;padding-top:24px;margin-top:8px">
+  <p style="font-size:13px;color:#5F5E5A;line-height:1.6;margin:0 0 12px"><strong style="color:#1B2C4F">Co dalej?</strong></p>
+  <p style="font-size:14px;color:#1A1A1A;line-height:1.6;margin:0 0 14px">Jeśli po przeczytaniu zechcesz porozmawiać — <a href="${SITE_URL}/#audyt-doradczy" style="color:#C9A24A;font-weight:700;text-decoration:none">15 minut bezpłatnie</a>, opowiesz mi o swojej praktyce, podpowiem najkrótszą ścieżkę.</p>
+  <p style="font-size:14px;color:#1A1A1A;line-height:1.6;margin:0">Albo zacznij od ścieżki, która Ci pasuje:</p>
+  <ul style="font-size:14px;color:#1A1A1A;line-height:1.8;margin:8px 0 0;padding-left:20px">
+   <li><a href="${SITE_URL}/#akademia" style="color:#C9A24A;font-weight:600;text-decoration:none">Akademia Online</a> — 12 kursów video + Q&A live, 8 990 zł/rok</li>
+   <li><a href="${SITE_URL}/#kalendarz" style="color:#C9A24A;font-weight:600;text-decoration:none">Kursy stacjonarne w Warszawie</a> — od 1 690 zł/os.</li>
+   <li><a href="${SITE_URL}/#kurs-zamkniety-wl" style="color:#C9A24A;font-weight:600;text-decoration:none">Kurs zamknięty in-house</a> — dla całego zespołu</li>
+  </ul>
+ </div>
+
+ <p style="margin-top:36px;font-size:14px;color:#1A1A1A;line-height:1.5">Powodzenia we wdrażaniu,<br><strong style="color:#1B2C4F;font-family:Georgia,serif;font-size:18px">— Michał Katarzyński</strong><br><span style="font-size:12px;color:#5F5E5A">autor systemu Doskonała Obsługa Pacjenta</span></p>
+</td></tr>
+<tr><td style="background:#F5F3EE;padding:18px 32px;text-align:center;font-size:11px;color:#5F5E5A">
+ © 2026 Excellent Patient Service sp. z o.o. · <a href="${SITE_URL}" style="color:#5F5E5A">doskonalaobslugapacjenta.pl</a><br>
+ Otrzymujesz tę wiadomość, bo zapisałeś/aś się na e-book DOP. <a href="${SITE_URL}/wypisz" style="color:#5F5E5A">Wypisz się</a>
+</td></tr>
+</table></td></tr></table>`;
+
+ const r = await fetch(BREVO_API + '/smtp/email', {
+  method: 'POST',
+  headers: { 'accept': 'application/json', 'content-type': 'application/json', 'api-key': apiKey },
+  body: JSON.stringify({
+   sender: { name: 'Michał Katarzyński · DOP', email: 'biuro@doskonalaobslugapacjenta.pl' },
+   to: [{ email: leadEmail, name: firstName || '' }],
+   replyTo: { email: 'biuro@doskonalaobslugapacjenta.pl', name: 'Michał Katarzyński' },
+   subject, htmlContent: html
+  })
+ });
+ if (!r.ok) throw new Error('Brevo SMTP ' + r.status + ': ' + (await r.text()));
+}
+
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 function corsHeaders(event) {
  const origin = (event.headers && (event.headers.origin || event.headers.Origin)) || '';
