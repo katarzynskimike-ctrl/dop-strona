@@ -527,6 +527,15 @@ opacity:.04;pointer-events:none;z-index:0}
 .cal2-spots-ok{color:#3a8c5c;font-weight:600}
 .cal2-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 26px 22px;border-top:1px solid rgba(27,44,79,.06);gap:14px;flex-wrap:wrap}
 .cal2-featured .cal2-footer{padding:20px 32px 26px}
+/* === CENA UKRYTA w kalendarzu (marketing best practice — cena DOPIERO po sprzedażówce na landing page) === */
+.cal2-footer{justify-content:flex-end !important}
+.cal2-footer > div:first-child{display:none !important}
+/* Wartość zamiast ceny: value-pills pod tytułem */
+.cal2-value-pills{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.cal2-value-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.02em;color:#1B2C4F;background:rgba(201,162,74,.1);border:1px solid rgba(201,162,74,.2);padding:5px 10px;border-radius:999px}
+.cal2-value-pill svg{color:var(--gold);flex-shrink:0}
+.dark .cal2-value-pill{background:rgba(201,162,74,.15);color:#F5F3EE;border-color:rgba(201,162,74,.3)}
+/* Stary price-amt zostawiamy w DOM (na wypadek admin/CMS), ale schowany */
 .cal2-price-amt{font-family:var(--display);font-size:32px;color:var(--hot);line-height:1;font-style:italic;letter-spacing:-.01em}
 .cal2-featured .cal2-price-amt,.cal2-online .cal2-price-amt{font-size:38px}
 .cal2-price-sub{font-size:12px;color:var(--muted);margin-top:4px}
@@ -4631,8 +4640,13 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     </div>
    </div>
    <div class="cal2-body">
-    <h3 class="cal2-title">Skuteczne zarządzanie praktyką stomatologiczną — cz. I</h3>
-    <p class="cal2-sub">2 dni intensywnych warsztatów. Delegowanie, motywowanie, komunikacja, przywództwo. Max 12 osób, 70% ćwiczeń, autorski system zadań domowych.</p>
+    <h3 class="cal2-title">Skuteczne zarządzanie praktyką stomatologiczną — cz.&nbsp;I</h3>
+    <p class="cal2-sub"><strong>Pracujesz 40&nbsp;godzin tygodniowo przy fotelu, a&nbsp;na koncie tego nie&nbsp;widać.</strong> 2 dni warsztatów — wychodzisz z&nbsp;systemem zarządzania, który zostaje w&nbsp;praktyce nawet bez Ciebie.</p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>+20–60% przychodu w&nbsp;90 dni</span>
+     <span class="cal2-value-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Zespół działa bez&nbsp;Twojej kontroli</span>
+     <span class="cal2-value-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Gotowy plan na&nbsp;pierwsze 7 dni</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 dni · 9:00-18:00</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Golden Floor, Warszawa</div>
@@ -4645,7 +4659,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
      <div class="cal2-price-amt">3 997 zł</div>
      <div class="cal2-price-sub">/ osoba · faktura VAT · raty 2-3×</div>
     </div>
-    <button class="cal2-cta cal2-cta-primary" onclick="event.stopPropagation();showPage('kurs-zarzadzania')">Zobacz program →</button>
+    <button class="cal2-cta cal2-cta-primary" onclick="event.stopPropagation();showPage('kurs-zarzadzania')">Zobacz pełny program i&nbsp;koszt →</button>
    </div>
   </a>
 
@@ -4663,7 +4677,12 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-body">
     <h3 class="cal2-title">Przedstawianie kompleksowych planów leczenia</h3>
-    <p class="cal2-sub">1 dzień. Jak rozłożyć duży plan na akceptowalną sekwencję — bez nacisku, bez tricków sprzedażowych.</p>
+    <p class="cal2-sub"><strong>Pacjent słucha 40 minut, kiwa głową, mówi „muszę&nbsp;się zastanowić".</strong> Nie wraca. Plan rozłożony na akceptowalną sekwencję — bez nacisku, bez tricków sprzedażowych.</p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill">+35% akceptacji planów</span>
+     <span class="cal2-value-pill">Model 3xP™ + 7&nbsp;STAR™</span>
+     <span class="cal2-value-pill">Skrypty rozmowy</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-18:00</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
@@ -4672,7 +4691,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-footer">
     <div><div class="cal2-price-amt">2 490 zł</div><div class="cal2-price-sub">/ osoba</div></div>
-    <button class="cal2-cta" onclick="event.stopPropagation();showPage('plan-leczenia')">Zobacz program →</button>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('plan-leczenia')">Zobacz pełny program i&nbsp;koszt →</button>
    </div>
   </a>
 
@@ -4689,8 +4708,13 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     </div>
    </div>
    <div class="cal2-body">
-    <h3 class="cal2-title">Doskonała Konsultacja i Wizyta Stomatologiczna</h3>
-    <p class="cal2-sub">2 dni. Pełna struktura 60-min konsultacji + plan leczenia w 2 etapach. Średnio +18-25% akceptacji po wdrożeniu.</p>
+    <h3 class="cal2-title">Doskonała Konsultacja i&nbsp;Wizyta Stomatologiczna</h3>
+    <p class="cal2-sub"><strong>Pacjent decyduje czy zostaje w&nbsp;ciągu pierwszych 90&nbsp;sekund.</strong> 2 dni — pełna struktura 60-min konsultacji + plan w&nbsp;2&nbsp;etapach.</p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill">+18–25% akceptacji</span>
+     <span class="cal2-value-pill">Reguła 90&nbsp;sekund</span>
+     <span class="cal2-value-pill">Protokół 4xA™</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 dni · 9:00-18:00</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
@@ -4699,7 +4723,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-footer">
     <div><div class="cal2-price-amt">2 690 zł</div><div class="cal2-price-sub">/ osoba</div></div>
-    <button class="cal2-cta" onclick="event.stopPropagation();showPage('doskonala-konsultacja')">Zobacz program →</button>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('doskonala-konsultacja')">Zobacz pełny program i&nbsp;koszt →</button>
    </div>
   </a>
 
@@ -4716,8 +4740,13 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     </div>
    </div>
    <div class="cal2-body">
-    <h3 class="cal2-title">Doskonała Rejestracja Stomatologiczna — cz. 1</h3>
-    <p class="cal2-sub">1 dzień. Telefon, mail, follow-up, no-show. Pierwsze 30 sekund decyduje czy pacjent się zapisze.</p>
+    <h3 class="cal2-title">Doskonała Rejestracja Stomatologiczna — cz.&nbsp;1</h3>
+    <p class="cal2-sub"><strong>Recepcja to nie&nbsp;biuro podawcze. To pierwsza linia decyzji pacjenta.</strong> 1 dzień — telefon, mail, follow-up, no-show. Pierwsze 30&nbsp;sekund decyduje.</p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill">Skrypt rozmowy telefonicznej</span>
+     <span class="cal2-value-pill">−40% no-show</span>
+     <span class="cal2-value-pill">Follow-up template'y</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-17:30</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
@@ -4726,7 +4755,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-footer">
     <div><div class="cal2-price-amt">1 690 zł</div><div class="cal2-price-sub">/ osoba</div></div>
-    <button class="cal2-cta" onclick="event.stopPropagation();showPage('rejestracja-cz1')">Zobacz program →</button>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('rejestracja-cz1')">Zobacz pełny program i&nbsp;koszt →</button>
    </div>
   </a>
 
@@ -4743,8 +4772,13 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     </div>
    </div>
    <div class="cal2-body">
-    <h3 class="cal2-title">Doskonała Wizyta Higienizacyjna — cz. 1</h3>
-    <p class="cal2-sub">1 dzień. Standard wizyty który buduje regularność. Pacjenci sami rezerwują wizyty co 6 m-cy.</p>
+    <h3 class="cal2-title">Doskonała Wizyta Higienizacyjna — cz.&nbsp;1</h3>
+    <p class="cal2-sub"><strong>Pacjent wraca sam co 6&nbsp;m-cy — bez przypominania, bez naciskania.</strong> 1 dzień — standard wizyty który buduje regularność i&nbsp;autorytet higienistki wobec lekarza.</p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill">+40% recall</span>
+     <span class="cal2-value-pill">Pacjent regularny™</span>
+     <span class="cal2-value-pill">Autorytet w&nbsp;zespole</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-18:00</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
@@ -4753,7 +4787,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-footer">
     <div><div class="cal2-price-amt">1 790 zł</div><div class="cal2-price-sub">/ osoba</div></div>
-    <button class="cal2-cta" onclick="event.stopPropagation();showPage('doskonala-wizyta-hig')">Zobacz program →</button>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('doskonala-wizyta-hig')">Zobacz pełny program i&nbsp;koszt →</button>
    </div>
   </a>
 
@@ -4771,7 +4805,12 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-body">
     <h3 class="cal2-title">Doskonała Rejestracja — Poziom Ninja</h3>
-    <p class="cal2-sub">1 dzień, advanced. Trudne pytania, ceny, obiekcje, no-show. Dla recepcji która już zna podstawy.</p>
+    <p class="cal2-sub"><strong>„Ile to&nbsp;kosztuje?" · „Dlaczego tak&nbsp;drogo?" · „Pomyślę".</strong> 1 dzień advanced — recepcja zamienia trudne pytania w&nbsp;zapis na&nbsp;wizytę. Wymaga ukończenia cz.&nbsp;1.</p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill">Obsługa obiekcji cenowych</span>
+     <span class="cal2-value-pill">Trudne rozmowy</span>
+     <span class="cal2-value-pill">Konwersja zapytań +50%</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 dzień · 9:00-17:30</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Warszawa</div>
@@ -4780,7 +4819,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-footer">
     <div><div class="cal2-price-amt">1 690 zł</div><div class="cal2-price-sub">/ osoba</div></div>
-    <button class="cal2-cta" onclick="event.stopPropagation();showPage('rejestracja-ninja')">Zobacz program →</button>
+    <button class="cal2-cta" onclick="event.stopPropagation();showPage('rejestracja-ninja')">Zobacz pełny program i&nbsp;koszt →</button>
    </div>
   </a>
 
@@ -4798,7 +4837,12 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    </div>
    <div class="cal2-body">
     <h3 class="cal2-title">Akademia Rentownej Praktyki Stomatologicznej</h3>
-    <p class="cal2-sub">12 kursów video (30+ h) + cotygodniowe konsultacje live z Michałem + zamknięta grupa FB. Pełen system w 12 miesięcy. 462 praktyk w Polsce.</p>
+    <p class="cal2-sub"><strong>Cały system DOP we własnym tempie. Bez wyjeżdżania z&nbsp;praktyki.</strong> 12 kursów video (30+ h) · cotygodniowe Q&A live z&nbsp;Michałem · zamknięta grupa · gotowe szablony. <strong style="color:var(--hot)">462 praktyk w&nbsp;Polsce.</strong></p>
+    <div class="cal2-value-pills">
+     <span class="cal2-value-pill">12 m-cy dostępu</span>
+     <span class="cal2-value-pill">Live Q&A co tydzień</span>
+     <span class="cal2-value-pill">30-dniowa gwarancja zwrotu</span>
+    </div>
     <div class="cal2-meta">
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>12 kursów video</div>
      <div class="cal2-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>30+ godzin treści</div>
@@ -5839,7 +5883,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  </div>
 
  <button onclick="document.getElementById('program-kursu').scrollIntoView({behavior:'smooth',block:'start'})" style="width:100%;padding:14px;background:var(--gold);color:#000;font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--body);transition:background .15s;margin-bottom:8px" onmouseover="this.style.background='var(--hot)'" onmouseout="this.style.background='var(--gold)'">
- Zobacz program →
+ Zobacz pełny program i&nbsp;koszt →
  </button>
  <button onclick="document.getElementById('inwestycja').scrollIntoView({behavior:'smooth',block:'start'})" style="width:100%;padding:11px;background:none;border:1px solid rgba(201,162,74,.4);color:var(--gold);font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;font-family:var(--body);transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.1)'" onmouseout="this.style.borderColor='rgba(201,162,74,.4)';this.style.background='none'">
  Sprawdź cenę i co wchodzi
