@@ -75,6 +75,12 @@ exports.handler = async (event) => {
  attributes.SIGNUP_DATE = new Date().toISOString().slice(0, 10);
  attributes.SIGNUP_TIMESTAMP = new Date().toISOString();
 
+ // PDF tracking — gdy form_id=lead-magnet, oznacz że dostali e-book
+ if (formId === 'lead-magnet') {
+  attributes.PDF_SENT_AT = new Date().toISOString();
+  attributes.PDF_VERSION = 'v6'; // bump przy każdym nowym PDF
+ }
+
  try {
   const r = await fetch(BREVO_API + '/contacts', {
    method: 'POST',

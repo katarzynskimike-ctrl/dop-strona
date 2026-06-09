@@ -96,7 +96,34 @@ Po wejściu doskonalaobslugapacjenta.pl:
 
 ---
 
-## 6. Po migracji — opcjonalne
+## 6. Calendly / Booking dla audyt-doradczy (opcjonalne)
+
+Obecnie `/#audyt-doradczy` ma formularz e-mail. Dla wyższej konwersji można dodać Calendly embed (bezpośrednie wybieranie slotu).
+
+**Setup:**
+1. Załóż konto na **Calendly.com** (free plan wystarczy)
+2. Utwórz event type: "15 minut z Michałem · DOP" (15 min, video Google Meet lub telefon)
+3. Skopiuj public URL: `https://calendly.com/michal-dop/15min`
+4. Dodaj do Netlify env: `CALENDLY_URL=https://calendly.com/michal-dop/15min`
+5. Na page-audyt-doradczy w `index.html` dodaj iframe:
+   ```html
+   <iframe src="https://calendly.com/michal-dop/15min" width="100%" height="700" frameborder="0"></iframe>
+   ```
+   ALBO przycisk "Otwórz Calendly →" (popup):
+   ```html
+   <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+   <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/michal-dop/15min'})">Wybierz termin →</button>
+   ```
+
+**Tryby:**
+- **Inline embed** — UX zintegrowany, slot wybierany na stronie
+- **Popup widget** — modal na klik (lekszy, mniej obniża LCP)
+
+**Brevo integration:** Calendly → Webhook → Brevo automation (każde umówienie = lead w Brevo z tag "calendly-booked").
+
+---
+
+## 7. Po migracji — opcjonalne
 
 - **301 redirects** ze starych adresów (np. WIX `/wiedza` jeśli był) — Netlify `_redirects`
 - **Google Analytics 4** — setup po decyzji o cookie consent
