@@ -11048,19 +11048,43 @@ window.dopPipClose = function(){
    return r;
   };
  }
- // On initial load, route z hash
- var initialHash = window.location.hash.replace('#','');
- if (initialHash && document.getElementById('page-' + initialHash)) {
-  setTimeout(function(){ window.showPage(initialHash); }, 50);
- }
- // Browser back/forward
- window.addEventListener('hashchange', function(){
-  var slug = window.location.hash.replace('#','') || 'home';
-  if (document.getElementById('page-' + slug)) {
-   var orig = origShowPage;
-   orig(slug);
-   document.dispatchEvent(new CustomEvent('dop:page-change', {detail:{slug:slug}}));
+ // ── Hash routing: page OR section anchor in page-home ──
+ function routeFromHash(hash){
+  var id = (hash || '').replace('#','');
+  if (!id) return;
+  // 1. Jeśli hash = page slug → showPage
+  if (document.getElementById('page-' + id)) {
+   window.showPage(id);
+   return;
   }
+  // 2. Jeśli hash = id sekcji na home (lead-magnet, faq, porownaj, galeria-kursy, roi-section, pricing-quick) → showPage('home') + scroll
+  var target = document.getElementById(id);
+  if (target) {
+   var pageAncestor = target.closest('.page');
+   var pageSlug = pageAncestor ? pageAncestor.id.replace('page-','') : 'home';
+   // Przełącz na właściwą stronę jeśli nie jest aktywna
+   var currentActive = document.querySelector('.page.active');
+   if (!currentActive || currentActive.id !== pageAncestor.id) {
+    window.showPage(pageSlug);
+   }
+   // Scroll po krótkim opóźnieniu (po renderze)
+   setTimeout(function(){
+    var t = document.getElementById(id); // re-fetch po showPage
+    if (t) {
+     var top = t.getBoundingClientRect().top + window.scrollY - 90; // 90px offset pod nav
+     window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+   }, 250);
+  }
+ }
+ // On initial load — route z hash
+ var initialHash = window.location.hash;
+ if (initialHash) {
+  setTimeout(function(){ routeFromHash(initialHash); }, 50);
+ }
+ // Browser back/forward + manual hash change
+ window.addEventListener('hashchange', function(){
+  routeFromHash(window.location.hash);
  });
 
  // ── 5a. Dynamic page title + meta description per route ──
