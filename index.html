@@ -11057,30 +11057,37 @@ window.dopPipClose = function(){
    window.showPage(id);
    return;
   }
-  // 2. Jeśli hash = id sekcji na home (lead-magnet, faq, porownaj, galeria-kursy, roi-section, pricing-quick) → showPage('home') + scroll
+  // 2. Jeśli hash = id sekcji w którejkolwiek .page → showPage + scroll
   var target = document.getElementById(id);
-  if (target) {
-   var pageAncestor = target.closest('.page');
-   var pageSlug = pageAncestor ? pageAncestor.id.replace('page-','') : 'home';
-   // Przełącz na właściwą stronę jeśli nie jest aktywna
-   var currentActive = document.querySelector('.page.active');
-   if (!currentActive || currentActive.id !== pageAncestor.id) {
-    window.showPage(pageSlug);
-   }
-   // Scroll po krótkim opóźnieniu (po renderze)
+  if (!target) return;
+  var pageAncestor = target.closest('.page');
+  if (!pageAncestor) return;
+  var pageSlug = pageAncestor.id.replace('page-','');
+  var currentActive = document.querySelector('.page.active');
+  var needSwitch = !currentActive || currentActive.id !== pageAncestor.id;
+  if (needSwitch) window.showPage(pageSlug);
+  // Czekamy na zakończenie smooth scroll-to-top z showPage + render
+  // 800ms = bezpieczne nawet dla najwolniejszego smooth scroll
+  setTimeout(function tryScroll(retries){
+   retries = retries || 0;
+   var t = document.getElementById(id);
+   if (!t) return;
+   var top = t.getBoundingClientRect().top + window.scrollY - 90;
+   if (top < 0) top = 0;
+   // Instant scroll (anuluje smooth scroll showPage)
+   window.scrollTo({ top: top, behavior: 'instant' });
+   // Verify scroll się zaaplikował — jeśli nie, retry (max 3)
    setTimeout(function(){
-    var t = document.getElementById(id); // re-fetch po showPage
-    if (t) {
-     var top = t.getBoundingClientRect().top + window.scrollY - 90; // 90px offset pod nav
-     window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    if (Math.abs(window.scrollY - top) > 30 && retries < 3) {
+     window.scrollTo({ top: top, behavior: 'instant' });
     }
-   }, 250);
-  }
+   }, 200);
+  }, needSwitch ? 600 : 100);
  }
- // On initial load — route z hash
+ // On initial load — capture hash PRZED showPage zdąży go wyczyścić
  var initialHash = window.location.hash;
  if (initialHash) {
-  setTimeout(function(){ routeFromHash(initialHash); }, 50);
+  setTimeout(function(){ routeFromHash(initialHash); }, 80);
  }
  // Browser back/forward + manual hash change
  window.addEventListener('hashchange', function(){
