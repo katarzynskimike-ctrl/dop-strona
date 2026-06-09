@@ -536,6 +536,10 @@ section.grain-bg .grain-inner [style*="font-size:38px"][style*="color:var(--hot)
 section.grain-bg .grain-inner [style*="font-size:14px"][style*="rgba(255,255,255,.65)"][style*="margin-bottom:24px"]{
   display:none !important;
 }
+/* "Inwestycja" eyebrow w hero decision card — ukrywamy bo cena jest hidden, eyebrow bez kontekstu */
+section.grain-bg .grain-inner [style*="text-transform:uppercase"][style*="color:rgba(217,181,96,.85)"][style*="margin-bottom:14px"]{
+  display:none !important;
+}
 /* Eyebrow "Inwestycja" → "Wartość kursu" (CSS replace) */
 section.grain-bg .grain-inner [style*="text-transform:uppercase"][style*="color:rgba(217,181,96,.85)"]::after{
   display:none;
@@ -2786,7 +2790,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  <div class="wrap">
  <div class="sec-label on-dark">Kalendarz szkoleń</div>
  <h2 class="sec-h2" style="color:var(--black)">Najbliższe terminy</h2>
- <p class="sec-lead on-dark">Nie lista dat — karta decyzji. Temat, dla kogo, termin, miasto, cena i miejsca.</p>
+ <p class="sec-lead on-dark">Nie lista dat — karta decyzji. Temat, dla kogo, termin, miejsce i&nbsp;wartość, którą wychodzisz z&nbsp;sali.</p>
 
  <div style="display:grid;gap:2px;margin-top:28px">
  <div style="background:rgba(201,162,74,.07);border:1px solid rgba(201,162,74,.28);border-left:3px solid var(--gold);padding:26px 30px;display:grid;grid-template-columns:1fr 80px 100px 130px;gap:24px;align-items:center;transition:background .18s;cursor:pointer" onclick="showPage('kalendarz')"
@@ -4626,7 +4630,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  <div class="cal-hero-inner">
  <div class="sec-label on-dark">Kalendarz kursów</div>
  <h2 class="sec-h2" style="color:var(--black)">Wybierz termin<br>i zarezerwuj miejsce</h2>
- <p class="sec-lead on-dark">Nie lista dat — karta decyzji. Temat, dla kogo, termin, miasto, cena i dostępność miejsc.</p>
+ <p class="sec-lead on-dark">Nie lista dat — karta decyzji. Temat, dla kogo, termin, miejsce i&nbsp;konkretne efekty po szkoleniu.</p>
  <div class="cal-filters">
  <button class="cal-filter active" onclick="filterCal(this,'all')">Wszystkie</button>
  <button class="cal-filter" onclick="filterCal(this,'own')">Właściciele</button>
