@@ -2024,6 +2024,79 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 @media (prefers-reduced-motion:reduce){.trust-track{animation:none}}
 </style>
 
+<!-- AUTOR SYSTEMU DOP — portret Michała + statystyki + cytat -->
+<section id="autor" style="background:linear-gradient(180deg,var(--cream) 0%,var(--cream2) 100%);padding:96px 28px;border-top:1px solid rgba(27,44,79,.06);position:relative;overflow:hidden">
+ <!-- Decorative gold accent -->
+ <div style="position:absolute;top:50%;right:-200px;width:520px;height:520px;background:radial-gradient(circle,rgba(201,162,74,.1),transparent 70%);border-radius:50%;pointer-events:none;transform:translateY(-50%)"></div>
+
+ <div style="max-width:var(--max);margin:0 auto;position:relative">
+  <div class="autor-grid-resp" style="display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:center">
+
+   <!-- LEFT: Portret Michała 2023 -->
+   <div style="position:relative">
+    <!-- Decorative frame -->
+    <div style="position:absolute;top:18px;left:18px;right:-18px;bottom:-18px;border:2px solid var(--gold);border-radius:14px;pointer-events:none"></div>
+    <div style="position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/4;background:#1B2C4F;box-shadow:0 32px 80px -24px rgba(15,27,48,.45)">
+     <img src="/photos/kursy/portret-michal-2023.png" alt="Michał Katarzyński — autor systemu Doskonała Obsługa Pacjenta" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block">
+     <!-- Subtle dark gradient at bottom for caption -->
+     <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,27,48,.85));padding:50px 20px 18px;color:#fff">
+      <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);font-weight:700;margin-bottom:4px">Sesja foto 2023</div>
+      <div style="font-family:var(--display);font-size:24px;line-height:1.1">Michał Katarzyński</div>
+     </div>
+    </div>
+   </div>
+
+   <!-- RIGHT: Tytuł + statystyki + cytat -->
+   <div>
+    <div class="sec-label" style="margin-bottom:14px;color:var(--gold)">Autor systemu DOP</div>
+    <h2 style="font-family:var(--display);font-size:clamp(36px,4.5vw,56px);line-height:1.02;color:var(--black);margin-bottom:18px">
+     Nie jestem lekarzem.<br><em style="color:var(--gold);font-style:italic">Mam doktorat z rezultatów.</em>
+    </h2>
+    <p style="font-size:17px;color:var(--muted);line-height:1.6;margin-bottom:32px;max-width:560px">14 lat z polskimi praktykami stomatologicznymi. 200+ audytów. 56 zamkniętych projektów. Wykładowca Akademii Dawsona, DSD, Dentsply Implants, Kerr. Autor książki „Dlaczego pacjenci mówią TAK".</p>
+
+    <!-- Statystyki strip -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;padding:24px 0;border-top:1px solid rgba(27,44,79,.1);border-bottom:1px solid rgba(27,44,79,.1)">
+     <div>
+      <div style="font-family:var(--display);font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--gold);line-height:1">14+</div>
+      <div style="font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px">lat pracy</div>
+     </div>
+     <div>
+      <div style="font-family:var(--display);font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--gold);line-height:1">6 000+</div>
+      <div style="font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px">przeszkolonych</div>
+     </div>
+     <div>
+      <div style="font-family:var(--display);font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--gold);line-height:1">56</div>
+      <div style="font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px">projektów<br>zamkniętych</div>
+     </div>
+     <div>
+      <div style="font-family:var(--display);font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--gold);line-height:1">200+</div>
+      <div style="font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px">audytów</div>
+     </div>
+    </div>
+
+    <!-- Cytat z książki -->
+    <blockquote style="margin:0 0 28px;padding:20px 0 20px 24px;border-left:3px solid var(--gold);font-family:var(--display);font-size:20px;line-height:1.45;font-style:italic;color:var(--black);max-width:580px">
+     „Konsultacja rzadko kończy się fiaskiem przez jeden duży błąd. Kończy się przez serię mikrourazów emocjonalnych, których lekarz najczęściej nie zauważa."
+     <footer style="margin-top:10px;font-size:13px;font-style:normal;color:var(--muted);font-family:var(--body)">— „Dlaczego pacjenci mówią TAK", Rozdział 5</footer>
+    </blockquote>
+
+    <!-- CTA -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+     <button onclick="showPage('audyt-doradczy')" style="background:var(--gold);color:#fff;border:none;padding:14px 24px;border-radius:10px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body);transition:background .2s,transform .15s" onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)'">15 min z Michałem →</button>
+     <button onclick="document.getElementById('system-dop').scrollIntoView({behavior:'smooth',block:'start'})" style="background:transparent;color:var(--black);border:1.5px solid rgba(27,44,79,.2);padding:13px 24px;border-radius:10px;font-weight:700;font-size:13px;letter-spacing:.04em;cursor:pointer;font-family:var(--body);transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(27,44,79,.2)';this.style.color='var(--black)'">Poznaj system DOP →</button>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</section>
+<style>
+@media(max-width:880px){
+  .autor-grid-resp{grid-template-columns:1fr !important;gap:40px !important}
+  .autor-grid-resp > div:first-child{max-width:340px;margin:0 auto}
+}
+</style>
+
 <!-- IDENTYFIKACJA PROBLEMU — 4 karty per rola -->
 <section style="background:var(--cream2);padding:96px 28px;border-top:1px solid rgba(27,44,79,.08)">
  <div style="max-width:1140px;margin:0 auto">
