@@ -2084,6 +2084,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <div style="display:flex;gap:12px;flex-wrap:wrap">
      <button onclick="showPage('audyt-doradczy')" style="background:var(--gold);color:#fff;border:none;padding:14px 24px;border-radius:10px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body);transition:background .2s,transform .15s" onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)'">15 min z Michałem →</button>
      <button onclick="document.getElementById('system-dop').scrollIntoView({behavior:'smooth',block:'start'})" style="background:transparent;color:var(--black);border:1.5px solid rgba(27,44,79,.2);padding:13px 24px;border-radius:10px;font-weight:700;font-size:13px;letter-spacing:.04em;cursor:pointer;font-family:var(--body);transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(27,44,79,.2)';this.style.color='var(--black)'">Poznaj system DOP →</button>
+     <button onclick="showPage('michal')" style="background:transparent;color:var(--black);border:1.5px solid rgba(27,44,79,.2);padding:13px 24px;border-radius:10px;font-weight:700;font-size:13px;letter-spacing:.04em;cursor:pointer;font-family:var(--body);transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(27,44,79,.2)';this.style.color='var(--black)'">Pełne bio →</button>
     </div>
    </div>
 
@@ -5061,6 +5062,162 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  <button class="btn-final-ghost" onclick="showPage('referencje')">Zobacz referencje uczestników</button>
  </div>
  </section></div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PAGE: MICHAL — dedicated About page                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="page-michal">
+ <!-- HERO -->
+ <section style="background:linear-gradient(135deg,var(--black) 0%,var(--dark) 60%,var(--dark2) 100%);color:#fff;padding:80px 28px 96px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-100px;right:-100px;width:520px;height:520px;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%);border-radius:50%;pointer-events:none"></div>
+  <div class="michal-hero-grid" style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:center;position:relative">
+   <!-- Portret -->
+   <div style="display:flex;justify-content:center">
+    <div style="width:100%;max-width:340px;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:2px solid var(--gold);box-shadow:0 40px 100px -30px rgba(0,0,0,.5)">
+     <img src="/photos/kursy/portret-michal-2023.png" alt="Michał Katarzyński — autor systemu DOP" loading="eager" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block">
+    </div>
+   </div>
+   <!-- Title -->
+   <div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hot);padding:6px 14px;background:rgba(201,162,74,.1);border:1px solid rgba(201,162,74,.3);border-radius:20px;margin-bottom:18px">Autor · Mentor · Wykładowca</div>
+    <h1 style="font-family:var(--display);font-size:clamp(48px,6vw,84px);line-height:.95;color:#fff;margin-bottom:18px">Michał<br>Katarzyński</h1>
+    <p style="font-size:20px;color:rgba(255,255,255,.85);line-height:1.5;margin-bottom:14px;max-width:560px;font-style:italic;font-family:var(--display)">„Nie&nbsp;jestem lekarzem. Mam doktorat z&nbsp;rezultatów."</p>
+    <p style="font-size:15px;color:rgba(255,255,255,.7);line-height:1.6;max-width:560px">Autor systemu Doskonała Obsługa Pacjenta i&nbsp;książki „Dlaczego pacjenci mówią TAK". 14&nbsp;lat z&nbsp;polskimi praktykami stomatologicznymi. 6&nbsp;000+ przeszkolonych. 200+ audytów. 56 zamkniętych projektów.</p>
+    <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+     <button data-track="michal-cta-15min" onclick="showPage('audyt-doradczy')" style="background:var(--gold);color:#fff;border:none;padding:14px 26px;border-radius:10px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body)">15 min z&nbsp;Michałem →</button>
+     <button onclick="showPage('kalendarz')" style="background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.2);padding:13px 26px;border-radius:10px;font-weight:700;font-size:13px;letter-spacing:.04em;cursor:pointer;font-family:var(--body)">Kalendarz kursów →</button>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- BIO CHRONOLOGICZNE -->
+ <section style="background:var(--cream);padding:90px 28px">
+  <div style="max-width:880px;margin:0 auto">
+   <div class="sec-label" style="margin-bottom:14px">Droga do DOP</div>
+   <h2 style="font-family:var(--display);font-size:clamp(34px,4vw,52px);color:var(--black);line-height:1.05;margin-bottom:48px">Od Media Markt<br>do <em style="color:var(--gold);font-style:italic">Doskonałej Obsługi Pacjenta</em></h2>
+   <div style="display:grid;gap:32px">
+
+    <!-- 2004: Media Markt -->
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start">
+     <div style="font-family:var(--display);font-size:48px;font-weight:700;color:var(--gold);line-height:1">2004</div>
+     <div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:10px">Najmłodszy dyrektor udziałowiec Media Markt w&nbsp;Europie</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">W wieku 27 lat — w&nbsp;Zamku Królewskim w&nbsp;Warszawie — jeden z&nbsp;23 dyrektorów sklepów Media Markt podpisuje akt przystąpienia do spółek jako udziałowiec. 19 lat pracy w&nbsp;sprzedaży detalicznej, zarządzaniu firmą sprzedającą setki milionów produktów rocznie. <strong style="color:var(--black)">Lekcja:</strong> miękkie kompetencje (komunikacja, obsługa) decydują o&nbsp;wynikach mocniej niż produkt.</p>
+     </div>
+    </div>
+
+    <!-- 2009: Market Roku -->
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start">
+     <div style="font-family:var(--display);font-size:48px;font-weight:700;color:var(--gold);line-height:1">2009</div>
+     <div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:10px">Nagroda „Market Roku"</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">Zarządzany sklep wygrywa z&nbsp;wysokoobrotowymi marketami z&nbsp;większych miast niż Rzeszów. Metoda: skoncentrowanie zespołu na&nbsp;jakości i&nbsp;procesach. To samo podejście, które potem przeniesione do stomatologii stanie się systemem DOP.</p>
+     </div>
+    </div>
+
+    <!-- 2012: Pierwszy klient stomatologiczny -->
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start">
+     <div style="font-family:var(--display);font-size:48px;font-weight:700;color:var(--gold);line-height:1">2012</div>
+     <div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:10px">Pierwsza praktyka stomatologiczna — start DOP</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">Doradztwo dla pierwszej praktyki, potem Galeria Uśmiechu w&nbsp;Krakowie. Dwukrotne zwiększenie liczby foteli przy zachowaniu standardu pracy. Powstaje fundament metodyki: <em>standardy jakości w&nbsp;komunikacji zespołu = przewidywalne wyniki</em>.</p>
+     </div>
+    </div>
+
+    <!-- 2017: Kongres + książka -->
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start">
+     <div style="font-family:var(--display);font-size:48px;font-weight:700;color:var(--gold);line-height:1">2017</div>
+     <div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:10px">Kongres „Praktyka skazana na&nbsp;sukces" + książka</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">Kongres całodzienny w&nbsp;Warszawie — Michał&nbsp;Katarzyński jako organizator i&nbsp;wykładowca. Wieczorem wspólnie z&nbsp;Marcinem Prokopem wręcza 22 właścicielom praktyk statuetki „Serce Doskonałej Obsługi Pacjenta". Wydanie pierwszej książki <em>„Jak zaspokoić 7&nbsp;podstawowych potrzeb pacjentów stomatologicznych"</em> (ISBN 978-83-948996-0-8). Zbiórka 47&nbsp;000 zł na&nbsp;Centrum Leczenia Wad Twarzoczaszki w&nbsp;Olsztynie.</p>
+     </div>
+    </div>
+
+    <!-- 2024: Akademia Online -->
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start">
+     <div style="font-family:var(--display);font-size:48px;font-weight:700;color:var(--gold);line-height:1">2024</div>
+     <div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:10px">Akademia Rentownej Praktyki — 462 praktyk</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">Akademia Online (12 kursów video + cotygodniowe konsultacje live) w&nbsp;462 polskich praktykach. Wykładowca Akademii&nbsp;Dawsona, Akademii&nbsp;DSD, Dentsply&nbsp;Implants, Kerr. Autor serii artykułów w&nbsp;„Medical Tribune Stomatologia".</p>
+     </div>
+    </div>
+
+    <!-- 2026: Druga książka -->
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start">
+     <div style="font-family:var(--display);font-size:48px;font-weight:700;color:var(--hot);line-height:1">2026</div>
+     <div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:10px">Druga książka — „Dlaczego pacjenci mówią TAK"</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">25 rozdziałów, 3 części. Psychologia decyzji pacjenta · 7&nbsp;Czynników Decyzji Pacjenta™ · Protokół Doskonałej Konsultacji. Pełna metodyka 14 lat audytów i&nbsp;projektów wdrożeniowych. <strong style="color:var(--gold)">Pobierz darmowy fragment</strong> w&nbsp;formie 27-stronicowego e-booka „10 błędów akceptacji planów leczenia".</p>
+      <button data-track="michal-pobierz-fragment" onclick="showPage('home');setTimeout(function(){document.getElementById('lead-magnet').scrollIntoView({behavior:'smooth',block:'start'})},400)" style="margin-top:14px;background:var(--gold);color:#fff;border:none;padding:11px 20px;border-radius:8px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body)">Pobierz darmowy fragment →</button>
+     </div>
+    </div>
+
+   </div>
+  </div>
+ </section>
+
+ <!-- KSIĄŻKI MICHAŁA -->
+ <section style="background:var(--cream2);padding:80px 28px;border-top:1px solid rgba(27,44,79,.06)">
+  <div style="max-width:var(--max);margin:0 auto">
+   <div style="text-align:center;margin-bottom:48px">
+    <div class="sec-label" style="justify-content:center;margin-bottom:12px">Książki Michała</div>
+    <h2 style="font-family:var(--display);font-size:clamp(32px,4vw,48px);color:var(--black);line-height:1.05">Dwie książki · jedna metodyka</h2>
+   </div>
+   <div class="books-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:840px;margin:0 auto">
+    <!-- Książka 1: 7 potrzeb -->
+    <div style="background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(27,44,79,.08);padding:32px;text-align:center;box-shadow:0 8px 24px -12px rgba(15,27,48,.1)">
+     <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Wydanie 1 · 2017</div>
+     <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:12px">Jak zaspokoić 7&nbsp;podstawowych potrzeb pacjentów stomatologicznych</h3>
+     <p style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:14px">200 stron · Bezpieczeństwo · Autorytet · Informacja · Komfort · Efekt · Przynależność · Kontrola.</p>
+     <div style="display:inline-block;background:rgba(58,140,92,.12);color:#3a8c5c;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;letter-spacing:.04em;text-transform:uppercase">Wydana · ISBN 978-83-948996-0-8</div>
+    </div>
+    <!-- Książka 2: Dlaczego pacjenci mówią TAK -->
+    <div style="background:#fff;border-radius:14px;overflow:hidden;border:1.5px solid var(--gold);padding:32px;text-align:center;box-shadow:0 12px 32px -12px rgba(201,162,74,.25);position:relative">
+     <span style="position:absolute;top:-10px;right:14px;background:var(--gold);color:#fff;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:8px">Już niedługo</span>
+     <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:700">Wydanie 2 · 2026</div>
+     <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:12px">Dlaczego pacjenci mówią <em style="color:var(--gold);font-style:italic">TAK</em></h3>
+     <p style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:14px">25 rozdziałów · 3 części · Psychologia decyzji · 7&nbsp;Czynników Decyzji Pacjenta™ · Protokół Doskonałej Konsultacji.</p>
+     <button data-track="michal-ksiazka-fragment" onclick="showPage('home');setTimeout(function(){document.getElementById('lead-magnet').scrollIntoView({behavior:'smooth',block:'start'})},400)" style="background:var(--gold);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body)">Pobierz fragment →</button>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- MEDIA I WYKŁADY -->
+ <section style="background:var(--cream);padding:80px 28px;border-top:1px solid rgba(27,44,79,.06);text-align:center">
+  <div style="max-width:880px;margin:0 auto">
+   <div class="sec-label" style="justify-content:center;margin-bottom:12px">Wystąpienia i&nbsp;media</div>
+   <h2 style="font-family:var(--display);font-size:clamp(32px,4vw,48px);color:var(--black);line-height:1.05;margin-bottom:14px">Stała współpraca z&nbsp;5 kluczowymi<br>instytucjami polskiej stomatologii</h2>
+   <p style="font-size:15px;color:var(--muted);line-height:1.6;max-width:620px;margin:0 auto 36px">Wykłady dla lekarzy dentystów i&nbsp;zespołów. Seria artykułów w&nbsp;czołowym piśmie branżowym.</p>
+   <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px 48px;padding:24px 0;border-top:1px solid rgba(27,44,79,.1);border-bottom:1px solid rgba(27,44,79,.1)">
+    <div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--black);line-height:1.1">Akademia<br>Dawsona</div>
+    <div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--black);line-height:1.1">Akademia<br>DSD</div>
+    <div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--black);line-height:1.1">Dentsply<br>Implants</div>
+    <div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--black);line-height:1.1">Kerr</div>
+    <div style="font-family:var(--display);font-size:18px;font-weight:700;font-style:italic;color:var(--black);line-height:1.1">Medical Tribune<br>Stomatologia</div>
+   </div>
+   <p style="margin-top:24px;font-size:13px;color:var(--muted);font-style:italic">Plus kongres „Praktyka skazana na&nbsp;sukces" 2017 · współorganizator z&nbsp;Marcinem Prokopem · 22 wręczone statuetki „Serce DOP"</p>
+  </div>
+ </section>
+
+ <!-- CTA OUTRO -->
+ <section style="background:linear-gradient(180deg,var(--dark2) 0%,var(--black) 100%);color:#fff;padding:80px 28px;text-align:center">
+  <div style="max-width:680px;margin:0 auto">
+   <h2 style="font-family:var(--display);font-size:clamp(32px,4vw,48px);line-height:1.05;color:#fff;margin-bottom:14px">Porozmawiajmy 15&nbsp;minut</h2>
+   <p style="font-size:16px;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:32px">Bezpłatnie, bez zobowiązań. Opowiesz o&nbsp;swojej praktyce, wskażę najkrótszą ścieżkę.</p>
+   <button data-track="michal-cta-outro" onclick="showPage('audyt-doradczy')" style="background:var(--gold);color:#fff;border:none;padding:16px 32px;border-radius:10px;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--body)">Umów rozmowę z&nbsp;Michałem →</button>
+  </div>
+ </section>
+</div>
+<style>
+@media(max-width:880px){
+  .michal-hero-grid{grid-template-columns:1fr !important;gap:40px !important}
+  .michal-hero-grid > div:first-child{max-width:280px;margin:0 auto}
+  .books-grid{grid-template-columns:1fr !important}
+}
+</style>
+
 <div class="page" id="page-referencje"><div class="ref-hero grain-bg" style="background:var(--cream)">
  <div class="grain-inner"><div class="ref-hero-inner">
  <div class="sec-label on-dark">Referencje · Opinie uczestników</div>
@@ -11452,6 +11609,7 @@ window.dopPipClose = function(){
   'zwiekszanie-rentownosci':['Zwiększanie rentowności praktyki stomatologicznej · DOP','Akademia + bezpłatny e-book. Konkretne narzędzia, KPI, system prowizji.'],
   'wiedza':['Wiedza, blog i e-book · DOP','Artykuły, narzędzia i analizy z 14 lat pracy z praktykami. Bezpłatny e-book PDF.'],
   'rada':['Rada Programowa DOP · eksperci stomatologii','Bartosz Cerkaski, Dorota Stankowska, Przemysław Stankowski, Marta Bakun.'],
+  'michal':['Michał Katarzyński — autor systemu DOP · 14 lat z polskimi praktykami','Mentor 6000+ dentystów, autor 2 książek, wykładowca Akademii Dawsona, DSD, Dentsply Implants, Kerr.'],
   'referencje':['Referencje uczestników kursów DOP','6+ tys. przeszkolonych. Opinie właścicieli, lekarzy, higienistek i recepcji.'],
   'polityka':['Polityka prywatności · DOP','RODO, cele przetwarzania, prawa użytkownika. Aktualizacja 4 czerwca 2026.'],
   'regulamin':['Regulamin świadczenia usług · DOP','Rejestracja, płatności, 14-dniowe odstąpienie, 30-dniowa gwarancja Akademii.']
@@ -11645,6 +11803,7 @@ window.dopPipClose = function(){
   'akademia': [['Strona główna','home']],
   'wiedza': [['Strona główna','home']],
   'rada': [['Strona główna','home']],
+  'michal': [['Strona główna','home']],
   'referencje': [['Strona główna','home']],
   'kurs-zarzadzania': [['Strona główna','home'],['Kalendarz kursów','kalendarz']],
   'kurs-zamkniety-wl': [['Strona główna','home'],['Programy dla właścicieli','wlasciciele']],
@@ -11666,7 +11825,7 @@ window.dopPipClose = function(){
  var BREADCRUMB_CURRENT = {
   'wlasciciele':'Właściciele','lekarze':'Lekarze','higienistki':'Higienistki','rejestracja':'Rejestracja',
   'audyty':'Audyty','kalendarz':'Kalendarz','akademia':'Akademia Online','wiedza':'Wiedza',
-  'rada':'Rada Programowa','referencje':'Referencje',
+  'rada':'Rada Programowa','referencje':'Referencje','michal':'O Michale',
   'kurs-zarzadzania':'Kurs Zarządzania','kurs-zamkniety-wl':'Kurs zamknięty — Właściciele',
   'kurs-zamkniety-lek':'Kurs zamknięty — Lekarze','kurs-zamkniety-rec':'Kurs zamknięty — Recepcja',
   'audyt-praktyki':'Audyt Praktyki','audyt-doradczy':'Audyt Doradczy',
