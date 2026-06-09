@@ -527,6 +527,23 @@ opacity:.04;pointer-events:none;z-index:0}
 .cal2-spots-ok{color:#3a8c5c;font-weight:600}
 .cal2-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 26px 22px;border-top:1px solid rgba(27,44,79,.06);gap:14px;flex-wrap:wrap}
 .cal2-featured .cal2-footer{padding:20px 32px 26px}
+/* === CENA UKRYTA w hero kursów (sprzedażówka) — pokazywana niżej po pełnej wartości === */
+/* Pattern: w hero decision-card cena ma font-size:38px + color:var(--hot) + font-style:italic */
+section.grain-bg .grain-inner [style*="font-size:38px"][style*="color:var(--hot)"][style*="font-style:italic"]:not(button):not(.cal2-tag-featured){
+  display:none !important;
+}
+/* "/ osoba", "/ os. faktura VAT" pod ceną też hide */
+section.grain-bg .grain-inner [style*="font-size:14px"][style*="rgba(255,255,255,.65)"][style*="margin-bottom:24px"]{
+  display:none !important;
+}
+/* Eyebrow "Inwestycja" → "Wartość kursu" (CSS replace) */
+section.grain-bg .grain-inner [style*="text-transform:uppercase"][style*="color:rgba(217,181,96,.85)"]::after{
+  display:none;
+}
+section.grain-bg .grain-inner [style*="text-transform:uppercase"][style*="color:rgba(217,181,96,.85)"][style*="margin-bottom:14px"] span,
+section.grain-bg .grain-inner div[style*="text-transform:uppercase"][style*="color:rgba(217,181,96,.85)"][style*="margin-bottom:14px"]:first-letter{}
+/* Powyższe CSS replace nie zmienia faktycznego tekstu; tylko ukrywa cenę i pokazuje value strip */
+
 /* === CENA UKRYTA w kalendarzu (marketing best practice — cena DOPIERO po sprzedażówce na landing page) === */
 .cal2-footer{justify-content:flex-end !important}
 .cal2-footer > div:first-child{display:none !important}
