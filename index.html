@@ -12121,11 +12121,11 @@ window.submitLeadMagnet = function(e){
   fetch('/api/lead', {
    method: 'POST',
    headers: {'Content-Type':'application/json'},
-   body: JSON.stringify({form_id: 'newsletter', EMAIL: email, source: 'popup-timed'})
+   body: JSON.stringify({form_id: 'lead-magnet', EMAIL: email, FIRSTNAME: '', SOURCE: 'popup-timed-40s-60scroll'})
   }).then(function(r){ return r.json(); }).then(function(data){
    try { localStorage.setItem(POPUP_KEY, JSON.stringify({subscribed: true, shown: Date.now()})); } catch(e) {}
    var body = document.getElementById('nl-popup-body');
-   if (body) body.innerHTML = '<div class="nl-popup-success"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:6px">Witamy w DOP!</h3><p style="color:var(--muted);font-size:14px">Pierwszy insight przyjdzie w ciągu 7 dni. Sprawdź skrzynkę (i spam, na wszelki wypadek).</p></div>';
+   if (body) body.innerHTML = '<div class="nl-popup-success"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3 style="font-family:var(--display);font-size:24px;color:var(--black);margin-bottom:6px">Witamy w DOP!</h3><p style="color:var(--muted);font-size:14px;margin-bottom:14px">Sprawdź skrzynkę za 60 sek — wysłaliśmy Ci darmowy e-book bonusem.</p><a href="/ebook-10bledow.pdf" download="DOP-10-bledow-akceptacji-planow.pdf" style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Pobierz PDF teraz</a></div>';
    setTimeout(window.closeNlPopup, 3500);
   }).catch(function(){
    btn.disabled = false;

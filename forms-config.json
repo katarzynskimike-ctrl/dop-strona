@@ -115,10 +115,11 @@
     "lead-magnet": {
       "form_id": "lead-magnet",
       "list": "newsletter",
-      "double_opt_in": true,
+      "double_opt_in": false,
       "doi_template_id": null,
       "redirect_url": "https://doskonalaobslugapacjenta.pl/ebook-thank-you",
-      "notification_email": null,
+      "notification_email": "biuro@doskonalaobslugapacjenta.pl",
+      "_segment_by_source": "SOURCE attribute różnicuje: home-lead-magnet, popup-timed-40s-60scroll, footer-cta, etc.",
       "fields": [
         {
           "name": "FIRSTNAME",
