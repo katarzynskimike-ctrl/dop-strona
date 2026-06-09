@@ -25,4 +25,15 @@
   <url><loc>https://doskonalaobslugapacjenta.pl/#referencje</loc><priority>0.7</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#polityka</loc><priority>0.3</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#regulamin</loc><priority>0.3</priority></url>
+  <!-- Sekcje home — anchory dla SEO i deep linkingu -->
+  <url><loc>https://doskonalaobslugapacjenta.pl/#autor</loc><priority>0.8</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#system-dop</loc><priority>0.85</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#lead-magnet</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#galeria-kursy</loc><priority>0.7</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#historie</loc><priority>0.8</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#porownaj</loc><priority>0.85</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#faq</loc><priority>0.7</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#roi-calc</loc><priority>0.8</priority></url>
+  <!-- PDF lead magnet (bezpośredni link, indeksowalny) -->
+  <url><loc>https://doskonalaobslugapacjenta.pl/ebook-10bledow.pdf</loc><priority>0.7</priority></url>
 </urlset>

@@ -1884,8 +1884,8 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 
  <!-- H1: uniwersalny dla lekarza-właściciela, lekarza, higienistki, recepcji -->
  <h1 class="fade-u d1" style="font-family:var(--display);font-size:clamp(44px,6vw,84px);line-height:1.02;letter-spacing:-.02em;color:#FFFFFF;max-width:18ch;margin:0 0 28px;font-weight:400">
- Każdy daje z siebie wszystko.
- <em style="color:var(--hot);font-style:italic;display:block">A praktyka nadal stoi w miejscu.</em>
+ Każdy daje z&nbsp;siebie wszystko.
+ <em style="color:var(--hot);font-style:italic;display:block">A&nbsp;praktyka nadal stoi w&nbsp;miejscu.</em>
  </h1>
 
  <!-- Lead: krótki, italic, kończy na payoffe „brak wspólnego systemu" -->
@@ -2050,7 +2050,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
    <div>
     <div class="sec-label" style="margin-bottom:14px;color:var(--gold)">Autor systemu DOP</div>
     <h2 style="font-family:var(--display);font-size:clamp(36px,4.5vw,56px);line-height:1.02;color:var(--black);margin-bottom:18px">
-     Nie jestem lekarzem.<br><em style="color:var(--gold);font-style:italic">Mam doktorat z rezultatów.</em>
+     Nie jestem lekarzem.<br><em style="color:var(--gold);font-style:italic">Mam doktorat z&nbsp;rezultatów.</em>
     </h2>
     <p style="font-size:17px;color:var(--muted);line-height:1.6;margin-bottom:32px;max-width:560px">14 lat z polskimi praktykami stomatologicznymi. 200+ audytów. 56 zamkniętych projektów. Wykładowca Akademii Dawsona, DSD, Dentsply Implants, Kerr. Autor książki „Dlaczego pacjenci mówią TAK".</p>
 
@@ -2254,7 +2254,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 <section style="background:var(--cream);padding:60px 28px;border-top:1px solid rgba(27,44,79,.08)" id="pricing-quick">
  <div style="max-width:var(--max);margin:0 auto;text-align:center">
  <div class="sec-label" style="justify-content:center;margin-bottom:16px">Inwestycja w wiedzę</div>
- <h2 style="font-family:var(--display);font-size:clamp(38px,4.5vw,60px);color:var(--black);line-height:.95;margin-bottom:14px">Cztery sposoby pracy z nami</h2>
+ <h2 style="font-family:var(--display);font-size:clamp(38px,4.5vw,60px);color:var(--black);line-height:.95;margin-bottom:14px">Cztery sposoby pracy z&nbsp;nami</h2>
  <p style="font-size:18px;color:var(--muted);max-width:720px;margin:0 auto 44px">Każdy format prowadzi do tego samego: wspólnego standardu pracy zespołu. Wybierz tempo wdrożenia — od kursu online we własnym tempie po pełną transformację praktyki w jednym ruchu.</p>
 
  <!-- 4 KARTY CENOWE v2 — Visual cover + masterclass treatment -->
@@ -3432,7 +3432,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  <div style="max-width:var(--max);margin:0 auto;position:relative">
   <div style="text-align:center;margin-bottom:48px">
    <div class="sec-label" style="justify-content:center;margin-bottom:14px">Książka · System · Autorytet</div>
-   <h2 style="font-family:var(--display);font-size:clamp(36px,4.5vw,56px);color:var(--black);line-height:1.02;margin-bottom:14px">14 lat pracy · sześć modeli autorskich<br><em style="color:var(--gold);font-style:italic">jedna spójna metodyka</em></h2>
+   <h2 style="font-family:var(--display);font-size:clamp(36px,4.5vw,56px);color:var(--black);line-height:1.02;margin-bottom:14px">14 lat pracy · sześć modeli autorskich<br><em style="color:var(--gold);font-style:italic">jedna spójna metodyka.</em></h2>
    <p style="font-size:17px;color:var(--muted);max-width:680px;margin:0 auto;line-height:1.6">DOP to nie zbiór dobrych rad. To system z nazwami, sekwencjami i konkretnymi narzędziami. Spisany w nadchodzącej książce „Dlaczego pacjenci mówią TAK" — 25 rozdziałów, 3 części, 7 czynników decyzji pacjenta.</p>
   </div>
 
@@ -11425,12 +11425,43 @@ window.dopPipClose = function(){
   'regulamin':['Regulamin świadczenia usług · DOP','Rejestracja, płatności, 14-dniowe odstąpienie, 30-dniowa gwarancja Akademii.']
  };
  var metaDesc = document.querySelector('meta[name="description"]');
+ var metaOgTitle = document.querySelector('meta[property="og:title"]');
+ var metaOgDesc = document.querySelector('meta[property="og:description"]');
+ var metaOgImage = document.querySelector('meta[property="og:image"]');
+ var metaTwTitle = document.querySelector('meta[name="twitter:title"]');
+ var metaTwDesc = document.querySelector('meta[name="twitter:description"]');
+ var metaTwImage = document.querySelector('meta[name="twitter:image"]');
+ // OG image per kurs landing (społecznościowy preview)
+ var BASE_URL = window.location.origin;
+ var PAGE_OG_IMAGE = {
+  'kurs-zarzadzania': BASE_URL + '/photos/kursy/kurs-rentowna-praktyka.jpg',
+  'doskonala-konsultacja': BASE_URL + '/photos/kursy/konsultacja-uczestnikow.jpg',
+  'rejestracja-cz1': BASE_URL + '/photos/kursy/kurs-rejestracja-2.jpg',
+  'rejestracja-ninja': BASE_URL + '/photos/kursy/kurs-rejestracja-1.jpg',
+  'audyt-doradczy': BASE_URL + '/photos/kursy/portret-michal-2023.png',
+  'akademia': BASE_URL + '/photos/kursy/michal-portret-academia.png',
+  'plan-leczenia': BASE_URL + '/photos/kursy/michal-portret-plan.png',
+  'zwiekszanie-rentownosci': BASE_URL + '/photos/kursy/michal-portret-rentownosc.png',
+  'kurs-zamkniety-wl': BASE_URL + '/photos/kursy/praca-grupowa.jpg',
+  'kurs-zamkniety-lek': BASE_URL + '/photos/kursy/praca-grupowa.jpg',
+  'kurs-zamkniety-rec': BASE_URL + '/photos/kursy/kurs-rejestracja-2.jpg'
+ };
+ var DEFAULT_OG = 'https://content.app-sources.com/s/98449374886093863/uploads/Images/Micha%C5%82_Katarzynski__pozniak-5335944.jpg?format=webp';
  function updatePageMeta(slug){
   var meta = PAGE_META[slug];
   if (meta) {
    document.title = meta[0];
    if (metaDesc) metaDesc.content = meta[1];
+   // Sync OG + Twitter
+   if (metaOgTitle) metaOgTitle.content = meta[0];
+   if (metaOgDesc) metaOgDesc.content = meta[1];
+   if (metaTwTitle) metaTwTitle.content = meta[0];
+   if (metaTwDesc) metaTwDesc.content = meta[1];
   }
+  // OG image per page (jeśli kurs ma tematyczne foto)
+  var img = PAGE_OG_IMAGE[slug] || DEFAULT_OG;
+  if (metaOgImage) metaOgImage.content = img;
+  if (metaTwImage) metaTwImage.content = img;
  }
  document.addEventListener('dop:page-change', function(e){
   if (e.detail && e.detail.slug) updatePageMeta(e.detail.slug);
