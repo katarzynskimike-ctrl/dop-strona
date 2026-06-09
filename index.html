@@ -2262,7 +2262,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 
   <!-- KARTA 1: AKADEMIA ONLINE -->
   <a href="#akademia" onclick="event.preventDefault();showPage('akademia')" role="button" class="pricing2-card" style="text-decoration:none;display:block">
-   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80')">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('/photos/kursy/portret-michal-2023.png')">
     <div class="pricing2-cover-overlay"></div>
     <span class="pricing2-badge ct-online"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>Online · 462 praktyk</span>
    </div>
@@ -2283,7 +2283,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 
   <!-- KARTA 2: KURSY OTWARTE -->
   <a href="#kalendarz" onclick="event.preventDefault();showPage('kalendarz')" role="button" class="pricing2-card" style="text-decoration:none;display:block">
-   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w800')">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('/photos/kursy/kurs-rentowna-praktyka.jpg')">
     <div class="pricing2-cover-overlay"></div>
     <span class="pricing2-badge ct-stacj"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>Stacjonarne · Warszawa</span>
    </div>
@@ -2304,7 +2304,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 
   <!-- KARTA 3 (FEATURED): IN-HOUSE -->
   <a href="#kurs-zamkniety-wl" onclick="event.preventDefault();showPage('kurs-zamkniety-wl')" role="button" class="pricing2-card pricing2-featured" style="text-decoration:none;display:block">
-   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.5),rgba(10,19,34,.15)),url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80')">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.5),rgba(10,19,34,.15)),url('/photos/kursy/praca-grupowa.jpg')">
     <div class="pricing2-cover-overlay"></div>
     <span class="pricing2-badge-featured"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>Najlepiej oceniany</span>
    </div>
@@ -2325,7 +2325,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
 
   <!-- KARTA 4: DORADCZY -->
   <a href="#audyt-doradczy" onclick="event.preventDefault();showPage('audyt-doradczy')" role="button" class="pricing2-card" style="text-decoration:none;display:block">
-   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80')">
+   <div class="pricing2-cover" style="background-image:linear-gradient(135deg,rgba(15,27,48,.55),rgba(10,19,34,.2)),url('/photos/kursy/portret-michal-2023.png')">
     <div class="pricing2-cover-overlay"></div>
     <span class="pricing2-badge ct-doc"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>1-on-1 z Michałem</span>
    </div>
@@ -11604,18 +11604,20 @@ window.dopPipClose = function(){
 
  // ── 5j. Auto-inject foto cover dla paths-grid-resp cards (4 kafelki na person pages) ──
  var PATHS_PHOTOS = {
-  'kurs-zarzadzania': 'https://lh3.googleusercontent.com/d/1pr2dj3Pa2tP3a5oiiULPyky-4G-dTOf3=w600',
+  // === TEMATYCZNE — prawdziwe zdjęcia z kursów DOP (Drive Michała) ===
+  'kurs-zarzadzania': '/photos/kursy/kurs-rentowna-praktyka.jpg', // Michał prowadzi kurs Rentowna Praktyka
+  'doskonala-konsultacja': '/photos/kursy/konsultacja-uczestnikow.jpg', // Konsultacja z książką 7 potrzeb w tle
+  'rejestracja-cz1': '/photos/kursy/kurs-rejestracja-2.jpg', // Uczestniczki kursu rejestracji
+  'rejestracja-ninja': '/photos/kursy/kurs-rejestracja-1.jpg', // Michał z uczestniczką rejestracji
+  'audyt-doradczy': '/photos/kursy/portret-michal-2023.png', // Portret studyjny Michała — 1-on-1 z Michałem
+  'kurs-zamkniety-wl': '/photos/kursy/praca-grupowa.jpg', // Praca grupowa - in-house
+  'kurs-zamkniety-lek': '/photos/kursy/praca-grupowa.jpg', // Praca grupowa - in-house
+  'kurs-zamkniety-rec': '/photos/kursy/kurs-rejestracja-2.jpg', // Recepcja in-house
+  // === STOCKOWE (fallback, tymczasowe — do podmiany gdy będą tematyczne) ===
   'akademia': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
-  'audyt-doradczy': 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
   'audyt-praktyki': 'https://images.unsplash.com/photo-1554224155-cfa08c2a758f?auto=format&fit=crop&w=600&q=80',
-  'kurs-zamkniety-wl': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
-  'kurs-zamkniety-lek': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80',
-  'kurs-zamkniety-rec': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80',
-  'doskonala-konsultacja': 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=600&q=80',
   'doskonala-wizyta-hig': 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80',
   'plan-leczenia': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80',
-  'rejestracja-cz1': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80',
-  'rejestracja-ninja': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80',
   'zwiekszanie-rentownosci': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80'
  };
  function injectPathsPhotos(){
