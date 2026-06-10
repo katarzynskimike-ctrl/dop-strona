@@ -1,0 +1,63 @@
+# Cloudflare Pages headers — aggressive caching dla redukcji bandwidth + szybkości
+# Format: ścieżka + header lines (4 spacje wcięcia)
+
+# HTML — krótki cache (1h) + revalidacja
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+/
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Zdjęcia — long cache (1 rok, immutable)
+/photos/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+# PDFs — long cache
+/*.pdf
+  Cache-Control: public, max-age=604800
+  X-Content-Type-Options: nosniff
+
+# Manifest + service worker — kratko (zmiany muszą propagować szybko)
+/manifest.json
+  Cache-Control: public, max-age=3600
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# llms.txt + sitemap + feed — średnio (1 dzień)
+/llms.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml; charset=utf-8
+
+/feed.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/rss+xml; charset=utf-8
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+# IndexNow key file
+/98c0de9506f6236993cc8add4acec1d8c29126a0889d2a5b1aefa6b4c81f5295.txt
+  Cache-Control: public, max-age=2592000
+  Content-Type: text/plain
+
+# API — never cache
+/api/*
+  Cache-Control: no-store, must-revalidate

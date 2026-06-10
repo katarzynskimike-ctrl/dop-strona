@@ -1,1 +1,5 @@
-/api/lead /.netlify/functions/lead 200
+# Cloudflare Pages redirects + SPA fallback
+# Functions /api/* są obsługiwane automatycznie przez functions/api/*
+
+# SPA fallback — wszystkie nieznane ścieżki idą do index.html
+/* /index.html 200
