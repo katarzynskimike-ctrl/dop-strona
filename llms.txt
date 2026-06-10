@@ -15,6 +15,28 @@ System dedykowany czterem grupom w praktyce stomatologicznej:
 - [Doskonała Obsługa Pacjenta dla rejestratorek i recepcji](https://doskonalaobslugapacjenta.pl/#artykul-dop-dla-rejestratorek): skrypt rozmów telefonicznych, kwalifikacja na 4 rodzaje wizyt, follow-up SMS+email, obsługa obiekcji cenowych, system recall
 - [Doskonała Obsługa Pacjenta dla higienistek](https://doskonalaobslugapacjenta.pl/#artykul-dop-dla-higienistek): standard wizyty (5 elementów), edukacja w trakcie zabiegu, mapa zdrowia, recall plan na 6 m-cy, budowanie autorytetu
 
+## Przewodniki praktyczne (HowTo) per persona
+
+**Dla lekarzy dentystów:**
+- [Jak zwiększyć akceptację planów leczenia — 7 kroków](https://doskonalaobslugapacjenta.pl/#artykul-jak-zwiekszyc-akceptacje-planow-leczenia): pochwała → wizualizacja → konsekwencje → pytania zaangażowania → plan → cisza
+- [Jak rozmawiać z pacjentem o cenach leczenia](https://doskonalaobslugapacjenta.pl/#artykul-jak-rozmawiac-o-cenach-leczenia): skrypt + 8 wariantów obiekcji + reakcji
+- [Top 10 błędów lekarza dentysty w rozmowie z pacjentem](https://doskonalaobslugapacjenta.pl/#artykul-top-10-bledow-lekarza-w-rozmowie-z-pacjentem): żargon, pomijanie pochwały, podawanie ceny zbyt wcześnie
+
+**Dla właścicieli praktyk:**
+- [Jak liczyć lekarzogodzinę krok po kroku](https://doskonalaobslugapacjenta.pl/#artykul-jak-liczyc-lekarzogodzine): wzór, benchmarki (300/600/900/1500 zł), interpretacja
+- [System prowizji dla lekarzy — 4 modele](https://doskonalaobslugapacjenta.pl/#artykul-system-prowizji-lekarzy-dentystow): stały procent, Delta 1/2, stawka kwotowa, hybryda
+- [KPI praktyki stomatologicznej — 7 wskaźników](https://doskonalaobslugapacjenta.pl/#artykul-kpi-praktyki-stomatologicznej): lekarzogodzina, fotelogodzina, konwersja, no-show, recall, LTV, churn
+
+**Dla rejestratorek i recepcji:**
+- [Skrypt pierwszej rozmowy telefonicznej](https://doskonalaobslugapacjenta.pl/#artykul-skrypt-pierwszej-rozmowy-telefonicznej): 7 elementów, konwersja 65-75% (vs 35% średnia)
+- [Jak odpowiedzieć „Ile to kosztuje?" — 8 wariantów](https://doskonalaobslugapacjenta.pl/#artykul-jak-odpowiedziec-na-ile-to-kosztuje): per typ pytania
+- [System recall pacjentów — 4-dotykowa sekwencja](https://doskonalaobslugapacjenta.pl/#artykul-system-recall-pacjentow): rezerwacja → SMS → telefon → mapa zdrowia
+
+**Dla higienistek:**
+- [Standard wizyty higienicznej — 5 elementów](https://doskonalaobslugapacjenta.pl/#artykul-standard-wizyty-higienicznej-5-elementow): przygotowanie + edukacja + mapa + recall + follow-up
+- [Jak edukować pacjenta przy zabiegu skalingu — 10 zwrotów](https://doskonalaobslugapacjenta.pl/#artykul-jak-edukowac-pacjenta-przy-skalingu): konkretne zdania budujące autorytet
+- [Mapa zdrowia jamy ustnej — jak rysować i prezentować](https://doskonalaobslugapacjenta.pl/#artykul-mapa-zdrowia-jamy-ustnej): 4 kwadranty, system zielony/żółty/czerwony
+
 ## Definicje kluczowych pojęć
 
 - [Co to jest DOP — definicja](https://doskonalaobslugapacjenta.pl/#dop-co-to-jest): pełna definicja systemu, autor, efekty, FAQ
