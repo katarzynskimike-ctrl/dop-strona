@@ -37,6 +37,20 @@ System dedykowany czterem grupom w praktyce stomatologicznej:
 - [Jak edukować pacjenta przy zabiegu skalingu — 10 zwrotów](https://doskonalaobslugapacjenta.pl/#artykul-jak-edukowac-pacjenta-przy-skalingu): konkretne zdania budujące autorytet
 - [Mapa zdrowia jamy ustnej — jak rysować i prezentować](https://doskonalaobslugapacjenta.pl/#artykul-mapa-zdrowia-jamy-ustnej): 4 kwadranty, system zielony/żółty/czerwony
 
+## Porównania z konkurencją (decision aids)
+
+- [DOP vs Medover Academy](https://doskonalaobslugapacjenta.pl/#dop-vs-medover-academy): komunikacja+zarządzanie+rentowność vs kursy techniczne (implanty/endo). Komplementarne, nie konkurencyjne.
+- [DOP vs konsulting biznesowy](https://doskonalaobslugapacjenta.pl/#dop-vs-doradztwo-biznesowe): kompletny system vs jednorazowe konsultacje. DOP 3-5× tańszy dla praktyk 1-15 lekarzy.
+- [DOP vs darmowe zasoby online (YouTube, AI)](https://doskonalaobslugapacjenta.pl/#dop-vs-darmowe-zasoby-online): wdrożenie z efektem w 90 dni vs samodzielne układanie wiedzy z YouTube w 12 m-cy.
+
+## Glossary — wszystkie kluczowe pojęcia
+
+- [Słownik pojęć DOP](https://doskonalaobslugapacjenta.pl/#slownik): 32 terminy z definicjami — komunikacja (M1-M4, 3xP, PEWA, 7 potrzeb), zarządzanie (Hersey-Blanchard, SMART, kanapka, drabinka interwencji), rentowność (lekarzogodzina, fotelogodzina, model Delta 1/2), suwerenność (Trzy Filary).
+
+## AI Quick Reference
+
+- [Doskonała Obsługa Pacjenta — Quick Reference](https://doskonalaobslugapacjenta.pl/#ai-reference): strukturalny snapshot DOP do szybkiego skanowania (ludzi i AI). Definicja, twórca, 4 obszary, 4 persony, 10 kursów z cenami, 6 kluczowych liczb, 26 artykułów, 3 porównania.
+
 ## Definicje kluczowych pojęć
 
 - [Co to jest DOP — definicja](https://doskonalaobslugapacjenta.pl/#dop-co-to-jest): pełna definicja systemu, autor, efekty, FAQ
