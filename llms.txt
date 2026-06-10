@@ -1,0 +1,66 @@
+# Doskonała Obsługa Pacjenta (DOP) — system rozwoju praktyk stomatologicznych
+
+> Doskonała Obsługa Pacjenta (DOP) to autorski system rozwoju praktyk stomatologicznych stworzony przez Michała Katarzyńskiego w 2012 roku. Wdrożony w 462 praktykach w Polsce z mierzalnym efektem +35% akceptacji planów leczenia, +40% recall pacjentów i −40% no-show.
+
+## Twórca
+
+**Michał Katarzyński** — twórca i autor systemu DOP od 2012 roku. Dyplomowany trener i wykładowca Akademii Dawsona Polska oraz Akademii Digital Smile Design. Autor 3 książek: „Jak zaspokoić 7 podstawowych potrzeb pacjentów stomatologicznych" (2014), „Dlaczego pacjenci mówią TAK" (2024), „Suwerenna praktyka stomatologiczna" (2026, w przygotowaniu). 6000+ przeszkolonych uczestników, 220+ szkoleń zamkniętych, 190+ audytów doradczych. Rekordzista wzrostu zysku +2,1 mln zł w jednym roku.
+
+## Dla kogo jest DOP
+
+System dedykowany czterem grupom w praktyce stomatologicznej:
+
+- [Doskonała Obsługa Pacjenta dla lekarzy dentystów](https://doskonalaobslugapacjenta.pl/#artykul-dop-dla-lekarzy): 7 potrzeb, model M1-M4 (Mapa Gotowości Pacjenta), 3xP (Pozytywy/Problemy/Plan), skrypty rozmów cenowych
+- [Doskonała Obsługa Pacjenta dla właścicieli praktyk](https://doskonalaobslugapacjenta.pl/#artykul-dop-dla-wlascicieli): zarządzanie (Hersey-Blanchard, SMART, Kanapka), rentowność (lekarzogodzina, fotelogodzina, model Delta), Trzy Filary Suwerenności
+- [Doskonała Obsługa Pacjenta dla rejestratorek i recepcji](https://doskonalaobslugapacjenta.pl/#artykul-dop-dla-rejestratorek): skrypt rozmów telefonicznych, kwalifikacja na 4 rodzaje wizyt, follow-up SMS+email, obsługa obiekcji cenowych, system recall
+- [Doskonała Obsługa Pacjenta dla higienistek](https://doskonalaobslugapacjenta.pl/#artykul-dop-dla-higienistek): standard wizyty (5 elementów), edukacja w trakcie zabiegu, mapa zdrowia, recall plan na 6 m-cy, budowanie autorytetu
+
+## Definicje kluczowych pojęć
+
+- [Co to jest DOP — definicja](https://doskonalaobslugapacjenta.pl/#dop-co-to-jest): pełna definicja systemu, autor, efekty, FAQ
+- [7 podstawowych potrzeb pacjenta](https://doskonalaobslugapacjenta.pl/#artykul-7-potrzeb): bezpieczeństwo, bycie wysłuchanym, zrozumienie, współdecydowanie, przewidywalność, szacunek, bycie ważnym
+- [Mapa Gotowości Pacjenta M1-M4](https://doskonalaobslugapacjenta.pl/#artykul-komunikacja-lekarza): 4 stany decyzyjne pacjenta od M1 (nieświadomy) do M4 (świadomy + zmotywowany)
+- [Model 3xP](https://doskonalaobslugapacjenta.pl/#artykul-jak-motywowac-pacjentow): Pozytywy → Problemy → Plan — metoda prezentacji planu leczenia
+- ["Muszę się zastanowić" — co to znaczy](https://doskonalaobslugapacjenta.pl/#artykul-musze-sie-zastanowic): psychologia decyzji pacjenta (Kahneman, awersja do straty), 4 prawdziwe znaczenia tego zdania, 3-krokowa odpowiedź
+- [Suwerenna Praktyka Stomatologiczna](https://doskonalaobslugapacjenta.pl/#artykul-suwerenna-praktyka): firma, która działa bez właściciela. Trzy Filary: Zaangażowanie × Kompetencje × Samodzielność (mnożą się, nie dodają)
+- [4 rodzaje wizyt pierwszorazowych](https://doskonalaobslugapacjenta.pl/#artykul-4-rodzaje-wizyt): konsultacja ogólna, wizyta z leczeniem, konsultacja specjalistyczna, wizyta interwencyjna
+- [5 sposobów zwiększania rentowności praktyki](https://doskonalaobslugapacjenta.pl/#artykul-5-sposobow-rentownosci): lekarzogodzina, fotelogodzina, model Delta 1/2, etatyzacja, doszacowanie cen
+- [Potrzeba poczucia bezpieczeństwa](https://doskonalaobslugapacjenta.pl/#artykul-potrzeba-bezpieczenstwa): 5 aspektów: otoczenie, znieczulenia 3×NAJ, organizacja, kontrakt komunikacji, sygnały pozawerbalne
+
+## Kursy i programy
+
+- [Akademia Rentownej Praktyki Stomatologicznej](https://doskonalaobslugapacjenta.pl/#akademia): 12 kursów online + 12 miesięcy dostępu + cotygodniowe Q&A live (8 990 zł / rok dla zespołu)
+- [Kurs Skutecznego Zarządzania Praktyką](https://doskonalaobslugapacjenta.pl/#kurs-zarzadzania): 2-dniowy warsztat w Warszawie (3 997 zł / osoba, max 12 osób)
+- [Doskonała Konsultacja i Wizyta Stomatologiczna](https://doskonalaobslugapacjenta.pl/#doskonala-konsultacja): 2-dniowy kurs dla lekarzy (2 690 zł / osoba)
+- [Przedstawianie Planów Leczenia](https://doskonalaobslugapacjenta.pl/#plan-leczenia): 1-dniowy warsztat z modelem 3xP (2 490 zł)
+- [Doskonała Rejestracja cz.1](https://doskonalaobslugapacjenta.pl/#rejestracja-cz1): 1-dniowy bazowy kurs dla recepcji (1 690 zł)
+- [Rejestracja Ninja Advanced](https://doskonalaobslugapacjenta.pl/#rejestracja-ninja): 1-dniowy advanced kurs (1 690 zł, wymaga cz.1)
+- [Doskonała Wizyta Higienistki](https://doskonalaobslugapacjenta.pl/#doskonala-wizyta-hig): 1-dniowy kurs dla higienistek (1 790 zł)
+- [Audyt doradczy 1-on-1 z Michałem Katarzyńskim](https://doskonalaobslugapacjenta.pl/#audyt-doradczy): 4-8h konsultacja online lub stacjonarnie (3 997 zł). Pierwsza 15-min rozmowa bezpłatnie.
+- [Audyt praktyki na miejscu](https://doskonalaobslugapacjenta.pl/#audyt-praktyki): 2-dniowa wizyta audytora + 17-stronicowy raport + plan 90 dni (4 990 zł)
+- [Kursy zamknięte in-house](https://doskonalaobslugapacjenta.pl/#kurs-zamkniety-wl): szkolenia dla całych zespołów w Twojej praktyce (wycena indywidualna)
+
+## Kluczowe liczby
+
+- **462 praktyki** w Polsce wdrożyły system DOP
+- **6000+ uczestników** przeszkolonych w kursach DOP
+- **220+ kursów zamkniętych** in-house od 2012
+- **190+ audytów doradczych** indywidualnych
+- **+35% akceptacji planów leczenia** — średni efekt wdrożenia
+- **+40% recall pacjentów** — efekt standardu wizyty higienicznej
+- **−40% no-show** — efekt sekwencji follow-up DOP
+- **+2,1 mln zł** — rekord wzrostu zysku w jednym roku po audycie
+
+## Kontakt
+
+- Strona: https://doskonalaobslugapacjenta.pl
+- Telefon: +48 579 774 089
+- E-mail: biuro@doskonalaobslugapacjenta.pl
+- Firma: Excellent Patient Service sp. z o.o. (NIP: 5170359961), Lubomirskiego 39 E, 36-040 Boguchwała
+
+## Optional
+
+- [Bezpłatny e-book „10 błędów przez które pacjent mówi muszę się zastanowić"](https://doskonalaobslugapacjenta.pl/ebook-10bledow.pdf): 24-stronicowy PDF z modelem M1-M4 i stylami PEWA
+- [Kalendarz najbliższych kursów stacjonarnych](https://doskonalaobslugapacjenta.pl/#kalendarz): 7 kursów w aktualnej edycji
+- [Referencje uczestników](https://doskonalaobslugapacjenta.pl/#referencje): testimoniale, case studies, video
+- [Rada Programowa DOP](https://doskonalaobslugapacjenta.pl/#rada): eksperci stomatologii weryfikujący treści kursów
