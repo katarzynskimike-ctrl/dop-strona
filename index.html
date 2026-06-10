@@ -570,6 +570,10 @@ section.grain-bg .grain-inner div[style*="text-transform:uppercase"][style*="col
  .cal2-featured .cal2-cover,.cal2-online .cal2-cover{aspect-ratio:16/9}
  .invest-grid-resp{grid-template-columns:1fr!important;padding:24px!important;gap:24px!important}
  .invest-grid-resp > div:first-child{padding-bottom:24px;border-bottom:1px solid rgba(201,162,74,.18)}
+ .pillars-resp{grid-template-columns:1fr!important}
+ .blog-grid-resp{grid-template-columns:1fr!important}
+ .blog-grid-2-resp{grid-template-columns:1fr!important;max-width:none!important}
+ .book-banner-resp{flex-direction:column!important;text-align:left;gap:18px!important;padding:32px 24px!important}
 }
 
 @media(max-width:760px){
@@ -4967,36 +4971,149 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  </div></div>
  </div>
 
- <!-- BLOG W PRZEBUDOWIE — Q3 2026 -->
- <div style="max-width:var(--max);margin:2px auto 0;padding:80px 28px;text-align:center">
-  <div style="max-width:680px;margin:0 auto;padding:56px 40px;background:linear-gradient(180deg,rgba(27,44,79,.04) 0%,rgba(201,162,74,.06) 100%);border:1px solid rgba(201,162,74,.25);position:relative;overflow:hidden">
-   <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:2px;background:linear-gradient(90deg,transparent,var(--hot),transparent)"></div>
-   <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:6px 14px;background:rgba(201,162,74,.1);border:1px solid rgba(201,162,74,.25);border-radius:20px;margin-bottom:24px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Przebudowa Q3 2026</div>
-   <h3 style="font-family:var(--display);font-size:clamp(32px,4vw,48px);color:var(--black);line-height:1.05;margin-bottom:18px;font-weight:400">Blog wraca w nowej odsłonie<br><em style="color:var(--gold);font-style:italic">jeszcze w tym roku.</em></h3>
-   <p style="font-size:17px;color:var(--muted);line-height:1.7;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto">Migrujemy 20+ artykułów Michała Katarzyńskiego do nowego silnika. <strong style="color:var(--black);font-weight:600">Najgłośniejszy artykuł „Fotelogodzina"</strong> pojawi się jako pierwszy, w wersji rozszerzonej o realne dane z 200+ audytów.</p>
-   <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:18px">
-    <button onclick="document.getElementById('wiedza-lead-magnet').scrollIntoView({behavior:'smooth'})" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--gold);color:var(--black);font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border:none;cursor:pointer;border-radius:6px;font-family:var(--body);transition:background .15s,transform .15s" onmouseover="this.style.background='var(--hot)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--gold)';this.style.transform='translateY(0)'">Pobierz e-book teraz <span style="font-size:16px">↓</span></button>
-    <button onclick="document.getElementById('wiedza-notify').scrollIntoView({behavior:'smooth'})" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:transparent;color:var(--gold);border:1px solid rgba(201,162,74,.4);font-weight:700;font-size:14px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border-radius:6px;font-family:var(--body);transition:all .15s" onmouseover="this.style.background='rgba(201,162,74,.08)'" onmouseout="this.style.background='transparent'">Powiadom mnie o blogu</button>
-   </div>
-   <p style="font-size:13px;color:rgba(27,44,79,.5);font-style:italic">Najnowsze materiały Michała znajdziesz w międzyczasie na <a onclick="showPage('akademia')" style="color:var(--gold);cursor:pointer;font-weight:600">Akademii Online</a> i w bezpłatnym e-booku poniżej.</p>
+ <!-- ARTICLES GRID — Pillars: Komunikacja / Plany leczenia / Suwerenna praktyka -->
+ <div style="max-width:var(--max);margin:2px auto 0;padding:64px 28px">
+  <!-- 3 PILLARS NAVIGATION -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:920px;margin:0 auto 56px" class="pillars-resp">
+   <a href="#wiedza-komunikacja" onclick="document.getElementById('pillar-komunikacja').scrollIntoView({behavior:'smooth',block:'start'});return false" style="text-decoration:none;display:block;padding:24px 22px;background:rgba(27,44,79,.04);border:1px solid rgba(27,44,79,.08);border-radius:10px;transition:all .25s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.05)'" onmouseout="this.style.borderColor='rgba(27,44,79,.08)';this.style.background='rgba(27,44,79,.04)'">
+    <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Pillar 1</div>
+    <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:6px;font-weight:400">Komunikacja<br><em style="color:var(--gold);font-style:italic">z pacjentem</em></h3>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0">7 potrzeb, PEWA, M1-M4 — jak naprawdę słucha Twój pacjent</p>
+   </a>
+   <a href="#wiedza-plany" onclick="document.getElementById('pillar-plany').scrollIntoView({behavior:'smooth',block:'start'});return false" style="text-decoration:none;display:block;padding:24px 22px;background:rgba(27,44,79,.04);border:1px solid rgba(27,44,79,.08);border-radius:10px;transition:all .25s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.05)'" onmouseout="this.style.borderColor='rgba(27,44,79,.08)';this.style.background='rgba(27,44,79,.04)'">
+    <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Pillar 2</div>
+    <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:6px;font-weight:400">Akceptacja<br><em style="color:var(--gold);font-style:italic">planów leczenia</em></h3>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0">Dlaczego pacjent mówi TAK — i kiedy mówi „muszę się zastanowić"</p>
+   </a>
+   <a href="#wiedza-suwerenna" onclick="document.getElementById('pillar-suwerenna').scrollIntoView({behavior:'smooth',block:'start'});return false" style="text-decoration:none;display:block;padding:24px 22px;background:rgba(27,44,79,.04);border:1px solid rgba(27,44,79,.08);border-radius:10px;transition:all .25s" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(201,162,74,.05)'" onmouseout="this.style.borderColor='rgba(27,44,79,.08)';this.style.background='rgba(27,44,79,.04)'">
+    <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Pillar 3</div>
+    <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;margin-bottom:6px;font-weight:400">Suwerenna<br><em style="color:var(--gold);font-style:italic">praktyka</em></h3>
+    <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0">Firma, która działa bez Ciebie. Trzy filary suwerenności.</p>
+   </a>
   </div>
 
-  <!-- 3 PREVIEW — zapowiedź tematów (bez click-out) -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;max-width:1140px;margin-left:auto;margin-right:auto" class="blog-preview-resp">
-   <div style="background:rgba(27,44,79,.03);padding:24px 22px;border-left:3px solid var(--gold);text-align:left">
-    <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Zarządzanie · wkrótce</div>
-    <h4 style="font-family:var(--serif);font-size:19px;color:var(--black);line-height:1.3;margin-bottom:10px">Fotelogodzina: jak liczyć i poprawić w 30 dni</h4>
-    <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0">Jeden wskaźnik pokazujący rentowność fotela, lekarza i specjalizacji.</p>
+  <!-- PILLAR 1: KOMUNIKACJA -->
+  <div id="pillar-komunikacja" style="margin-bottom:64px">
+   <div style="border-bottom:1px solid rgba(27,44,79,.1);padding-bottom:14px;margin-bottom:32px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <h2 style="font-family:var(--display);font-size:32px;color:var(--black);font-weight:400;margin:0">Komunikacja z pacjentem</h2>
+    <span style="font-size:12px;color:var(--muted);font-weight:600">3 artykuły · Bazuje na książkach Michała</span>
    </div>
-   <div style="background:rgba(27,44,79,.03);padding:24px 22px;border-left:3px solid rgba(201,162,74,.4);text-align:left">
-    <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:10px">Komunikacja · wkrótce</div>
-    <h4 style="font-family:var(--serif);font-size:19px;color:var(--black);line-height:1.3;margin-bottom:10px">Sukces komunikacji lekarza — co mówić</h4>
-    <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0">Trzy pytania decydujące o akceptacji planu leczenia.</p>
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" class="blog-grid-resp">
+    <a href="#artykul-7-potrzeb" onclick="event.preventDefault();showPage('artykul-7-potrzeb')" data-track="blog-card" data-track-loc="7-potrzeb" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:10px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.2)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
+     <div style="background:linear-gradient(135deg,#1B2C4F 0%,#15243F 100%);padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%);border-radius:50%"></div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hot);margin-bottom:14px;position:relative">Komunikacja · 8 min czytania</div>
+      <h3 style="font-family:var(--display);font-size:24px;color:#fff;line-height:1.15;font-weight:400;margin:0;position:relative">7 podstawowych potrzeb pacjentów stomatologicznych</h3>
+     </div>
+     <div style="padding:20px 24px;display:flex;flex-direction:column;flex:1">
+      <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 16px;flex:1">Książka Michała Katarzyńskiego z 2014 roku zdefiniowała 7 potrzeb, które każdy pacjent przynosi do Twojego gabinetu. Pierwsza z nich to nie ból — to bezpieczeństwo.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
+       <span style="font-size:12px;color:var(--muted);font-weight:600">Michał Katarzyński</span>
+       <span style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:4px">Czytaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </div>
+     </div>
+    </a>
+
+    <a href="#artykul-komunikacja-lekarza" onclick="event.preventDefault();showPage('artykul-komunikacja-lekarza')" data-track="blog-card" data-track-loc="komunikacja-lekarza" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:10px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.2)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
+     <div style="background:linear-gradient(135deg,#1B2C4F 0%,#15243F 100%);padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%);border-radius:50%"></div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hot);margin-bottom:14px;position:relative">Komunikacja · 7 min</div>
+      <h3 style="font-family:var(--display);font-size:24px;color:#fff;line-height:1.15;font-weight:400;margin:0;position:relative">Sukces komunikacji lekarza: co mówić, jak mówić, kiedy mówić</h3>
+     </div>
+     <div style="padding:20px 24px;display:flex;flex-direction:column;flex:1">
+      <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 16px;flex:1">Model M1-M4 (Mapa Gotowości Pacjenta) pokazuje, że nie ma jednej "dobrej" rozmowy z pacjentem. Każdy z 4 typów decyzyjnych słyszy te same słowa inaczej.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
+       <span style="font-size:12px;color:var(--muted);font-weight:600">Michał Katarzyński</span>
+       <span style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:4px">Czytaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </div>
+     </div>
+    </a>
+
+    <div style="display:flex;flex-direction:column;background:rgba(27,44,79,.03);border:1px dashed rgba(27,44,79,.15);border-radius:10px;overflow:hidden;padding:32px 24px">
+     <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Komunikacja · wkrótce</div>
+     <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;font-weight:400;margin:0 0 12px;opacity:.75">Potrzeba poczucia bezpieczeństwa — pierwsza wizyta jako filar lojalności</h3>
+     <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:auto 0 0;font-style:italic">Publikacja Q3 2026</p>
+    </div>
    </div>
-   <div style="background:rgba(27,44,79,.03);padding:24px 22px;border-left:3px solid rgba(201,162,74,.4);text-align:left">
-    <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,162,74,.7);margin-bottom:10px">Recepcja · wkrótce</div>
-    <h4 style="font-family:var(--serif);font-size:19px;color:var(--black);line-height:1.3;margin-bottom:10px">System recall który zmniejsza no-show o 60%</h4>
-    <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0">Sekwencja 4 dotyków od umówienia do potwierdzenia wizyty.</p>
+  </div>
+
+  <!-- PILLAR 2: AKCEPTACJA PLANÓW -->
+  <div id="pillar-plany" style="margin-bottom:64px">
+   <div style="border-bottom:1px solid rgba(27,44,79,.1);padding-bottom:14px;margin-bottom:32px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <h2 style="font-family:var(--display);font-size:32px;color:var(--black);font-weight:400;margin:0">Akceptacja planów leczenia</h2>
+    <span style="font-size:12px;color:var(--muted);font-weight:600">3 artykuły · „Dlaczego pacjenci mówią TAK"</span>
+   </div>
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" class="blog-grid-resp">
+    <a href="#artykul-musze-sie-zastanowic" onclick="event.preventDefault();showPage('artykul-musze-sie-zastanowic')" data-track="blog-card" data-track-loc="musze-sie-zastanowic" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:10px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.2)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
+     <div style="background:linear-gradient(135deg,#1B2C4F 0%,#15243F 100%);padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%);border-radius:50%"></div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hot);margin-bottom:14px;position:relative">Plany leczenia · 9 min</div>
+      <h3 style="font-family:var(--display);font-size:24px;color:#fff;line-height:1.15;font-weight:400;margin:0;position:relative">Dlaczego pacjent mówi „muszę się zastanowić" — i co naprawdę to znaczy</h3>
+     </div>
+     <div style="padding:20px 24px;display:flex;flex-direction:column;flex:1">
+      <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 16px;flex:1">Kahneman, Damasio, awersja do straty. Co psychologia decyzji mówi nam o tym, że 70% pacjentów wychodzi z gabinetu bez decyzji — i jak to zmienić.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
+       <span style="font-size:12px;color:var(--muted);font-weight:600">Michał Katarzyński</span>
+       <span style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:4px">Czytaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </div>
+     </div>
+    </a>
+
+    <div style="display:flex;flex-direction:column;background:rgba(27,44,79,.03);border:1px dashed rgba(27,44,79,.15);border-radius:10px;overflow:hidden;padding:32px 24px">
+     <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Plany leczenia · wkrótce</div>
+     <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;font-weight:400;margin:0 0 12px;opacity:.75">5 błędów przedstawiania planów leczenia, które kosztują konkretne pieniądze</h3>
+     <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px;font-style:italic">Treść dostępna w e-booku</p>
+     <a href="/ebook-10bledow.pdf" target="_blank" style="font-size:13px;font-weight:700;color:var(--gold);text-decoration:none">Pobierz PDF →</a>
+    </div>
+
+    <div style="display:flex;flex-direction:column;background:rgba(27,44,79,.03);border:1px dashed rgba(27,44,79,.15);border-radius:10px;overflow:hidden;padding:32px 24px">
+     <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Plany leczenia · wkrótce</div>
+     <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;font-weight:400;margin:0 0 12px;opacity:.75">Metoda PEWA — 4 style decyzyjne pacjenta i&nbsp;jak je rozpoznać w 30 sekund</h3>
+     <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:auto 0 0;font-style:italic">Publikacja Q3 2026</p>
+    </div>
+   </div>
+  </div>
+
+  <!-- PILLAR 3: SUWERENNA PRAKTYKA -->
+  <div id="pillar-suwerenna" style="margin-bottom:64px">
+   <div style="border-bottom:1px solid rgba(27,44,79,.1);padding-bottom:14px;margin-bottom:32px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <h2 style="font-family:var(--display);font-size:32px;color:var(--black);font-weight:400;margin:0">Suwerenna praktyka</h2>
+    <span style="font-size:12px;color:var(--muted);font-weight:600">2 artykuły · Książka 2026 (w przygotowaniu)</span>
+   </div>
+   <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:760px" class="blog-grid-2-resp">
+    <a href="#artykul-suwerenna-praktyka" onclick="event.preventDefault();showPage('artykul-suwerenna-praktyka')" data-track="blog-card" data-track-loc="suwerenna" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:10px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px -12px rgba(27,44,79,.2)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
+     <div style="background:linear-gradient(135deg,#1B2C4F 0%,#15243F 100%);padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%);border-radius:50%"></div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hot);margin-bottom:14px;position:relative">Suwerenność · 10 min</div>
+      <h3 style="font-family:var(--display);font-size:24px;color:#fff;line-height:1.15;font-weight:400;margin:0;position:relative">Suwerenna praktyka — firma, która działa bez Ciebie</h3>
+     </div>
+     <div style="padding:20px 24px;display:flex;flex-direction:column;flex:1">
+      <p style="font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 16px;flex:1">Co znaczy, że praktyka jest "suwerenna"? Definicja zdrowej firmy w sektorze usług medycznych — i dlaczego do tej pory była w polskiej stomatologii niezdefiniowana.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
+       <span style="font-size:12px;color:var(--muted);font-weight:600">Michał Katarzyński</span>
+       <span style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:4px">Czytaj <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </div>
+     </div>
+    </a>
+
+    <div style="display:flex;flex-direction:column;background:rgba(27,44,79,.03);border:1px dashed rgba(27,44,79,.15);border-radius:10px;overflow:hidden;padding:32px 24px">
+     <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Suwerenność · wkrótce</div>
+     <h3 style="font-family:var(--display);font-size:22px;color:var(--black);line-height:1.2;font-weight:400;margin:0 0 12px;opacity:.75">Trzy filary suwerenności: <em>Zaangażowanie × Kompetencje × Samodzielność</em></h3>
+     <p style="font-size:13px;color:var(--muted);line-height:1.5;margin:auto 0 0;font-style:italic">Publikacja jesień 2026 z premierą książki</p>
+    </div>
+   </div>
+  </div>
+
+  <!-- BANNER KSIĄŻKI -->
+  <div style="background:linear-gradient(135deg,var(--black) 0%,var(--dark2) 100%);color:#fff;padding:48px 36px;border-radius:14px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;margin-bottom:32px" class="book-banner-resp">
+   <div style="flex:1;min-width:280px">
+    <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--hot);margin-bottom:14px">Trzy książki Michała Katarzyńskiego</div>
+    <h3 style="font-family:var(--display);font-size:clamp(24px,3vw,36px);color:#fff;line-height:1.1;font-weight:400;margin-bottom:14px">Każdy pillar bloga<br><em style="color:var(--gold);font-style:italic">to fragment większej całości.</em></h3>
+    <p style="font-size:15px;color:rgba(255,255,255,.75);line-height:1.6;max-width:560px;margin:0">Pełne wersje znajdziesz w książkach: <strong style="color:#fff">„Jak zaspokoić 7 podstawowych potrzeb pacjentów stomatologicznych?"</strong> (2014), <strong style="color:#fff">„Dlaczego pacjenci mówią TAK"</strong> (2024), oraz nadchodzącej <strong style="color:#fff">„Suwerenna praktyka stomatologiczna"</strong> (2026).</p>
+   </div>
+   <div style="display:flex;flex-direction:column;gap:10px">
+    <a href="https://7potrzebpacjentow.pl/" target="_blank" rel="noopener" style="background:var(--gold);color:#fff;text-decoration:none;padding:14px 24px;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border-radius:8px;text-align:center;transition:background .15s" onmouseover="this.style.background='var(--hot)'" onmouseout="this.style.background='var(--gold)'">Kup „7 potrzeb" →</a>
+    <a href="/ebook-10bledow.pdf" target="_blank" style="background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3);text-decoration:none;padding:13px 24px;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;border-radius:8px;text-align:center;transition:all .15s" onmouseover="this.style.borderColor='var(--hot)';this.style.color='var(--hot)'" onmouseout="this.style.borderColor='rgba(255,255,255,.3)';this.style.color='#fff'">Pobierz PDF „10 błędów"</a>
    </div>
   </div>
  </div>
@@ -5035,6 +5152,259 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  </div>
  </div>
  </div></div>
+
+<!-- ============================================ -->
+<!-- BLOG ARTICLES — pełne treści                  -->
+<!-- ============================================ -->
+
+<!-- ARTYKUŁ 1: 7 podstawowych potrzeb pacjentów -->
+<div class="page" id="page-artykul-7-potrzeb">
+ <div style="background:var(--cream);padding:14px 28px;border-bottom:1px solid rgba(27,44,79,.05)">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(27,44,79,.65)">
+   <a onclick="showPage('home')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Strona główna</a>
+   <span>›</span>
+   <a onclick="showPage('wiedza')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Wiedza</a>
+   <span>›</span>
+   <span style="color:var(--black);font-weight:600">7 podstawowych potrzeb pacjentów</span>
+  </div>
+ </div>
+ <article style="max-width:760px;margin:0 auto;padding:64px 28px 48px">
+  <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Komunikacja · 8 min czytania · Michał Katarzyński</div>
+  <h1 style="font-family:var(--display);font-size:clamp(36px,5vw,56px);color:var(--black);line-height:1.05;letter-spacing:-.015em;font-weight:400;margin-bottom:28px">7 podstawowych potrzeb pacjentów stomatologicznych — co naprawdę słyszą Twoi pacjenci</h1>
+  <p style="font-family:var(--serif);font-style:italic;font-size:22px;color:var(--muted);line-height:1.5;margin-bottom:40px;border-left:3px solid var(--gold);padding:6px 0 6px 22px">Pacjent przychodzi z bólem zęba. Ale to nie ból jest powodem, dla którego mówi TAK lub NIE Twojemu planowi leczenia. To siedem niewypowiedzianych pytań, które zadaje sobie w głowie podczas pierwszej wizyty.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Dziesięć lat temu napisałem książkę „Jak zaspokoić 7 podstawowych potrzeb pacjentów stomatologicznych?". Było to wtedy nazywanie czegoś, co większość lekarzy intuicyjnie wyczuwała, ale nie umiała opisać. Dzisiaj, po 6000+ przeszkolonych uczestnikach i 220+ szkoleniach in-house w polskich praktykach, te same 7 potrzeb działa równie skutecznie.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Oto one — po kolei, w kolejności w jakiej pacjent ich potrzebuje.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">1. Potrzeba poczucia bezpieczeństwa</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">To pierwsza i najważniejsza potrzeba — bez niej żadna inna nie zadziała. Pacjent musi poczuć, że <strong>jest w bezpiecznych rękach</strong>, zanim jeszcze przyjmie informację o cenie czy planie leczenia. Bezpieczeństwo budujesz nie słowami „proszę się nie bać" (one paradoksalnie potęgują strach), ale sposobem prowadzenia rozmowy: tempem, jakością kontaktu wzrokowego, kolejnością pytań.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">2. Potrzeba bycia wysłuchanym</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Pacjent ma swoją historię — nie tylko medyczną, ale też emocjonalną. Trauma z dzieciństwa, zła konsultacja u poprzedniego dentysty, lęk przed kosztami. Jeśli nie poczuje, że to wszystko zostało wysłuchane (nie tylko zarejestrowane na ankiecie), nie zaufa Ci na tyle, by powiedzieć TAK na większy plan leczenia.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">3. Potrzeba zrozumienia</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Lekarz wie. Pacjent nie. Klątwa wiedzy sprawia, że używasz słów które są dla Ciebie oczywiste, ale dla pacjenta pustosłowiem („endo", „mostek", „implant naddziąsłowy"). Pacjent który nie rozumie nie powie „nie rozumiem" — powie <em>„muszę się zastanowić"</em>. To jest jeden i ten sam komunikat.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">4. Potrzeba uczestniczenia w decyzji</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Pacjent nie chce być prowadzonym za rękę „od specjalisty". Chce <strong>współdecydować</strong> — nawet jeśli nie ma kompetencji medycznych. Twoim zadaniem jest stworzyć przestrzeń do współdecydowania: dwa-trzy warianty leczenia, opisane konsekwencje każdego (krótko- i długoterminowe), miejsce na pytania bez presji czasu.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">5. Potrzeba przewidywalności</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">„Co dokładnie się wydarzy podczas wizyty?", „Ile mnie to będzie kosztować?", „Jak długo będzie boleć po zabiegu?". Pacjent chce wiedzieć krok po kroku co go czeka. Niezdefiniowane przyszłość = lęk = decyzja „muszę się zastanowić". Definiowanie tego jest darmowe i daje natychmiastową konwersję.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">6. Potrzeba szacunku</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Pacjent nie jest kartą NFZ. Nie jest „przypadkiem #7 z 16:30". Małe rzeczy budują szacunek: zwracanie się po imieniu, pamiętanie szczegółów z poprzedniej wizyty, niewchodzenie z kawą do gabinetu. Brak szacunku — nawet pojedynczy moment — przekreśla 6 wcześniejszych potrzeb.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">7. Potrzeba bycia ważnym</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">To ostatnia i najbardziej subtelna. Pacjent chce poczuć, że <strong>jest dla Ciebie ważny jako człowiek</strong> — nie tylko jako źródło rachunku. To buduje się nie deklaracjami, ale follow-upem po 3 dniach od zabiegu, SMS-em z życzeniami w urodziny, pamiętaniem że córka idzie do liceum. Powiedz mi: ilu z Twoich lekarzy pamięta że Twoja recepcjonistka ma 2 dzieci?</p>
+
+  <div style="background:rgba(201,162,74,.08);border-left:4px solid var(--gold);padding:28px 28px;margin:40px 0;border-radius:0 8px 8px 0">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Praktyczne ćwiczenie</div>
+   <p style="font-size:16px;color:var(--black);line-height:1.6;margin:0">W tym tygodniu przy każdej pierwszej wizycie zadaj sobie po niej jedno pytanie: <em>„Którą z 7 potrzeb zaspokoiłem najlepiej, a którą najgorzej?"</em>. Zrób to przez 5 dni. Zobaczysz wzorzec — i będziesz wiedział nad czym pracować.</p>
+  </div>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Co dalej</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">7 potrzeb to fundament. Następną warstwą jest <a onclick="showPage('artykul-komunikacja-lekarza')" style="color:var(--gold);font-weight:600;cursor:pointer">model M1-M4 (Mapa Gotowości Pacjenta)</a>, który pokazuje że każdy pacjent jest w innym stanie decyzyjnym — i to samo zdanie inaczej działa na świadomego niż na niezdecydowanego.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Pełna książka „Jak zaspokoić 7 podstawowych potrzeb pacjentów stomatologicznych?" zawiera skrypty rozmów, ćwiczenia dla zespołu i przykłady z prawdziwych konsultacji — <a href="https://7potrzebpacjentow.pl/" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">możesz ją kupić tutaj</a>.</p>
+
+  <div style="background:linear-gradient(135deg,var(--black) 0%,var(--dark2) 100%);color:#fff;padding:32px 28px;border-radius:12px;margin-top:40px">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:10px">Powiązany kurs</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:#fff;font-weight:400;line-height:1.2;margin-bottom:10px">Doskonała Konsultacja i&nbsp;Wizyta Stomatologiczna</h3>
+   <p style="font-size:15px;color:rgba(255,255,255,.78);line-height:1.5;margin-bottom:18px">2-dniowy kurs wdrożeniowy — jak zoperacjonalizować 7 potrzeb w&nbsp;standardzie pierwszej wizyty Twojej praktyki.</p>
+   <button onclick="showPage('doskonala-konsultacja')" style="background:var(--gold);color:#fff;border:none;padding:14px 24px;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:var(--body)">Zobacz program kursu →</button>
+  </div>
+ </article>
+</div>
+
+<!-- ARTYKUŁ 2: Sukces komunikacji lekarza (M1-M4) -->
+<div class="page" id="page-artykul-komunikacja-lekarza">
+ <div style="background:var(--cream);padding:14px 28px;border-bottom:1px solid rgba(27,44,79,.05)">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(27,44,79,.65)">
+   <a onclick="showPage('home')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Strona główna</a>
+   <span>›</span>
+   <a onclick="showPage('wiedza')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Wiedza</a>
+   <span>›</span>
+   <span style="color:var(--black);font-weight:600">Sukces komunikacji lekarza</span>
+  </div>
+ </div>
+ <article style="max-width:760px;margin:0 auto;padding:64px 28px 48px">
+  <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Komunikacja · 7 min czytania · Michał Katarzyński</div>
+  <h1 style="font-family:var(--display);font-size:clamp(36px,5vw,56px);color:var(--black);line-height:1.05;letter-spacing:-.015em;font-weight:400;margin-bottom:28px">Sukces komunikacji lekarza: co mówić, jak mówić, kiedy mówić</h1>
+  <p style="font-family:var(--serif);font-style:italic;font-size:22px;color:var(--muted);line-height:1.5;margin-bottom:40px;border-left:3px solid var(--gold);padding:6px 0 6px 22px">Nie istnieje jedno „dobre" zdanie dla pacjenta. To samo zdanie inaczej działa na pacjenta, który nie wie że ma problem, a inaczej na takiego, który już zdecydował się leczyć — ale nie wie u kogo.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Pamiętasz tę sytuację: dwóch pacjentów wychodzi z gabinetu. Pierwszy mówi „dziękuję, zapiszę się od razu". Drugi — z tym samym planem leczenia, tą samą ceną — mówi „muszę się zastanowić". Co się stało? Ten sam lekarz, ten sam zabieg, ta sama prezentacja. A jednak inny rezultat.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Odpowiedź nie leży w lekarzu. Leży w pacjencie — w jego stanie decyzyjnym. Mapa Gotowości Pacjenta™ (M1–M4) to model który pomaga zrozumieć ten stan w 30 sekund rozmowy.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">M1 — pacjent nieświadomy</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Stan:</strong> Nie wie, że ma problem. Nie wie nic o procedurach. Nie ma kontekstu.</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Co mówić:</strong> język maksymalnie prosty — niemal jak rozmowa z dziewięcioletnim dzieckiem. Bez „endo", bez „mostek nadkorzeniowy". Zamiast tego: „<em>zostawimy ząb, ale wzmocnimy go od środka</em>".</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px"><strong>Czego nie mówić:</strong> żadnych specjalistycznych słów. Każde z nich odpycha M1 dalej od decyzji.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">M2 — pacjent świadomy, ale niezmotywowany</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Stan:</strong> Wie że coś jest nie tak. Ma jakąś orientację. Ale nie ma jeszcze powodu, żeby działać teraz.</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Co mówić:</strong> prostym językiem + silny akcent na <em>co to znaczy w jego życiu</em>. Nie „korona porcelanowa na trzonowcu", ale „<em>jeśli teraz nic nie zrobimy, za 2 lata będzie pan musiał zjeść tylko miękkie potrawy lewą stroną</em>".</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px"><strong>Czego nie mówić:</strong> ogólnikow w stylu „zdrowie jest najważniejsze". M2 słyszy to codziennie i przestał na to reagować.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">M3 — pacjent zmotywowany, o wąskiej świadomości</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Stan:</strong> Chce się leczyć. Ale rozumie tylko fragment problemu. Często „przyszedłem na implant" — a tak naprawdę trzeba 6 innych rzeczy zrobić wcześniej.</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Co mówić:</strong> trochę bardziej technicznym językiem (już rozumie), ale z naciskiem na <em>pełen obraz</em>. „Implant będzie zrobiony — ale najpierw musimy zrobić X i Y, inaczej nawet najlepszy implant się nie utrzyma".</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px"><strong>Czego nie mówić:</strong> nie zgadzaj się od razu na to czego chce, jeśli to za mało. M3 ceni honestność bardziej niż „uległość".</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">M4 — pacjent zmotywowany i świadomy</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Stan:</strong> Wie czego chce, dlaczego, i ma wybór między Tobą a 2-3 innymi praktykami. Czyta opinie. Pyta o detale.</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:14px"><strong>Co mówić:</strong> pełen techniczny język + transparencja danych. „Stosujemy materiał X, gwarancja 5 lat, 312 pacjentów już zrobiło ten zabieg u nas, wskaźnik powikłań 1,2% przy benchmark branżowym 3,8%".</p>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px"><strong>Czego nie mówić:</strong> uproszczeń. M4 wykryje, że upraszczasz, i wyjdzie do bardziej technicznego lekarza.</p>
+
+  <div style="background:rgba(201,162,74,.08);border-left:4px solid var(--gold);padding:28px 28px;margin:40px 0;border-radius:0 8px 8px 0">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Jak rozpoznać M1-M4 w&nbsp;30 sekund</div>
+   <p style="font-size:16px;color:var(--black);line-height:1.6;margin-bottom:12px">Zadaj jedno pytanie tuż na początku rozmowy:</p>
+   <p style="font-size:18px;color:var(--black);font-style:italic;line-height:1.5;margin-bottom:12px">„<em>Co panią/pana skłoniło, żeby dzisiaj tu przyjść?</em>"</p>
+   <p style="font-size:16px;color:var(--black);line-height:1.6;margin:0">Odpowiedź pacjenta — jej długość, słownik, poziom konkretu — w&nbsp;30 sekund pokaże w&nbsp;którym jest stanie. M1 powie „bo ząb mnie boli". M4 powie „mam ząb 16 zdekowany, byłem na konsultacji u&nbsp;dr X w&nbsp;Krakowie ale chciałem drugą opinię".</p>
+  </div>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Dlaczego to działa</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Standardowy lekarz mówi do każdego pacjenta tak samo. Standardowy lekarz traci 30-40% potencjalnej akceptacji planów leczenia — bo M1 słyszy chaos, M4 słyszy dziecko. Lekarz, który stosuje M1-M4, dopasowuje rejestr językowy do stanu pacjenta i zwiększa akceptację o 25-40% bez zmiany ceny.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Pełen model — z 30+ przykładami zdań na każdy stan, ćwiczeniami dla zespołu i scenariuszami obiekcji — jest opisany w książce <em>„Dlaczego pacjenci mówią TAK"</em>, dostępnej w&nbsp;trakcie szkoleń DOP.</p>
+
+  <div style="background:linear-gradient(135deg,var(--black) 0%,var(--dark2) 100%);color:#fff;padding:32px 28px;border-radius:12px;margin-top:40px">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:10px">Powiązany kurs</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:#fff;font-weight:400;line-height:1.2;margin-bottom:10px">Przedstawianie Planów Leczenia</h3>
+   <p style="font-size:15px;color:rgba(255,255,255,.78);line-height:1.5;margin-bottom:18px">1-dniowy intensywny warsztat — model M1-M4 w&nbsp;praktyce, 15 obiekcji + reakcji, skrypty rozmów cenowych.</p>
+   <button onclick="showPage('plan-leczenia')" style="background:var(--gold);color:#fff;border:none;padding:14px 24px;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:var(--body)">Zobacz program kursu →</button>
+  </div>
+ </article>
+</div>
+
+<!-- ARTYKUŁ 3: "Muszę się zastanowić" — psychologia decyzji -->
+<div class="page" id="page-artykul-musze-sie-zastanowic">
+ <div style="background:var(--cream);padding:14px 28px;border-bottom:1px solid rgba(27,44,79,.05)">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(27,44,79,.65)">
+   <a onclick="showPage('home')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Strona główna</a>
+   <span>›</span>
+   <a onclick="showPage('wiedza')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Wiedza</a>
+   <span>›</span>
+   <span style="color:var(--black);font-weight:600">„Muszę się zastanowić" — co to znaczy</span>
+  </div>
+ </div>
+ <article style="max-width:760px;margin:0 auto;padding:64px 28px 48px">
+  <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Plany leczenia · 9 min czytania · Michał Katarzyński</div>
+  <h1 style="font-family:var(--display);font-size:clamp(36px,5vw,56px);color:var(--black);line-height:1.05;letter-spacing:-.015em;font-weight:400;margin-bottom:28px">Dlaczego pacjent mówi „muszę się zastanowić" — i co naprawdę to znaczy</h1>
+  <p style="font-family:var(--serif);font-style:italic;font-size:22px;color:var(--muted);line-height:1.5;margin-bottom:40px;border-left:3px solid var(--gold);padding:6px 0 6px 22px">70% pacjentów wychodzi z gabinetu bez decyzji. W gabinetach które stosują metodę DOP — to 30%. Różnica nie leży w cenie ani jakości leczenia. Leży w&nbsp;tym, że większość lekarzy walczy z czymś, czego nie rozumie: z psychologią decyzji.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Pacjent siedzi na fotelu. Słucha planu leczenia. Ogląda zdjęcia. Słyszy cenę. Kiwa głową. Zadaje 1-2 pytania. Potem mówi: „<em>dziękuję, muszę się zastanowić</em>".</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Większość lekarzy interpretuje to jako: <em>za drogo</em>. To błąd. Daniel Kahneman — laureat Nobla z 2002 roku — pokazał w eksperymentach, że ludzkie decyzje finansowe nie działają na zasadzie racjonalnej kalkulacji. Działają na dwóch systemach: <strong>System 1</strong> (szybki, emocjonalny, intuicyjny) i <strong>System 2</strong> (wolny, analityczny, krytyczny).</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Pacjent, który mówi „muszę się zastanowić", nie wszedł w System 2. On <strong>wycofał się z Systemu 1</strong> — z poczucia, że wie i czuje co robi. Twoim zadaniem nie jest go „przekonać". Twoim zadaniem jest <strong>przywrócić mu pewność</strong> z poziomu Systemu 1.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Co naprawdę znaczy „muszę się zastanowić"</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Po latach analizy nagrań konsultacji w 190+ audytach praktyk stomatologicznych zidentyfikowałem 4 najczęstsze prawdziwe znaczenia tego zdania:</p>
+
+  <ol style="font-size:17px;color:var(--black);line-height:1.7;padding-left:24px;margin-bottom:32px">
+   <li style="margin-bottom:14px"><strong>„Nie rozumiem co mi pan/pani powiedział/a"</strong> — pacjent nie chce się zdemaskować i powiedzieć „proszę powtórzyć po polsku". Tylko 1 na 8 zdań specjalistycznych jest dla pacjenta zrozumiałe.</li>
+   <li style="margin-bottom:14px"><strong>„Nie czuję się bezpiecznie z tą decyzją"</strong> — niezależnie od tego, jak dobry jest plan, pacjent nie wie czy może <em>zaufać</em>, że to się powiedzie. Awersja do straty (Kahneman + Tversky) sprawia, że strata jest psychologicznie 2× silniejsza niż zysk tej samej wielkości.</li>
+   <li style="margin-bottom:14px"><strong>„Muszę to omówić z kimś"</strong> — żoną, mężem, mamą, księgowym. To często prawdziwy powód — i niezamykanie tej drogi jest darmowym fixem.</li>
+   <li style="margin-bottom:14px"><strong>„Tak — ale nie dzisiaj"</strong> — pacjent wie że chce się leczyć, ale ma dzisiaj zły dzień / spotkanie / dziecko po szkole. Nie chce odmawiać.</li>
+  </ol>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Co robić zamiast walczyć</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Standardowa reakcja lekarza na „muszę się zastanowić" — to próba „douproszczenia" w trybie sprzedażowym: rabat, urgency („tylko do końca miesiąca"), ostrzeżenie („z tego co widzę powinien pan działać szybko"). Wszystkie te trzy techniki <strong>cofają</strong> pacjenta do Systemu 2 — czyli do dalszej analizy. A tam już zazwyczaj wygrywa „nie".</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Metoda DOP idzie inną drogą. Trzy kroki:</p>
+
+  <div style="background:rgba(27,44,79,.04);border-left:4px solid var(--black);padding:24px 28px;margin:18px 0;border-radius:0 8px 8px 0">
+   <p style="font-size:16px;color:var(--black);line-height:1.65;margin:0 0 10px"><strong>Krok 1 — Uznać, nie zwalczać.</strong> „<em>Rozumiem. Decyzja medyczna nie powinna być podejmowana pod presją. Proszę mi powiedzieć — co jest dla pana/pani najważniejsze do przemyślenia?</em>"</p>
+   <p style="font-size:16px;color:var(--black);line-height:1.65;margin:0 0 10px"><strong>Krok 2 — Zdefiniować prawdziwą przeszkodę.</strong> Pacjent prawie nigdy nie powie „nie rozumiałem". Powie: „muszę porozmawiać z mężem" albo „nie wiem jeszcze kiedy mogę być w gabinecie". To są prawdziwe informacje.</p>
+   <p style="font-size:16px;color:var(--black);line-height:1.65;margin:0"><strong>Krok 3 — Otworzyć drogę powrotu.</strong> „<em>Proszę zarezerwować termin orientacyjny na X. Jeśli do tygodnia mi pan/pani powie że to nie ten moment — anulujemy bez żadnych konsekwencji</em>". To jest mikrocommitment, który zachowuje pacjenta w Systemie 1 i nie zamyka drzwi.</p>
+  </div>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Wynik: zamiast 30% akceptacji od ręki, otrzymujesz 55-65% — przy zerowej zmianie ceny czy zakresu.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Co stoi za tym, że pacjenci mówią TAK</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Pacjent nie kupuje leczenia. Kupuje <strong>poczucie, że ktoś, kogo darzy zaufaniem, prowadzi go bezpiecznie przez decyzję, której emocjonalnie nie umie sam podjąć</strong>. To poczucie nie tworzy się z argumentów. Tworzy się z całej atmosfery konsultacji — i z każdej technicznej i emocjonalnej decyzji lekarza, świadomej lub nie.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Pełen wykład z modelem Mapy Gotowości Pacjenta™ (M1-M4), 4 stylami komunikacji (PEWA: Przyjaciel/Entuzjasta/Wódz/Analityk) i&nbsp;30+ skryptami dla każdego stanu znajdziesz w&nbsp;książce <em>„Dlaczego pacjenci mówią TAK"</em> oraz w&nbsp;kursie Doskonała Konsultacja.</p>
+
+  <div style="background:linear-gradient(135deg,var(--black) 0%,var(--dark2) 100%);color:#fff;padding:32px 28px;border-radius:12px;margin-top:40px">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:10px">Bezpłatne narzędzie</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:#fff;font-weight:400;line-height:1.2;margin-bottom:10px">E-book „10 błędów przez które pacjent mówi muszę się zastanowić"</h3>
+   <p style="font-size:15px;color:rgba(255,255,255,.78);line-height:1.5;margin-bottom:18px">24-stronicowy PDF z konkretami: 10 sytuacji, w każdej <em>co robić</em> i <em>czego unikać</em>. Z modelem M1-M4 i stylami PEWA.</p>
+   <a href="/ebook-10bledow.pdf" target="_blank" style="background:var(--gold);color:#fff;border:none;padding:14px 24px;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:var(--body);display:inline-block;text-decoration:none">Pobierz PDF →</a>
+  </div>
+ </article>
+</div>
+
+<!-- ARTYKUŁ 4: Suwerenna praktyka -->
+<div class="page" id="page-artykul-suwerenna-praktyka">
+ <div style="background:var(--cream);padding:14px 28px;border-bottom:1px solid rgba(27,44,79,.05)">
+  <div style="max-width:760px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(27,44,79,.65)">
+   <a onclick="showPage('home')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Strona główna</a>
+   <span>›</span>
+   <a onclick="showPage('wiedza')" style="color:rgba(27,44,79,.65);text-decoration:none;cursor:pointer">Wiedza</a>
+   <span>›</span>
+   <span style="color:var(--black);font-weight:600">Suwerenna praktyka</span>
+  </div>
+ </div>
+ <article style="max-width:760px;margin:0 auto;padding:64px 28px 48px">
+  <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Suwerenność · 10 min czytania · Michał Katarzyński</div>
+  <h1 style="font-family:var(--display);font-size:clamp(36px,5vw,56px);color:var(--black);line-height:1.05;letter-spacing:-.015em;font-weight:400;margin-bottom:28px">Suwerenna praktyka stomatologiczna — firma, która działa bez Ciebie</h1>
+  <p style="font-family:var(--serif);font-style:italic;font-size:22px;color:var(--muted);line-height:1.5;margin-bottom:40px;border-left:3px solid var(--gold);padding:6px 0 6px 22px">Wyobraź sobie, że jutro wyjeżdżasz na 4 tygodnie urlopu. Bez telefonu. Co stanie się z Twoją praktyką? Jeśli odpowiadasz „<em>upadłaby</em>" — nie masz firmy. Masz etat. Z bardzo zaawansowaną technologią i&nbsp;dużymi obrotami, ale jednak etat.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Pisze nową książkę o czymś, co po polsku nie ma jeszcze nawet dobrej nazwy: <strong>Suwerenna praktyka stomatologiczna</strong>. To jest fundamentalna definicja zdrowej firmy w sektorze usług medycznych — i do tej pory była w polskiej stomatologii praktycznie niezdefiniowana.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Definicja</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Suwerenna praktyka to taka, która podejmuje decyzje, obsługuje pacjentów, wykonuje procedury, reaguje na kryzysy i&nbsp;rośnie finansowo — <strong>niezależnie od fizycznej obecności właściciela</strong>.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Inaczej mówiąc: gdy lekarz-właściciel idzie na czterotygodniowy urlop, do szpitala, na ważną konferencję, nawet w nieplanowaną Czarną Dziurę życia — firma działa. Pacjenci są obsłużeni zgodnie ze standardem. Zespół podejmuje decyzje w&nbsp;ramach swoich kompetencji. Pieniądze wpływają. Reputacja się buduje. KPI rosną.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Dlaczego polski stomatolog rzadko ma suwerenną praktykę</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">90% polskich gabinetów stomatologicznych jest <em>uzależnionych od osobowości</em> właściciela. Praktyka zarabia, dopóki właściciel jest fizycznie obecny, robi konsultacje, podejmuje decyzje o&nbsp;cenie, gasi pożary. Gdy go nie ma — wszystko stoi.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">To nie jest słabość konkretnego właściciela. To jest <strong>strukturalna cecha sektora</strong>: większość lekarzy-właścicieli nigdy nie była uczona budować firmę. Studia medyczne uczyły leczyć. Specjalizacja uczyła implantów. <em>Nikt nie uczył jak zbudować firmę, która działa bez Ciebie.</em></p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Trzy filary suwerenności</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:24px">Suwerenność praktyki ma trzy fundamentalne wymiary. Każdy musi być obecny — żeby praktyka rzeczywiście stała się suwerenna. Te trzy filary <strong>mnożą się, nie dodają</strong>. Brak jednego = brak całości.</p>
+
+  <div style="background:rgba(27,44,79,.04);padding:28px;border-radius:10px;margin-bottom:24px;border-left:4px solid var(--gold)">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Filar I</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:var(--black);font-weight:400;line-height:1.2;margin-bottom:8px">ZAANGAŻOWANIE — zespół, który CHCE</h3>
+   <p style="font-size:16px;color:var(--black);line-height:1.6;margin:0">Ludzie zaangażowani nie pracują dla pensji — pracują dla sensu. Wiedzą <em>dlaczego</em> istnieje praktyka. Identyfikują się z&nbsp;misją. Polecają pracę u&nbsp;Ciebie znajomym. Zgłaszają pomysły bez pytania. Rozwiązują konflikty otwarcie. <strong>Bez zaangażowania nic dalej się nie zbuduje.</strong> Zaangażowanie jest fundamentem.</p>
+  </div>
+
+  <div style="background:rgba(27,44,79,.04);padding:28px;border-radius:10px;margin-bottom:24px;border-left:4px solid var(--gold)">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Filar II</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:var(--black);font-weight:400;line-height:1.2;margin-bottom:8px">KOMPETENCJE — zespół, który POTRAFI</h3>
+   <p style="font-size:16px;color:var(--black);line-height:1.6;margin:0">Ludzie kompetentni potrafią wykonać swoją pracę na poziomie standardu praktyki, niezależnie od dnia tygodnia. Mają mierzalne kompetencje techniczne, komunikacyjne, organizacyjne. Każdy nowy pracownik kończy 90-dniowe wdrożenie z&nbsp;wynikiem. Kompetencje są <strong>silnikiem</strong>, który zamienia zaangażowanie w&nbsp;realny wynik.</p>
+  </div>
+
+  <div style="background:rgba(27,44,79,.04);padding:28px;border-radius:10px;margin-bottom:32px;border-left:4px solid var(--gold)">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Filar III</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:var(--black);font-weight:400;line-height:1.2;margin-bottom:8px">SAMODZIELNOŚĆ — zespół, który DECYDUJE</h3>
+   <p style="font-size:16px;color:var(--black);line-height:1.6;margin:0">Samodzielność jest <strong>owocem dwóch poprzednich filarów + Twojej decyzji</strong> jako właściciela, żeby zbudować architekturę umożliwiającą decydowanie. Menedżer ma pisemny budżet decyzyjny. Rejestracja ma scenariusze rozmów i&nbsp;zakres rozstrzygnięć. Zespół wie co robić w&nbsp;pierwszych 60 minutach kryzysu — bez telefonu do Ciebie. Samodzielność jest <strong>ruchem</strong>. To moment, w którym praktyka przestaje być Tobą i&nbsp;staje się firmą.</p>
+  </div>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Mnożenie, nie dodawanie</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Filary się <strong>mnożą</strong>. To znaczy: jeśli zaangażowanie = 8, kompetencje = 8, ale samodzielność = 0 — to suwerenność praktyki = 0. Nie 16/30. Nie nawet 10/30. <strong>Zero.</strong></p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">Dlatego tak wiele praktyk, które zatrudniają fantastycznych ludzi i&nbsp;mają świetne kompetencje, jednak nie potrafi działać bez właściciela. Bo brakuje <em>architektury</em> umożliwiającej decydowanie samodzielnie. Brakuje budżetów decyzyjnych. Brakuje scenariuszy kryzysowych. Brakuje macierzy odpowiedzialności na piśmie.</p>
+
+  <h2 style="font-family:var(--display);font-size:28px;color:var(--black);font-weight:400;margin:40px 0 16px">Co dalej</h2>
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:18px">Książka „Suwerenna praktyka stomatologiczna" pojawi się jesienią 2026 z&nbsp;<strong>Macierzą Wskaźnika Suwerenności™</strong> — narzędziem diagnostycznym, które w 25 pytaniach pokazuje gdzie jesteś dzisiaj i&nbsp;który filar najsłabiej rozwinięty.</p>
+
+  <p style="font-size:17px;color:var(--black);line-height:1.7;margin-bottom:32px">W międzyczasie — jeśli pracujesz nad zbudowaniem suwerennej praktyki — <a onclick="showPage('kurs-zarzadzania')" style="color:var(--gold);font-weight:600;cursor:pointer">2-dniowy Kurs Zarządzania Praktyką</a> jest najszybszą drogą do operacjonalizacji Filaru I i&nbsp;II. <a onclick="showPage('audyt-doradczy')" style="color:var(--gold);font-weight:600;cursor:pointer">Audyt doradczy 1-on-1</a> diagnozuje wszystkie 3 filary w&nbsp;Twojej konkretnej praktyce.</p>
+
+  <div style="background:linear-gradient(135deg,var(--black) 0%,var(--dark2) 100%);color:#fff;padding:32px 28px;border-radius:12px;margin-top:40px">
+   <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);margin-bottom:10px">Powiązany kurs</div>
+   <h3 style="font-family:var(--display);font-size:24px;color:#fff;font-weight:400;line-height:1.2;margin-bottom:10px">Kurs Skutecznego Zarządzania Praktyką</h3>
+   <p style="font-size:15px;color:rgba(255,255,255,.78);line-height:1.5;margin-bottom:18px">2-dniowy warsztat — delegowanie, motywowanie, komunikacja, przywództwo. Praktyczna ścieżka do zbudowania Filaru I i&nbsp;II suwerenności.</p>
+   <button onclick="showPage('kurs-zarzadzania')" style="background:var(--gold);color:#fff;border:none;padding:14px 24px;font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:var(--body)">Zobacz program kursu →</button>
+  </div>
+ </article>
+</div>
+
 <div class="page" id="page-rada"><div class="rada-hero grain-bg" style="background:var(--cream)">
  <div class="grain-inner"><div class="rada-hero-inner">
  <div>
@@ -12616,7 +12986,11 @@ window.dopPipClose = function(){
   'michal':['Michał Katarzyński — autor systemu DOP · 14 lat z polskimi praktykami','Mentor 6000+ dentystów, autor 2 książek, wykładowca Akademii Dawsona, DSD, Dentsply Implants, Kerr.'],
   'referencje':['Referencje uczestników kursów DOP','6+ tys. przeszkolonych. Opinie właścicieli, lekarzy, higienistek i recepcji.'],
   'polityka':['Polityka prywatności · DOP','RODO, cele przetwarzania, prawa użytkownika. Aktualizacja 4 czerwca 2026.'],
-  'regulamin':['Regulamin świadczenia usług · DOP','Rejestracja, płatności, 14-dniowe odstąpienie, 30-dniowa gwarancja Akademii.']
+  'regulamin':['Regulamin świadczenia usług · DOP','Rejestracja, płatności, 14-dniowe odstąpienie, 30-dniowa gwarancja Akademii.'],
+  'artykul-7-potrzeb':['7 podstawowych potrzeb pacjentów stomatologicznych · Wiedza DOP','Bezpieczeństwo, bycie wysłuchanym, zrozumienie, współdecydowanie, przewidywalność, szacunek, bycie ważnym. Pełny artykuł Michała Katarzyńskiego.'],
+  'artykul-komunikacja-lekarza':['Sukces komunikacji lekarza: co mówić, jak, kiedy — model M1-M4 · DOP','Mapa Gotowości Pacjenta M1-M4: jak dostosować rejestr językowy do stanu decyzyjnego pacjenta i podnieść akceptację o 25-40%.'],
+  'artykul-musze-sie-zastanowic':['„Muszę się zastanowić" — co naprawdę mówi pacjent · DOP','70% pacjentów wychodzi bez decyzji. Kahneman + awersja do straty: dlaczego pacjent się waha i jak przywrócić go do Systemu 1.'],
+  'artykul-suwerenna-praktyka':['Suwerenna praktyka stomatologiczna — firma, która działa bez Ciebie · DOP','3 filary: Zaangażowanie × Kompetencje × Samodzielność. Definicja zdrowej firmy w sektorze medycznym i dlaczego się mnożą, nie dodają.']
  };
  var metaDesc = document.querySelector('meta[name="description"]');
  var metaOgTitle = document.querySelector('meta[property="og:title"]');

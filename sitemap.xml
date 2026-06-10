@@ -21,7 +21,12 @@
   <url><loc>https://doskonalaobslugapacjenta.pl/#audyt-doradczy</loc><priority>0.9</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#zwiekszanie-rentownosci</loc><priority>0.8</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#michal</loc><priority>0.85</priority></url>
-  <url><loc>https://doskonalaobslugapacjenta.pl/#wiedza</loc><priority>0.7</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#wiedza</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Blog articles (Wiedza) -->
+  <url><loc>https://doskonalaobslugapacjenta.pl/#artykul-7-potrzeb</loc><priority>0.75</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#artykul-komunikacja-lekarza</loc><priority>0.75</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#artykul-musze-sie-zastanowic</loc><priority>0.85</priority></url>
+  <url><loc>https://doskonalaobslugapacjenta.pl/#artykul-suwerenna-praktyka</loc><priority>0.8</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#rada</loc><priority>0.7</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#referencje</loc><priority>0.7</priority></url>
   <url><loc>https://doskonalaobslugapacjenta.pl/#polityka</loc><priority>0.3</priority></url>
