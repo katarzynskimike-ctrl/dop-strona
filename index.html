@@ -114,7 +114,7 @@ if('serviceWorker' in navigator){
  /* Brandbook 2026 — Granat / Złoto / Biel / Grafit */
  --black:#1B2C4F; --dark:#15243F; --dark2:#0F1B30; --dark3:#0A1322;
  --cream:#FFFFFF; --cream2:#F5F3EE; --warm:#A8852B;
- --gold:#C9A24A; --hot:#D9B560; --red:#c94040; --green:#3a8c5c; --muted:#5F5E5A;
+ --gold:#C9A24A; --hot:#D9B560; --red:#c94040; --green:#3a8c5c; --muted:#4F4E4A;
  /* P0: semantic tokens — on dark surfaces */
  --ink-on-dark:#FFFFFF;
  --ink-on-dark-2:rgba(255,255,255,.82);
@@ -1916,7 +1916,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  <!-- Eyebrow: konkret + data -->
  <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(217,181,96,.85);margin-bottom:32px;display:flex;align-items:center;gap:14px;font-family:var(--body)" class="fade-u">
  <span style="display:block;width:36px;height:1px;background:rgba(217,181,96,.5)"></span>
- System szkoleń dla praktyk stomatologicznych
+ Szkolenia i&nbsp;audyty dla praktyk stomatologicznych · 462 wdrożeń · od 14 lat
  </div>
 
  <!-- H1: uniwersalny dla lekarza-właściciela, lekarza, higienistki, recepcji -->
@@ -1925,11 +1925,16 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
  <em style="color:var(--hot);font-style:italic;display:block">A&nbsp;praktyka nadal stoi w&nbsp;miejscu.</em>
  </h1>
 
- <!-- Lead: krótki, italic, kończy na payoffe „brak wspólnego systemu" -->
- <p class="fade-u d2" style="font-family:var(--serif);font-size:clamp(17px,1.5vw,20px);font-style:italic;color:rgba(255,255,255,.74);max-width:54ch;line-height:1.55;margin:0 0 40px">
+ <!-- Lead: krótki, italic, kończy na payoffe „brak wspólnego systemu" + outcome bullets -->
+ <p class="fade-u d2" style="font-family:var(--serif);font-size:clamp(17px,1.5vw,20px);font-style:italic;color:rgba(255,255,255,.74);max-width:54ch;line-height:1.55;margin:0 0 24px">
  Zespół działa, ale każdy po swojemu. Pacjenci robią jednego zęba i znikają.
  <strong style="color:#FFFFFF;font-style:normal;font-weight:500;font-family:var(--body)">To nie problem ludzi — to brak wspólnego systemu.</strong>
  </p>
+ <div class="fade-u d2" style="display:flex;gap:24px;margin:0 0 36px;flex-wrap:wrap;font-family:var(--body);font-size:13px;color:rgba(255,255,255,.85)">
+  <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--hot);font-weight:800;font-size:18px;font-family:var(--display)">+35%</span><span>akceptacji planów</span></div>
+  <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--hot);font-weight:800;font-size:18px;font-family:var(--display)">+40%</span><span>recall pacjentów</span></div>
+  <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--hot);font-weight:800;font-size:18px;font-family:var(--display)">−40%</span><span>no-show</span></div>
+ </div>
 
  <!-- CTA: side-by-side, primary + ghost (Linear/Vercel pattern) -->
  <div class="fade-u d3" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
@@ -2315,7 +2320,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
      <div class="pricing2-price">8 990 zł</div>
      <div class="pricing2-price-sub" style="color:#3a8c5c;font-weight:700">Oszczędzasz 20 160 zł</div>
     </div>
-    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('akademia')">Zobacz →</button>
+    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('akademia')">Zobacz Akademię →</button>
    </div>
   </a>
 
@@ -2357,7 +2362,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
      <div class="pricing2-price">Wycena ind.</div>
      <div class="pricing2-price-sub">po 15-min rozmowie</div>
     </div>
-    <button class="pricing2-cta pricing2-cta-gold" onclick="event.stopPropagation();showPage('kurs-zamkniety-wl')">Zobacz →</button>
+    <button class="pricing2-cta pricing2-cta-gold" onclick="event.stopPropagation();showPage('kurs-zamkniety-wl')">Zobacz program →</button>
    </div>
   </a>
 
@@ -2378,7 +2383,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
      <div class="pricing2-price">Wycena ind.</div>
      <div class="pricing2-price-sub">+2,1 mln rekord wzrostu</div>
     </div>
-    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('audyt-doradczy')">Zobacz →</button>
+    <button class="pricing2-cta" onclick="event.stopPropagation();showPage('audyt-doradczy')">Zobacz audyt →</button>
    </div>
   </a>
 
@@ -6525,7 +6530,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Audyt doradczy 1-on-1</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#akademia" onclick="event.preventDefault();showPage('akademia')" data-track="crosssell-card" data-track-loc="kurs-zarzadzania-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -6533,7 +6538,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Akademia Online</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">8 990 zł / rok</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -6800,7 +6805,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Audyt doradczy 1-on-1</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#kurs-zarzadzania" onclick="event.preventDefault();showPage('kurs-zarzadzania')" data-track="crosssell-card" data-track-loc="kurs-zamkniety-wl-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -6808,7 +6813,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Kurs Zarządzania (otwarty)</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -7201,7 +7206,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Audyt doradczy</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#kurs-zarzadzania" onclick="event.preventDefault();showPage('kurs-zarzadzania')" data-track="crosssell-card" data-track-loc="audyt-praktyki-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -7209,7 +7214,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Kurs Zarządzania</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -7499,7 +7504,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Plan Leczenia</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">2 490 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#doskonala-wizyta-hig" onclick="event.preventDefault();showPage('doskonala-wizyta-hig')" data-track="crosssell-card" data-track-loc="doskonala-konsultacja-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -7507,7 +7512,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Doskonała Wizyta Higienistki</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 990 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -7687,7 +7692,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Doskonała Konsultacja</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">2 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#kurs-zarzadzania" onclick="event.preventDefault();showPage('kurs-zarzadzania')" data-track="crosssell-card" data-track-loc="plan-leczenia-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -7695,7 +7700,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Kurs Zarządzania</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 990 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -7961,7 +7966,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Doskonała Konsultacja (otwarty)</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">2 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#plan-leczenia" onclick="event.preventDefault();showPage('plan-leczenia')" data-track="crosssell-card" data-track-loc="kurs-zamkniety-lek-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -7969,7 +7974,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Plan Leczenia (otwarty)</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">2 490 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -8194,7 +8199,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Rejestracja NINJA (cz. 2)</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#doskonala-wizyta-hig" onclick="event.preventDefault();showPage('doskonala-wizyta-hig')" data-track="crosssell-card" data-track-loc="rejestracja-cz1-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -8202,7 +8207,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Doskonała Wizyta Higienistki</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -8426,7 +8431,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Rejestracja Cz. 1</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#kurs-zamkniety-rec" onclick="event.preventDefault();showPage('kurs-zamkniety-rec')" data-track="crosssell-card" data-track-loc="rejestracja-ninja-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -8434,7 +8439,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Kurs zamknięty recepcji</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">Wycena</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -8699,7 +8704,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Rejestracja Cz. 1 (otwarty)</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#rejestracja-ninja" onclick="event.preventDefault();showPage('rejestracja-ninja')" data-track="crosssell-card" data-track-loc="kurs-zamkniety-rec-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -8707,7 +8712,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Rejestracja NINJA</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -9372,7 +9377,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Doskonała Konsultacja</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 690 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#kurs-zarzadzania" onclick="event.preventDefault();showPage('kurs-zarzadzania')" data-track="crosssell-card" data-track-loc="doskonala-wizyta-hig-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -9380,7 +9385,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Kurs Zarządzania</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">1 990 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -9724,7 +9729,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Audyt praktyki na&nbsp;miejscu</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">4 990 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#zwiekszanie-rentownosci" onclick="event.preventDefault();showPage('zwiekszanie-rentownosci')" data-track="crosssell-card" data-track-loc="audyt-doradczy-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -9732,7 +9737,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Plan zwiększania rentowności</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">Wycena</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -9958,7 +9963,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Audyt doradczy</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#akademia" onclick="event.preventDefault();showPage('akademia')" data-track="crosssell-card" data-track-loc="zwiekszanie-rentownosci-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -9966,7 +9971,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Akademia Online</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">8 990 zł / rok</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -10597,7 +10602,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Audyt doradczy</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
    <a href="#kurs-zarzadzania" onclick="event.preventDefault();showPage('kurs-zarzadzania')" data-track="crosssell-card" data-track-loc="akademia-online-cross" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(27,44,79,.08);border-radius:12px;padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 36px -10px rgba(27,44,79,.15)';this.style.borderColor='var(--gold)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(27,44,79,.08)'">
@@ -10605,7 +10610,7 @@ body, .pricing2-card, .cal2-card, .paths-grid-resp > div, .problem2-card{
     <h3 style="font-family:var(--display);font-size:24px;color:var(--black);line-height:1.15;margin-bottom:12px;font-weight:400">Kurs Zarządzania</h3>
     <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(27,44,79,.06)">
      <div style="font-size:14px;color:var(--muted);font-weight:600">3 997 zł</div>
-     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+     <div style="font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px">Zobacz program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
    </a>
   </div>
@@ -11295,7 +11300,14 @@ function renderField(f){
  } else if(f.type === 'number'){
   input = '<input id="' + inputId + '" type="number" name="' + escHtml(f.name) + '"' + req + min + max + ph + ' inputmode="numeric">';
  } else {
-  input = '<input id="' + inputId + '" type="' + f.type + '" name="' + escHtml(f.name) + '"' + req + max + pat + ph + (f.type === 'email' ? ' autocomplete="email"' : '') + (f.type === 'tel' ? ' autocomplete="tel"' : '') + '>';
+  var ac = '';
+  if (f.type === 'email') ac = ' autocomplete="email" inputmode="email"';
+  else if (f.type === 'tel') ac = ' autocomplete="tel" inputmode="tel"';
+  else if (f.name === 'NAZWA_PRAKTYKI' || f.name === 'NAZWA' || /praktyka|company/i.test(f.name)) ac = ' autocomplete="organization"';
+  else if (/imie|name|firstname|imię/i.test(f.name)) ac = ' autocomplete="name"';
+  else if (/lastname|nazwisko/i.test(f.name)) ac = ' autocomplete="family-name"';
+  else if (/miasto|city/i.test(f.name)) ac = ' autocomplete="address-level2"';
+  input = '<input id="' + inputId + '" type="' + f.type + '" name="' + escHtml(f.name) + '"' + req + max + pat + ph + ac + '>';
  }
  return '<div class="dop-field">' + label + input + helper + '</div>';
 }
