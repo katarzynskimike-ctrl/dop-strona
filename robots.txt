@@ -1,6 +1,69 @@
+# robots.txt — Doskonała Obsługa Pacjenta
+# Pełne pozwolenie dla AI crawlerów (ChatGPT, Claude, Perplexity, Gemini, Mistral)
+
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /.netlify/
 
+# AI search engines — explicit allow (ważne dla GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 Sitemap: https://doskonalaobslugapacjenta.pl/sitemap.xml
+
+# AI-specific files
+# llms.txt — overview for AI agents
+# llms-full.txt — full content dump for AI training
+# ai-reference — strukturalny snapshot (/#ai-reference)
