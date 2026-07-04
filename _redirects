@@ -1,5 +1,6 @@
-# Cloudflare Pages — SPA fallback
-# Reguła z "!" wymusza redirect (override automatic asset matching = no infinite loop)
+# SPA fallback (Netlify + Cloudflare Pages)
+# BEZ "!" — istniejące pliki statyczne (photos/, sw.js itd.) mają pierwszeństwo;
+# wymuszona reguła 200! serwowała na Netlify index.html zamiast zdjęć.
 # Functions /api/* są obsługiwane automatycznie przez functions/api/*
 
-/*    /index.html   200!
+/*    /index.html   200
