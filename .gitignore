@@ -5,3 +5,11 @@ node_modules/
 *.log
 .env
 .env.local
+dop_cms_editor_v6.html
+AUDYT*.md
+BREVO-SETUP-GUIDE.md
+DEPLOY.md
+FORMS-FIELDS-DESIGN.md
+FORMS-SPEC.md
+cloudflare-worker/
+.deploy-now

@@ -1,5 +1,5 @@
-# Cloudflare Pages redirects + SPA fallback
+# Cloudflare Pages — SPA fallback
+# Reguła z "!" wymusza redirect (override automatic asset matching = no infinite loop)
 # Functions /api/* są obsługiwane automatycznie przez functions/api/*
 
-# SPA fallback — wszystkie nieznane ścieżki idą do index.html
-/* /index.html 200
+/*    /index.html   200!
