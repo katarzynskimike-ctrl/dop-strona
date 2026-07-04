@@ -7,9 +7,29 @@
  *   - SITE_URL (Plain) — np. https://doskonalaobslugapacjenta.pl
  */
 
-import formsConfig from '../../forms-config.json';
-
 const BREVO_API = 'https://api.brevo.com/v3';
+
+// formsConfig load — fetch z assets (Workers+Assets mode nie obsługuje import JSON)
+let _formsConfigCache = null;
+async function getFormsConfig(env, request) {
+  if (_formsConfigCache) return _formsConfigCache;
+  // Try ASSETS binding first (preferowane)
+  try {
+    if (env.ASSETS) {
+      const url = new URL(request.url);
+      const assetReq = new Request(url.origin + '/forms-config.json');
+      const r = await env.ASSETS.fetch(assetReq);
+      if (r.ok) { _formsConfigCache = await r.json(); return _formsConfigCache; }
+    }
+  } catch (e) { console.warn('ASSETS fetch failed:', e.message); }
+  // Fallback: same-origin fetch
+  try {
+    const url = new URL(request.url);
+    const r = await fetch(url.origin + '/forms-config.json');
+    if (r.ok) { _formsConfigCache = await r.json(); return _formsConfigCache; }
+  } catch (e) { console.warn('Same-origin fetch failed:', e.message); }
+  return null;
+}
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -19,11 +39,17 @@ export async function onRequest(context) {
   if (request.method !== 'POST') return jsonResp({ ok: false, error: 'Method not allowed' }, 405, headers);
 
   const apiKey = env.BREVO_API_KEY;
-  if (!apiKey) return jsonResp({ ok: false, error: 'Server misconfigured' }, 500, headers);
+  if (!apiKey) return jsonResp({ ok: false, error: 'Server misconfigured: BREVO_API_KEY missing' }, 500, headers);
+
+  const formsConfig = await getFormsConfig(env, request);
+  if (!formsConfig) return jsonResp({ ok: false, error: 'forms-config.json not loaded' }, 500, headers);
 
   let payload;
   try { payload = await request.json(); }
   catch { return jsonResp({ ok: false, error: 'Invalid JSON' }, 400, headers); }
+
+  // NIP: normalizuj wcześnie (usuń prefiks PL, spacje, myślniki) — same cyfry trafiają do walidacji i Brevo
+  if (payload && payload.NIP != null) payload.NIP = nipNormalize(payload.NIP);
 
   const formId = String(payload.form_id || '').trim();
   const form = formsConfig.forms[formId];
@@ -60,6 +86,16 @@ export async function onRequest(context) {
       data[field.name] = n; continue;
     }
     data[field.name] = value;
+  }
+  // Walidacja warunkowa NIP (enroll): wymagany przy fakturze VAT + poprawna suma kontrolna
+  if (formId === 'enroll') {
+    const nipVal = String(payload.NIP || '').trim();
+    const wantsVat = String(payload.DOKUMENT || '').trim() === 'faktura_vat';
+    if (wantsVat && !nipVal) {
+      errors.push({ field: 'NIP', message: 'Pole "NIP" jest wymagane przy fakturze VAT' });
+    } else if (nipVal && !nipIsValid(nipVal)) {
+      errors.push({ field: 'NIP', message: 'Nieprawidłowy NIP — sprawdź cyfry (błędna suma kontrolna)' });
+    }
   }
   if (errors.length > 0) return jsonResp({ ok: false, error: 'Validation failed', errors }, 400, headers);
 
@@ -100,6 +136,21 @@ export async function onRequest(context) {
     return jsonResp({ ok: false, error: 'Brak połączenia z CRM' }, 502, headers);
   }
 
+  // Brevo quirk: POST /contacts z updateEnabled:true nie zawsze dopisuje ISTNIEJĄCY kontakt
+  // do listIds (kontakty enroll zwykle już są w bazie z newslettera/e-booka).
+  // Jawne dopisanie do listy — idempotentne, non-fatal.
+  try {
+    const rl = await fetch(BREVO_API + '/contacts/lists/' + listEntry.id + '/contacts/add', {
+      method: 'POST',
+      headers: { 'accept': 'application/json', 'content-type': 'application/json', 'api-key': apiKey },
+      body: JSON.stringify({ emails: [email] })
+    });
+    if (!rl.ok) {
+      const lb = await rl.text().catch(() => '');
+      if (!/already in list/i.test(lb)) console.error('List add error (non-fatal):', rl.status, lb);
+    }
+  } catch (e) { console.error('List add error (non-fatal):', e); }
+
   if (form.notification_email) {
     try { await sendNotif({ apiKey, to: form.notification_email, formId, formName: formName(formId, hidden), leadEmail: email, fields: data, hidden }); }
     catch (e) { console.error('Notif error (non-fatal):', e); }
@@ -108,6 +159,11 @@ export async function onRequest(context) {
   if (formId === 'lead-magnet') {
     try { await deliverLeadMagnet({ apiKey, leadEmail: email, firstName: data.FIRSTNAME || '', siteUrl: env.SITE_URL }); }
     catch (e) { console.error('Lead magnet delivery error (non-fatal):', e); }
+  }
+
+  if (formId === 'enroll') {
+    try { await sendEnrollConfirmation({ apiKey, leadEmail: email, firstName: data.FIRSTNAME || '', kursName: hidden.KURS_NAME || 'kurs', platnosc: data.PLATNOSC || 'proforma' }); }
+    catch (e) { console.error('Enroll confirmation error (non-fatal):', e); }
   }
 
   return jsonResp({ ok: true, message: form.success_message || 'Zapisano' }, 200, headers);
@@ -147,7 +203,56 @@ async function deliverLeadMagnet({ apiKey, leadEmail, firstName, siteUrl }) {
   if (!r.ok) throw new Error('Brevo SMTP ' + r.status + ': ' + (await r.text()));
 }
 
+async function sendEnrollConfirmation({ apiKey, leadEmail, firstName, kursName, platnosc }) {
+  const greeting = firstName ? ('Dzień dobry, ' + escapeHtml(firstName) + '!') : 'Dzień dobry!';
+  const isProforma = platnosc !== 'faktura';
+  const steps = isProforma
+    ? '<tr><td style="padding:0 14px 18px 0;vertical-align:top"><div style="width:28px;height:28px;border-radius:50%;background:#C9A24A;color:#FFF;font-weight:800;font-size:14px;text-align:center;line-height:28px">1</div></td><td style="padding:0 0 18px;font-size:15px;color:#1A1A1A;line-height:1.6">W osobnej wiadomości (maks. <strong>24 h</strong>) otrzymasz <strong>fakturę proforma</strong> z danymi do przelewu.</td></tr>'
+    + '<tr><td style="padding:0 14px 18px 0;vertical-align:top"><div style="width:28px;height:28px;border-radius:50%;background:#C9A24A;color:#FFF;font-weight:800;font-size:14px;text-align:center;line-height:28px">2</div></td><td style="padding:0 0 18px;font-size:15px;color:#1A1A1A;line-height:1.6">Po zaksięgowaniu wpłaty wyślemy <strong>potwierdzenie udziału w kursie</strong> wraz z informacjami organizacyjnymi.</td></tr>'
+    : '<tr><td style="padding:0 14px 18px 0;vertical-align:top"><div style="width:28px;height:28px;border-radius:50%;background:#C9A24A;color:#FFF;font-weight:800;font-size:14px;text-align:center;line-height:28px">1</div></td><td style="padding:0 0 18px;font-size:15px;color:#1A1A1A;line-height:1.6">Twoje miejsce jest zarezerwowane. W kolejnej wiadomości (maks. <strong>24 h</strong>) otrzymasz <strong>fakturę z terminem płatności</strong>.</td></tr>'
+    + '<tr><td style="padding:0 14px 18px 0;vertical-align:top"><div style="width:28px;height:28px;border-radius:50%;background:#C9A24A;color:#FFF;font-weight:800;font-size:14px;text-align:center;line-height:28px">2</div></td><td style="padding:0 0 18px;font-size:15px;color:#1A1A1A;line-height:1.6">Przed kursem wyślemy <strong>komplet informacji organizacyjnych</strong> (miejsce, agenda, materiały).</td></tr>';
+  const subject = 'Potwierdzenie zgłoszenia: ' + kursName;
+  const html = `<table width="100%" style="background:#F5F3EE;padding:24px;font-family:'Figtree',Arial,sans-serif"><tr><td align="center"><table width="600" style="background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(15,27,48,.08)">
+<tr><td style="background:linear-gradient(135deg,#1B2C4F 0%,#0F1B30 100%);color:#FFFFFF;padding:36px 32px;text-align:center">
+ <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C9A24A;margin-bottom:10px;font-weight:700">Doskonała Obsługa Pacjenta</div>
+ <div style="font-family:Georgia,serif;font-size:28px;color:#FFFFFF;line-height:1.15;margin-bottom:8px">Witamy w gronie uczestników!</div>
+ <div style="font-family:Georgia,serif;font-size:19px;font-style:italic;color:#D9B560;line-height:1.3">${escapeHtml(kursName)}</div>
+</td></tr>
+<tr><td style="padding:32px">
+ <p style="font-size:18px;color:#1A1A1A;margin:0 0 14px;line-height:1.5"><strong>${greeting}</strong></p>
+ <p style="font-size:15px;color:#1A1A1A;line-height:1.65;margin:0 0 24px">Gratuluję decyzji o udziale w kursie <strong>${escapeHtml(kursName)}</strong>. To inwestycja, która wraca w pierwszych tygodniach po wdrożeniu. Oto co wydarzy się teraz:</p>
+ <table style="width:100%;border-collapse:collapse">${steps}</table>
+ <p style="font-size:14px;color:#5F5E5A;line-height:1.6;margin:8px 0 0;border-top:1px solid #ECE9E0;padding-top:20px">Masz pytania? Po prostu odpisz na tę wiadomość albo zadzwoń: <strong style="color:#1A1A1A">579 774 089</strong>.</p>
+ <p style="margin-top:28px;font-size:14px;color:#1A1A1A;line-height:1.5">Do zobaczenia na kursie,<br><strong style="color:#1B2C4F;font-family:Georgia,serif;font-size:18px">— Michał Katarzyński</strong><br><span style="font-size:12px;color:#5F5E5A">Excellent Patient Service sp. z o.o.</span></p>
+</td></tr></table></td></tr></table>`;
+
+  const r = await fetch(BREVO_API + '/smtp/email', {
+    method: 'POST',
+    headers: { 'accept': 'application/json', 'content-type': 'application/json', 'api-key': apiKey },
+    body: JSON.stringify({
+      sender: { name: 'Michał Katarzyński · DOP', email: 'forms@doskonalaobslugapacjenta.pl' },
+      to: [{ email: leadEmail, name: firstName || '' }],
+      replyTo: { email: 'biuro@doskonalaobslugapacjenta.pl', name: 'Biuro DOP' },
+      subject, htmlContent: html
+    })
+  });
+  if (!r.ok) throw new Error('Brevo SMTP ' + r.status + ': ' + (await r.text()));
+}
+
 function escapeHtml(s) { return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// NIP (polski): normalizacja (usuwa prefiks PL, spacje, myślniki) + walidacja sumy kontrolnej
+function nipNormalize(v) { return String(v == null ? '' : v).replace(/[\s\-]/g, '').replace(/^PL/i, ''); }
+function nipIsValid(v) {
+  const n = nipNormalize(v);
+  if (!/^[0-9]{10}$/.test(n)) return false;
+  const w = [6, 5, 7, 2, 3, 4, 5, 6, 7];
+  let s = 0;
+  for (let i = 0; i < 9; i++) s += parseInt(n.charAt(i), 10) * w[i];
+  const c = s % 11;
+  if (c === 10) return false;
+  return c === parseInt(n.charAt(9), 10);
+}
 
 function corsHeaders(request, env) {
   const origin = request.headers.get('origin') || '';
@@ -179,10 +284,19 @@ function formName(formId, hidden) {
   return ({ 'newsletter': 'Newsletter', 'lead-magnet': 'Lead magnet — E-book', 'audyt-praktyki': 'Audyt praktyki', 'audyt-doradczy': 'Audyt doradczy — email', 'kontakt': 'Kontakt ogólny' })[formId] || formId;
 }
 
-async function sendNotif({ apiKey, to, formName, leadEmail, fields, hidden }) {
+async function sendNotif({ apiKey, to, formId, formName, leadEmail, fields, hidden }) {
   const isHot = hidden.HOT_LEAD === 'true' || hidden.HOT_LEAD === true;
-  const tag = isHot ? '🔥 [Pilne zapytanie]' : '[Nowe zapytanie]';
-  const labels = { FIRSTNAME:'Imię', LASTNAME:'Nazwisko', EMAIL:'Email', PHONE:'Telefon', KLINIKA_NAZWA:'Klinika', KLINIKA_LOKALIZACJA:'Lokalizacja', NIP:'NIP', LICZBA_OSOB:'Liczba osób', PREF_TERMIN:'Pref. termin', WIADOMOSC:'Wiadomość', TEMAT:'Temat' };
+  // Prefiks tematu wg wagi zgłoszenia — łatwe filtrowanie w skrzynce (uporządkowanie 2026-06-12)
+  let tag;
+  if (formId === 'enroll') tag = '💰 [ZAPIS NA KURS]';
+  else if (isHot) tag = '🔥 [Pilne]';
+  else if (formId === 'newsletter') tag = '[Newsletter]';
+  else if (formId === 'lead-magnet') tag = '[E-book]';
+  else tag = '[Lead]';
+  const labels = { FIRSTNAME:'Imię', LASTNAME:'Nazwisko', EMAIL:'Email', PHONE:'Telefon', KLINIKA_NAZWA:'Klinika', KLINIKA_LOKALIZACJA:'Lokalizacja', NIP:'NIP', LICZBA_OSOB:'Liczba osób', PREF_TERMIN:'Pref. termin', WIADOMOSC:'Wiadomość', TEMAT:'Temat', PLATNOSC:'Forma płatności', DOKUMENT:'Dokument sprzedaży', DANE_FAKTURY:'Dane do faktury' };
+  const pretty = { proforma:'Faktura proforma — przelew przed kursem', faktura:'Faktura z terminem płatności', faktura_vat:'Faktura VAT (firma)', paragon:'Paragon / faktura imienna (osoba prywatna)' };
+  if (fields.PLATNOSC && pretty[fields.PLATNOSC]) fields.PLATNOSC = pretty[fields.PLATNOSC];
+  if (fields.DOKUMENT && pretty[fields.DOKUMENT]) fields.DOKUMENT = pretty[fields.DOKUMENT];
   const rows = [];
   for (const [k, v] of Object.entries(fields)) {
     if (k === 'EMAIL') continue;
@@ -192,12 +306,14 @@ async function sendNotif({ apiKey, to, formName, leadEmail, fields, hidden }) {
   const kursInfo = hidden.KURS_NAME ? ' · ' + hidden.KURS_NAME + ' (' + (hidden.KURS_PRICE || 'wycena') + ' zł)' : '';
   const subject = tag + ' ' + formName + kursInfo + ': ' + leadEmail;
   const html = '<table width="100%" style="background:#F5F3EE;padding:24px"><tr><td align="center"><table width="600" style="background:#FFF;border-radius:12px;overflow:hidden"><tr><td style="background:#1B2C4F;color:#FFF;padding:24px"><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C9A24A;margin-bottom:6px">' + tag + sourceInfo + '</div><div style="font-family:Georgia,serif;font-size:22px;color:#FFF">Nowe zgłoszenie: ' + formName + '</div></td></tr><tr><td style="padding:24px"><table style="width:100%"><tr><td style="padding:0 12px 0 0;color:#5F5E5A;font-size:13px">Email</td><td style="font-size:14px"><a href="mailto:' + leadEmail + '" style="color:#C9A24A;text-decoration:none;font-weight:700">' + leadEmail + '</a></td></tr>' + rows.join('') + '</table></td></tr></table></td></tr></table>';
+  // Support comma-separated lista adresów: "biuro@…,michal@…,emkatek@gmail.com"
+  const toList = String(to).split(',').map(s => s.trim()).filter(Boolean).map(email => ({ email }));
   const r = await fetch(BREVO_API + '/smtp/email', {
     method: 'POST',
     headers: { 'accept':'application/json', 'content-type':'application/json', 'api-key':apiKey },
     body: JSON.stringify({
       sender: { name: 'DOP Forms', email: 'forms@doskonalaobslugapacjenta.pl' },
-      to: [{ email: to }],
+      to: toList,
       replyTo: { email: leadEmail },
       subject, htmlContent: html
     })
