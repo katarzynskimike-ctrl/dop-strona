@@ -1,6 +1,6 @@
 // DOP Service Worker — basic offline cache + speed-up repeat visits
 // Version bump na każdy redeploy żeby unieważnić stary cache
-const CACHE_VERSION = 'dop-v79-2026-07-04-migracja-zdjec';
+const CACHE_VERSION = 'dop-v80-2026-09-24-godzina-startu-kz';
 const CORE_ASSETS = [
   '/',
   '/index.html',
