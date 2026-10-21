@@ -368,7 +368,7 @@
      "type": "text",
      "required": false,
      "label": "Preferowany termin",
-     "placeholder": "14-15 czerwca 2026",
+     "placeholder": "14-15 stycznia 2027",
      "helper": "Sprawdzimy dostępność",
      "max": 100
     },
